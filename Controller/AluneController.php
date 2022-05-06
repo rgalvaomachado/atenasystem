@@ -4,10 +4,10 @@
 
     switch($metodo){
         case 'criar':
-            $sala = new Alune();
-            $sala->nome = $_POST['nome'];
-            $sala->sala = $_POST['sala'];
-            $sala->criar();
+            $alune = new Alune();
+            $alune->nome = $_POST['nome'];
+            $alune->sala = $_POST['sala'];
+            $alune->criar();
             header('Location: ../alune/cadAlune.php?sucess=true');
         break;
         case 'buscar':
@@ -15,10 +15,10 @@
             header('Location: ../alune/editAlune.php?alune='.$id);
         break;
         case 'salvar':
-            $sala = new Alune();
-            $sala->nome = $_POST['nome'];
-            $sala->sala = $_POST['sala'];
-            $sala->salvar($_POST['id']);
+            $alune = new Alune();
+            $alune->nome = $_POST['nome'];
+            $alune->sala = $_POST['sala'];
+            $alune->salvar($_POST['id']);
             header('Location: ../Alune/editAlune.php?sucess=true');
         break;
     }

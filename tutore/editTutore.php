@@ -62,7 +62,7 @@
 							<label>Disciplina</label>
 							<select name="disciplina" class="form-control">
 								<?php foreach($disciplinas as $disciplina){ ?>
-									<option <?= $tutore['disciplina'] == $disciplina['nome'] ? "selected" : "" ?> > <?= $disciplina['nome'] ?></option>
+									<option value="<?= $disciplina['id'] ?>" <?= $tutore['disciplina'] == $disciplina['id'] ? "selected" : "" ?> > <?= $disciplina['nome'] ?></option>
 								<?php } ?>
 							</select>
 						</div>

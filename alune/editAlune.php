@@ -62,7 +62,7 @@
 							<label>Sala</label>
 							<select name="sala" class="form-control">
 								<?php foreach($salas as $sala){ ?>
-									<option <?= $alune['sala'] == $sala['nome'] ? "selected" : "" ?> > <?= $sala['nome'] ?></option>
+									<option value="<?= $sala['id'] ?>" <?= $alune['sala'] == $sala['id'] ? "selected" : "" ?> > <?= $sala['nome'] ?></option>
 								<?php } ?>
 							</select>
 						</div>

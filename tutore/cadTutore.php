@@ -36,7 +36,7 @@
 						<label>Disciplina</label>
 						<select name="disciplina" class="form-control">
 							<?php foreach($disciplinas as $disciplina){ ?>
-								<option><?= $disciplina['nome'] ?></option>
+								<option value="<?= $disciplina['id'] ?>"><?= $disciplina['nome'] ?></option>
 							<?php } ?>
 						</select>
 					</div>
