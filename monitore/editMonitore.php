@@ -37,7 +37,7 @@
 						<?php } ?>
 					</select>
 				</div>
-				<button type="submiit" class="btn btn-md btn-warning">Buscar</button>
+				<button type="submit" class="btn btn-md btn-warning">Buscar</button>
 			</form>
 			<form action="../Controller/MonitoreController.php" method="post">
 				<input type="hidden" name="metodo" value="salvar">
@@ -46,7 +46,6 @@
 						require_once($_SERVER["DOCUMENT_ROOT"]."/Controller/MonitoreController.php");
 						$getMonitore = new MonitoreController();
 						$monitore = $getMonitore->getMonitore($_GET['monitore']);
-						echo $monitore['nome'];
 					?>
 					<input type="hidden" name="id" value="<?= $_GET['monitore'] ?>">
 					<div class="row" style="width:700px">

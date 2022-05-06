@@ -21,7 +21,7 @@
 		<center>
 			<h1>Editar Tutore</h1> 	
 			<h4><?= (isset($_GET['sucess']) && $_GET['sucess'] == true ? "Salvo !" : "") ?></h4>
-			<form action="../Controller/tutoreController.php" method="post">
+			<form action="../Controller/TutoreController.php" method="post">
 				<input type="hidden" name="metodo" value="buscar">
 				<?php
 					require_once($_SERVER["DOCUMENT_ROOT"]."/Controller/TutoreController.php");
@@ -44,8 +44,8 @@
 				<?php
 					if(isset($_GET['tutore'])){
 						require_once($_SERVER["DOCUMENT_ROOT"]."/Controller/TutoreController.php");
-						$getTutore = new TutoreController();
-						$tutore = $getTutore->getTutore($_GET['tutore']);
+						$TutoreController = new TutoreController();
+						$tutore = $TutoreController->getTutore($_GET['tutore']);
 				?>
 					<input type="hidden" name="id" value="<?= $_GET['tutore'] ?>">
 					<div class="row" style="width:700px">
