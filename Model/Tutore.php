@@ -6,21 +6,21 @@
         public $disciplina;
 
         function criarTutore(){
-            $stmt = $this->bd->prepare('INSERT INTO tutore (nome, disciplina) VALUES(:nome, :disciplina)');
+            $stmt = $this->bd->prepare('INSERT INTO tutore (nome, cod_disciplina) VALUES(:nome, :cod_disciplina)');
             $stmt->execute([
                 ':nome' => $this->nome,
-                ':disciplina' => $this->disciplina
+                ':cod_disciplina' => $this->disciplina
             ]);
         }
         
         function getTutores(){
-            $getTutores =  $this->bd->prepare('SELECT id,nome,disciplina FROM tutore ORDER BY nome');
+            $getTutores =  $this->bd->prepare('SELECT id,nome,cod_disciplina FROM tutore ORDER BY nome');
             $getTutores->execute();
             return $getTutores->fetchAll(PDO::FETCH_ASSOC);
         }
 
         function getTutore($id){
-            $getTutore =  $this->bd->prepare('SELECT nome,disciplina FROM tutore WHERE id = :id ');
+            $getTutore =  $this->bd->prepare('SELECT nome,cod_disciplina FROM tutore WHERE id = :id ');
             $getTutore->execute([
                 ':id' => $id,
             ]);
@@ -28,11 +28,11 @@
         }
 
         function salvarMonitore($id){
-            $stmt = $this->bd->prepare('UPDATE tutore SET nome = :nome, disciplina = :disciplina WHERE id = :id');
+            $stmt = $this->bd->prepare('UPDATE tutore SET nome = :nome, cod_disciplina = :cod_disciplina WHERE id = :id');
             $stmt->execute(array(
               ':id'   => $id,
               ':nome' => $this->nome,
-              ':disciplina' => $this->disciplina,
+              ':cod_disciplina' => $this->disciplina,
             ));
         }
     }

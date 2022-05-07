@@ -33,6 +33,9 @@
             <li><a class="" href="\alune\editAlune.php">
                 <span class="fa fa-arrow-right">&nbsp;</span> Editar
             </a></li>
+            <li><a class="" href="\alune\justificarAlunePresenca.php">
+                <span class="fa fa-arrow-right">&nbsp;</span> Justificar Presença
+            </a></li>
         </ul>
     </li>
     <li class="parent "><a data-toggle="collapse" href="#sub-item-4">

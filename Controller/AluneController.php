@@ -33,5 +33,11 @@
             $alune = new Alune();
             return $alune->getAlune($id);
         }
+
+        function getAlunesSala($sala){
+            $alunes = new Alune();
+            $alunes->sala = $sala;
+            return $alunes->getAlunesSala();
+        }
     }
 ?>

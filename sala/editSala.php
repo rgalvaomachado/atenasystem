@@ -31,7 +31,6 @@
 				<div class="form-group">
 					<label>Salas</label>
 					<?php $id = (isset($_GET['sala']) ? $_GET['sala'] : 1) ?>
-					<?php echo $id ?>
 					<select name="sala" class="form-control">
 						<?php foreach($salas as $sala){ ?>
 							<option value="<?= $sala['id'] ?>" <?= $sala['id'] == $id ? "selected" : ""?> > <?= $sala['nome'] ?></option>
