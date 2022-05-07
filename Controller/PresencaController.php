@@ -44,7 +44,7 @@
                     $presenca->aula = $_POST['aula'];
                     $presenca->presente = 'S';
                     $presenca->data = $_POST['data'];
-                    $presenca->criar();
+                    $presenca->presencaAlune();
                 }else{
                     $presenca = new Presenca();
                     $presenca->cod_alune = $alune['id'];
@@ -52,10 +52,29 @@
                     $presenca->aula = $_POST['aula'];
                     $presenca->presente = 'N';
                     $presenca->data = $_POST['data'];
-                    $presenca->criar();
+                    $presenca->presencaAlune();
                 }
             }
             header('Location: ../presenca/presenAlune.php');
+        break;
+        case 'criarPresencaTutore':
+            $presenca = new Presenca();
+            $presenca->cod_tutore = $_POST['tutore'];
+            $presenca->cod_sala = $_POST['sala'];
+            $presenca->aula = $_POST['aula'];
+            $presenca->presente = 'S';
+            $presenca->data = $_POST['data'];
+            $presenca->presencaTutore();
+            header('Location: ../presenca/PresenTutore.php?presente=S');
+        break;
+        case 'criarPresencaMonitore':
+            $presenca = new Presenca();
+            $presenca->cod_monitore = $_POST['monitore'];
+            $presenca->cod_sala = $_POST['sala'];
+            $presenca->presente = 'S';
+            $presenca->data = $_POST['data'];
+            $presenca->presencaMonitore();
+            header('Location: ../presenca/PresenMonitore.php?presente=S');
         break;
     }
 

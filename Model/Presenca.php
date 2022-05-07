@@ -5,11 +5,12 @@
         public $cod_alune;
         public $cod_sala;
         public $cod_tutore;
+        public $cod_monitore;
         public $aula;
         public $presente;
         public $data;
 
-        function criar(){
+        function presencaAlune(){
             $stmt = $this->bd->prepare('
                 INSERT INTO presenca (cod_alune, cod_sala, cod_tutore, aula, presente, data)
                 VALUES(:cod_alune, :cod_sala, :cod_tutore, :aula, :presente, :data)
@@ -18,7 +19,40 @@
                 ':cod_alune' => $this->cod_alune,
                 ':cod_sala' => $this->cod_sala,
                 ':cod_tutore' => 0,
+                ':cod_monitore' => 0,
                 ':aula' => $this->aula,
+                ':presente' => $this->presente,
+                ':data' => $this->data
+            ]);
+        }
+
+        function presencaTutore(){
+            $stmt = $this->bd->prepare('
+                INSERT INTO presenca (cod_alune, cod_sala, cod_tutore, cod_monitore, aula, presente, data)
+                VALUES(:cod_alune, :cod_sala, :cod_tutore, :cod_monitore, :aula, :presente, :data)
+            ');
+            $stmt->execute([
+                ':cod_alune' => 0,
+                ':cod_sala' => $this->cod_sala,
+                ':cod_tutore' => $this->cod_tutore,
+                ':cod_monitore' => 0,
+                ':aula' => $this->aula,
+                ':presente' => $this->presente,
+                ':data' => $this->data
+            ]);
+        }
+
+        function presencaMonitore(){
+            $stmt = $this->bd->prepare('
+                INSERT INTO presenca (cod_alune, cod_sala, cod_tutore, cod_monitore, aula, presente, data)
+                VALUES(:cod_alune, :cod_sala, :cod_tutore, :cod_monitore, :aula, :presente, :data)
+            ');
+            $stmt->execute([
+                ':cod_alune' => 0,
+                ':cod_sala' => $this->cod_sala,
+                ':cod_tutore' => 0,
+                ':cod_monitore' => $this->cod_monitore,
+                ':aula' => 0,
                 ':presente' => $this->presente,
                 ':data' => $this->data
             ]);

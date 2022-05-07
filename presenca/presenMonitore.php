@@ -20,19 +20,45 @@
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main" style="background-color:white; margin-top:100px">
 		<center>
 			<h1>Presença Monitore</h1>
-			<div class="row" style="width:700px">
-				<div class="form-group">
-					<label>Data</label>
-					<input class="form-control" type="date" placeholder="">
-				</div>
-				<div class="form-group">
-					<label>Monitores</label>
-					<select class="form-control">
-						<option>Romulo</option>
-						<option>Victoria</option>
+			<form action="../Controller/PresencaController.php" method="post">
+				<input type="hidden" name="metodo" value="criarPresencaMonitore">	
+				<div class="row" style="width:700px">
+					<?php
+						require_once($_SERVER["DOCUMENT_ROOT"]."/Controller/SalaController.php");
+						$SalaController = new SalaController();
+						$salas = $SalaController->getSalas();
+					?>
+					<label>Salas</label>
+					<?php $id = (isset($_GET['sala']) ? $_GET['sala'] : 1) ?>
+					<select name="sala" class="form-control">
+						<?php foreach($salas as $sala){ ?>
+							<option value="<?= $sala['id'] ?>" <?= $sala['id'] == $id ? "selected" : ""?> > <?= $sala['nome'] ?></option>
+						<?php } ?>
 					</select>
-				<button type="button" class="btn btn-md btn-warning">OK</button>
-			</div>
+					<br>
+					<label>Data</label>
+					<input name="data" class="form-control" type="date" required>
+					<br>
+					<div class="form-group">
+					<label>Monitores</label>
+					<?php
+						require_once($_SERVER["DOCUMENT_ROOT"]."/Controller/MonitoreController.php");
+						$MonitoreController = new MonitoreController();
+						$monitores = $MonitoreController->getMonitores();
+					?>
+					<?php $idMonitore = (isset($_GET['monitore']) ? $_GET['monitore'] : 1) ?>
+					<select name="monitore" class="form-control">
+						<?php foreach($monitores as $monitore){ ?>
+							<option value="<?= $monitore['id'] ?>" <?= $monitore['id'] == $idMonitore ? "selected" : ""?> > <?= $monitore['nome'] ?></option>
+						<?php } ?>
+					</select>
+					<br>
+					<button type="submit" class="btn btn-md btn-warning">OK</button>
+					<br>
+					<br>
+					<?= isset($_GET['presente']) ? "Presença Registrada" : ""?>
+				</div>
+			</form>
 		</center>
 		
 	</div>	<!--/.main-->
