@@ -15,8 +15,10 @@
 	<?php include_once '../topMenu.php'?>
 	<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
 	<ul class="nav menu">
+			<?php session_start()?>
+		<?php if($_SESSION['modo'] == "admin") { ?>
 			<li class="parent"><a data-toggle="collapse" href="#sub-item-1">
-				<em class="fa fa-user-circle-o" aria-hidden="true">&nbsp;</em> Monitore <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span>
+				<em class="fa fa-user-circle-o" aria-hidden="true"></em> Monitore <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span>
 				</a>
 				<ul class="children collapse" id="sub-item-1">
 					<li><a href="\monitore\cadMonitore.php">
@@ -27,6 +29,7 @@
 					</a></li>
 				</ul>
 			</li>
+		<?php } ?>
 			<li class="parent "><a data-toggle="collapse" href="#sub-item-2">
 				<em class="fa fa-user-o" aria-hidden="true">&nbsp;</em> Tutore <span data-toggle="collapse" href="#sub-item-2" class="icon pull-right"><em class="fa fa-plus"></em></span>
 				</a>
@@ -120,7 +123,7 @@
 					</a></li>
 				</ul>
 			</li>
-			<li><a href="../login.html"><em class="fa fa-power-off">&nbsp;</em> Logout</a></li>
+			<li><a href="../index.php"><em class="fa fa-power-off">&nbsp;</em> Logout</a></li>
 		</ul>
 	</div><!--/.sidebar-->
 		

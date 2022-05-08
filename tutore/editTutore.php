@@ -88,9 +88,11 @@
 					<li><a class="" href="\presenca\presenTutore.php">
 						<span class="fa fa-arrow-right">&nbsp;</span> Aula Tutore
 					</a></li>
-					<li><a class="" href="\presenca\presenMonitore.php">
-						<span class="fa fa-arrow-right">&nbsp;</span> Monitoria
-					</a></li>
+					<?php if($_SESSION['modo'] == "admin") { ?>
+						<li><a href="\presenca\presenMonitore.php">
+							<span class="fa fa-arrow-right">&nbsp;</span> Monitoria
+						</a></li>
+					<?php } ?>
 					<li><a class="" href="\presenca\presenReuniao.php">
 						<span class="fa fa-arrow-right">&nbsp;</span> Reunião
 					</a></li>
@@ -120,7 +122,7 @@
 					</a></li>
 				</ul>
 			</li>
-			<li><a href="../login.html"><em class="fa fa-power-off">&nbsp;</em> Logout</a></li>
+			<li><a href="../index.php"><em class="fa fa-power-off">&nbsp;</em> Logout</a></li>
 		</ul>
 	</div><!--/.sidebar-->
 		
