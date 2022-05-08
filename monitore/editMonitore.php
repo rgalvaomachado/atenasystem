@@ -14,19 +14,22 @@
 <body style="background-color:white">
 	<?php include_once '../topMenu.php'?>
 	<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
-	<ul class="nav menu">
-			<li class="parent"><a data-toggle="collapse" href="#sub-item-1">
-				<em class="fa fa-user-circle-o" aria-hidden="true">&nbsp;</em> Monitore <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span>
-				</a>
-				<ul class="children collapse in" id="sub-item-1">
-					<li><a href="\monitore\cadMonitore.php">
-						<span class="fa fa-arrow-right">&nbsp;</span> Cadastro
-					</a></li>
-					<li><a style="background-color:orange;" href="\monitore\editMonitore.php">
-						<span class="fa fa-arrow-right">&nbsp;</span> Editar
-					</a></li>
-				</ul>
-			</li>
+		<ul class="nav menu">
+			<?php session_start()?>
+			<?php if($_SESSION['modo'] == "admin") { ?>
+				<li class="parent"><a data-toggle="collapse" href="#sub-item-1">
+					<em class="fa fa-user-circle-o" aria-hidden="true">&nbsp;</em> Monitore <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span>
+					</a>
+					<ul class="children collapse in" id="sub-item-1">
+						<li><a href="\monitore\cadMonitore.php">
+							<span class="fa fa-arrow-right">&nbsp;</span> Cadastro
+						</a></li>
+						<li><a style="background-color:orange;" href="\monitore\editMonitore.php">
+							<span class="fa fa-arrow-right">&nbsp;</span> Editar
+						</a></li>
+					</ul>
+				</li>
+			<?php } ?>
 			<li class="parent "><a data-toggle="collapse" href="#sub-item-2">
 				<em class="fa fa-user-o" aria-hidden="true">&nbsp;</em> Tutore <span data-toggle="collapse" href="#sub-item-2" class="icon pull-right"><em class="fa fa-plus"></em></span>
 				</a>
