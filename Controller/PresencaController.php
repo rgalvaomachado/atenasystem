@@ -9,7 +9,7 @@
     switch($metodo){
         case 'buscar':
             $id = $_POST['sala'];
-            header('Location: ../presenca/PresenAlune.php?sala='.$id);
+            header('Location: ../presenca/presenAlune.php?sala='.$id);
         break;
         case 'buscarAlunePresenca':
             $id = $_POST['sala'];
