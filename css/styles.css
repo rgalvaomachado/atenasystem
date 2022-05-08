@@ -790,7 +790,7 @@ a.label:hover, a.label:focus {
 
 .sidebar ul.nav .active a, .sidebar ul.nav li.parent a.active, .sidebar ul.nav .active > a:hover, .sidebar ul.nav li.parent a.active:hover, .sidebar ul.nav .active > a:focus, .sidebar ul.nav li.parent a.active:focus {
   color: #fff;
-  background-color: #30a5ff; }
+  background-color: orange; }
 
 .sidebar ul.nav ul, .sidebar ul.nav ul li {
   list-style: none;
