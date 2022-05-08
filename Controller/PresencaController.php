@@ -67,7 +67,7 @@
             $presenca->presente = 'S';
             $presenca->data = $_POST['data'];
             $presenca->presencaTutore();
-            header('Location: ../presenca/PresenTutore.php?presente=S');
+            header('Location: ../presenca/presenTutore.php?presente=S');
         break;
         case 'criarPresencaMonitore':
             $presenca = new Presenca();
@@ -76,7 +76,7 @@
             $presenca->presente = 'S';
             $presenca->data = $_POST['data'];
             $presenca->presencaMonitore();
-            header('Location: ../presenca/PresenMonitore.php?presente=S');
+            header('Location: ../presenca/presenMonitore.php?presente=S');
         break;
         case 'criarPresencaReuniao':
             $TutoreController = new TutoreController();
@@ -97,7 +97,7 @@
                     $presenca->presencaReuniao();
                 }
             }
-            header('Location: ../presenca/PresenReuniao.php?presente=S');
+            header('Location: ../presenca/presenReuniao.php?presente=S');
         break;
     }
 
