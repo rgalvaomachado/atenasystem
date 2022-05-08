@@ -19,7 +19,7 @@
             $alune->nome = $_POST['nome'];
             $alune->sala = $_POST['sala'];
             $alune->salvar($_POST['id']);
-            header('Location: ../Alune/editAlune.php?sucess=true');
+            header('Location: ../alune/editAlune.php?sucess=true');
         break;
     }
 
