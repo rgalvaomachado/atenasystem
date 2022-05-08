@@ -131,7 +131,7 @@
 		
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main" style="background-color:white; margin-top:100px">
 		<center>
-			<h1>Relatório Tutore</h1>
+			<h1>Relatório Reunião</h1>
             <table style="width:100%">
                 <tr>
                     <th>Nome</th>
