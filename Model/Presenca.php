@@ -12,8 +12,8 @@
 
         function presencaAlune(){
             $stmt = $this->bd->prepare('
-                INSERT INTO presenca (cod_alune, cod_sala, cod_tutore, aula, presente, data)
-                VALUES(:cod_alune, :cod_sala, :cod_tutore, :aula, :presente, :data)
+                INSERT INTO presenca (cod_alune, cod_sala, cod_tutore, cod_monitore, aula, presente, data)
+                VALUES(:cod_alune, :cod_sala, :cod_tutore, :cod_monitore, :aula, :presente, :data)
             ');
             $stmt->execute([
                 ':cod_alune' => $this->cod_alune,
