@@ -137,7 +137,7 @@
 				<div class="row" style="width:700px">
 					<div class="form-group">
 						<label>Nome</label>
-						<input name="nome" class="form-control" placeholder="">
+						<input name="nome" class="form-control" required>
 					</div>
 					<button type="submit" class="btn btn-md btn-warning">Cadastrar</button>
 				</div><!--/.row-->

@@ -137,7 +137,7 @@
 				<div class="row" style="width:700px">
 					<div class="form-group">
 						<label>Nome</label>
-						<input name="nome" class="form-control" placeholder="">
+						<input name="nome" class="form-control" required>
 					</div>
 					<?php
 						require_once($_SERVER["DOCUMENT_ROOT"]."/Controller/DisciplinaController.php");
