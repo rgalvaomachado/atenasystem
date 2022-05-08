@@ -1,6 +1,8 @@
 <?php
     require_once($_SERVER["DOCUMENT_ROOT"]."/Model/Presenca.php");
     require_once($_SERVER["DOCUMENT_ROOT"]."/Controller/AluneController.php");
+    require_once($_SERVER["DOCUMENT_ROOT"]."/Controller/MonitoreController.php");
+    require_once($_SERVER["DOCUMENT_ROOT"]."/Controller/TutoreController.php");
 
     $metodo = isset($_POST['metodo']) ? $_POST['metodo'] : ""; 
 
@@ -75,6 +77,27 @@
             $presenca->data = $_POST['data'];
             $presenca->presencaMonitore();
             header('Location: ../presenca/PresenMonitore.php?presente=S');
+        break;
+        case 'criarPresencaReuniao':
+            $TutoreController = new TutoreController();
+            $tutores = $TutoreController->getTutores();
+            $presente = isset($_POST['presente']) ? $_POST['presente'] : [] ;
+            foreach($tutores as $tutore){
+                if(in_array($tutore['id'], $presente)){
+                    $presenca = new Presenca();
+                    $presenca->cod_tutore = $tutore['id'];
+                    $presenca->presente = 'S';
+                    $presenca->data = $_POST['data'];
+                    $presenca->presencaReuniao();
+                }else{
+                    $presenca = new Presenca();
+                    $presenca->cod_tutore = $tutore['id'];
+                    $presenca->presente = 'N';
+                    $presenca->data = $_POST['data'];
+                    $presenca->presencaReuniao();
+                }
+            }
+            header('Location: ../presenca/PresenReuniao.php?presente=S');
         break;
     }
 

@@ -20,24 +20,42 @@
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main" style="background-color:white; margin-top:100px">
 		<center>
 			<h1>Presença Reunião</h1>
-			<div class="row" style="width:700px">
-				<div class="form-group">
-					<label>Data</label>
-					<input class="form-control" type="date" placeholder="">
-				</div>
-				<div class="form-group">
-				<label>Tutores</label>
-				<div class="checkbox">
-					<label>
-						<input type="checkbox" value="">Romulo
-					</label>
-				</div>
-				<div class="checkbox">
-					<label>
-						<input type="checkbox" value="">Victoria
-					</label>
-				</div>
-				<button type="button" class="btn btn-md btn-warning">OK</button>
+				<form action="../Controller/PresencaController.php" method="post">
+					<input type="hidden" name="metodo" value="criarPresencaReuniao">	
+					<div class="row" style="width:700px">
+						<div class="form-group">
+							<label>Data</label>
+							<input name="data" class="form-control" type="date" required>
+							</br>
+							<?php
+								require_once($_SERVER["DOCUMENT_ROOT"]."/Controller/TutoreController.php");
+								$TutoreController = new TutoreController();
+								$tutores = $TutoreController->getTutores();
+							?>
+							<label>Tutores</label>
+							<table class="table" style="text-align:center">
+							<thead>
+								<tr>
+									<td scope="col"><strong>Nome</strong></td>
+									<td scope="col"><strong>Presente</strong></td>
+								</tr>
+							</thead>
+							<tbody>
+								<?php foreach($tutores as $tutore){ ?>
+									<tr>
+										<td><?= $tutore['nome'] ?></td>
+										<td><input name="presente[]" type="checkbox" value='<?= $tutore['id'] ?>'></td>
+									</tr>
+								<?php } ?>
+							</tbody>
+							</table>
+						</div>
+						<button type="submit" class="btn btn-md btn-warning">OK</button>
+						<br>
+						<br>
+						<?= isset($_GET['presente']) ? "Presença Registrada" : ""?>
+					</div>
+				</form>
 			</div>
 		</center>
 		

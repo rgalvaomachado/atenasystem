@@ -58,6 +58,22 @@
             ]);
         }
 
+        function presencaReuniao(){
+            $stmt = $this->bd->prepare('
+                INSERT INTO presenca (cod_alune, cod_sala, cod_tutore, cod_monitore, aula, presente, data)
+                VALUES(:cod_alune, :cod_sala, :cod_tutore, :cod_monitore, :aula, :presente, :data)
+            ');
+            $stmt->execute([
+                ':cod_alune' => 0,
+                ':cod_sala' => 0,
+                ':cod_tutore' => $this->cod_tutore,
+                ':cod_monitore' => 0,
+                ':aula' => 0,
+                ':presente' => $this->presente,
+                ':data' => $this->data
+            ]);
+        }
+
         function buscarPresencaAlune(){
             $buscarPresencaAlune =  $this->bd->prepare('
                 SELECT presente 
