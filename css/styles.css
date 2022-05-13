@@ -1034,9 +1034,6 @@ p.back-link {
 
 
 /* ------------------------------------------------------------------------------------ */
-form{
-  width:70%;
-}
 @media(min-width: 800px) {
   #logo-hubis{
     position:absolute;
@@ -1049,6 +1046,10 @@ form{
   }
   #espaco-menu{
     display: none;
+  }
+  form{
+    width:70%;
+    padding-bottom: 5%;
   }
 }
 @media(max-width: 800px) {
@@ -1066,5 +1067,9 @@ form{
   }
   #espaco-menu{
     margin-top: 50px;
+  }
+  form{
+    width:70%;
+    padding-bottom: 20%;
   }
 }
