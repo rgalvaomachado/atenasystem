@@ -10,34 +10,26 @@
 	<link rel="icon" href="../img/hubis-icon.png">
 </head>
 <body>
-	<div class="row">
-		<div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-4 col-md-offset-4">
-			<div class="login-panel panel panel-default">
-				<center>
-					<div class="panel-heading">Login</div>
-					<div class="panel-body">
-						<form action="../Controller/LoginController.php" method="post">
-							<fieldset>
-								<div class="form-group">
-									<input class="form-control" placeholder="Usuario" name="usuario" type="text" autofocus="">
-								</div>
-								<div class="form-group">
-									<input class="form-control" placeholder="Senha" name="senha" type="password" value="">
-								</div>
-								<button type="submit" class="btn btn-md btn-warning">Entrar</button>
-								<br>
-								<?php if (isset($_GET['error'])) {?>
-									<h5>Login ou senha incorreto</h5>
-								<?php } ?>
-						</form>
+	<?session_destroy()?>
+	<center>
+		<div class="panel-heading">Login</div>
+			<form action="../Controller/LoginController.php" method="post">
+				<fieldset>
+					<div class="form-group">
+						<input class="form-control" placeholder="Usuario" name="usuario" type="text" autofocus="">
 					</div>
-				</center>
-			</div>
-		</div><!-- /.col-->
-	</div><!-- /.row -->	
-	
-
-<script src="../js/jquery-1.11.1.min.js"></script>
+					<div class="form-group">
+						<input class="form-control" placeholder="Senha" name="senha" type="password" value="">
+					</div>
+					<button type="submit" class="btn btn-md btn-warning">Entrar</button>
+					<br>
+					<?php if (isset($_GET['error'])) {?>
+						<h5>Login ou senha incorreto</h5>
+					<?php } ?>
+			</form>
+		</div>
+	</center>
+	<script src="../js/jquery-1.11.1.min.js"></script>
 	<script src="../js/bootstrap.min.js"></script>
 </body>
 </html>
