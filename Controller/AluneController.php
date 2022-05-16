@@ -21,6 +21,12 @@
             $alune->salvar($_POST['id']);
             header('Location: ../alune/editAlune.php?sucess=true');
         break;
+        case 'excluir':
+            $alune = new Alune();
+            $alune->id = $_POST['id'];
+            $alune->excluir();
+            header('Location: ../alune/editAlune.php?delete=true');
+        break;
     }
 
     class AluneController{

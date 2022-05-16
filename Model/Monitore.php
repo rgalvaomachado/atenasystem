@@ -31,12 +31,19 @@
 
         function salvarMonitore($id){
             $stmt = $this->bd->prepare('UPDATE monitore SET nome = :nome, usuario = :usuario, senha = :senha WHERE id = :id');
-            $stmt->execute(array(
+            $stmt->execute([
               ':id'   => $id,
               ':nome' => $this->nome,
               ':usuario' => $this->usuario,
               ':senha' => md5($this->senha)
-            ));
+            ]);
+        }
+
+        function excluir(){
+            $stmt = $this->bd->prepare('DELETE FROM monitore where id = :id');
+            $stmt->execute([
+              ':id' => $this->id,
+            ]);
         }
     }
 ?>

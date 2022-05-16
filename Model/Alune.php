@@ -43,5 +43,12 @@
               ':cod_sala' => $this->sala
             ));
         }
+
+        function excluir(){
+            $stmt = $this->bd->prepare('DELETE FROM alune where id = :id');
+            $stmt->execute([
+              ':id' => $this->id,
+            ]);
+        }
     }
 ?>

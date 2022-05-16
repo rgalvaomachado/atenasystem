@@ -28,10 +28,17 @@
 
         function salvar($id){
             $stmt = $this->bd->prepare('UPDATE sala SET nome = :nome WHERE id = :id');
-            $stmt->execute(array(
+            $stmt->execute([
               ':id'   => $id,
               ':nome' => $this->nome,
-            ));
+            ]);
+        }
+
+        function excluir(){
+            $stmt = $this->bd->prepare('DELETE FROM sala where id = :id');
+            $stmt->execute([
+              ':id' => $this->id,
+            ]);
         }
     }
 ?>

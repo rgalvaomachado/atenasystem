@@ -23,6 +23,12 @@
             $monitore->salvarMonitore($_POST['id']);
             header('Location: ../monitore/editMonitore.php?sucess=true');
         break;
+        case 'excluir':
+            $monitore = new Monitore();
+            $monitore->id = $_POST['id'];
+            $monitore->excluir();
+            header('Location: ../monitore/editMonitore.php?delete=true');
+        break;
     }
 
     class MonitoreController{

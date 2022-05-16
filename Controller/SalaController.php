@@ -18,6 +18,12 @@
             $sala->salvar($_POST['id']);
             header('Location: ../sala/editSala.php?sucess=true');
         break;
+        case 'excluir':
+            $sala = new Sala();
+            $sala->id = $_POST['id'];
+            $sala->excluir();
+            header('Location: ../sala/editSala.php?delete=true');
+        break;
     }
     
     class SalaController{

@@ -15,12 +15,17 @@
             header('Location: ../tutore/editTutore.php?tutore='.$id);
         break;
         case 'salvar':
-            var_dump($_POST);
-            $monitore = new Tutore();
-            $monitore->nome = $_POST['nome'];
-            $monitore->disciplina = $_POST['disciplina'];
-            $monitore->salvarMonitore($_POST['id']);
+            $tutore = new Tutore();
+            $tutore->nome = $_POST['nome'];
+            $tutore->disciplina = $_POST['disciplina'];
+            $tutore->salvar($_POST['id']);
             header('Location: ../tutore/editTutore.php?sucess=true');
+        break;
+        case 'excluir':
+            $tutore = new Tutore();
+            $tutore->id = $_POST['id'];
+            $tutore->excluir();
+            header('Location: ../tutore/editTutore.php?delete=true');
         break;
     }
 

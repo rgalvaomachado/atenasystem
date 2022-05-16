@@ -27,13 +27,20 @@
             return $getTutore->fetch(PDO::FETCH_ASSOC);
         }
 
-        function salvarMonitore($id){
+        function salvar($id){
             $stmt = $this->bd->prepare('UPDATE tutore SET nome = :nome, cod_disciplina = :cod_disciplina WHERE id = :id');
             $stmt->execute(array(
               ':id'   => $id,
               ':nome' => $this->nome,
               ':cod_disciplina' => $this->disciplina,
             ));
+        }
+        
+        function excluir(){
+            $stmt = $this->bd->prepare('DELETE FROM tutore where id = :id');
+            $stmt->execute([
+              ':id' => $this->id,
+            ]);
         }
     }
 ?>

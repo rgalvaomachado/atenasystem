@@ -18,6 +18,7 @@
 		<center>
 			<h1>Editar Disciplinas</h1>
 			<h4><?= (isset($_GET['sucess']) && $_GET['sucess'] == true ? "Salvo !" : "") ?></h4>
+			<h4><?= (isset($_GET['delete']) && $_GET['delete'] == true ? "Excluido !" : "") ?></h4>
 			<form action="../Controller/DisciplinaController.php" method="post">
 				<input type="hidden" name="metodo" value="buscar">
 				<?php
@@ -36,15 +37,14 @@
 				</div>
 				<button type="submit" class="btn btn-md btn-warning">Buscar</button>
 			</form>
-			<form action="../Controller/DisciplinaController.php" method="post">
-				<input type="hidden" name="metodo" value="salvar">
-				
-				<?php
-					if(isset($_GET['disciplina'])){
-						require_once($_SERVER["DOCUMENT_ROOT"]."/Controller/DisciplinaController.php");
-						$getDisciplina = new DisciplinaController();
-						$disciplina = $getDisciplina->getDisciplina($_GET['disciplina']);
-				?>
+			<?php
+				if(isset($_GET['disciplina'])){
+					require_once($_SERVER["DOCUMENT_ROOT"]."/Controller/DisciplinaController.php");
+					$getDisciplina = new DisciplinaController();
+					$disciplina = $getDisciplina->getDisciplina($_GET['disciplina']);
+			?>
+				<form action="../Controller/DisciplinaController.php" method="post" style="padding-bottom: 1%;">
+					<input type="hidden" name="metodo" value="salvar">
 					<input type="hidden" name="id" value="<?= $_GET['disciplina'] ?>">
 					<div class="row" >
 						<div class="form-group">
@@ -53,17 +53,16 @@
 						</div>
 						<button type="submit" class="btn btn-md btn-warning">Editar</button>
 					</div>
-				<?php } ?>
-				
-			</form>
+				</form>
+				<form action="../Controller/DisciplinaController.php" method="post" onSubmit="if(!confirm('Tem certeza que deseja excluir?')){return false;}">
+					<input type="hidden" name="metodo" value="excluir">
+					<input type="hidden" name="id" value="<?= $_GET['disciplina'] ?>">
+					<button type="submit" class="btn btn-md btn-danger">Excluir</button>
+				</form>
+			<?php } ?>
 		</center>
-		
-	</div>	<!--/.main-->
-	
+	</div>
 	<script src="../js/jquery-1.11.1.min.js"></script>
 	<script src="../js/bootstrap.min.js"></script>
-
-	<script src="../js/bootstrap-datepicker.js"></script>
-	<script src="../js/custom.js"></script>		
 </body>
 </html>

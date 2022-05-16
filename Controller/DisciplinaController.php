@@ -18,6 +18,12 @@
             $disciplina->salvar($_POST['id']);
             header('Location: ../disciplina/editDisciplina.php?sucess=true');
         break;
+        case 'excluir':
+            $disciplina = new Disciplina();
+            $disciplina->id = $_POST['id'];
+            $disciplina->excluir();
+            header('Location: ../disciplina/editDisciplina.php?delete=true');
+        break;
     }
     
     class DisciplinaController{
