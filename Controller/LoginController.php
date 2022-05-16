@@ -8,6 +8,16 @@ $validado = false;
 $usuarioAdmin = "atena";
 $senhaAdmin = "b80a922b6556a69861aed7cd54cab9cf";
 
+$usuarioComicao = "cdfatena";
+$senhaComicao = "5fe4cd920009772308ac231bb1d67919";
+
+
+if($usuario == $usuarioComicao && $senha == $senhaComicao){
+    $usuarioValidado = $usuarioComicao;
+    $modoValidado = 'comicao';
+    $validado = true;
+}
+
 if($usuario == $usuarioAdmin && $senha == $senhaAdmin){
     $usuarioValidado = $usuarioAdmin;
     $modoValidado = 'admin';
