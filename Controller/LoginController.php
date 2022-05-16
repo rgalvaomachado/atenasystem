@@ -6,10 +6,10 @@ $senha = md5($_POST['senha']);
 $validado = false;
 
 $usuarioAdmin = "atena";
-$senhaAdmin = "b80a922b6556a69861aed7cd54cab9cf";
+$senhaAdmin = "1c9ad86591e3d561b450a3e7391f327f";
 
 $usuarioComicao = "cdfatena";
-$senhaComicao = "5fe4cd920009772308ac231bb1d67919";
+$senhaComicao = "33e3052368ec84ee5e67635db6bee271";
 
 
 if($usuario == $usuarioComicao && $senha == $senhaComicao){
