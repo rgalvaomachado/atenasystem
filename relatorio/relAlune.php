@@ -104,6 +104,7 @@
 						</tr>
 					<?php } ?>
            		</table>
+				<br>
 			<?php } ?>
 		</center>
 	</div>
