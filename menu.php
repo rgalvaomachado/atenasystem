@@ -3,11 +3,16 @@
         <?php
             session_start();
             
+            if ($_SESSION['usuario'] == "") {
+                session_destroy();
+                header('location:../index.php');
+            }
             if (!isset($_SESSION['CREATED'])) {
                 $_SESSION['CREATED'] = time();
             } else if (time() - $_SESSION['CREATED'] > 1800) { // 30 minutos
+                $_SESSION['usuario'] =  "";
+                $_SESSION['modo'] = "";
                 session_destroy();
-                header('location:'.$_SERVER["DOCUMENT_ROOT"].'index.php');
             }
 
             $uri = $_SERVER["REQUEST_URI"];
@@ -147,6 +152,6 @@
                 <?php } ?>
             </ul>
         </li>
-        <li><a href="../index.php"><em class="fa fa-power-off">&nbsp;</em> Logout</a></li>
+        <li><a href="../logout.php"><em class="fa fa-power-off">&nbsp;</em> Logout</a></li>
     </ul>
 </div>

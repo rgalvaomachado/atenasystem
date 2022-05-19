@@ -5,13 +5,12 @@ $usuario = $_POST['usuario'];
 $senha = md5($_POST['senha']);
 $validado = false;
 
-
 //DEV
 // $usuarioAdmin = "admin";
-// $senhaAdmin = "21232f297a57a5a743894a0e4a801fc3"; //admin
+// $senhaAdmin = "21232f297a57a5a743894a0e4a801fc3";
 
 // $usuarioComicao = "comicao";
-// $senhaComicao = "21232f297a57a5a743894a0e4a801fc3"; //admin
+// $senhaComicao = "21232f297a57a5a743894a0e4a801fc3";
 
 //PROD
 $usuarioAdmin = "atena";
