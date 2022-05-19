@@ -7,7 +7,7 @@
                 $_SESSION['CREATED'] = time();
             } else if (time() - $_SESSION['CREATED'] > 1800) { // 30 minutos
                 session_destroy();
-                header('location:index.php');
+                header('location:'.$_SERVER["DOCUMENT_ROOT"].'index.php');
             }
 
             $uri = $_SERVER["REQUEST_URI"];

@@ -17,42 +17,97 @@
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main" style="background-color:white; margin-top:100px">
 		<center>
 			<h1>Relatório Alune</h1>
-            <div class="form-group">
-				<label>Sala</label>
-				<select class="form-control">
-					<option>Manha</option>
-					<option>Noite</option>
-				</select>
-			</div>
-            <button type="button" class="btn btn-md btn-warning">Gerar</button>
-            <table style="width:100%">
-                <tr>
-                    <th>Nome</th>
-                    <th>Presença</th>
-                    <th>Ausencia</th>
-                    <th>Frequência</th>
-                </tr>
-                <tr style="color:green">
-                    <td>Romulo</td>
-                    <td>10</td>
-                    <td>5</td>
-                    <td>50%</td>
-                </tr>
-                <tr style="color:red">
-                    <td>Victoria</td>
-                    <td>10</td>
-                    <td>9</td>
-                    <td>10%</td>
-                </tr>
-            </table>
+			<form action="../Controller/PresencaController.php" method="post">
+				<input type="hidden" name="metodo" value="relatorioPresencaAlune">
+				<?php
+					require_once($_SERVER["DOCUMENT_ROOT"]."/Controller/SalaController.php");
+					$SalaController = new SalaController();
+					$salas = $SalaController->getSalas();
+				?>
+				<div class="form-group">
+					<label>Salas</label>
+					<?php $id = (isset($_GET['sala']) ? $_GET['sala'] : 1) ?>
+					<select name="cod_sala" class="form-control">
+						<?php foreach($salas as $sala){ ?>
+							<option value="<?= $sala['id'] ?>" <?= $sala['id'] == $id ? "selected" : ""?> > <?= $sala['nome'] ?></option>
+						<?php } ?>
+					</select>
+				</div>
+				<label>Data Inicial</label>
+				<?php $data_inicial = isset($_GET['data_inicial']) ? $_GET['data_inicial'] : ""?>
+				<input name="data_inicial" class="form-control" type="date" value="<?= $data_inicial ?>" required>
+				<br>
+				<label>Data Final</label>
+				<?php $data_final = isset($_GET['data_final']) ? $_GET['data_final'] : ""?>
+				<input name="data_final" class="form-control" type="date" value="<?= $data_final ?>" required>
+				<br>
+				<button type="submit" class="btn btn-md btn-warning">Gerar</button>
+			</form>
+            <?php if(isset($_GET['cod_sala'])){ ?>
+				<?php
+					require_once($_SERVER["DOCUMENT_ROOT"]."/Controller/AluneController.php");
+					$AluneController = new AluneController();
+					$alunes = $AluneController->getAlunesSala($_GET['cod_sala']);
+				?>
+				<table style="width:70%; text-align: center;">
+					<tr>
+						<td><b>Nome</b></td>
+						<td><b>Presença</b></td>
+						<td><b>Ausencia</b></td>
+						<td><b>Justificado</b></td>
+						<td><b>Frequência</b></td>
+					</tr>
+					<?php
+					foreach($alunes as $alune){
+						require_once($_SERVER["DOCUMENT_ROOT"]."/Controller/PresencaController.php");
+						$PresencaController = new PresencaController();
+						$presencas = $PresencaController->getPresencaPeriodo(
+							$_GET['cod_sala'],
+							$alune['id'],
+							0,
+							0,
+							$_GET['data_inicial'],
+							$_GET['data_final']
+						);
+						$ausencias = $PresencaController->getAusenciaPeriodo(
+							$_GET['cod_sala'],
+							$alune['id'],
+							0,
+							0,
+							$_GET['data_inicial'],
+							$_GET['data_final']
+						);
+						$justificado = $PresencaController->getJustificadoPeriodo(
+							$_GET['cod_sala'],
+							$alune['id'],
+							0,
+							0,
+							$_GET['data_inicial'],
+							$_GET['data_final']
+						);
+
+						$presencas = count($presencas);
+						$justificado = count($justificado);
+						$ausencias = count($ausencias);
+						$total = $presencas + $justificado + $ausencias ;
+						$total = $total > 0 ? $total : 1;
+						$porcentagem = ( ($presencas + $justificado) / $total ) * 100;
+						
+						$color = $porcentagem >= 70 ? "green" : "red";
+						?>		
+						<tr style= "color: <?= $color?>">
+							<td><?= $alune['nome']?></td>
+							<td><?= $presencas?></td>
+							<td><?= $ausencias?></td>
+							<td><?= $justificado?></td>
+							<td><?= number_format($porcentagem, 2, '.', ',')?>%</td>
+						</tr>
+					<?php } ?>
+           		</table>
+			<?php } ?>
 		</center>
-		
-	</div>	<!--/.main-->
-	
+	</div>
 	<script src="../js/jquery-1.11.1.min.js"></script>
 	<script src="../js/bootstrap.min.js"></script>
-
-	<script src="../js/bootstrap-datepicker.js"></script>
-	<script src="../js/custom.js"></script>		
 </body>
 </html>

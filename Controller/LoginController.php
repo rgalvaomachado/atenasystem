@@ -5,8 +5,11 @@ $usuario = $_POST['usuario'];
 $senha = md5($_POST['senha']);
 $validado = false;
 
-$usuarioAdmin = "atena";
-$senhaAdmin = "1c9ad86591e3d561b450a3e7391f327f";
+// $usuarioAdmin = "atena";
+// $senhaAdmin = "1c9ad86591e3d561b450a3e7391f327f";
+
+$usuarioAdmin = "admin";
+$senhaAdmin = "21232f297a57a5a743894a0e4a801fc3";
 
 $usuarioComicao = "cdfatena";
 $senhaComicao = "33e3052368ec84ee5e67635db6bee271";

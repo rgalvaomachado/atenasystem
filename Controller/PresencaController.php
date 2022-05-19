@@ -99,6 +99,17 @@
             }
             header('Location: ../presenca/presenReuniao.php?presente=S');
         break;
+        case 'relatorioPresencaAlune':
+            $cod_sala = $_POST['cod_sala'];
+            $data_inicial = $_POST['data_inicial'];
+            $data_final = $_POST['data_final'];
+            header('Location: ../relatorio/relAlune.php?cod_sala='.$cod_sala.'&data_inicial='.$data_inicial.'&data_final='.$data_final);
+        break;
+        case 'relatorioPresencaReuniao':
+            $data_inicial = $_POST['data_inicial'];
+            $data_final = $_POST['data_final'];
+            header('Location: ../relatorio/relReuniao.php?data_inicial='.$data_inicial.'&data_final='.$data_final);
+        break;
     }
 
     class PresencaController{
@@ -107,9 +118,37 @@
             return $presenca->getPresenca();
         }
 
-        function getTutore($id){
-            $tutore = new Tutore();
-            return $tutore->getTutore($id);
+        function getPresencaPeriodo($cod_sala, $cod_alune, $cod_monitore, $cod_tutore, $data_inicial, $data_final){
+            $presenca = new Presenca();
+            $presenca->cod_sala = $cod_sala ;
+            $presenca->cod_monitore = $cod_monitore ;
+            $presenca->cod_tutore = $cod_tutore ;
+            $presenca->cod_alune = $cod_alune ;
+            $presenca->data = $data_inicial ;
+            $presenca->data_final = $data_final ;
+            return $presenca->getPresencaPeriodo();
+        }
+
+        function getAusenciaPeriodo($cod_sala, $cod_alune, $cod_monitore, $cod_tutore, $data_inicial, $data_final){
+            $presenca = new Presenca();
+            $presenca->cod_sala = $cod_sala ;
+            $presenca->cod_monitore = $cod_monitore ;
+            $presenca->cod_tutore = $cod_tutore ;
+            $presenca->cod_alune = $cod_alune ;
+            $presenca->data = $data_inicial ;
+            $presenca->data_final = $data_final ;
+            return $presenca->getAusenciaPeriodo();
+        }
+
+        function getJustificadoPeriodo($cod_sala, $cod_alune, $cod_monitore, $cod_tutore, $data_inicial, $data_final){
+            $presenca = new Presenca();
+            $presenca->cod_sala = $cod_sala ;
+            $presenca->cod_monitore = $cod_monitore ;
+            $presenca->cod_tutore = $cod_tutore ;
+            $presenca->cod_alune = $cod_alune ;
+            $presenca->data = $data_inicial ;
+            $presenca->data_final = $data_final ;
+            return $presenca->getJustificadoPeriodo();
         }
     }
 ?>
