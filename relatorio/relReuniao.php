@@ -40,6 +40,7 @@
 						<td><b>Nome</b></td>
 						<td><b>Presença</b></td>
 						<td><b>Ausencia</b></td>
+						<td><b>Justificada</b></td>
 					</tr>
 					<?php
 					foreach($tutores as $tutore){
@@ -61,9 +62,18 @@
 							$_GET['data_inicial'],
 							$_GET['data_final']
 						);
+						$justificadas = $PresencaController->getJustificadoPeriodo(
+							0,
+							0,
+							0,
+                            $tutore['id'],
+							$_GET['data_inicial'],
+							$_GET['data_final']
+						);
 
 						$presencas = count($presencas);
 						$ausencias = count($ausencias);
+						$justificadas = count($justificadas);
 						
 						$color = $ausencias < 4 ? "green" : "red";
 						?>		
@@ -71,6 +81,7 @@
 							<td><?= $tutore['nome']?></td>
 							<td><?= $presencas?></td>
 							<td><?= $ausencias?></td>
+							<td><?= $justificadas?></td>
 						</tr>
 					<?php } ?>
            		</table>

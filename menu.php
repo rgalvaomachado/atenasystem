@@ -48,6 +48,9 @@
                 <li><a style=<?= $arquivo == "editTutore.php" ? "background-color:orange;" : "" ?> class="" href="\tutore\editTutore.php">
                     <span class="fa fa-arrow-right">&nbsp;</span> Editar
                 </a></li>
+                <li><a style=<?= $arquivo == "justificarTutorePresenca.php" ? "background-color:orange;" : "" ?> class="" href="\tutore\justificarTutorePresenca.php">
+                    <span class="fa fa-arrow-right">&nbsp;</span> Justificar Presença
+                </a></li>
             </ul>
         </li>
         <?php } ?>

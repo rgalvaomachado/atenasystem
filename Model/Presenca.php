@@ -90,7 +90,20 @@
             return $buscarPresencaAlune->fetch(PDO::FETCH_ASSOC);
         }
 
-        function justificarPreencaAlune(){
+        function buscarPresencaTutore(){
+            $buscarPresencaTutore =  $this->bd->prepare('
+                SELECT presente 
+                FROM presenca 
+                WHERE cod_tutore = :cod_tutore AND data = :data 
+            ');
+            $buscarPresencaTutore->execute([
+                ':cod_tutore' => $this->cod_tutore,
+                ':data' => $this->data
+            ]);
+            return $buscarPresencaTutore->fetch(PDO::FETCH_ASSOC);
+        }
+
+        function justificarPresencaAlune(){
             $stmt = $this->bd->prepare('
                 UPDATE presenca
                 SET presente = :presente 
@@ -100,6 +113,19 @@
                 ':cod_alune' => $this->cod_alune,
                 ':cod_sala' => $this->cod_sala,
                 ':aula' => $this->aula,
+                ':data' => $this->data,
+                ':presente' => $this->presente
+            ));
+        }
+
+        function justificarPresencaTutore(){
+            $stmt = $this->bd->prepare('
+                UPDATE presenca
+                SET presente = :presente 
+                WHERE cod_tutore = :cod_tutore AND data = :data 
+            ');
+            $stmt->execute(array(
+                ':cod_tutore' => $this->cod_tutore,
                 ':data' => $this->data,
                 ':presente' => $this->presente
             ));
