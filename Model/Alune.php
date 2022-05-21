@@ -14,13 +14,13 @@
         }
 
         function getAlunes(){
-            $getAlunes =  $this->bd->prepare('SELECT id,nome,cod_sala FROM alune ORDER BY nome');
+            $getAlunes =  $this->bd->prepare('SELECT id,nome,cod_sala FROM alune ORDER BY nome ASC');
             $getAlunes->execute();
             return $getAlunes->fetchAll(PDO::FETCH_ASSOC);
         }
 
         function getAlunesSala(){
-            $getAlunes =  $this->bd->prepare('SELECT id,nome FROM alune where cod_sala = :cod_sala');
+            $getAlunes =  $this->bd->prepare('SELECT id,nome FROM alune WHERE cod_sala = :cod_sala ORDER BY nome ASC');
             $getAlunes->execute([
                 ':cod_sala' => $this->sala
             ]);

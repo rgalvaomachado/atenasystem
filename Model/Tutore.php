@@ -14,13 +14,13 @@
         }
         
         function getTutores(){
-            $getTutores =  $this->bd->prepare('SELECT id,nome,cod_disciplina FROM tutore ORDER BY nome');
+            $getTutores =  $this->bd->prepare('SELECT id,nome,cod_disciplina FROM tutore ORDER BY nome ASC');
             $getTutores->execute();
             return $getTutores->fetchAll(PDO::FETCH_ASSOC);
         }
 
         function getTutore($id){
-            $getTutore =  $this->bd->prepare('SELECT nome,cod_disciplina FROM tutore WHERE id = :id ');
+            $getTutore =  $this->bd->prepare('SELECT nome,cod_disciplina FROM tutore WHERE id = :id ORDER BY nome ASC');
             $getTutore->execute([
                 ':id' => $id,
             ]);

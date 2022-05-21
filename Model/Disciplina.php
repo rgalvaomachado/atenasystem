@@ -13,13 +13,13 @@
         }
 
         function getDisciplinas(){
-            $getDisciplina =  $this->bd->prepare('SELECT id,nome FROM disciplina ORDER BY nome');
+            $getDisciplina =  $this->bd->prepare('SELECT id,nome FROM disciplina ORDER BY nome ASC');
             $getDisciplina->execute();
             return $getDisciplina->fetchAll(PDO::FETCH_ASSOC);
         }
 
         function getDisciplina($id){
-            $getDisciplina =  $this->bd->prepare('SELECT nome FROM disciplina WHERE id = :id ');
+            $getDisciplina =  $this->bd->prepare('SELECT nome FROM disciplina WHERE id = :id ORDER BY nome ASC');
             $getDisciplina->execute([
                 ':id' => $id,
             ]);
