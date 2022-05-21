@@ -52,18 +52,14 @@
 					<br>
 					<button type="submit" class="btn btn-md btn-warning">OK</button>
 					<br>
+					<h4><?= (isset($_GET['sucess']) && $_GET['sucess'] == 'true' ? "Salvo !" : "") ?></h4>
+					<h4><?= (isset($_GET['sucess']) && $_GET['sucess'] == 'false' ? "Presença já registrada !" : "") ?></h4>
 					<br>
-					<?= isset($_GET['presente']) ? "Presença Registrada" : ""?>
 				</div>
 			</form>
 		</center>
-		
-	</div>	<!--/.main-->
-	
+	</div>
 	<script src="../js/jquery-1.11.1.min.js"></script>
 	<script src="../js/bootstrap.min.js"></script>
-
-	<script src="../js/bootstrap-datepicker.js"></script>
-	<script src="../js/custom.js"></script>		
 </body>
 </html>

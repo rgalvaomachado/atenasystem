@@ -36,6 +36,8 @@
 				</div>
 				<button type="submit" class="btn btn-md btn-warning">Buscar</button>
 			</form>
+			<h4><?= (isset($_GET['sucess']) && $_GET['sucess'] == 'true' ? "Salvo !" : "") ?></h4>
+			<h4><?= (isset($_GET['sucess']) && $_GET['sucess'] == 'false' ? "Presença já registrada !" : "") ?></h4>
 			<?php if(isset($_GET['sala'])){ ?>
 				<form action="../Controller/PresencaController.php" method="post">
 					<input type="hidden" name="metodo" value="criarPresencaAlune">	

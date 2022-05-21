@@ -140,7 +140,8 @@
                     AND cod_monitore = :cod_monitore 
                     AND cod_tutore = :cod_tutore 
                     AND cod_alune = :cod_alune 
-                    AND data BETWEEN :data AND :data_final AND presente = \'S\'
+                    AND data BETWEEN :data AND :data_final 
+                    AND presente = \'S\'
             ');
             $getPresencaPeriodo->execute([
                 ':cod_sala' => $this->cod_sala,
@@ -162,7 +163,8 @@
                     AND cod_monitore = :cod_monitore 
                     AND cod_tutore = :cod_tutore 
                     AND cod_alune = :cod_alune 
-                    AND data BETWEEN :data AND :data_final AND presente = \'N\'
+                    AND data BETWEEN :data AND :data_final 
+                    AND presente = \'N\'
             ');
             $getAusenciaPeriodo->execute([
                 ':cod_sala' => $this->cod_sala,
@@ -184,7 +186,8 @@
                     AND cod_monitore = :cod_monitore 
                     AND cod_tutore = :cod_tutore 
                     AND cod_alune = :cod_alune 
-                    AND data BETWEEN :data AND :data_final AND presente = \'J\'
+                    AND data BETWEEN :data AND :data_final 
+                    AND presente = \'J\'
             ');
             $getJustificadoPeriodo->execute([
                 ':cod_sala' => $this->cod_sala,
@@ -196,5 +199,28 @@
             ]);
             return $getJustificadoPeriodo->fetchAll(PDO::FETCH_ASSOC);
         }
+
+        function verificarPresenca(){
+            $verificarPresencaAlune =  $this->bd->prepare('
+                SELECT * 
+                FROM presenca 
+                WHERE 
+                    cod_sala = :cod_sala 
+                    AND cod_monitore = :cod_monitore 
+                    AND cod_tutore = :cod_tutore 
+                    AND cod_alune = :cod_alune
+                    AND data = :data
+                    AND aula = :aula
+            ');
+            $verificarPresencaAlune->execute([
+                ':cod_sala' => isset($this->cod_sala) ? $this->cod_sala : 0,
+                ':cod_monitore' => isset($this->cod_monitore) ? $this->cod_monitore : 0,
+                ':cod_tutore' => isset($this->cod_tutore) ? $this->cod_tutore : 0,
+                ':cod_alune' => isset($this->cod_alune) ? $this->cod_alune : 0,
+                ':aula' => isset($this->aula) ? $this->aula : 0,
+                ':data' => $this->data,
+            ]);
+            return $verificarPresencaAlune->fetchAll(PDO::FETCH_ASSOC);
+        } 
     }
 ?>

@@ -53,6 +53,7 @@
             $AluneController = new AluneController();
             $alunes = $AluneController->getAlunesSala($_POST['sala']);
             $presente = isset($_POST['presente']) ? $_POST['presente'] : [] ;
+            $erroAlune = 0;
             foreach($alunes as $alune){
                 if(in_array($alune['id'], $presente)){
                     $presenca = new Presenca();
@@ -61,7 +62,12 @@
                     $presenca->aula = $_POST['aula'];
                     $presenca->presente = 'S';
                     $presenca->data = $_POST['data'];
-                    $presenca->presencaAlune();
+                    $verificarPresenca = $presenca->verificarPresenca();
+                    if(count($verificarPresenca) > 0){
+                        $erroAlune++;
+                    }else{
+                        $presenca->presencaAlune(); 
+                    }
                 }else{
                     $presenca = new Presenca();
                     $presenca->cod_alune = $alune['id'];
@@ -69,10 +75,19 @@
                     $presenca->aula = $_POST['aula'];
                     $presenca->presente = 'N';
                     $presenca->data = $_POST['data'];
-                    $presenca->presencaAlune();
+                    $verificarPresenca = $presenca->verificarPresenca();
+                    if(count($verificarPresenca) > 0){
+                        $erroAlune++;
+                    }else{
+                        $presenca->presencaAlune(); 
+                    }
                 }
             }
-            header('Location: ../presenca/presenAlune.php');
+            if($erroAlune > 0){
+                header('Location: ../presenca/presenAlune.php?sucess=false');
+            }else{
+                header('Location: ../presenca/presenAlune.php?sucess=true');
+            }
         break;
         case 'criarPresencaTutore':
             $presenca = new Presenca();
@@ -81,8 +96,13 @@
             $presenca->aula = $_POST['aula'];
             $presenca->presente = 'S';
             $presenca->data = $_POST['data'];
-            $presenca->presencaTutore();
-            header('Location: ../presenca/presenTutore.php?presente=S');
+            $verificarPresenca = $presenca->verificarPresenca();
+            if(count($verificarPresenca) > 0){
+                header('Location: ../presenca/presenTutore.php?sucess=false');
+            }else{
+                $presenca->presencaTutore();
+                header('Location: ../presenca/presenTutore.php?sucess=true');
+            }
         break;
         case 'criarPresencaMonitore':
             $presenca = new Presenca();
@@ -90,29 +110,49 @@
             $presenca->cod_sala = $_POST['sala'];
             $presenca->presente = 'S';
             $presenca->data = $_POST['data'];
-            $presenca->presencaMonitore();
-            header('Location: ../presenca/presenMonitore.php?presente=S');
+            $verificarPresenca = $presenca->verificarPresenca();
+            if(count($verificarPresenca) > 0){
+                header('Location: ../presenca/presenMonitore.php?sucess=false');
+            }else{
+                $presenca->presencaMonitore();
+                header('Location: ../presenca/presenMonitore.php?sucess=true');
+            }
         break;
         case 'criarPresencaReuniao':
             $TutoreController = new TutoreController();
             $tutores = $TutoreController->getTutores();
             $presente = isset($_POST['presente']) ? $_POST['presente'] : [] ;
+            $erroTutore = 0;
             foreach($tutores as $tutore){
                 if(in_array($tutore['id'], $presente)){
                     $presenca = new Presenca();
                     $presenca->cod_tutore = $tutore['id'];
                     $presenca->presente = 'S';
                     $presenca->data = $_POST['data'];
-                    $presenca->presencaReuniao();
+                    $verificarPresenca = $presenca->verificarPresenca();
+                    if(count($verificarPresenca) > 0){
+                        $erroTutore++;
+                    }else{
+                        $presenca->presencaReuniao(); 
+                    }
                 }else{
                     $presenca = new Presenca();
                     $presenca->cod_tutore = $tutore['id'];
                     $presenca->presente = 'N';
                     $presenca->data = $_POST['data'];
-                    $presenca->presencaReuniao();
+                    $verificarPresenca = $presenca->verificarPresenca();
+                    if(count($verificarPresenca) > 0){
+                        $erroTutore++;
+                    }else{
+                        $presenca->presencaReuniao(); 
+                    }
                 }
             }
-            header('Location: ../presenca/presenReuniao.php?presente=S');
+            if($erroTutore > 0){
+                header('Location: ../presenca/presenReuniao.php?sucess=false');
+            }else{
+                header('Location: ../presenca/presenReuniao.php?sucess=true');
+            }
         break;
         case 'relatorioPresencaAlune':
             $cod_sala = $_POST['cod_sala'];

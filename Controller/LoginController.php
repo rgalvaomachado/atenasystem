@@ -6,18 +6,18 @@ $senha = md5($_POST['senha']);
 $validado = false;
 
 //DEV
-// $usuarioAdmin = "admin";
-// $senhaAdmin = "21232f297a57a5a743894a0e4a801fc3";
+$usuarioAdmin = "admin";
+$senhaAdmin = "21232f297a57a5a743894a0e4a801fc3";
 
-// $usuarioComicao = "comicao";
-// $senhaComicao = "21232f297a57a5a743894a0e4a801fc3";
+$usuarioComicao = "comicao";
+$senhaComicao = "21232f297a57a5a743894a0e4a801fc3";
 
 //PROD
-$usuarioAdmin = "atena";
-$senhaAdmin = "1c9ad86591e3d561b450a3e7391f327f";
+// $usuarioAdmin = "atena";
+// $senhaAdmin = "1c9ad86591e3d561b450a3e7391f327f";
 
-$usuarioComicao = "cdfatena";
-$senhaComicao = "33e3052368ec84ee5e67635db6bee271";
+// $usuarioComicao = "cdfatena";
+// $senhaComicao = "33e3052368ec84ee5e67635db6bee271";
 
 
 if($usuario == $usuarioComicao && $senha == $senhaComicao){

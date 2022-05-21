@@ -17,7 +17,7 @@
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main" style="background-color:white; margin-top:100px">
 		<center>
 			<h1>Cadastro de Sala</h1>
-			<h4><?= (isset($_GET['sucess']) && $_GET['sucess'] == true ? "Salvo !" : "") ?></h4>
+			<h4><?= (isset($_GET['sucess']) && $_GET['sucess'] == 'true' ? "Salvo !" : "") ?></h4>
 			<form action="../Controller/SalaController.php" method="post">	
 				<input type="hidden" name="metodo" value="criar">
 				<div class="row" >
