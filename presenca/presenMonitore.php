@@ -17,7 +17,7 @@
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main" style="background-color:white; margin-top:100px">
 		<center>
 			<h1>Presença Monitore</h1>
-			<form action="../Controller/PresencaController.php" method="post">
+			<form action="../Controller/Controller.php" method="post">
 				<input type="hidden" name="metodo" value="criarPresencaMonitore">	
 				<div class="row" >
 					<?php

@@ -13,7 +13,7 @@
 	<?session_destroy()?>
 	<center>
 		<div class="panel-heading">Login</div>
-			<form action="../Controller/LoginController.php" method="post">
+			<form action="../Controller/Controller.php" method="post">
 				<input type="hidden" name="metodo" value="login">
 				<fieldset>
 					<div class="form-group">

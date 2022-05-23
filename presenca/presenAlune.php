@@ -17,7 +17,7 @@
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main" style="background-color:white; margin-top:100px">
 		<center>
 			<h1>Presença Alune</h1>
-			<form action="../Controller/PresencaController.php" method="post">
+			<form action="../Controller/Controller.php" method="post">
 				<input type="hidden" name="metodo" value="buscarSalaAlune">	
 				<?php
 					require_once($_SERVER["DOCUMENT_ROOT"]."/Controller/SalaController.php");
@@ -38,7 +38,7 @@
 			<h4><?= (isset($_GET['sucess']) && $_GET['sucess'] == 'true' ? "Salvo !" : "") ?></h4>
 			<h4><?= (isset($_GET['sucess']) && $_GET['sucess'] == 'false' ? "Presença já registrada !" : "") ?></h4>
 			<?php if(isset($_GET['sala'])){ ?>
-				<form action="../Controller/PresencaController.php" method="post">
+				<form action="../Controller/Controller.php" method="post">
 					<input type="hidden" name="metodo" value="criarPresencaAlune">	
 					<input type="hidden" name="sala" value="<?= $_GET['sala'] ?>">	
 					<div class="row" >
@@ -79,13 +79,8 @@
 				</form>
 			<?php } ?>
 		</center>
-		
-	</div>	<!--/.main-->
-	
+	</div>
 	<script src="../js/jquery-1.11.1.min.js"></script>
 	<script src="../js/bootstrap.min.js"></script>
-
-	<script src="../js/bootstrap-datepicker.js"></script>
-	<script src="../js/custom.js"></script>		
 </body>
 </html>

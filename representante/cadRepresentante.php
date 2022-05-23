@@ -18,8 +18,8 @@
 		<center>
 			<h1>Cadastro de Representantes</h1>
 			<h4><?= (isset($_GET['sucess']) && $_GET['sucess'] == 'true' ? "Salvo !" : "") ?></h4>	
-			<form action="../Controller/RepresentanteController.php" method="post">
-				<input type="hidden" name="metodo" value="criar">
+			<form action="../Controller/Controller.php" method="post">
+				<input type="hidden" name="metodo" value="criarRepresentante">
 				<div class="row">
 					<div class="form-group">
 						<label>Nome</label>

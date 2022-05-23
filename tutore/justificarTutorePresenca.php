@@ -18,7 +18,7 @@
 		<center>
 			<h1>Justificar Presença Tutore</h1>
 			<h4><?= (isset($_GET['sucess']) && $_GET['sucess'] == 'true' ? "Salvo !" : "") ?></h4>
-			<form action="../Controller/PresencaController.php" method="post">
+			<form action="../Controller/Controller.php" method="post">
 				<div class="form-group">
 					<input type="hidden" name="metodo" value="buscarPresencaTutore">
 					<input type="hidden" name="sala" value="<?= $idSala ?>">
@@ -44,7 +44,7 @@
 				<button type="submit" class="btn btn-md btn-warning">Buscar</button>
 			</form>
 			<?php if(isset($_GET['tutore'])) { ?>
-				<form action="../Controller/PresencaController.php" method="post">
+				<form action="../Controller/Controller.php" method="post">
 					<input type="hidden" name="metodo" value="justificarPresencaTutore">
 					<input type="hidden" name="tutore" value="<?= $_GET['tutore'] ?>">
 					<input type="hidden" name="data" value="<?= $_GET['data'] ?>">

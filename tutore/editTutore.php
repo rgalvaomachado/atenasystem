@@ -19,8 +19,8 @@
 			<h1>Editar Tutore</h1> 	
 			<h4><?= (isset($_GET['sucess']) && $_GET['sucess'] == 'true' ? "Salvo !" : "") ?></h4>
 			<h4><?= (isset($_GET['delete']) && $_GET['delete'] == true ? "Excluido !" : "") ?></h4>
-			<form action="../Controller/TutoreController.php" method="post">
-				<input type="hidden" name="metodo" value="buscar">
+			<form action="../Controller/Controller.php" method="post">
+				<input type="hidden" name="metodo" value="buscarTutore">
 				<?php
 					require_once($_SERVER["DOCUMENT_ROOT"]."/Controller/TutoreController.php");
 					$TutoreController = new TutoreController();
@@ -43,8 +43,8 @@
 					$TutoreController = new TutoreController();
 					$tutore = $TutoreController->getTutore($_GET['tutore']);
 				?>
-				<form action="../Controller/TutoreController.php" method="post" style="padding-bottom: 1%;">
-					<input type="hidden" name="metodo" value="salvar">
+				<form action="../Controller/Controller.php" method="post" style="padding-bottom: 1%;">
+					<input type="hidden" name="metodo" value="salvarTutore">
 						<input type="hidden" name="id" value="<?= $_GET['tutore'] ?>">
 						<div class="row" >
 							<div class="form-group">
@@ -67,8 +67,8 @@
 							<button type="submit" class="btn btn-md btn-warning">Editar</button>
 						</div>
 				</form>
-				<form action="../Controller/TutoreController.php" method="post" onSubmit="if(!confirm('Tem certeza que deseja excluir?')){return false;}">
-					<input type="hidden" name="metodo" value="excluir">
+				<form action="../Controller/Controller.php" method="post" onSubmit="if(!confirm('Tem certeza que deseja excluir?')){return false;}">
+					<input type="hidden" name="metodo" value="excluirTutore">
 					<input type="hidden" name="id" value="<?= $_GET['tutore'] ?>">
 					<button type="submit" class="btn btn-md btn-danger">Excluir</button>
 				</form>

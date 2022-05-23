@@ -2,12 +2,11 @@
 require_once($_SERVER["DOCUMENT_ROOT"]."/Controller/MonitoreController.php");
 require_once($_SERVER["DOCUMENT_ROOT"]."/Controller/RepresentanteController.php");
 require_once($_SERVER["DOCUMENT_ROOT"]."/Controller/ComissaoController.php");
-$metodo = isset($_POST['metodo']) ? $_POST['metodo'] : ""; 
 
-switch($metodo){
-    case 'login':
-        $usuario = $_POST['usuario'];
-        $senha = md5($_POST['senha']);
+class LoginController{
+    function login($post){
+        $usuario = $post['usuario'];
+        $senha = md5($post['senha']);
         $validado = false;
 
         $RepresentanteController = new RepresentanteController();
@@ -48,6 +47,6 @@ switch($metodo){
         }else{
             header('location:../index.php?error=1');
         }
-    break;
+    }
 }
 ?>

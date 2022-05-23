@@ -1,34 +1,6 @@
 <?php
     require_once($_SERVER["DOCUMENT_ROOT"]."/Model/Alune.php");
-    $metodo = isset($_POST['metodo']) ? $_POST['metodo'] : ""; 
-
-    switch($metodo){
-        case 'criar':
-            $alune = new Alune();
-            $alune->nome = $_POST['nome'];
-            $alune->sala = $_POST['sala'];
-            $alune->criar();
-            header('Location: ../alune/cadAlune.php?sucess=true');
-        break;
-        case 'buscar':
-            $id = $_POST['alune'];
-            header('Location: ../alune/editAlune.php?alune='.$id);
-        break;
-        case 'salvar':
-            $alune = new Alune();
-            $alune->nome = $_POST['nome'];
-            $alune->sala = $_POST['sala'];
-            $alune->salvar($_POST['id']);
-            header('Location: ../alune/editAlune.php?sucess=true');
-        break;
-        case 'excluir':
-            $alune = new Alune();
-            $alune->id = $_POST['id'];
-            $alune->excluir();
-            header('Location: ../alune/editAlune.php?delete=true');
-        break;
-    }
-
+    
     class AluneController{
         function getAlunes(){
             $alunes = new Alune();
@@ -44,6 +16,34 @@
             $alunes = new Alune();
             $alunes->sala = $sala;
             return $alunes->getAlunesSala();
+        }
+
+        function criarAlune($post){
+            $alune = new Alune();
+            $alune->nome = $post['nome'];
+            $alune->sala = $post['sala'];
+            $alune->criar();
+            header('Location: ../alune/cadAlune.php?sucess=true');
+        }
+
+        function buscarAlune($post){
+            $id = $post['alune'];
+            header('Location: ../alune/editAlune.php?alune='.$id);
+        }
+
+        function salvarAlune($post){
+            $alune = new Alune();
+            $alune->nome = $post['nome'];
+            $alune->sala = $post['sala'];
+            $alune->salvar($post['id']);
+            header('Location: ../alune/editAlune.php?sucess=true');
+        }
+
+        function excluirAlune($post){
+            $alune = new Alune();
+            $alune->id = $post['id'];
+            $alune->excluir();
+            header('Location: ../alune/editAlune.php?delete=true');
         }
     }
 ?>

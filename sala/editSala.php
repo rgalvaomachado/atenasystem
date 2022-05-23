@@ -19,8 +19,8 @@
 			<h1>Editar Sala</h1>
 			<h4><?= (isset($_GET['sucess']) && $_GET['sucess'] == 'true' ? "Salvo !" : "") ?></h4>
 			<h4><?= (isset($_GET['delete']) && $_GET['delete'] == true ? "Excluido !" : "") ?></h4>
-			<form action="../Controller/SalaController.php" method="post">
-				<input type="hidden" name="metodo" value="buscar">
+			<form action="../Controller/Controller.php" method="post">
+				<input type="hidden" name="metodo" value="buscarSala">
 				<?php
 					require_once($_SERVER["DOCUMENT_ROOT"]."/Controller/SalaController.php");
 					$SalaController = new SalaController();
@@ -43,8 +43,8 @@
 					$getSala = new SalaController();
 					$sala = $getSala->getSala($_GET['sala']);
 			?>
-				<form action="../Controller/SalaController.php" method="post" style="padding-bottom: 1%;">
-					<input type="hidden" name="metodo" value="salvar">
+				<form action="../Controller/Controller.php" method="post" style="padding-bottom: 1%;">
+					<input type="hidden" name="metodo" value="salvarSala">
 					<input type="hidden" name="id" value="<?= $_GET['sala'] ?>">
 					<div class="row" >
 						<div class="form-group">
@@ -54,8 +54,8 @@
 						<button type="submit" class="btn btn-md btn-warning">Editar</button>
 					</div>
 				</form>
-				<form action="../Controller/SalaController.php" method="post" onSubmit="if(!confirm('Tem certeza que deseja excluir?')){return false;}">
-					<input type="hidden" name="metodo" value="excluir">
+				<form action="../Controller/Controller.php" method="post" onSubmit="if(!confirm('Tem certeza que deseja excluir?')){return false;}">
+					<input type="hidden" name="metodo" value="excluirSala">
 					<input type="hidden" name="id" value="<?= $_GET['sala'] ?>">
 					<button type="submit" class="btn btn-md btn-danger">Excluir</button>
 				</form>

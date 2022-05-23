@@ -1,35 +1,5 @@
 <?php
     require_once($_SERVER["DOCUMENT_ROOT"]."/Model/Representante.php");
-    $metodo = isset($_POST['metodo']) ? $_POST['metodo'] : ""; 
-
-    switch($metodo){
-        case 'criar':
-            $representante = new Representante();
-            $representante->nome = $_POST['nome'];
-            $representante->usuario = $_POST['usuario'];
-            $representante->senha = $_POST['senha'];
-            $representante->criarRepresentante();
-            header('Location: ../representante/cadRepresentante.php?sucess=true');
-        break;
-        case 'buscar':
-            $id = $_POST['representante'];
-            header('Location: ../representante/editRepresentante.php?representante='.$id);
-        break;
-        case 'salvar':
-            $representante = new Representante();
-            $representante->nome = $_POST['nome'];
-            $representante->usuario = $_POST['usuario'];
-            $representante->senha = $_POST['senha'];
-            $representante->salvarRepresentante($_POST['id']);
-            header('Location: ../representante/editRepresentante.php?sucess=true');
-        break;
-        case 'excluir':
-            $representante = new Representante();
-            $representante->id = $_POST['id'];
-            $representante->excluir();
-            header('Location: ../representante/editRepresentante.php?delete=true');
-        break;
-    }
 
     class RepresentanteController{
         function getRepresentantes(){
@@ -40,6 +10,36 @@
         function getRepresentante($id){
             $representante = new Representante();
             return $representante->getRepresentante($id);
+        }
+
+        function criarRepresentante($post){
+            $representante = new Representante();
+            $representante->nome = $post['nome'];
+            $representante->usuario = $post['usuario'];
+            $representante->senha = $post['senha'];
+            $representante->criarRepresentante();
+            header('Location: ../representante/cadRepresentante.php?sucess=true');
+        }
+
+        function buscarRepresentante($post){
+            $id = $post['representante'];
+            header('Location: ../representante/editRepresentante.php?representante='.$id);
+        }
+
+        function salvarRepresentante($post){
+            $representante = new Representante();
+            $representante->nome = $post['nome'];
+            $representante->usuario = $post['usuario'];
+            $representante->senha = $post['senha'];
+            $representante->salvarRepresentante($post['id']);
+            header('Location: ../representante/editRepresentante.php?sucess=true');
+        }
+
+        function excluirRepresentante($post){
+            $representante = new Representante();
+            $representante->id = $post['id'];
+            $representante->excluir();
+            header('Location: ../representante/editRepresentante.php?delete=true');
         }
     }
 ?>

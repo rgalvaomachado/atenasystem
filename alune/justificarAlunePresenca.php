@@ -18,7 +18,7 @@
 		<center>
 			<h1>Justificar Presença Alune</h1>
 			<h4><?= (isset($_GET['sucess']) && $_GET['sucess'] == 'true' ? "Salvo !" : "") ?></h4>
-			<form action="../Controller/PresencaController.php" method="post">
+			<form action="../Controller/Controller.php" method="post">
 				<input type="hidden" name="metodo" value="buscarSalaAluneJustifica">
 				<?php
 					require_once($_SERVER["DOCUMENT_ROOT"]."/Controller/SalaController.php");
@@ -37,7 +37,7 @@
 				<button type="submit" class="btn btn-md btn-warning">Buscar</button>
 			</form>
 			<?php if(isset($_GET['sala'])) { ?>
-				<form action="../Controller/PresencaController.php" method="post">
+				<form action="../Controller/Controller.php" method="post">
 					<div class="form-group">
 						<input type="hidden" name="metodo" value="buscarPresencaAlune">
 						<input type="hidden" name="sala" value="<?= $idSala ?>">
@@ -71,7 +71,7 @@
 				</form>
 			<?php } ?>
 			<?php if(isset($_GET['alune'])) { ?>
-				<form action="../Controller/PresencaController.php" method="post">
+				<form action="../Controller/Controller.php" method="post">
 					<input type="hidden" name="metodo" value="justificarPresencaAlune">
 					<input type="hidden" name="alune" value="<?= $_GET['alune'] ?>">
 					<input type="hidden" name="sala" value="<?= $_GET['sala'] ?>">
@@ -97,13 +97,8 @@
 				</form>
 			<?php } ?>
 		</center>
-		
-	</div>	<!--/.main-->
-	
+	</div>
 	<script src="../js/jquery-1.11.1.min.js"></script>
 	<script src="../js/bootstrap.min.js"></script>
-
-	<script src="../js/bootstrap-datepicker.js"></script>
-	<script src="../js/custom.js"></script>		
 </body>
 </html>
