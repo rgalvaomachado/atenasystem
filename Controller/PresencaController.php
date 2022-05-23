@@ -21,15 +21,15 @@
             $presenca->cod_sala = $_POST['sala'];
             $presenca->aula = $_POST['aula'];
             $presenca->data = $_POST['data'];
-            $presente = $presenca->buscarPresencaAlune();
-            header('Location: ../alune/justificarAlunePresenca.php?sala='.$_POST['sala'].'&alune='.$_POST['alune'].'&data='.$_POST['data'].'&aula='.$_POST['aula'].'&presente='.$presente['presente']);
+            $presente = $presenca->verificarPresenca();
+            header('Location: ../alune/justificarAlunePresenca.php?sala='.$_POST['sala'].'&alune='.$_POST['alune'].'&data='.$_POST['data'].'&aula='.$_POST['aula'].'&presente='.$presente[0]['presente']);
         break;
         case 'buscarPresencaTutore':
             $presenca = new Presenca();
             $presenca->cod_tutore = $_POST['tutore'];
             $presenca->data = $_POST['data'];
-            $presente = $presenca->buscarPresencaTutore();
-            header('Location: ../tutore/justificarTutorePresenca.php?tutore='.$_POST['tutore'].'&data='.$_POST['data'].'&presente='.$presente['presente']);
+            $presente = $presenca->verificarPresenca();
+            header('Location: ../tutore/justificarTutorePresenca.php?tutore='.$_POST['tutore'].'&data='.$_POST['data'].'&presente='.$presente[0]['presente']);
         break;
         case 'justificarPresencaAlune':
             $presenca = new Presenca();
@@ -38,7 +38,7 @@
             $presenca->aula = $_POST['aula'];
             $presenca->data =  $_POST['data'];
             $presenca->presente =  $_POST['presente'];
-            $presenca->justificarPresencaAlune();
+            $presenca->justificarPresenca();
             header('Location: ../alune/justificarAlunePresenca.php');
         break;
         case 'justificarPresencaTutore':
@@ -46,7 +46,7 @@
             $presenca->cod_tutore = $_POST['tutore'];
             $presenca->data =  $_POST['data'];
             $presenca->presente =  $_POST['presente'];
-            $presenca->justificarPresencaTutore();
+            $presenca->justificarPresenca();
             header('Location: ../tutore/justificarTutorePresenca.php');
         break;
         case 'criarPresencaAlune':
@@ -66,7 +66,7 @@
                     if(count($verificarPresenca) > 0){
                         $erroAlune++;
                     }else{
-                        $presenca->presencaAlune(); 
+                        $presenca->criarPresenca(); 
                     }
                 }else{
                     $presenca = new Presenca();
@@ -79,7 +79,7 @@
                     if(count($verificarPresenca) > 0){
                         $erroAlune++;
                     }else{
-                        $presenca->presencaAlune(); 
+                        $presenca->criarPresenca(); 
                     }
                 }
             }
@@ -100,7 +100,7 @@
             if(count($verificarPresenca) > 0){
                 header('Location: ../presenca/presenTutore.php?sucess=false');
             }else{
-                $presenca->presencaTutore();
+                $presenca->criarPresenca();
                 header('Location: ../presenca/presenTutore.php?sucess=true');
             }
         break;
@@ -114,7 +114,7 @@
             if(count($verificarPresenca) > 0){
                 header('Location: ../presenca/presenMonitore.php?sucess=false');
             }else{
-                $presenca->presencaMonitore();
+                $presenca->criarPresenca();
                 header('Location: ../presenca/presenMonitore.php?sucess=true');
             }
         break;
@@ -133,7 +133,7 @@
                     if(count($verificarPresenca) > 0){
                         $erroTutore++;
                     }else{
-                        $presenca->presencaReuniao(); 
+                        $presenca->criarPresenca(); 
                     }
                 }else{
                     $presenca = new Presenca();
@@ -144,7 +144,7 @@
                     if(count($verificarPresenca) > 0){
                         $erroTutore++;
                     }else{
-                        $presenca->presencaReuniao(); 
+                        $presenca->criarPresenca(); 
                     }
                 }
             }
