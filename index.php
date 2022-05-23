@@ -14,6 +14,7 @@
 	<center>
 		<div class="panel-heading">Login</div>
 			<form action="../Controller/LoginController.php" method="post">
+				<input type="hidden" name="metodo" value="login">
 				<fieldset>
 					<div class="form-group">
 						<input class="form-control" placeholder="Usuario" name="usuario" type="text" autofocus="">

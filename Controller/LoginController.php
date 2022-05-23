@@ -1,53 +1,53 @@
 <?php
 require_once($_SERVER["DOCUMENT_ROOT"]."/Controller/MonitoreController.php");
+require_once($_SERVER["DOCUMENT_ROOT"]."/Controller/RepresentanteController.php");
+require_once($_SERVER["DOCUMENT_ROOT"]."/Controller/ComissaoController.php");
+$metodo = isset($_POST['metodo']) ? $_POST['metodo'] : ""; 
 
-$usuario = $_POST['usuario'];
-$senha = md5($_POST['senha']);
-$validado = false;
+switch($metodo){
+    case 'login':
+        $usuario = $_POST['usuario'];
+        $senha = md5($_POST['senha']);
+        $validado = false;
 
-//DEV
-$usuarioAdmin = "admin";
-$senhaAdmin = "21232f297a57a5a743894a0e4a801fc3";
+        $RepresentanteController = new RepresentanteController();
+        $representates = $RepresentanteController->getRepresentantes();
+        foreach($representates as $representate){
+            if($usuario == $representate['usuario'] && $senha == $representate['senha']){
+                $usuarioValidado = $representate['usuario'];
+                $modoValidado = 'representate';
+                $validado = true;
+            }
+        }
 
-$usuarioComicao = "comicao";
-$senhaComicao = "21232f297a57a5a743894a0e4a801fc3";
+        $ComissaoController = new ComissaoController();
+        $comissoes = $ComissaoController->getComissoes();
+        foreach($comissoes as $comissao){
+            if($usuario == $comissao['usuario'] && $senha == $comissao['senha']){
+                $usuarioValidado = $comissao['usuario'];
+                $modoValidado = 'comissao';
+                $validado = true;
+            }
+        }
 
-//PROD
-// $usuarioAdmin = "atena";
-// $senhaAdmin = "1c9ad86591e3d561b450a3e7391f327f";
+        $MonitoreController = new MonitoreController();
+        $monitores = $MonitoreController->getMonitores();
+        foreach($monitores as $monitore){
+            if($usuario == $monitore['usuario'] && $senha == $monitore['senha']){
+                $usuarioValidado = $monitore['usuario'];
+                $modoValidado = 'monitore';
+                $validado = true;
+            }
+        }
 
-// $usuarioComicao = "cdfatena";
-// $senhaComicao = "33e3052368ec84ee5e67635db6bee271";
-
-
-if($usuario == $usuarioComicao && $senha == $senhaComicao){
-    $usuarioValidado = $usuarioComicao;
-    $modoValidado = 'comicao';
-    $validado = true;
-}
-
-if($usuario == $usuarioAdmin && $senha == $senhaAdmin){
-    $usuarioValidado = $usuarioAdmin;
-    $modoValidado = 'admin';
-    $validado = true;
-}
-
-$MonitoreController = new MonitoreController();
-$monitores = $MonitoreController->getMonitores();
-foreach($monitores as $monitore){
-    if($usuario == $monitore['usuario'] && $senha == $monitore['senha']){
-        $usuarioValidado = $monitore['usuario'];
-        $modoValidado = 'monitore';
-        $validado = true;
-    }
-}
-
-if($validado){
-    session_start();
-    $_SESSION['usuario'] =  $usuarioValidado;
-    $_SESSION['modo'] = $modoValidado;
-    header('location:../home.php');
-}else{
-    header('location:../index.php?error=1');
+        if($validado){
+            session_start();
+            $_SESSION['usuario'] =  $usuarioValidado;
+            $_SESSION['modo'] = $modoValidado;
+            header('location:../home.php');
+        }else{
+            header('location:../index.php?error=1');
+        }
+    break;
 }
 ?>
