@@ -19,7 +19,7 @@
 			<h1>Justificar Presença Alune</h1>
 			<h4><?= (isset($_GET['sucess']) && $_GET['sucess'] == 'true' ? "Salvo !" : "") ?></h4>
 			<form action="../Controller/PresencaController.php" method="post">
-				<input type="hidden" name="metodo" value="buscarAlunePresenca">
+				<input type="hidden" name="metodo" value="buscarSalaAluneJustifica">
 				<?php
 					require_once($_SERVER["DOCUMENT_ROOT"]."/Controller/SalaController.php");
 					$SalaController = new SalaController();

@@ -7,11 +7,7 @@
     $metodo = isset($_POST['metodo']) ? $_POST['metodo'] : ""; 
 
     switch($metodo){
-        case 'buscar':
-            $id = $_POST['sala'];
-            header('Location: ../presenca/presenAlune.php?sala='.$id);
-        break;
-        case 'buscarAlunePresenca':
+        case 'buscarSalaAluneJustifica':
             $id = $_POST['sala'];
             header('Location: ../alune/justificarAlunePresenca.php?sala='.$id);
         break;
@@ -24,13 +20,6 @@
             $presente = $presenca->verificarPresenca();
             header('Location: ../alune/justificarAlunePresenca.php?sala='.$_POST['sala'].'&alune='.$_POST['alune'].'&data='.$_POST['data'].'&aula='.$_POST['aula'].'&presente='.$presente[0]['presente']);
         break;
-        case 'buscarPresencaTutore':
-            $presenca = new Presenca();
-            $presenca->cod_tutore = $_POST['tutore'];
-            $presenca->data = $_POST['data'];
-            $presente = $presenca->verificarPresenca();
-            header('Location: ../tutore/justificarTutorePresenca.php?tutore='.$_POST['tutore'].'&data='.$_POST['data'].'&presente='.$presente[0]['presente']);
-        break;
         case 'justificarPresencaAlune':
             $presenca = new Presenca();
             $presenca->cod_alune = $_POST['alune'];
@@ -41,6 +30,14 @@
             $presenca->justificarPresenca();
             header('Location: ../alune/justificarAlunePresenca.php');
         break;
+
+        case 'buscarPresencaTutore':
+            $presenca = new Presenca();
+            $presenca->cod_tutore = $_POST['tutore'];
+            $presenca->data = $_POST['data'];
+            $presente = $presenca->verificarPresenca();
+            header('Location: ../tutore/justificarTutorePresenca.php?tutore='.$_POST['tutore'].'&data='.$_POST['data'].'&presente='.$presente[0]['presente']);
+        break;
         case 'justificarPresencaTutore':
             $presenca = new Presenca();
             $presenca->cod_tutore = $_POST['tutore'];
@@ -48,6 +45,11 @@
             $presenca->presente =  $_POST['presente'];
             $presenca->justificarPresenca();
             header('Location: ../tutore/justificarTutorePresenca.php');
+        break;
+
+        case 'buscarSalaAlune':
+            $id = $_POST['sala'];
+            header('Location: ../presenca/presenAlune.php?sala='.$id);
         break;
         case 'criarPresencaAlune':
             $AluneController = new AluneController();
@@ -89,6 +91,7 @@
                 header('Location: ../presenca/presenAlune.php?sucess=true');
             }
         break;
+
         case 'criarPresencaTutore':
             $presenca = new Presenca();
             $presenca->cod_tutore = $_POST['tutore'];
@@ -104,6 +107,7 @@
                 header('Location: ../presenca/presenTutore.php?sucess=true');
             }
         break;
+
         case 'criarPresencaMonitore':
             $presenca = new Presenca();
             $presenca->cod_monitore = $_POST['monitore'];
@@ -118,6 +122,7 @@
                 header('Location: ../presenca/presenMonitore.php?sucess=true');
             }
         break;
+
         case 'criarPresencaReuniao':
             $TutoreController = new TutoreController();
             $tutores = $TutoreController->getTutores();
@@ -154,12 +159,14 @@
                 header('Location: ../presenca/presenReuniao.php?sucess=true');
             }
         break;
+
         case 'relatorioPresencaAlune':
             $cod_sala = $_POST['cod_sala'];
             $data_inicial = $_POST['data_inicial'];
             $data_final = $_POST['data_final'];
             header('Location: ../relatorio/relAlune.php?cod_sala='.$cod_sala.'&data_inicial='.$data_inicial.'&data_final='.$data_final);
         break;
+        
         case 'relatorioPresencaReuniao':
             $data_inicial = $_POST['data_inicial'];
             $data_final = $_POST['data_final'];

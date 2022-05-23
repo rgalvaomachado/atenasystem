@@ -18,8 +18,7 @@
 		<center>
 			<h1>Presença Alune</h1>
 			<form action="../Controller/PresencaController.php" method="post">
-				<input type="hidden" name="metodo" value="buscar">	
-
+				<input type="hidden" name="metodo" value="buscarSalaAlune">	
 				<?php
 					require_once($_SERVER["DOCUMENT_ROOT"]."/Controller/SalaController.php");
 					$SalaController = new SalaController();
