@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.3
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Tempo de geração: 08-Maio-2022 às 21:15
--- Versão do servidor: 8.0.29
--- versão do PHP: 8.1.3
+-- Host: sql209.epizy.com
+-- Tempo de geração: 23/05/2022 às 01:11
+-- Versão do servidor: 10.3.27-MariaDB
+-- Versão do PHP: 7.2.22
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -18,164 +19,214 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Banco de dados: `atenasystem`
+-- Banco de dados: `epiz_31638575_atenasystem`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `alune`
+-- Estrutura para tabela `alune`
 --
 
 CREATE TABLE `alune` (
-  `id` int NOT NULL,
+  `id` int(11) NOT NULL,
   `nome` varchar(255) COLLATE utf8_bin NOT NULL,
-  `cod_sala` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_bin NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_bin;
+  `cod_sala` varchar(255) COLLATE utf8_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `disciplina`
+-- Estrutura para tabela `comissao`
 --
 
-CREATE TABLE `disciplina` (
-  `id` int NOT NULL,
-  `nome` varchar(255) COLLATE utf8_bin NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_bin;
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `monitore`
---
-
-CREATE TABLE `monitore` (
-  `id` int NOT NULL,
+CREATE TABLE `comissao` (
+  `id` int(11) NOT NULL,
   `nome` varchar(255) COLLATE utf8_bin NOT NULL,
   `usuario` varchar(255) COLLATE utf8_bin NOT NULL,
   `senha` varchar(255) COLLATE utf8_bin NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_bin;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `presenca`
+-- Estrutura para tabela `disciplina`
+--
+
+CREATE TABLE `disciplina` (
+  `id` int(11) NOT NULL,
+  `nome` varchar(255) COLLATE utf8_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `monitore`
+--
+
+CREATE TABLE `monitore` (
+  `id` int(11) NOT NULL,
+  `nome` varchar(255) COLLATE utf8_bin NOT NULL,
+  `usuario` varchar(255) COLLATE utf8_bin NOT NULL,
+  `senha` varchar(255) COLLATE utf8_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `presenca`
 --
 
 CREATE TABLE `presenca` (
-  `id` int NOT NULL,
-  `cod_alune` int NOT NULL,
-  `cod_sala` int NOT NULL,
-  `cod_tutore` int NOT NULL,
-  `cod_monitore` int NOT NULL,
-  `aula` int NOT NULL,
-  `presente` enum('S','N','J') CHARACTER SET utf8mb3 COLLATE utf8_bin NOT NULL,
+  `id` int(11) NOT NULL,
+  `cod_alune` int(11) NOT NULL,
+  `cod_sala` int(11) NOT NULL,
+  `cod_tutore` int(11) NOT NULL,
+  `cod_monitore` int(11) NOT NULL,
+  `aula` int(11) NOT NULL,
+  `presente` enum('S','N','J') COLLATE utf8_bin NOT NULL,
   `data` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_bin;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `sala`
+-- Estrutura para tabela `representante`
+--
+
+CREATE TABLE `representante` (
+  `id` int(11) NOT NULL,
+  `nome` varchar(255) COLLATE utf8_bin NOT NULL,
+  `usuario` varchar(255) COLLATE utf8_bin NOT NULL,
+  `senha` varchar(255) COLLATE utf8_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `sala`
 --
 
 CREATE TABLE `sala` (
-  `id` int NOT NULL,
+  `id` int(11) NOT NULL,
   `nome` varchar(255) COLLATE utf8_bin NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_bin;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `tutore`
+-- Estrutura para tabela `tutore`
 --
 
 CREATE TABLE `tutore` (
-  `id` int NOT NULL,
+  `id` int(11) NOT NULL,
   `nome` varchar(255) COLLATE utf8_bin NOT NULL,
-  `cod_disciplina` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_bin NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_bin;
+  `cod_disciplina` varchar(255) COLLATE utf8_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
--- Índices para tabelas despejadas
+-- Índices de tabelas apagadas
 --
 
 --
--- Índices para tabela `alune`
+-- Índices de tabela `alune`
 --
 ALTER TABLE `alune`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices para tabela `disciplina`
+-- Índices de tabela `comissao`
+--
+ALTER TABLE `comissao`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Índices de tabela `disciplina`
 --
 ALTER TABLE `disciplina`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices para tabela `monitore`
+-- Índices de tabela `monitore`
 --
 ALTER TABLE `monitore`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices para tabela `presenca`
+-- Índices de tabela `presenca`
 --
 ALTER TABLE `presenca`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices para tabela `sala`
+-- Índices de tabela `representante`
+--
+ALTER TABLE `representante`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Índices de tabela `sala`
 --
 ALTER TABLE `sala`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices para tabela `tutore`
+-- Índices de tabela `tutore`
 --
 ALTER TABLE `tutore`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT de tabelas despejadas
+-- AUTO_INCREMENT de tabelas apagadas
 --
 
 --
 -- AUTO_INCREMENT de tabela `alune`
 --
 ALTER TABLE `alune`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `comissao`
+--
+ALTER TABLE `comissao`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `disciplina`
 --
 ALTER TABLE `disciplina`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `monitore`
 --
 ALTER TABLE `monitore`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `presenca`
 --
 ALTER TABLE `presenca`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `representante`
+--
+ALTER TABLE `representante`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `sala`
 --
 ALTER TABLE `sala`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `tutore`
 --
 ALTER TABLE `tutore`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
