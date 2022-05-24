@@ -95,7 +95,7 @@
 						
 						$color = $porcentagem >= 70 ? "green" : "red";
 						?>		
-						<tr style= "color: <?= $color?>">
+						<tr style= "color: <?= $color?>; border-bottom: 1px solid #555;">
 							<td><?= $alune['nome']?></td>
 							<td><?= $presencas?></td>
 							<td><?= $ausencias?></td>

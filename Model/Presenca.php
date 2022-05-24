@@ -141,5 +141,12 @@
             ]);
             return $verificarPresencaAlune->fetchAll(PDO::FETCH_ASSOC);
         } 
+
+        function deletaPresencaAlune(){
+            $stmt = $this->bd->prepare('DELETE FROM presenca where cod_alune = :cod_alune');
+            $stmt->execute([
+              ':cod_alune' => $this->cod_alune,
+            ]);
+        }
     }
 ?>

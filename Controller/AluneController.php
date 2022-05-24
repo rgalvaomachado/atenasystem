@@ -1,5 +1,6 @@
 <?php
     require_once($_SERVER["DOCUMENT_ROOT"]."/Model/Alune.php");
+    require_once($_SERVER["DOCUMENT_ROOT"]."/Controller/PresencaController.php");
     
     class AluneController{
         function getAlunes(){
@@ -40,6 +41,8 @@
         }
 
         function excluirAlune($post){
+            $PresencaController = new PresencaController();
+            $PresencaController->deletaPresencaAlune($post['id']);
             $alune = new Alune();
             $alune->id = $post['id'];
             $alune->excluir();

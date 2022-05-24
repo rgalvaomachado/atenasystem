@@ -212,5 +212,11 @@
             $presenca->data_final = $data_final ;
             return $presenca->getJustificadoPeriodo();
         }
+
+        function deletaPresencaAlune($cod_alune){
+            $presenca = new Presenca();
+            $presenca->cod_alune = $cod_alune;
+            return $presenca->deletaPresencaAlune();
+        }
     }
 ?>

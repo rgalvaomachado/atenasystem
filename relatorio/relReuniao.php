@@ -77,7 +77,7 @@
 						
 						$color = $ausencias < 4 ? "green" : "red";
 						?>		
-						<tr style= "color: <?= $color?>">
+						<tr style= "color: <?= $color?>; border-bottom: 1px solid #555;">
 							<td><?= $tutore['nome']?></td>
 							<td><?= $presencas?></td>
 							<td><?= $ausencias?></td>
