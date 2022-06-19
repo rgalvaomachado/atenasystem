@@ -218,5 +218,10 @@
             $presenca->cod_alune = $cod_alune;
             return $presenca->deletaPresencaAlune();
         }
+
+        function certificadoTutore($post){
+            // $id = $post['sala'];
+            header('Location: ../certificado/frente.php');
+        }
     }
 ?>

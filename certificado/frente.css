@@ -1,0 +1,65 @@
+body{
+    margin:0;
+    padding:0;
+}
+#cert{
+    border: 10px solid orange;
+    height: 480px;
+    width: 854px;
+    background-image: url('atena.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 854px 480px;
+}
+#conteudo {
+    border: 10px solid black;
+    height: 460px;
+    width: 834px;
+}
+#titulo{
+    text-align: center;
+    font-size: 30px;
+}
+#corpo{
+    text-align: justify;
+    padding: 20px;
+    font-size: 20px;
+}
+#assinaturas td{
+    text-align: center;
+    width: 1000px;
+    font-size: 20px;
+}
+#assinatura-docente {
+    height: 80px;
+    width: 170px;
+    margin-left: 120px;
+    border-bottom: 2px solid black;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-image: url('assinatura-docente.png');
+}
+#assinatura-discente {
+    height: 80px;
+    width: 170px;
+    margin-left: 120px;
+    border-bottom: 2px solid black;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-image: url('assinatura-discente.png');
+}
+#unesp{
+    height: 55px;
+    width: 115px;
+    top: 65px;
+    position: relative;
+    left: 575px;
+}
+#ibb{
+    height: 65px;
+    width: 125px;
+    top: 75px;
+    position: relative;
+}

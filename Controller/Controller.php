@@ -133,6 +133,10 @@
             $PresencaController = new PresencaController();
             $PresencaController->relatorioPresencaReuniao($_POST);
             break; 
+        case 'certificadoTutore':
+            $PresencaController = new PresencaController();
+            $PresencaController->certificadoTutore($_POST);
+            break; 
         ///////////////////////////////////////////////////////////////////////////////
         case 'criarRepresentante':
             $RepresentanteController = new RepresentanteController();

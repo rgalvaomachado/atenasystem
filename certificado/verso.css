@@ -1,0 +1,51 @@
+body{
+    margin:0;
+    padding:0;
+}
+#cert{
+    border: 10px solid orange;
+    height: 480px;
+    width: 854px;
+    background-image: url('atena.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 854px 480px;
+}
+#conteudo {
+    border: 10px solid black;
+    height: 460px;
+    width: 834px;
+}
+#carga-horaria {
+    margin: 30px auto auto auto;
+    width: 95%;
+    border-collapse: collapse;
+}
+#carga-horaria td {
+    font-size: 20px;
+    border: 1px solid black;
+}
+#carga-horaria th {
+    font-size: 20px;
+    border: 1px solid black;
+}
+#ibb{
+    height: 65px;
+    width: 125px;
+    top: 105px;
+    position: relative;
+}
+#assinatura-cursinho{
+    height: 250.5px;
+    width: 474.5px;
+    top: 95px;
+    left: 45px;
+    position: relative;
+}
+#unesp{
+    height: 55px;
+    width: 115px;
+    top: 95px;
+    position: relative;
+    left: 96px;
+}
