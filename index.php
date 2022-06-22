@@ -2,7 +2,6 @@
 <html>
 <?php include_once 'head.php'?>
 <body>
-	<?session_destroy()?>
 	<center>
 		<div class="panel-heading">Login</div>
 			<form action="../Controller/Controller.php" method="post">

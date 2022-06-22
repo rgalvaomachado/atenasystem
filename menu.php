@@ -2,7 +2,6 @@
 	<ul class="nav menu">
         <?php
             session_start();
-            
             if ($_SESSION['usuario'] == "") {
                 session_destroy();
                 header('location:../index.php');
@@ -13,6 +12,7 @@
                 $_SESSION['usuario'] =  "";
                 $_SESSION['modo'] = "";
                 session_destroy();
+                header('location:../index.php');
             }
 
             $uri = $_SERVER["REQUEST_URI"];
@@ -180,6 +180,16 @@
                     <li><a style=<?= $arquivo == "relReuniao.php" ? "background-color:orange;" : "" ?> class="" href="\relatorio\relReuniao.php">
                         <span class="fa fa-arrow-right">&nbsp;</span> Precença Reunião
                     </a></li>
+                <?php } ?>
+                <?php if($_SESSION['modo'] == "representate") { ?>
+                    <li><a style=<?= $arquivo == "relMonitore.php" ? "background-color:orange;" : "" ?> class="" href="\relatorio\relMonitore.php">
+                        <span class="fa fa-arrow-right">&nbsp;</span> Presença Monitore
+                    </a></li>
+                <?php } ?>
+                <?php if($_SESSION['modo'] == "representate" || $_SESSION['modo'] == "monitore") { ?>
+                <li><a style=<?= $arquivo == "relTutore.php" ? "background-color:orange;" : "" ?> class="" href="\relatorio\relTutore.php">
+                    <span class="fa fa-arrow-right">&nbsp;</span> Presença Tutore
+                </a></li>
                 <?php } ?>
             </ul>
         </li>

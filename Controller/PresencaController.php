@@ -101,7 +101,7 @@
             $presenca->aula = $post['aula'];
             $presenca->presente = 'S';
             $presenca->data = $post['data'];
-            $verificarPresenca = $presenca->verificarPresenca();
+            $verificarPresenca = $presenca->verificarPresencaTutore();
             if(count($verificarPresenca) > 0){
                 header('Location: ../presenca/presenTutore.php?sucess=false');
             }else{
@@ -116,7 +116,7 @@
             $presenca->cod_sala = $post['sala'];
             $presenca->presente = 'S';
             $presenca->data = $post['data'];
-            $verificarPresenca = $presenca->verificarPresenca();
+            $verificarPresenca = $presenca->verificarPresencaMonitore();
             if(count($verificarPresenca) > 0){
                 header('Location: ../presenca/presenMonitore.php?sucess=false');
             }else{
@@ -175,6 +175,20 @@
             header('Location: ../relatorio/relReuniao.php?data_inicial='.$data_inicial.'&data_final='.$data_final);
         }
 
+        function relatorioPresencaMonitore($post){
+            $cod_sala = $post['cod_sala'];
+            $data_inicial = $post['data_inicial'];
+            $data_final = $post['data_final'];
+            header('Location: ../relatorio/relMonitore.php?cod_sala='.$cod_sala.'&data_inicial='.$data_inicial.'&data_final='.$data_final);
+        }
+        
+        function relatorioPresencaTutore($post){
+            $cod_sala = $post['cod_sala'];
+            $data_inicial = $post['data_inicial'];
+            $data_final = $post['data_final'];
+            header('Location: ../relatorio/relTutore.php?cod_sala='.$cod_sala.'&data_inicial='.$data_inicial.'&data_final='.$data_final);
+        }
+        
         function getPresenca(){
             $presenca = new Presenca();
             return $presenca->getPresenca();
