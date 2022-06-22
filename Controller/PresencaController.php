@@ -31,21 +31,61 @@
             header('Location: ../alune/justificarAlunePresenca.php');
         }
 
-        function buscarPresencaTutore($post){
+        function buscarPresencaReuniao($post){
             $presenca = new Presenca();
             $presenca->cod_tutore = $post['tutore'];
             $presenca->data = $post['data'];
             $presente = $presenca->verificarPresenca();
-            header('Location: ../tutore/justificarTutorePresenca.php?tutore='.$post['tutore'].'&data='.$post['data'].'&presente='.$presente[0]['presente']);
+            header('Location: ../tutore/justificarPresencaReuniao.php?tutore='.$post['tutore'].'&data='.$post['data'].'&presente='.$presente[0]['presente']);
         }
 
-        function justificarPresencaTutore($post){
+        function justificarPresencaReuniao($post){
             $presenca = new Presenca();
             $presenca->cod_tutore = $post['tutore'];
             $presenca->data =  $post['data'];
             $presenca->presente =  $post['presente'];
             $presenca->justificarPresenca();
-            header('Location: ../tutore/justificarTutorePresenca.php');
+            header('Location: ../tutore/justificarPresencaReuniao.php?sucess=true');
+        }
+
+        function buscarPresencaMonitore($post){
+            $presenca = new Presenca();
+            $presenca->cod_monitore = $post['monitore'];
+            $presenca->cod_sala = $post['sala'];
+            $presenca->data = $post['data'];
+            $presente = $presenca->verificarPresenca();
+            header('Location: ../monitore/editMonitorePresenca.php?monitore='.$post['monitore'].'&sala='.$post['sala'].'&data='.$post['data'].'&presente='.$presente[0]['presente']);
+        }
+
+        function editarPresencaMonitore($post){
+            $presenca = new Presenca();
+            $presenca->cod_monitore = $post['monitore'];
+            $presenca->cod_sala = $post['sala'];
+            $presenca->data =  $post['data'];
+            $presenca->presente =  $post['presente'];
+            $presenca->justificarPresenca();
+            header('Location: ../monitore/editMonitorePresenca.php?sucess=true');
+        }
+
+        function buscarPresencaTutore($post){
+            $presenca = new Presenca();
+            $presenca->cod_tutore = $post['tutore'];
+            $presenca->cod_sala = $post['sala'];
+            $presenca->aula = $post['aula'];
+            $presenca->data = $post['data'];
+            $presente = $presenca->verificarPresenca();
+            header('Location: ../tutore/editTutorePresenca.php?tutore='.$post['tutore'].'&sala='.$post['sala'].'&aula='.$post['aula'].'&data='.$post['data'].'&presente='.$presente[0]['presente']);
+        }
+
+        function editarPresencaTutore($post){
+            $presenca = new Presenca();
+            $presenca->cod_tutore = $post['tutore'];
+            $presenca->cod_sala = $post['sala'];
+            $presenca->data =  $post['data'];
+            $presenca->aula = $post['aula'];
+            $presenca->presente =  $post['presente'];
+            $presenca->justificarPresenca();
+            header('Location: ../tutore/editTutorePresenca.php?sucess=true');
         }
 
         function buscarSalaAlune($post){

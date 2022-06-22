@@ -6,12 +6,11 @@
 	<?php include_once '../menu.php'?>
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main" style="background-color:white; margin-top:100px">
 		<center>
-			<h1>Justificar Presença Tutore</h1>
+			<h1>Justificar Presença Reunião</h1>
 			<h4><?= (isset($_GET['sucess']) && $_GET['sucess'] == 'true' ? "Salvo !" : "") ?></h4>
 			<form action="../Controller/Controller.php" method="post">
 				<div class="form-group">
-					<input type="hidden" name="metodo" value="buscarPresencaTutore">
-					<input type="hidden" name="sala" value="<?= $idSala ?>">
+					<input type="hidden" name="metodo" value="buscarPresencaReuniao">
 					<?php
 						require_once($_SERVER["DOCUMENT_ROOT"]."/Controller/TutoreController.php");
 						$TutoreController = new TutoreController();
@@ -35,10 +34,9 @@
 			</form>
 			<?php if(isset($_GET['tutore'])) { ?>
 				<form action="../Controller/Controller.php" method="post">
-					<input type="hidden" name="metodo" value="justificarPresencaTutore">
+					<input type="hidden" name="metodo" value="justificarPresencaReuniao">
 					<input type="hidden" name="tutore" value="<?= $_GET['tutore'] ?>">
 					<input type="hidden" name="data" value="<?= $_GET['data'] ?>">
-					<input type="hidden" name="presente" value="<?= $_GET['presente'] ?>">
 					<?php if($_GET['presente'] != "") { ?>
 						<div class="row" >
 							<div class="form-group">

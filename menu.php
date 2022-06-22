@@ -62,26 +62,38 @@
                     <li><a style=<?= $arquivo == "editMonitore.php" ? "background-color:orange;" : "" ?> class="" href="\monitore\editMonitore.php">
                         <span class="fa fa-arrow-right">&nbsp;</span> Editar
                     </a></li>
+                    <li><a style=<?= $arquivo == "editMonitorePresenca.php" ? "background-color:orange;" : "" ?> class="" href="\monitore\editMonitorePresenca.php">
+                        <span class="fa fa-arrow-right">&nbsp;</span> Editar Presença
+                    </a></li>
                 </ul>
             </li>
         <?php } ?>
-        <?php if($_SESSION['modo'] == "representate" || $_SESSION['modo'] == "monitore") { ?>
         <li class="parent "><a data-toggle="collapse" href="#sub-item-4">
             <em class="fa fa-user-o" aria-hidden="true">&nbsp;</em> Tutore <span data-toggle="collapse" href="#sub-item-2" class="icon pull-right"><em class="fa fa-plus"></em></span>
             </a>
             <ul class="children collapse<?= $menu == "tutore" ? "in" : "" ?> " id="sub-item-4">
-                <li><a style=<?= $arquivo == "cadTutore.php" ? "background-color:orange;" : "" ?> class="" href="\tutore\cadTutore.php">
-                    <span class="fa fa-arrow-right">&nbsp;</span> Cadastro
-                </a></li>
-                <li><a style=<?= $arquivo == "editTutore.php" ? "background-color:orange;" : "" ?> class="" href="\tutore\editTutore.php">
-                    <span class="fa fa-arrow-right">&nbsp;</span> Editar
-                </a></li>
-                <li><a style=<?= $arquivo == "justificarTutorePresenca.php" ? "background-color:orange;" : "" ?> class="" href="\tutore\justificarTutorePresenca.php">
-                    <span class="fa fa-arrow-right">&nbsp;</span> Justificar Presença
-                </a></li>
+                <?php if($_SESSION['modo'] == "representate" || $_SESSION['modo'] == "monitore") { ?>
+                    <li><a style=<?= $arquivo == "cadTutore.php" ? "background-color:orange;" : "" ?> class="" href="\tutore\cadTutore.php">
+                        <span class="fa fa-arrow-right">&nbsp;</span> Cadastro
+                    </a></li>
+                <?php } ?>
+                <?php if($_SESSION['modo'] == "representate" || $_SESSION['modo'] == "monitore") { ?>
+                    <li><a style=<?= $arquivo == "editTutore.php" ? "background-color:orange;" : "" ?> class="" href="\tutore\editTutore.php">
+                        <span class="fa fa-arrow-right">&nbsp;</span> Editar
+                    </a></li>
+                <?php } ?>
+                <?php if($_SESSION['modo'] == "representate" || $_SESSION['modo'] == "comissao") { ?>
+                    <li><a style=<?= $arquivo == "justificarPresencaReuniao.php" ? "background-color:orange;" : "" ?> class="" href="\tutore\justificarPresencaReuniao.php">
+                        <span class="fa fa-arrow-right">&nbsp;</span> Justificar Presença
+                    </a></li>
+                <?php } ?>
+                <?php if($_SESSION['modo'] == "representate" || $_SESSION['modo'] == "monitore") { ?>
+                    <li><a style=<?= $arquivo == "editTutorePresenca.php" ? "background-color:orange;" : "" ?> class="" href="\tutore\editTutorePresenca.php">
+                        <span class="fa fa-arrow-right">&nbsp;</span> Editar Presença
+                    </a></li>
+                <?php } ?>
             </ul>
         </li>
-        <?php } ?>
         <?php if($_SESSION['modo'] == "representate" || $_SESSION['modo'] == "monitore") { ?>
         <li class="parent "><a data-toggle="collapse" href="#sub-item-5">
             <em class="fa fa-graduation-cap" aria-hidden="true">&nbsp;</em> Alune <span data-toggle="collapse" href="#sub-item-3" class="icon pull-right"><em class="fa fa-plus"></em></span>
