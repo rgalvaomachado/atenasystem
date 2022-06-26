@@ -1,5 +1,5 @@
 <?php
-    require_once($_SERVER["DOCUMENT_ROOT"]."/Model/Comissao.php");
+    include_once("../Model/Comissao.php");
 
     class ComissaoController{
         function getComissoes(){

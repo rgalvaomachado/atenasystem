@@ -1,5 +1,5 @@
 <?php
-    require_once($_SERVER["DOCUMENT_ROOT"]."/Model/Tutore.php");
+    include_once("../Model/Tutore.php");
 
     class TutoreController{
         function getTutores(){

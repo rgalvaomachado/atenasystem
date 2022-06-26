@@ -1,5 +1,5 @@
 <?php
-    require_once($_SERVER["DOCUMENT_ROOT"]."/Model/Sala.php");
+    include_once("../Model/Sala.php");
 
     class SalaController{
         function getSalas(){

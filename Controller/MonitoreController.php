@@ -1,5 +1,5 @@
 <?php
-    require_once($_SERVER["DOCUMENT_ROOT"]."/Model/Monitore.php");
+    include_once("../Model/Monitore.php");
 
     class MonitoreController{
         function getMonitores(){

@@ -1,5 +1,5 @@
 <?php
-    require_once($_SERVER["DOCUMENT_ROOT"]."/Model/Representante.php");
+    include_once("../Model/Representante.php");
 
     class RepresentanteController{
         function getRepresentantes(){

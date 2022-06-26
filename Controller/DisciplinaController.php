@@ -1,5 +1,5 @@
 <?php
-    require_once($_SERVER["DOCUMENT_ROOT"]."/Model/Disciplina.php");
+    include_once("../Model/Disciplina.php");
 
     class DisciplinaController{
         function getDisciplinas(){

@@ -1,6 +1,6 @@
 <?php
-    require_once($_SERVER["DOCUMENT_ROOT"]."/Model/Alune.php");
-    require_once($_SERVER["DOCUMENT_ROOT"]."/Controller/PresencaController.php");
+    include_once("../Model/Alune.php");
+    include_once("PresencaController.php");
     
     class AluneController{
         function getAlunes(){

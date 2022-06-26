@@ -1,8 +1,7 @@
 <?php
-    require_once($_SERVER["DOCUMENT_ROOT"]."/Model/Presenca.php");
-    require_once($_SERVER["DOCUMENT_ROOT"]."/Controller/AluneController.php");
-    require_once($_SERVER["DOCUMENT_ROOT"]."/Controller/MonitoreController.php");
-    require_once($_SERVER["DOCUMENT_ROOT"]."/Controller/TutoreController.php");
+    include_once("../Model/Presenca.php");
+    include_once("MonitoreController.php");
+    include_once("TutoreController.php");
 
     class PresencaController{
         function buscarSalaAluneJustifica($post){

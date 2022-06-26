@@ -1,13 +1,13 @@
 <?php
-    require_once($_SERVER["DOCUMENT_ROOT"]."/Controller/AluneController.php");
-    require_once($_SERVER["DOCUMENT_ROOT"]."/Controller/ComissaoController.php");
-    require_once($_SERVER["DOCUMENT_ROOT"]."/Controller/DisciplinaController.php");
-    require_once($_SERVER["DOCUMENT_ROOT"]."/Controller/LoginController.php");
-    require_once($_SERVER["DOCUMENT_ROOT"]."/Controller/MonitoreController.php");
-    require_once($_SERVER["DOCUMENT_ROOT"]."/Controller/PresencaController.php");
-    require_once($_SERVER["DOCUMENT_ROOT"]."/Controller/RepresentanteController.php");
-    require_once($_SERVER["DOCUMENT_ROOT"]."/Controller/SalaController.php");
-    require_once($_SERVER["DOCUMENT_ROOT"]."/Controller/TutoreController.php");
+    include_once("AluneController.php");
+    include_once("ComissaoController.php");
+    include_once("DisciplinaController.php");
+    include_once("LoginController.php");
+    include_once("MonitoreController.php");
+    include_once("PresencaController.php");
+    include_once("RepresentanteController.php");
+    include_once("SalaController.php");
+    include_once("TutoreController.php");
 
     $metodo = isset($_POST['metodo']) ? $_POST['metodo'] : ""; 
     switch($metodo){

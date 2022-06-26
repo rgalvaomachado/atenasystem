@@ -1,7 +1,7 @@
 <?php
-require_once($_SERVER["DOCUMENT_ROOT"]."/Controller/MonitoreController.php");
-require_once($_SERVER["DOCUMENT_ROOT"]."/Controller/RepresentanteController.php");
-require_once($_SERVER["DOCUMENT_ROOT"]."/Controller/ComissaoController.php");
+include_once("MonitoreController.php");
+include_once("RepresentanteController.php");
+include_once("ComissaoController.php");
 
 class LoginController{
     function login($post){

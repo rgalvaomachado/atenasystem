@@ -1,5 +1,5 @@
 <?php
-    require_once($_SERVER["DOCUMENT_ROOT"]."/Model/BD.php");
+    include_once("Database.php");
 
     class Representante extends BD{
         public $nome;
