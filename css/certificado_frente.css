@@ -6,7 +6,7 @@ body{
     border: 10px solid orange;
     height: 480px;
     width: 854px;
-    background-image: url('atena.png');
+    background-image: url('../img/certificado_atena.png');
     background-repeat: no-repeat;
     background-position: center center;
     background-size: 854px 480px;
@@ -38,7 +38,6 @@ body{
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center center;
-    background-image: url('assinatura-docente.png');
 }
 #assinatura-discente {
     height: 80px;
@@ -48,7 +47,6 @@ body{
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center center;
-    background-image: url('assinatura-discente.png');
 }
 #unesp{
     height: 55px;

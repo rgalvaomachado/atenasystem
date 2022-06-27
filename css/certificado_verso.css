@@ -6,7 +6,7 @@ body{
     border: 10px solid orange;
     height: 480px;
     width: 854px;
-    background-image: url('atena.png');
+    background-image: url('../img/certificado_atena.png');
     background-repeat: no-repeat;
     background-position: center center;
     background-size: 854px 480px;

@@ -273,8 +273,12 @@
         }
 
         function certificadoTutore($post){
-            // $id = $post['sala'];
-            header('Location: ../certificado/frente.php');
+            $cod_tutore = $post['cod_tutore'];
+            $data_inicial = $post['data_inicial'];
+            $data_final = $post['data_final'];
+            $cod_docente = $post['cod_docente'];
+            $cod_discente = $post['cod_discente'];
+            header('Location: ../certificado/frente.php?cod_tutore='.$cod_tutore.'&data_inicial='.$data_inicial.'&data_final='.$data_final.'&cod_docente='.$cod_docente.'&cod_discente='.$cod_discente);
         }
     }
 ?>
