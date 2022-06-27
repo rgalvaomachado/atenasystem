@@ -7,12 +7,13 @@
         public $senha;
 
         function criarRepresentante(){
-            $stmt = $this->bd->prepare('INSERT INTO representante (nome, usuario, senha) VALUES(:nome, :usuario, :senha)');
-            $stmt->execute([
+            $criarRepresentante = $this->bd->prepare('INSERT INTO representante (nome, usuario, senha) VALUES(:nome, :usuario, :senha)');
+            $criarRepresentante->execute([
                 ':nome' => $this->nome,
                 ':usuario' => $this->usuario,
                 ':senha' => md5($this->senha)
             ]);
+            return $this->bd->lastInsertId();
         }
 
         function getRepresentantes(){
@@ -29,7 +30,7 @@
             return $getRepresentante->fetch(PDO::FETCH_ASSOC);
         }
 
-        function salvarRepresentante($id){
+        function salvarRepresentante($id){ 
             $stmt = $this->bd->prepare('UPDATE representante SET nome = :nome, usuario = :usuario, senha = :senha WHERE id = :id');
             $stmt->execute([
               ':id'   => $id,

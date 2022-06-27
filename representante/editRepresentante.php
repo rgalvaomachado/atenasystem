@@ -33,7 +33,7 @@
 					$getRepresentante = new RepresentanteController();
 					$representante = $getRepresentante->getRepresentante($_GET['representante']);
 				?>
-				<form action="../Controller/Controller.php" method="post" style="padding-bottom: 1%;">
+				<form action="../Controller/Controller.php" method="post" enctype="multipart/form-data" style="padding-bottom: 1%;">
 					<input type="hidden" name="metodo" value="salvarRepresentante">
 					<input type="hidden" name="id" value="<?= $_GET['representante'] ?>">
 					<div class="row" >
@@ -48,6 +48,15 @@
 						<div class="form-group">
 							<label>Senha</label>
 							<input type="password" class="form-control" name="senha" required>
+						</div>
+						<div class="form-group">
+						<label>Assinatura</label>
+							<input name="assinatura" type="file" class="form-control">
+						</div>
+						<div class="form-group" style="border: 1px solid black;">
+							<label style="color:gray">Assinatura Atual</label>
+							<br>
+							<img id="logo-atena" style="width:150px" src="<?="../assinatura/".$_GET['representante'].".png"?>">
 						</div>
 						<button type="submit" class="btn btn-md btn-warning">Editar</button>
 					</div>

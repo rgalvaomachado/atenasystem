@@ -12,12 +12,15 @@
             return $representante->getRepresentante($id);
         }
 
-        function criarRepresentante($post){
+        function criarRepresentante($post, $files){
             $representante = new Representante();
             $representante->nome = $post['nome'];
             $representante->usuario = $post['usuario'];
             $representante->senha = $post['senha'];
-            $representante->criarRepresentante();
+            $id = $representante->criarRepresentante();
+            if(isset($files)){
+                move_uploaded_file($files['assinatura']['tmp_name'], '../assinatura/'.$id.'.png');
+            }
             header('Location: ../representante/cadRepresentante.php?sucess=true');
         }
 
@@ -26,12 +29,15 @@
             header('Location: ../representante/editRepresentante.php?representante='.$id);
         }
 
-        function salvarRepresentante($post){
+        function salvarRepresentante($post, $files){
             $representante = new Representante();
             $representante->nome = $post['nome'];
             $representante->usuario = $post['usuario'];
             $representante->senha = $post['senha'];
             $representante->salvarRepresentante($post['id']);
+            if(isset($files)){
+                move_uploaded_file($files['assinatura']['tmp_name'], '../assinatura/'.$post['id'].'.png');
+            }
             header('Location: ../representante/editRepresentante.php?sucess=true');
         }
 

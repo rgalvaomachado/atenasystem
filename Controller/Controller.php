@@ -165,7 +165,7 @@
         ///////////////////////////////////////////////////////////////////////////////
         case 'criarRepresentante':
             $RepresentanteController = new RepresentanteController();
-            $RepresentanteController->criarRepresentante($_POST);
+            $RepresentanteController->criarRepresentante($_POST, $_FILES);
             break; 
         case 'buscarRepresentante':
             $RepresentanteController = new RepresentanteController();
@@ -173,7 +173,7 @@
             break; 
         case 'salvarRepresentante':
             $RepresentanteController = new RepresentanteController();
-            $RepresentanteController->salvarRepresentante($_POST);
+            $RepresentanteController->salvarRepresentante($_POST, $_FILES);
             break; 
         case 'excluirRepresentante':
             $RepresentanteController = new RepresentanteController();

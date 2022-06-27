@@ -8,7 +8,7 @@
 		<center>
 			<h1>Cadastro de Representantes</h1>
 			<h4><?= (isset($_GET['sucess']) && $_GET['sucess'] == 'true' ? "Salvo !" : "") ?></h4>	
-			<form action="../Controller/Controller.php" method="post">
+			<form action="../Controller/Controller.php" method="post" enctype="multipart/form-data">
 				<input type="hidden" name="metodo" value="criarRepresentante">
 				<div class="row">
 					<div class="form-group">
@@ -22,6 +22,10 @@
 					<div class="form-group">
 						<label>Senha</label>
 						<input name="senha" type="password" class="form-control" required>
+					</div>
+					<div class="form-group">
+						<label>Assinatura</label>
+						<input name="assinatura" type="file" class="form-control">
 					</div>
 					<button type="submit" class="btn btn-md btn-warning">Cadastrar</button>
 				</div>
