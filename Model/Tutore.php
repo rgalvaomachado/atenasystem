@@ -1,5 +1,5 @@
 <?php
-    include_once("Database.php");
+    include_once('Database.php');
 
     class Tutore extends BD{
         public $nome;

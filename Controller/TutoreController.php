@@ -1,5 +1,5 @@
 <?php
-    include_once("../Model/Tutore.php");
+    include_once('../Model/Tutore.php');
 
     class TutoreController{
         function getTutores(){

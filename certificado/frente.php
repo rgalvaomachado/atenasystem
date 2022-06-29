@@ -9,10 +9,10 @@
 </head>
 <body>
     <?php
-        include_once("../Controller/TutoreController.php");
-        include_once("../Controller/RepresentanteController.php");
-        include_once("../Controller/DisciplinaController.php");
-        include_once("../Controller/UtilsController.php");
+        include_once('../Controller/TutoreController.php');
+        include_once('../Controller/RepresentanteController.php');
+        include_once('../Controller/DisciplinaController.php');
+        include_once('../Controller/UtilsController.php');
         
         $TutoreController = new TutoreController();
         $tutore = $TutoreController->getTutore($_GET['cod_tutore']);

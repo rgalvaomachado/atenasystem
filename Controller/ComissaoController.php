@@ -1,5 +1,5 @@
 <?php
-    include_once("../Model/Comissao.php");
+    include_once('../Model/Comissao.php');
 
     class ComissaoController{
         function getComissoes(){

@@ -10,7 +10,7 @@
 			<form action="../Controller/Controller.php" method="post">
 				<input type="hidden" name="metodo" value="certificadoTutore">
 				<?php
-					include_once("../Controller/TutoreController.php");
+					include_once('../Controller/TutoreController.php');
 					$TutoreController = new TutoreController();
 					$tutores = $TutoreController->getTutores();
 				?>
@@ -32,7 +32,7 @@
 				<input name="data_final" class="form-control" type="date" value="<?= $data_final ?>" required>
 				<br>
 				<?php
-					include_once("../Controller/RepresentanteController.php");
+					include_once('../Controller/RepresentanteController.php');
 					$RepresentanteController = new RepresentanteController();
 					$representantes = $RepresentanteController->getRepresentantes();
 				?>

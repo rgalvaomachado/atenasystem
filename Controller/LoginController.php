@@ -1,7 +1,7 @@
 <?php
-include_once("MonitoreController.php");
-include_once("RepresentanteController.php");
-include_once("ComissaoController.php");
+include_once('MonitoreController.php');
+include_once('RepresentanteController.php');
+include_once('ComissaoController.php');
 
 class LoginController{
     function login($post){

@@ -1,5 +1,5 @@
 <?php
-    include_once("../Model/Disciplina.php");
+    include_once('../Model/Disciplina.php');
 
     class DisciplinaController{
         function getDisciplinas(){

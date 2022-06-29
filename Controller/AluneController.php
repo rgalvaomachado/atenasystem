@@ -1,6 +1,6 @@
 <?php
-    include_once("../Model/Alune.php");
-    include_once("PresencaController.php");
+    include_once('../Model/Alune.php');
+    include_once('PresencaController.php');
     
     class AluneController{
         function getAlunes(){

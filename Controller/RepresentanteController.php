@@ -1,5 +1,5 @@
 <?php
-    include_once("../Model/Representante.php");
+    include_once('../Model/Representante.php');
 
     class RepresentanteController{
         function getRepresentantes(){

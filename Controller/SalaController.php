@@ -1,5 +1,5 @@
 <?php
-    include_once("../Model/Sala.php");
+    include_once('../Model/Sala.php');
 
     class SalaController{
         function getSalas(){
