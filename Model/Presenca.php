@@ -149,6 +149,7 @@
                 WHERE 
                     cod_sala = :cod_sala
                     AND data = :data
+                    AND cod_monitore > 0
             ');
             $verificarPresencaMonitore->execute([
                 ':cod_sala' => isset($this->cod_sala) ? $this->cod_sala : 0,
@@ -165,6 +166,7 @@
                     cod_sala = :cod_sala
                     AND data = :data
                     AND aula = :aula
+                    AND cod_tutore > 0
             ');
             $verificarPresencaTutore->execute([
                 ':cod_sala' => isset($this->cod_sala) ? $this->cod_sala : 0,
