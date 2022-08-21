@@ -1034,6 +1034,13 @@ p.back-link {
 
 
 /* ------------------------------------------------------------------------------------ */
+/* Geral */
+.panel-login{
+  width:70%;
+  padding-bottom: 5%;
+}
+
+/* Desktop */
 @media(min-width: 800px) {
   #logo-hubis{
     position:absolute;
@@ -1052,6 +1059,8 @@ p.back-link {
     padding-bottom: 5%;
   }
 }
+
+/* Mobile */
 @media(max-width: 800px) {
   #logo-hubis{
     width: 100px;

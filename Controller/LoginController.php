@@ -6,7 +6,7 @@ include_once('ComissaoController.php');
 class LoginController{
     function login($post){
         $usuario = $post['usuario'];
-        $senha = md5($post['senha']);
+        $senha = $post['senha'];
         $validado = false;
 
         $RepresentanteController = new RepresentanteController();
@@ -43,9 +43,15 @@ class LoginController{
             session_start();
             $_SESSION['usuario'] =  $usuarioValidado;
             $_SESSION['modo'] = $modoValidado;
-            header('location:../home.php');
+            // header('location:../home.php');
+            echo json_encode([
+                "redirect" => "../home.php"
+            ]);
         }else{
-            header('location:../index.php?error=1');
+            // header('location:../index.php?error=1');
+            echo json_encode([
+                "redirect" => "../index.php?error=1"
+            ]);
         }
     }
 }
