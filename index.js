@@ -1,6 +1,12 @@
-function representante(){
+function cadRepresentante(){
     $(function(){
-        $("#content").load("frontend/representante/index.php"); 
+        $("#content").load("frontend/representante/criar.php");
+    });
+}
+
+function editRepresentante(){
+    $(function(){
+        $("#content").load("frontend/representante/editar.php");
     });
 }
 
@@ -20,13 +26,13 @@ function start(){
         complete: function(response) {
             var response = JSON.parse(response.responseText);
             if (response.access) {
-                $('#login').hide();
-                $('#menu').show();
-                $('#content').show();
+                $(function(){
+                    $("#content0").load("home.php"); 
+                });
             } else {
-                $('#login').show();
-                $('#menu').hide();
-                $('#content').hide();
+                $(function(){
+                    $("#content0").load("login.php"); 
+                });
             }
         }
     });
@@ -65,13 +71,21 @@ function login(){
             var response = JSON.parse(response.responseText);
             console.log(response);
             if(response.access){
-                $('#login').hide();
-                $('#menu').show();
-                $('#content').show();
+                window.location.assign("")
             }else{
                 const alert = document.getElementById("messageAlertLogin");
                 alert.innerHTML = response.message;
             }
         }
     });
+}
+
+function abreMenu(){
+    checkMenu = $('#checkMenu').is(':checked');
+    console.log(checkMenu);
+    if (checkMenu){
+        $('#menu').hide();
+    }else{
+        $('#menu').show();
+    }
 }
