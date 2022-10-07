@@ -1,66 +1,85 @@
+.menu{
+  background-color: #222;
+}
+
+#topMenu{
+  padding: 5px;
+  background-color: #222;
+}
+
+#topMenu a {
+  font-size: 30px;
+  text-decoration: none;
+  color:white;
+}
+
+#topMenu img {
+  float: right;
+  height: 30px;
+}
 .menu a{
-    padding: 10px;
-    display:block;
-    text-decoration:none;
-    text-align:center;
-    background-color:#222;
-    color:#fff;
+  padding: 10px;
+  display:block;
+  text-decoration:none;
+  text-align:center;
+  background-color:#222;
+  color:#fff;
+  white-space: nowrap;
 }
 
 .menu ul li:hover ul{
-visibility: visible;
+  visibility: visible;
 }
 
 .menu ul ul li:hover ul{
-visibility: visible;
+  visibility: visible;
 }
 
 .menu a:hover{
-background-color:orange;
-color:#555;
+  background-color:orange;
+  color:#555;
 }
 
 .menu ul ul li{
-float: none;
+  float: none;
 }
 
 .menu ul ul li a{
-background-color: #999;
+  background-color: #999;
 }
 
 .linha-menu {
-width: 100%;
-height: 3px;
-border-radius: 5px;
-background: #555;
-margin: 4px;
-display: block;
+  width: 100%;
+  height: 3px;
+  border-radius: 5px;
+  background: #555;
+  margin: 4px;
+  display: block;
 }
 
 ul {
-list-style: none;
-padding: 0;
-margin: 0;
+  list-style: none;
 }
 
 #botaoMenu{
-margin-left: 93%;
-margin-right: 2%;
+  margin-left: 93%;
+  margin-right: 2%;
 }
 
 #checkMenu, #menu{
-display: none;
+  display: none;
 }
 
 #content{
-text-align: center;
+  text-align: center;
+}
+
+#barraSuperior{
+  background-color: orange;
+  padding: 5px;
 }
 
 @media (min-width: 800px){
-.menu ul{
-    list-style:none;
-    position:relative;
-  }
   .menu ul li{
     width: 150px;
     float:left;
@@ -76,12 +95,14 @@ text-align: center;
     display: none;
   }
   .menu{
-    height: 50px; 
     display: flex!important;
     justify-content: space-between;
   }
   #logo-atena{
     width: 25%;
+  }
+  #barraSuperior{
+    display: none;
   }
 }
 

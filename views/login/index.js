@@ -11,12 +11,14 @@ function login(){
         },
         complete: function(response) {
             var response = JSON.parse(response.responseText);
-            console.log(response);
             if(response.access){
                 window.location.assign("")
             }else{
                 const alert = document.getElementById("messageAlertLogin");
                 alert.innerHTML = response.message;
+                setTimeout(function(){
+                    alert.innerHTML = "";
+                }, 2000);
             }
         }
     });

@@ -20,3 +20,4 @@
 <input class='input' id="assinatura" name="assinatura" type="file" class="form-control">
 <br>
 <input class='button' type="button" onclick="criar()" value="Novo">
+<script src="views/representante/index.js"></script>

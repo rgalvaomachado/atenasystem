@@ -9,7 +9,6 @@ function buscar(){
         },
         complete: function(response) {
             var response = JSON.parse(response.responseText);
-            console.log(response);
             if(response.access){
                 $('#detalhes').show();
                 $('#nome').val(response.representante.nome);
@@ -36,12 +35,22 @@ function criar(){
         },
         complete: function(response) {
             var response = JSON.parse(response.responseText);
-            let alert = document.getElementById("messageAlertRepresentante");
-            console.log(alert);
+            const alert = document.getElementById("messageAlertRepresentante");
             alert.innerHTML = response.message;
-            setTimeout(function(){
-                alert.innerHTML = "";
-            }, 3000);
+            if(response.access){
+                alert.style.color = "green";
+                setTimeout(function(){
+                    alert.innerHTML = "";
+                    $(function(){
+                        $("#content").load("views/representante/criar.php");
+                    });
+                }, 1000);
+            }else{
+                alert.style.color = "red";
+                setTimeout(function(){
+                    alert.innerHTML = "";
+                }, 2000);
+            }
         }
     });
 }
@@ -67,15 +76,36 @@ function editar(){
             var response = JSON.parse(response.responseText);
             const alert = document.getElementById("messageAlertRepresentante");
             alert.innerHTML = response.message;
-            setTimeout(function(){
-                alert.innerHTML = "";
-            }, 3000);
             if(response.access){
-                abrirEditar();
-            } 
+                alert.style.color = "green";
+                setTimeout(function(){
+                    alert.innerHTML = "";
+                    $.ajax({
+                        method: "POST",
+                        url: "src/Controller/Controller.php",
+                        data: {
+                            metodo: "getRepresentantes",
+                        },
+                        complete: function(response) {
+                            var representantes = JSON.parse(response.responseText);
+                            representantes.map(({id,nome}) => {
+                                $('#representante').append(`<option value='${id}'>${nome}</option>`);
+                            });
+                           
+                        }
+                    });
+                    $(function(){
+                        $("#content").load("views/representante/editar.php");
+                    });
+                }, 1000);
+            }else{
+                alert.style.color = "red";
+                setTimeout(function(){
+                    alert.innerHTML = "";
+                }, 2000);
+            }
         }
     });
-    
 }
 
 function excluir(){

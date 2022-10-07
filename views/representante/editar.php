@@ -30,3 +30,4 @@
 	<input class='button' type="button" onclick="editar()" value="Editar">
 	<input class='button' type="button" onclick="excluir()" value="Excluir">
 </div>
+<script src="views/representante/index.js"></script>
