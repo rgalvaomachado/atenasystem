@@ -1,6 +1,21 @@
-function abrirCriar(){
-    $(function(){
-        $("#content2").load("frontend/representante/criar.php");
+function buscar(){
+    var id = $("#representante").val();
+    $.ajax({
+        method: "POST",
+        url: "src/Controller/Controller.php",
+        data: {
+            metodo: "getRepresentante",
+            id: id,
+        },
+        complete: function(response) {
+            var response = JSON.parse(response.responseText);
+            console.log(response);
+            if(response.access){
+                $('#detalhes').show();
+                $('#nome').val(response.representante.nome);
+                $('#usuario').val(response.representante.usuario);
+            }
+        }
     });
 }
 
@@ -11,7 +26,7 @@ function criar(){
     var assinatura = $("#assinatura").val();
     $.ajax({
         method: "POST",
-        url: "backend/Controller/Controller.php",
+        url: "src/Controller/Controller.php",
         data: {
             metodo: "criarRepresentante",
             nome: nome,
@@ -31,47 +46,6 @@ function criar(){
     });
 }
 
-function abrirEditar(){
-    $.ajax({
-        method: "POST",
-        url: "backend/Controller/Controller.php",
-        data: {
-            metodo: "getRepresentantes",
-        },
-        complete: function(response) {
-            var representantes = JSON.parse(response.responseText);
-            representantes.map(({id,nome}) => {
-                $('#representante').append(`<option value='${id}'>${nome}</option>`);
-            });
-           
-        }
-    });
-    $(function(){
-        $("#content2").load("frontend/representante/editar.php");
-    });
-}
-
-function buscar(){
-    var id = $("#representante").val();
-    $.ajax({
-        method: "POST",
-        url: "backend/Controller/Controller.php",
-        data: {
-            metodo: "getRepresentante",
-            id: id,
-        },
-        complete: function(response) {
-            var response = JSON.parse(response.responseText);
-            console.log(response);
-            if(response.access){
-                $('#detalhes').show();
-                $('#nome').val(response.representante.nome);
-                $('#usuario').val(response.representante.usuario);
-            }
-        }
-    });
-}
-
 function editar(){
     var id = $("#representante").val();
     var nome = $("#nome").val();
@@ -80,7 +54,7 @@ function editar(){
     var assinatura = $("#assinatura").val();
     $.ajax({
         method: "POST",
-        url: "backend/Controller/Controller.php",
+        url: "src/Controller/Controller.php",
         data: {
             metodo: "salvarRepresentante",
             id: id,
@@ -109,7 +83,7 @@ function excluir(){
         var id = $("#representante").val();
         $.ajax({
             method: "POST",
-            url: "backend/Controller/Controller.php",
+            url: "src/Controller/Controller.php",
             data: {
                 metodo: "excluirRepresentante",
                 id: id,

@@ -1,0 +1,95 @@
+.menu a{
+    padding: 10px;
+    display:block;
+    text-decoration:none;
+    text-align:center;
+    background-color:#222;
+    color:#fff;
+}
+
+.menu ul li:hover ul{
+visibility: visible;
+}
+
+.menu ul ul li:hover ul{
+visibility: visible;
+}
+
+.menu a:hover{
+background-color:orange;
+color:#555;
+}
+
+.menu ul ul li{
+float: none;
+}
+
+.menu ul ul li a{
+background-color: #999;
+}
+
+.linha-menu {
+width: 100%;
+height: 3px;
+border-radius: 5px;
+background: #555;
+margin: 4px;
+display: block;
+}
+
+ul {
+list-style: none;
+padding: 0;
+margin: 0;
+}
+
+#botaoMenu{
+margin-left: 93%;
+margin-right: 2%;
+}
+
+#checkMenu, #menu{
+display: none;
+}
+
+#content{
+text-align: center;
+}
+
+@media (min-width: 800px){
+.menu ul{
+    list-style:none;
+    position:relative;
+  }
+  .menu ul li{
+    width: 150px;
+    float:left;
+  }
+  .menu ul ul{
+    position: absolute;
+    visibility:hidden;
+  }
+  #botaoMenu{
+    display: none;
+  }
+  #botaoMenu{
+    display: none;
+  }
+  .menu{
+    height: 50px; 
+    display: flex!important;
+    justify-content: space-between;
+  }
+  #logo-atena{
+    width: 25%;
+  }
+}
+
+@media (max-width: 800px){
+  #logo-atena{
+    width: 100%;
+  }
+  .botaoMenu{
+    display: block;
+  }
+}
