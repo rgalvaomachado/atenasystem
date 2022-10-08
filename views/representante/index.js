@@ -35,7 +35,7 @@ function criar(){
         },
         complete: function(response) {
             var response = JSON.parse(response.responseText);
-            const alert = document.getElementById("messageAlertRepresentante");
+            const alert = document.getElementById("messageAlert");
             alert.innerHTML = response.message;
             if(response.access){
                 alert.style.color = "green";
@@ -120,7 +120,7 @@ function excluir(){
             },
             complete: function(response) {
                 var response = JSON.parse(response.responseText);
-                const alert = document.getElementById("messageAlertRepresentante");
+                const alert = document.getElementById("messageAlert");
                 alert.innerHTML = response.message;
                 setTimeout(function(){
                     alert.innerHTML = "";
