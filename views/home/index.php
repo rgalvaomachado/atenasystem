@@ -24,8 +24,8 @@
         </li>
         <li><a href="#"><em class="fa fa-address-book" aria-hidden="true"></em>&nbsp;Comissão</a>
             <ul>
-                <li><a href="#" onclick="cadRepresentante()">Cadastro</a></li>
-                <li><a href="#" onclick="editRepresentante()">Editar</a></li>
+                <li><a href="#" onclick="cadComissao()">Cadastro</a></li>
+                <li><a href="#" onclick="editComissao()">Editar</a></li>
             </ul>
         </li>
         <li><a href="#"><em class="fa fa-user-circle-o" aria-hidden="true"></em>&nbsp;Monitore</a>

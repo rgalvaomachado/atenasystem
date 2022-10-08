@@ -1,4 +1,3 @@
-
 <label class="title">Cadastro de Representantes</label>
 <br>
 <label class="message_alert" id="messageAlertRepresentante"></label>
@@ -19,5 +18,5 @@
 <br>
 <input class='input' id="assinatura" name="assinatura" type="file" class="form-control">
 <br>
-<input class='button' type="button" onclick="criar()" value="Novo">
+<input class='button' type="button" onclick="criar()" value="Cadastrar">
 <script src="views/representante/index.js"></script>

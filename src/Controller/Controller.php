@@ -28,21 +28,25 @@
             $AluneController->excluirAlune($_POST);
             break;
         ///////////////////////////////////////////////////////////////////////////////
+        case 'getComissoes':
+            $ComissaoController = new ComissaoController();
+            echo $ComissaoController->getComissoes($_POST);
+            break; 
+        case 'getComissao':
+            $ComissaoController = new ComissaoController();
+            echo $ComissaoController->getComissao($_POST);
+            break;
         case 'criarComissao':
             $ComissaoController = new ComissaoController();
-            $ComissaoController->criarComissao($_POST);
-            break;
-        case 'buscarComissao':
-            $ComissaoController = new ComissaoController();
-            $ComissaoController->buscarComissao($_POST);
+            echo $ComissaoController->criarComissao($_POST);
             break;
         case 'salvarComissao':
             $ComissaoController = new ComissaoController();
-            $ComissaoController->salvarComissao($_POST);
+            echo $ComissaoController->salvarComissao($_POST);
             break;
         case 'excluirComissao':
             $ComissaoController = new ComissaoController();
-            $ComissaoController->excluirComissao($_POST);
+            echo $ComissaoController->excluirComissao($_POST);
             break;
         ///////////////////////////////////////////////////////////////////////////////
         case 'criarDisciplina':

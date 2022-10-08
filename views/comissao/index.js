@@ -1,18 +1,18 @@
 function buscar(){
-    var id = $("#representante").val();
+    var id = $("#comissao").val();
     $.ajax({
         method: "POST",
         url: "src/Controller/Controller.php",
         data: {
-            metodo: "getRepresentante",
+            metodo: "getComissao",
             id: id,
         },
         complete: function(response) {
             var response = JSON.parse(response.responseText);
             if(response.access){
                 $('#detalhes').show();
-                $('#nome').val(response.representante.nome);
-                $('#usuario').val(response.representante.usuario);
+                $('#nome').val(response.comissao.nome);
+                $('#usuario').val(response.comissao.usuario);
             }
         }
     });
@@ -27,11 +27,10 @@ function criar(){
         method: "POST",
         url: "src/Controller/Controller.php",
         data: {
-            metodo: "criarRepresentante",
+            metodo: "criarComissao",
             nome: nome,
             usuario: usuario,
             senha: senha,
-            assinatura: assinatura,
         },
         complete: function(response) {
             var response = JSON.parse(response.responseText);
@@ -42,7 +41,7 @@ function criar(){
                 setTimeout(function(){
                     alert.innerHTML = "";
                     $(function(){
-                        $("#content").load("views/representante/criar.php");
+                        $("#content").load("views/comissao/criar.php");
                     });
                 }, 1000);
             }else{
@@ -56,21 +55,19 @@ function criar(){
 }
 
 function editar(){
-    var id = $("#representante").val();
+    var id = $("#comissao").val();
     var nome = $("#nome").val();
     var usuario = $("#usuario").val();
     var senha = $("#senha").val();
-    var assinatura = $("#assinatura").val();
     $.ajax({
         method: "POST",
         url: "src/Controller/Controller.php",
         data: {
-            metodo: "salvarRepresentante",
+            metodo: "salvarComissao",
             id: id,
             nome: nome,
             usuario: usuario,
             senha: senha,
-            assinatura: assinatura,
         },
         complete: function(response) {
             var response = JSON.parse(response.responseText);
@@ -84,12 +81,12 @@ function editar(){
                         method: "POST",
                         url: "src/Controller/Controller.php",
                         data: {
-                            metodo: "getRepresentantes",
+                            metodo: "getComissoes",
                         },
                         complete: function(response) {
-                            var representantes = JSON.parse(response.responseText);
-                            representantes.map(({id,nome}) => {
-                                $('#representante').append(`<option value='${id}'>${nome}</option>`);
+                            var comissao = JSON.parse(response.responseText);
+                            comissao.map(({id,nome}) => {
+                                $('#comissao').append(`<option value='${id}'>${nome}</option>`);
                             });
                            
                         }
@@ -110,21 +107,18 @@ function editar(){
 
 function excluir(){
     if (confirm("Voce realmente deseja excluir?")){
-        var id = $("#representante").val();
+        var id = $("#comissao").val();
         $.ajax({
             method: "POST",
             url: "src/Controller/Controller.php",
             data: {
-                metodo: "excluirRepresentante",
+                metodo: "excluirComissao",
                 id: id,
             },
             complete: function(response) {
                 var response = JSON.parse(response.responseText);
-                const alert = document.getElementById("messageAlertRepresentante");
+                const alert = document.getElementById("messageAlert");
                 alert.innerHTML = response.message;
-                setTimeout(function(){
-                    alert.innerHTML = "";
-                }, 3000);
                 if(response.access){
                     alert.style.color = "green";
                     setTimeout(function(){
@@ -133,12 +127,12 @@ function excluir(){
                             method: "POST",
                             url: "src/Controller/Controller.php",
                             data: {
-                                metodo: "getRepresentantes",
+                                metodo: "getComissoes",
                             },
                             complete: function(response) {
-                                var representantes = JSON.parse(response.responseText);
-                                representantes.map(({id,nome}) => {
-                                    $('#representante').append(`<option value='${id}'>${nome}</option>`);
+                                var comissao = JSON.parse(response.responseText);
+                                comissao.map(({id,nome}) => {
+                                    $('#comissao').append(`<option value='${id}'>${nome}</option>`);
                                 });
                                
                             }

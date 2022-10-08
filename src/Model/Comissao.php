@@ -13,16 +13,17 @@
                 ':usuario' => $this->usuario,
                 ':senha' => md5($this->senha)
             ]);
+            return $this->bd->lastInsertId();
         }
 
         function getComissoes(){
-            $getComissoes =  $this->bd->prepare('SELECT id,nome,usuario,senha FROM comissao ORDER BY nome ASC');
+            $getComissoes =  $this->bd->prepare('SELECT id, nome, usuario, senha FROM comissao ORDER BY nome ASC');
             $getComissoes->execute();
             return $getComissoes->fetchAll(PDO::FETCH_ASSOC);
         }
 
         function getComissao($id){
-            $getComissao =  $this->bd->prepare('SELECT nome,usuario,senha FROM comissao WHERE id = :id ORDER BY nome ASC');
+            $getComissao =  $this->bd->prepare('SELECT id, nome, usuario, senha FROM comissao WHERE id = :id ORDER BY nome ASC');
             $getComissao->execute([
                 ':id' => $id,
             ]);
@@ -30,20 +31,22 @@
         }
 
         function salvarComissao($id){
-            $stmt = $this->bd->prepare('UPDATE comissao SET nome = :nome, usuario = :usuario, senha = :senha WHERE id = :id');
-            $stmt->execute([
+            $salvarRepresentante = $this->bd->prepare('UPDATE comissao SET nome = :nome, usuario = :usuario, senha = :senha WHERE id = :id');
+            $salvarRepresentante->execute([
               ':id'   => $id,
               ':nome' => $this->nome,
               ':usuario' => $this->usuario,
               ':senha' => md5($this->senha)
             ]);
+            return $salvarRepresentante->rowCount();
         }
 
         function excluir(){
-            $stmt = $this->bd->prepare('DELETE FROM comissao where id = :id');
-            $stmt->execute([
+            $excluir = $this->bd->prepare('DELETE FROM comissao where id = :id');
+            $excluir->execute([
               ':id' => $this->id,
             ]);
+            return $excluir->rowCount();
         }
     }
 ?>

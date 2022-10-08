@@ -4,42 +4,90 @@
     class ComissaoController{
         function getComissoes(){
             $comissoes = new Comissao();
-            return $comissoes->getComissoes();
+            return json_encode($comissoes->getComissoes());
         }
 
-        function getComissao($id){
-            $comissao = new Comissao();
-            return $comissao->getComissao($id);
+        function getComissao($post){
+            $id = $post['id'];
+            $comissao = (new Comissao())->getComissao($id);
+            if($comissao["id"] > 0){
+                return json_encode([
+                    "access" => true,
+                    "comissao" => $comissao,
+                ]);
+            } else {
+                return json_encode([
+                    "access" => false,
+                    "message" => "Usuario não encontrado"
+                ]);
+            }
         }
 
         function criarComissao($post){
-            $comissao = new Comissao();
-            $comissao->nome = $post['nome'];
-            $comissao->usuario = $post['usuario'];
-            $comissao->senha = $post['senha'];
-            $comissao->criarComissao();
-            header('Location: ../comissao/cadComissao.php?sucess=true');
-        }
-
-        function buscarComissao($post){
-            $id = $post['comissao'];
-            header('Location: ../comissao/editComissao.php?comissao='.$id);
+            if (isset($post['nome'])
+                && $post['nome'] != ""
+                && isset($post['usuario'])
+                && $post['usuario'] != ""
+                && isset($post['senha'])
+                && $post['senha'] != ""
+            ){
+                $comissao = new Comissao();
+                $comissao->nome = $post['nome'];
+                $comissao->usuario = $post['usuario'];
+                $comissao->senha = $post['senha'];
+                $id = $comissao->criarComissao();
+                return json_encode([
+                    "access" => true,
+                    "message" => "Cadastrado com sucesso"
+                ]);
+            } else {
+                return json_encode([
+                    "access" => false,
+                    "message" => "Por favor ensira nome, usuario e senha"
+                ]);
+            }
         }
 
         function salvarComissao($post){
-            $comissao = new Comissao();
-            $comissao->nome = $post['nome'];
-            $comissao->usuario = $post['usuario'];
-            $comissao->senha = $post['senha'];
-            $comissao->salvarComissao($post['id']);
-            header('Location: ../comissao/editComissao.php?sucess=true');
+            if (isset($post['nome'])
+                && $post['nome'] != ""
+                && isset($post['usuario'])
+                && $post['usuario'] != ""
+                && isset($post['senha'])
+                && $post['senha'] != ""
+            ){
+                $comissao = new Comissao();
+                $comissao->nome = $post['nome'];
+                $comissao->usuario = $post['usuario'];
+                $comissao->senha = $post['senha'];
+                $comissao->salvarComissao($post['id']);
+                return json_encode([
+                    "access" => true,
+                    "message" => "Editado com sucesso"
+                ]);
+            } else {
+                return json_encode([
+                    "access" => false,
+                    "message" => "Por favor ensira nome, usuario e senha"
+                ]);
+            }
         }
 
         function excluirComissao($post){
             $comissao = new Comissao();
             $comissao->id = $post['id'];
-            $comissao->excluir();
-            header('Location: ../comissao/editComissao.php?delete=true');
+            $excluido = $comissao->excluir();
+            if ($excluido){
+                return json_encode([
+                    "access" => true,
+                    "message" => "Excluido com sucesso"
+                ]);
+            } else {
+                return json_encode([
+                    "access" => false,
+                    "message" => "Não excluido"
+                ]);
+            }  
         }
     }
 ?>

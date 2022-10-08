@@ -1,6 +1,6 @@
 <label class="title">Edição Representantes</label>
 <br>
-<label class="message_alert" id="messageAlertRepresentante"></label>
+<label class="message_alert" id="messageAlert"></label>
 <br>
 <select class='input' id="representante" name="representante"></select>
 </br>
