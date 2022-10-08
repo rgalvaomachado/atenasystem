@@ -76,20 +76,6 @@ function editar(){
                 alert.style.color = "green";
                 setTimeout(function(){
                     alert.innerHTML = "";
-                    $.ajax({
-                        method: "POST",
-                        url: "src/Controller/Controller.php",
-                        data: {
-                            metodo: "getMonitores",
-                        },
-                        complete: function(response) {
-                            var comissao = JSON.parse(response.responseText);
-                            comissao.map(({id,nome}) => {
-                                $('#monitore').append(`<option value='${id}'>${nome}</option>`);
-                            });
-                           
-                        }
-                    });
                     $(function(){
                         $("#content").load("views/monitore/editar.php");
                     });
@@ -122,20 +108,6 @@ function excluir(){
                     alert.style.color = "green";
                     setTimeout(function(){
                         alert.innerHTML = "";
-                        $.ajax({
-                            method: "POST",
-                            url: "src/Controller/Controller.php",
-                            data: {
-                                metodo: "getMonitores",
-                            },
-                            complete: function(response) {
-                                var comissao = JSON.parse(response.responseText);
-                                comissao.map(({id,nome}) => {
-                                    $('#monitore').append(`<option value='${id}'>${nome}</option>`);
-                                });
-                               
-                            }
-                        });
                         $(function(){
                             $("#content").load("views/monitore/editar.php");
                         });
@@ -149,4 +121,21 @@ function excluir(){
             }
         });
     }
+}
+
+function buscarMonitores(){
+    $.ajax({
+        method: "POST",
+        url: "src/Controller/Controller.php",
+        data: {
+            metodo: "getMonitores",
+        },
+        complete: function(response) {
+            var monitores = JSON.parse(response.responseText);
+            monitores.map(({id,nome}) => {
+                $('#monitore').append(`<option value='${id}'>${nome}</option>`);
+            });
+           
+        }
+    });
 }

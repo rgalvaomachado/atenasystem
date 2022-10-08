@@ -21,3 +21,4 @@
 	<input class='button' type="button" onclick="excluir()" value="Excluir">
 </div>
 <script src="views/comissao/index.js"></script>
+<script>buscarComissoes();</script>

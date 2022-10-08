@@ -76,22 +76,8 @@ function editar(){
                 alert.style.color = "green";
                 setTimeout(function(){
                     alert.innerHTML = "";
-                    $.ajax({
-                        method: "POST",
-                        url: "src/Controller/Controller.php",
-                        data: {
-                            metodo: "getComissoes",
-                        },
-                        complete: function(response) {
-                            var comissao = JSON.parse(response.responseText);
-                            comissao.map(({id,nome}) => {
-                                $('#comissao').append(`<option value='${id}'>${nome}</option>`);
-                            });
-                           
-                        }
-                    });
                     $(function(){
-                        $("#content").load("views/representante/editar.php");
+                        $("#content").load("views/comissao/editar.php");
                     });
                 }, 1000);
             }else{
@@ -122,22 +108,8 @@ function excluir(){
                     alert.style.color = "green";
                     setTimeout(function(){
                         alert.innerHTML = "";
-                        $.ajax({
-                            method: "POST",
-                            url: "src/Controller/Controller.php",
-                            data: {
-                                metodo: "getComissoes",
-                            },
-                            complete: function(response) {
-                                var comissao = JSON.parse(response.responseText);
-                                comissao.map(({id,nome}) => {
-                                    $('#comissao').append(`<option value='${id}'>${nome}</option>`);
-                                });
-                               
-                            }
-                        });
                         $(function(){
-                            $("#content").load("views/representante/editar.php");
+                            $("#content").load("views/comissao/editar.php");
                         });
                     }, 1000);
                 }else{
@@ -149,4 +121,21 @@ function excluir(){
             }
         });
     }
+}
+
+function buscarComissoes(){
+    $.ajax({
+        method: "POST",
+        url: "src/Controller/Controller.php",
+        data: {
+            metodo: "getComissoes",
+        },
+        complete: function(response) {
+            var representantes = JSON.parse(response.responseText);
+            representantes.map(({id,nome}) => {
+                $('#comissao').append(`<option value='${id}'>${nome}</option>`);
+            });
+        
+        }
+    });
 }

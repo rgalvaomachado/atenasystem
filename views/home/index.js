@@ -29,20 +29,6 @@ function cadComissao(){
 }
 
 function editComissao(){
-    $.ajax({
-        method: "POST",
-        url: "src/Controller/Controller.php",
-        data: {
-            metodo: "getComissoes",
-        },
-        complete: function(response) {
-            var representantes = JSON.parse(response.responseText);
-            representantes.map(({id,nome}) => {
-                $('#comissao').append(`<option value='${id}'>${nome}</option>`);
-            });
-           
-        }
-    });
     $(function(){
         $("#content").load("views/comissao/editar.php");
     });
@@ -57,20 +43,6 @@ function cadMonitore(){
 }
 
 function editMonitore(){
-    $.ajax({
-        method: "POST",
-        url: "src/Controller/Controller.php",
-        data: {
-            metodo: "getMonitores",
-        },
-        complete: function(response) {
-            var representantes = JSON.parse(response.responseText);
-            representantes.map(({id,nome}) => {
-                $('#monitore').append(`<option value='${id}'>${nome}</option>`);
-            });
-           
-        }
-    });
     $(function(){
         $("#content").load("views/monitore/editar.php");
     });

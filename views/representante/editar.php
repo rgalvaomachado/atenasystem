@@ -4,7 +4,6 @@
 <br>
 <label>Selecione</label>
 </br>
-<script>buscarRepresentantes()</script>
 <select class='input' id="representante" name="representante" onchange="buscar()"></select>
 </br>
 <div id="detalhes">
@@ -32,3 +31,4 @@
 	<input class='button' type="button" onclick="excluir()" value="Excluir">
 </div>
 <script src="views/representante/index.js"></script>
+<script>buscarRepresentantes()</script>

@@ -80,20 +80,6 @@ function editar(){
                 alert.style.color = "green";
                 setTimeout(function(){
                     alert.innerHTML = "";
-                    $.ajax({
-                        method: "POST",
-                        url: "src/Controller/Controller.php",
-                        data: {
-                            metodo: "getRepresentantes",
-                        },
-                        complete: function(response) {
-                            var representantes = JSON.parse(response.responseText);
-                            representantes.map(({id,nome}) => {
-                                $('#representante').append(`<option value='${id}'>${nome}</option>`);
-                            });
-                           
-                        }
-                    });
                     $(function(){
                         $("#content").load("views/representante/editar.php");
                     });
@@ -129,20 +115,6 @@ function excluir(){
                     alert.style.color = "green";
                     setTimeout(function(){
                         alert.innerHTML = "";
-                        $.ajax({
-                            method: "POST",
-                            url: "src/Controller/Controller.php",
-                            data: {
-                                metodo: "getRepresentantes",
-                            },
-                            complete: function(response) {
-                                var representantes = JSON.parse(response.responseText);
-                                representantes.map(({id,nome}) => {
-                                    $('#representante').append(`<option value='${id}'>${nome}</option>`);
-                                });
-                               
-                            }
-                        });
                         $(function(){
                             $("#content").load("views/representante/editar.php");
                         });
