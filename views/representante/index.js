@@ -157,3 +157,20 @@ function excluir(){
         });
     }
 }
+
+function buscarRepresentantes(){
+    $.ajax({
+        method: "POST",
+        url: "src/Controller/Controller.php",
+        data: {
+            metodo: "getRepresentantes",
+        },
+        complete: function(response) {
+            var representantes = JSON.parse(response.responseText);
+            representantes.map(({id,nome}) => {
+                $('#representante').append(`<option value='${id}'>${nome}</option>`);
+            });
+        
+        }
+    });
+}

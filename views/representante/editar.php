@@ -4,6 +4,7 @@
 <br>
 <label>Selecione</label>
 </br>
+<script>buscarRepresentantes()</script>
 <select class='input' id="representante" name="representante" onchange="buscar()"></select>
 </br>
 <div id="detalhes">
