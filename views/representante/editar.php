@@ -2,10 +2,10 @@
 <br>
 <label class="message_alert" id="messageAlert"></label>
 <br>
-<select class='input' id="representante" name="representante"></select>
+<label>Selecione</label>
 </br>
-<input class='button' type="button" onclick="buscar()" value="Buscar">
-
+<select class='input' id="representante" name="representante" onchange="buscar()"></select>
+</br>
 <div id="detalhes">
 	<label>Nome</label>
 	</br>

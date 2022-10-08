@@ -81,19 +81,23 @@
         ///////////////////////////////////////////////////////////////////////////////
         case 'criarMonitore':
             $MonitoreController = new MonitoreController();
-            $MonitoreController->criarMonitore($_POST);
+            echo $MonitoreController->criarMonitore($_POST);
             break;
-        case 'buscarMonitore':
+        case 'getMonitores':
             $MonitoreController = new MonitoreController();
-            $MonitoreController->buscarMonitore($_POST);
+            echo $MonitoreController->getMonitores($_POST);
+            break; 
+        case 'getMonitore':
+            $MonitoreController = new MonitoreController();
+            echo $MonitoreController->getMonitore($_POST);
             break;
         case 'salvarMonitore':
             $MonitoreController = new MonitoreController();
-            $MonitoreController->salvarMonitore($_POST);
+            echo $MonitoreController->salvarMonitore($_POST);
             break;
         case 'excluirMonitore':
             $MonitoreController = new MonitoreController();
-            $MonitoreController->excluirMonitore($_POST);
+            echo $MonitoreController->excluirMonitore($_POST);
             break;
         ///////////////////////////////////////////////////////////////////////////////
         case 'buscarSalaAluneJustifica':

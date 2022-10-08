@@ -30,9 +30,9 @@
         </li>
         <li><a href="#"><em class="fa fa-user-circle-o" aria-hidden="true"></em>&nbsp;Monitore</a>
             <ul>
-                <li><a href="#" onclick="cadRepresentante()">Cadastro</a></li>
-                <li><a href="#" onclick="editRepresentante()">Editar</a></li>
-                <li><a href="#" onclick="editRepresentante()">Editar Presença</a></li>
+                <li><a href="#" onclick="cadMonitore()">Cadastro</a></li>
+                <li><a href="#" onclick="editMonitore()">Editar</a></li>
+                <li><a href="#" onclick="editPresencaMonitore()">Editar Presença</a></li>
             </ul>
         </li>
         <li><a href="#"><em class="fa fa-user-o" aria-hidden="true"></em>&nbsp;Tutore</a>

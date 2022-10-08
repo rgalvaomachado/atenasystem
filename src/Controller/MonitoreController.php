@@ -4,41 +4,90 @@
     class MonitoreController{
         function getMonitores(){
             $monitores = new Monitore();
-            return $monitores->getMonitores();
+            return json_encode($monitores->getMonitores());
         }
 
-        function getMonitore($id){
-            $monitore = new Monitore();
-            return $monitore->getMonitore($id);
+        function getMonitore($post){
+            $id = $post['id'];
+            $monitore = (new Monitore())->getMonitore($id);
+            if($monitore["id"] > 0){
+                return json_encode([
+                    "access" => true,
+                    "monitore" => $monitore,
+                ]);
+            } else {
+                return json_encode([
+                    "access" => false,
+                    "message" => "Usuario não encontrado"
+                ]);
+            }
         }
 
-        function buscarMonitore($post){
-            $id = $post['monitore'];
-            header('Location: ../monitore/editMonitore.php?monitore='.$id);
-        }
         function criarMonitore($post){
-            $monitore = new Monitore();
-            $monitore->nome = $post['nome'];
-            $monitore->usuario = $post['usuario'];
-            $monitore->senha = $post['senha'];
-            $monitore->criarMonitore();
-            header('Location: ../monitore/cadMonitore.php?sucess=true');
+            if (isset($post['nome'])
+                && $post['nome'] != ""
+                && isset($post['usuario'])
+                && $post['usuario'] != ""
+                && isset($post['senha'])
+                && $post['senha'] != ""
+            ){
+                $monitore = new Monitore();
+                $monitore->nome = $post['nome'];
+                $monitore->usuario = $post['usuario'];
+                $monitore->senha = $post['senha'];
+                $id = $monitore->criarMonitore();
+                return json_encode([
+                    "access" => true,
+                    "message" => "Cadastrado com sucesso"
+                ]);
+            } else {
+                return json_encode([
+                    "access" => false,
+                    "message" => "Por favor ensira nome, usuario e senha"
+                ]);
+            }
         }
 
         function salvarMonitore($post){
-            $monitore = new Monitore();
-            $monitore->nome = $post['nome'];
-            $monitore->usuario = $post['usuario'];
-            $monitore->senha = $post['senha'];
-            $monitore->salvarMonitore($post['id']);
-            header('Location: ../monitore/editMonitore.php?sucess=true');
+            if (isset($post['nome'])
+                && $post['nome'] != ""
+                && isset($post['usuario'])
+                && $post['usuario'] != ""
+                && isset($post['senha'])
+                && $post['senha'] != ""
+            ){
+                $comissao = new Monitore();
+                $comissao->nome = $post['nome'];
+                $comissao->usuario = $post['usuario'];
+                $comissao->senha = $post['senha'];
+                $comissao->salvarMonitore($post['id']);
+                return json_encode([
+                    "access" => true,
+                    "message" => "Editado com sucesso"
+                ]);
+            } else {
+                return json_encode([
+                    "access" => false,
+                    "message" => "Por favor ensira nome, usuario e senha"
+                ]);
+            }
         }
 
         function excluirMonitore($post){
             $monitore = new Monitore();
             $monitore->id = $post['id'];
-            $monitore->excluir();
-            header('Location: ../monitore/editMonitore.php?delete=true');
+            $excluido = $monitore->excluir();
+            if ($excluido){
+                return json_encode([
+                    "access" => true,
+                    "message" => "Excluido com sucesso"
+                ]);
+            } else {
+                return json_encode([
+                    "access" => false,
+                    "message" => "Não excluido"
+                ]);
+            }  
         }
     }
 ?>

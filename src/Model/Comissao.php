@@ -7,8 +7,8 @@
         public $senha;
 
         function criarComissao(){
-            $stmt = $this->bd->prepare('INSERT INTO comissao (nome, usuario, senha) VALUES(:nome, :usuario, :senha)');
-            $stmt->execute([
+            $criar = $this->bd->prepare('INSERT INTO comissao (nome, usuario, senha) VALUES(:nome, :usuario, :senha)');
+            $criar->execute([
                 ':nome' => $this->nome,
                 ':usuario' => $this->usuario,
                 ':senha' => md5($this->senha)
@@ -31,14 +31,14 @@
         }
 
         function salvarComissao($id){
-            $salvarRepresentante = $this->bd->prepare('UPDATE comissao SET nome = :nome, usuario = :usuario, senha = :senha WHERE id = :id');
-            $salvarRepresentante->execute([
+            $salvar = $this->bd->prepare('UPDATE comissao SET nome = :nome, usuario = :usuario, senha = :senha WHERE id = :id');
+            $salvar->execute([
               ':id'   => $id,
               ':nome' => $this->nome,
               ':usuario' => $this->usuario,
               ':senha' => md5($this->senha)
             ]);
-            return $salvarRepresentante->rowCount();
+            return $salvar->rowCount();
         }
 
         function excluir(){

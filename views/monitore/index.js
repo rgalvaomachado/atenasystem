@@ -1,23 +1,3 @@
-function buscar(){
-    var id = $("#comissao").val();
-    $.ajax({
-        method: "POST",
-        url: "src/Controller/Controller.php",
-        data: {
-            metodo: "getComissao",
-            id: id,
-        },
-        complete: function(response) {
-            var response = JSON.parse(response.responseText);
-            if(response.access){
-                $('#detalhes').show();
-                $('#nome').val(response.comissao.nome);
-                $('#usuario').val(response.comissao.usuario);
-            }
-        }
-    });
-}
-
 function criar(){
     var nome = $("#nome").val();
     var usuario = $("#usuario").val();
@@ -26,7 +6,7 @@ function criar(){
         method: "POST",
         url: "src/Controller/Controller.php",
         data: {
-            metodo: "criarComissao",
+            metodo: "criarMonitore",
             nome: nome,
             usuario: usuario,
             senha: senha,
@@ -40,7 +20,7 @@ function criar(){
                 setTimeout(function(){
                     alert.innerHTML = "";
                     $(function(){
-                        $("#content").load("views/comissao/criar.php");
+                        $("#content").load("views/monitore/criar.php");
                     });
                 }, 1000);
             }else{
@@ -53,8 +33,28 @@ function criar(){
     });
 }
 
+function buscar(){
+    var id = $("#monitore").val();
+    $.ajax({
+        method: "POST",
+        url: "src/Controller/Controller.php",
+        data: {
+            metodo: "getMonitore",
+            id: id,
+        },
+        complete: function(response) {
+            var response = JSON.parse(response.responseText);
+            if(response.access){
+                $('#detalhes').show();
+                $('#nome').val(response.monitore.nome);
+                $('#usuario').val(response.monitore.usuario);
+            }
+        }
+    });
+}
+
 function editar(){
-    var id = $("#comissao").val();
+    var id = $("#monitore").val();
     var nome = $("#nome").val();
     var usuario = $("#usuario").val();
     var senha = $("#senha").val();
@@ -62,7 +62,7 @@ function editar(){
         method: "POST",
         url: "src/Controller/Controller.php",
         data: {
-            metodo: "salvarComissao",
+            metodo: "salvarMonitore",
             id: id,
             nome: nome,
             usuario: usuario,
@@ -80,18 +80,18 @@ function editar(){
                         method: "POST",
                         url: "src/Controller/Controller.php",
                         data: {
-                            metodo: "getComissoes",
+                            metodo: "getMonitores",
                         },
                         complete: function(response) {
                             var comissao = JSON.parse(response.responseText);
                             comissao.map(({id,nome}) => {
-                                $('#comissao').append(`<option value='${id}'>${nome}</option>`);
+                                $('#monitore').append(`<option value='${id}'>${nome}</option>`);
                             });
                            
                         }
                     });
                     $(function(){
-                        $("#content").load("views/representante/editar.php");
+                        $("#content").load("views/monitore/editar.php");
                     });
                 }, 1000);
             }else{
@@ -106,12 +106,12 @@ function editar(){
 
 function excluir(){
     if (confirm("Voce realmente deseja excluir?")){
-        var id = $("#comissao").val();
+        var id = $("#monitore").val();
         $.ajax({
             method: "POST",
             url: "src/Controller/Controller.php",
             data: {
-                metodo: "excluirComissao",
+                metodo: "excluirMonitore",
                 id: id,
             },
             complete: function(response) {
@@ -126,18 +126,18 @@ function excluir(){
                             method: "POST",
                             url: "src/Controller/Controller.php",
                             data: {
-                                metodo: "getComissoes",
+                                metodo: "getMonitores",
                             },
                             complete: function(response) {
                                 var comissao = JSON.parse(response.responseText);
                                 comissao.map(({id,nome}) => {
-                                    $('#comissao').append(`<option value='${id}'>${nome}</option>`);
+                                    $('#monitore').append(`<option value='${id}'>${nome}</option>`);
                                 });
                                
                             }
                         });
                         $(function(){
-                            $("#content").load("views/representante/editar.php");
+                            $("#content").load("views/monitore/editar.php");
                         });
                     }, 1000);
                 }else{
