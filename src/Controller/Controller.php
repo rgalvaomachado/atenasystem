@@ -122,11 +122,11 @@
             break;
         case 'buscarPresencaMonitore':
             $PresencaController = new PresencaController();
-            $PresencaController->buscarPresencaMonitore($_POST);
+            echo $PresencaController->buscarPresencaMonitore($_POST);
             break;
         case 'editarPresencaMonitore':
             $PresencaController = new PresencaController();
-            $PresencaController->editarPresencaMonitore($_POST);
+            echo $PresencaController->editarPresencaMonitore($_POST);
             break;
         case 'buscarPresencaTutore':
             $PresencaController = new PresencaController();
@@ -207,6 +207,10 @@
         case 'buscarSala':
             $SalaController = new SalaController();
             $SalaController->buscarSala($_POST);
+            break;
+        case 'getSalas':
+            $SalaController = new SalaController();
+            echo $SalaController->getSalas($_POST);
             break;
         case 'salvarSala':
             $SalaController = new SalaController();

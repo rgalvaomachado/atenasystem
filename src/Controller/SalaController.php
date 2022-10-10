@@ -4,7 +4,7 @@
     class SalaController{
         function getSalas(){
             $salas = new Sala();
-            return $salas->getSalas();
+            return json_encode($salas->getSalas());
         }
 
         function getSala($id){

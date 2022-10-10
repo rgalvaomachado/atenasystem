@@ -48,22 +48,63 @@
         }
 
         function buscarPresencaMonitore($post){
-            $presenca = new Presenca();
-            $presenca->cod_monitore = $post['monitore'];
-            $presenca->cod_sala = $post['sala'];
-            $presenca->data = $post['data'];
-            $presente = $presenca->verificarPresenca();
-            header('Location: ../monitore/editMonitorePresenca.php?monitore='.$post['monitore'].'&sala='.$post['sala'].'&data='.$post['data'].'&presente='.$presente[0]['presente']);
+            if (isset($post['monitore'])
+                && $post['monitore'] != ""
+                && isset($post['sala'])
+                && $post['sala'] != ""
+                && isset($post['data'])
+                && $post['data'] != ""
+            ){
+                $presenca = new Presenca();
+                $presenca->cod_monitore = $post['monitore'];
+                $presenca->cod_sala = $post['sala'];
+                $presenca->data = $post['data'];
+                $presente = $presenca->verificarPresenca();
+                if (!empty($presente)) {
+                    return json_encode([
+                        "access" => true,
+                        "presente" => $presente[0]["presente"],
+                    ]);
+                } else {
+                    return json_encode([
+                        "access" => false,
+                        "message" => "Presença não encontrada"
+                    ]);
+                }
+            } else {
+                return json_encode([
+                    "access" => false,
+                    "message" => "Por favor, ensira todos os dados"
+                ]);
+            }
         }
 
         function editarPresencaMonitore($post){
-            $presenca = new Presenca();
-            $presenca->cod_monitore = $post['monitore'];
-            $presenca->cod_sala = $post['sala'];
-            $presenca->data =  $post['data'];
-            $presenca->presente =  $post['presente'];
-            $presenca->justificarPresenca();
-            header('Location: ../monitore/editMonitorePresenca.php?sucess=true');
+            if (isset($post['monitore'])
+                && $post['monitore'] != ""
+                && isset($post['sala'])
+                && $post['sala'] != ""
+                && isset($post['data'])
+                && $post['data'] != ""
+                && isset($post['presente'])
+                && $post['presente'] != ""
+            ){
+                $presenca = new Presenca();
+                $presenca->cod_monitore = $post['monitore'];
+                $presenca->cod_sala = $post['sala'];
+                $presenca->data =  $post['data'];
+                $presenca->presente =  $post['presente'];
+                $presenca->justificarPresenca();
+                return json_encode([
+                    "access" => true,
+                    "message" => "Presença editada com sucesso"
+                ]);
+            } else {
+                return json_encode([
+                    "access" => false,
+                    "message" => "Por favor, ensira todos os dados"
+                ]);
+            }
         }
 
         function buscarPresencaTutore($post){

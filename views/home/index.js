@@ -49,21 +49,7 @@ function editMonitore(){
     menu();
 }
 
-function editPresencaMonitore(){   
-    $.ajax({
-        method: "POST",
-        url: "src/Controller/Controller.php",
-        data: {
-            metodo: "getComissoes",
-        },
-        complete: function(response) {
-            var representantes = JSON.parse(response.responseText);
-            representantes.map(({id,nome}) => {
-                $('#comissao').append(`<option value='${id}'>${nome}</option>`);
-            });
-           
-        }
-    });
+function editPresencaMonitore(){
     $(function(){
         $("#content").load("views/monitore/presenca.php");
     });

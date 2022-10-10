@@ -19,7 +19,7 @@
         }
 
         function getSala($id){
-            $getSala =  $this->bd->prepare('SELECT nome FROM sala WHERE id = :id ');
+            $getSala =  $this->bd->prepare('SELECT id, nome FROM sala WHERE id = :id ');
             $getSala->execute([
                 ':id' => $id,
             ]);
