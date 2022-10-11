@@ -6,10 +6,11 @@
         public $disciplina;
 
         function criar(){
-            $stmt = $this->bd->prepare('INSERT INTO sala (nome) VALUES(:nome)');
-            $stmt->execute([
+            $criar = $this->bd->prepare('INSERT INTO sala (nome) VALUES(:nome)');
+            $criar->execute([
                 ':nome' => $this->nome
             ]);
+            return $this->bd->lastInsertId();
         }
 
         function getSalas(){
@@ -27,18 +28,20 @@
         }
 
         function salvar($id){
-            $stmt = $this->bd->prepare('UPDATE sala SET nome = :nome WHERE id = :id');
-            $stmt->execute([
+            $salvar = $this->bd->prepare('UPDATE sala SET nome = :nome WHERE id = :id');
+            $salvar->execute([
               ':id'   => $id,
               ':nome' => $this->nome,
             ]);
+            return $salvar->rowCount();
         }
 
         function excluir(){
-            $stmt = $this->bd->prepare('DELETE FROM sala where id = :id');
-            $stmt->execute([
+            $excluir = $this->bd->prepare('DELETE FROM sala where id = :id');
+            $excluir->execute([
               ':id' => $this->id,
             ]);
+            return $excluir->rowCount();
         }
     }
 ?>
