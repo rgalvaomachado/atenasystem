@@ -37,29 +37,29 @@
         </li>
         <li><a href="#"><em class="fa fa-user-o" aria-hidden="true"></em>&nbsp;Tutore</a>
             <ul>
-                <li><a href="#" onclick="cadRepresentante()">Cadastro</a></li>
-                <li><a href="#" onclick="editRepresentante()">Editar</a></li>
-                <li><a href="#" onclick="editRepresentante()">Editar Presença</a></li>
-                <li><a href="#" onclick="editRepresentante()">Justificar Presença</a></li>
+                <li><a href="#" onclick="cadTutore()">Cadastro</a></li>
+                <li><a href="#" onclick="editTutore()">Editar</a></li>
+                <li><a href="#" onclick="editPresencaTutore()">Editar Presença</a></li>
+                <li><a href="#" onclick="justificarTutore()">Justificar Presença</a></li>
             </ul>
         </li>
         <li><a href="#"><em class="fa fa-graduation-cap" aria-hidden="true"></em>&nbsp;Alune</a>
             <ul>
-                <li><a href="#" onclick="cadRepresentante()">Cadastro</a></li>
-                <li><a href="#" onclick="editRepresentante()">Editar</a></li>
-                <li><a href="#" onclick="editRepresentante()">Justificar Presença</a></li>
+                <li><a href="#" onclick="cadAlune()">Cadastro</a></li>
+                <li><a href="#" onclick="editAlune()">Editar</a></li>
+                <li><a href="#" onclick="justificarAlune()">Justificar Presença</a></li>
             </ul>
         </li>
         <li><a href="#"><em class="fa fa-newspaper-o" aria-hidden="true"></em>&nbsp;Disciplina</a>
             <ul>
-                <li><a href="#" onclick="cadRepresentante()">Cadastro</a></li>
-                <li><a href="#" onclick="editRepresentante()">Editar</a></li>
+                <li><a href="#" onclick="cadDisciplina()">Cadastro</a></li>
+                <li><a href="#" onclick="editDisciplina()">Editar</a></li>
             </ul>
         </li>
         <li><a href="#"><em class="fa fa-university" aria-hidden="true"></em>&nbsp;Sala</a>
             <ul>
-                <li><a href="#" onclick="cadRepresentante()">Cadastro</a></li>
-                <li><a href="#" onclick="editRepresentante()">Editar</a></li>
+                <li><a href="#" onclick="cadSala()">Cadastro</a></li>
+                <li><a href="#" onclick="editSala()">Editar</a></li>
             </ul>
         </li>
         <li><a href="#"><em class="fa fa-calendar"></em>&nbsp;Presença</a>

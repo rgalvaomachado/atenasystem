@@ -20,20 +20,20 @@
             return $getAlunes->fetchAll(PDO::FETCH_ASSOC);
         }
 
-        function getAlunesSala(){
-            $getAlunesSala =  $this->bd->prepare('SELECT id, nome FROM alune WHERE cod_sala = :cod_sala ORDER BY nome ASC');
-            $getAlunesSala->execute([
-                ':cod_sala' => $this->sala
-            ]);
-            return $getAlunes->fetchAll(PDO::FETCH_ASSOC);
-        }
-
         function getAlune($id){
             $getAlune =  $this->bd->prepare('SELECT id, nome, cod_sala FROM alune WHERE id = :id ');
             $getAlune->execute([
                 ':id' => $id,
             ]);
             return $getAlune->fetch(PDO::FETCH_ASSOC);
+        }
+
+        function getAlunesSala(){
+            $getAlunesSala =  $this->bd->prepare('SELECT id, nome FROM alune WHERE cod_sala = :cod_sala ORDER BY nome ASC');
+            $getAlunesSala->execute([
+                ':cod_sala' => $this->sala
+            ]);
+            return $getAlunesSala->fetchAll(PDO::FETCH_ASSOC);
         }
 
         function salvar($id){

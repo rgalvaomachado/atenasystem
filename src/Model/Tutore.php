@@ -5,7 +5,7 @@
         public $nome;
         public $disciplina;
 
-        function criarTutore(){
+        function criar(){
             $criar = $this->bd->prepare('INSERT INTO tutore (nome, cod_disciplina) VALUES(:nome, :cod_disciplina)');
             $criar->execute([
                 ':nome' => $this->nome,

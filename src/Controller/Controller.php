@@ -13,19 +13,27 @@
     switch($metodo){
         case 'criarAlune':
             $AluneController = new AluneController();
-            $AluneController->criarAlune($_POST);
+            echo $AluneController->criarAlune($_POST);
             break;
-        case 'buscarAlune':
+        case 'getAlunes':
             $AluneController = new AluneController();
-            $AluneController->buscarAlune($_POST);
+            echo $AluneController->getAlunes($_POST);
+            break;
+        case 'getAlune':
+            $AluneController = new AluneController();
+            echo $AluneController->getAlune($_POST);
+            break;
+        case 'getAlunesSala':
+            $AluneController = new AluneController();
+            echo $AluneController->getAlunesSala($_POST);
             break;
         case 'salvarAlune':
             $AluneController = new AluneController();
-            $AluneController->salvarAlune($_POST);
+            echo $AluneController->salvarAlune($_POST);
             break;
         case 'excluirAlune':
             $AluneController = new AluneController();
-            $AluneController->excluirAlune($_POST);
+            echo $AluneController->excluirAlune($_POST);
             break;
         ///////////////////////////////////////////////////////////////////////////////
         case 'getComissoes':
@@ -51,19 +59,23 @@
         ///////////////////////////////////////////////////////////////////////////////
         case 'criarDisciplina':
             $DisciplinaController = new DisciplinaController();
-            $DisciplinaController->criarDisciplina($_POST);
+            echo $DisciplinaController->criarDisciplina($_POST);
             break;
-        case 'buscarDisciplina':
+        case 'getDisciplina':
             $DisciplinaController = new DisciplinaController();
-            $DisciplinaController->buscarDisciplina($_POST);
+            echo $DisciplinaController->getDisciplina($_POST);
+            break;
+        case 'getDisciplinas':
+            $DisciplinaController = new DisciplinaController();
+            echo $DisciplinaController->getDisciplinas($_POST);
             break;
         case 'salvarDisciplina':
             $DisciplinaController = new DisciplinaController();
-            $DisciplinaController->salvarDisciplina($_POST);
+            echo $DisciplinaController->salvarDisciplina($_POST);
             break;
         case 'excluirDisciplina':
             $DisciplinaController = new DisciplinaController();
-            $DisciplinaController->excluirDisciplina($_POST);
+            echo $DisciplinaController->excluirDisciplina($_POST);
             break;
         ///////////////////////////////////////////////////////////////////////////////
         case 'verificaLogin':
@@ -100,25 +112,21 @@
             echo $MonitoreController->excluirMonitore($_POST);
             break;
         ///////////////////////////////////////////////////////////////////////////////
-        case 'buscarSalaAluneJustifica':
-            $PresencaController = new PresencaController();
-            $PresencaController->buscarSalaAluneJustifica($_POST);
-            break;
         case 'buscarPresencaAlune':
             $PresencaController = new PresencaController();
-            $PresencaController->buscarPresencaAlune($_POST);
+            echo $PresencaController->buscarPresencaAlune($_POST);
             break;
         case 'justificarPresencaAlune':
             $PresencaController = new PresencaController();
-            $PresencaController->justificarPresencaAlune($_POST);
+            echo $PresencaController->justificarPresencaAlune($_POST);
             break;
         case 'buscarPresencaReuniao':
             $PresencaController = new PresencaController();
-            $PresencaController->buscarPresencaReuniao($_POST);
+            echo $PresencaController->buscarPresencaReuniao($_POST);
             break;
         case 'justificarPresencaReuniao':
             $PresencaController = new PresencaController();
-            $PresencaController->justificarPresencaReuniao($_POST);
+            echo $PresencaController->justificarPresencaReuniao($_POST);
             break;
         case 'buscarPresencaMonitore':
             $PresencaController = new PresencaController();
@@ -130,11 +138,11 @@
             break;
         case 'buscarPresencaTutore':
             $PresencaController = new PresencaController();
-            $PresencaController->buscarPresencaTutore($_POST);
+            echo $PresencaController->buscarPresencaTutore($_POST);
             break;
         case 'editarPresencaTutore':
             $PresencaController = new PresencaController();
-            $PresencaController->editarPresencaTutore($_POST);
+            echo $PresencaController->editarPresencaTutore($_POST);
             break;
         case 'buscarSalaAlune':
             $PresencaController = new PresencaController();
@@ -202,11 +210,11 @@
         ///////////////////////////////////////////////////////////////////////////////
         case 'criarSala':
             $SalaController = new SalaController();
-            $SalaController->criarSala($_POST);
+            echo $SalaController->criarSala($_POST);
             break;
-        case 'buscarSala':
+        case 'getSala':
             $SalaController = new SalaController();
-            $SalaController->buscarSala($_POST);
+            echo $SalaController->getSala($_POST);
             break;
         case 'getSalas':
             $SalaController = new SalaController();
@@ -214,28 +222,32 @@
             break;
         case 'salvarSala':
             $SalaController = new SalaController();
-            $SalaController->salvarSala($_POST);
+            echo $SalaController->salvarSala($_POST);
             break;
         case 'excluirSala':
             $SalaController = new SalaController();
-            $SalaController->excluirSala($_POST);
+            echo $SalaController->excluirSala($_POST);
             break;
         ///////////////////////////////////////////////////////////////////////////////
         case 'criarTutore':
             $TutoreController = new TutoreController();
-            $TutoreController->criarTutore($_POST);
+            echo $TutoreController->criarTutore($_POST);
             break;
-        case 'buscarTutore':
+        case 'getTutore':
             $TutoreController = new TutoreController();
-            $TutoreController->buscarTutore($_POST);
+            echo $TutoreController->getTutore($_POST);
+            break;
+        case 'getTutores':
+            $TutoreController = new TutoreController();
+            echo $TutoreController->getTutores($_POST);
             break;
         case 'salvarTutore':
             $TutoreController = new TutoreController();
-            $TutoreController->salvarTutore($_POST);
+            echo $TutoreController->salvarTutore($_POST);
             break;
         case 'excluirTutore':
             $TutoreController = new TutoreController();
-            $TutoreController->excluirTutore($_POST);
+            echo$TutoreController->excluirTutore($_POST);
             break;
         ///////////////////////////////////////////////////////////////////////////////
         default:

@@ -4,47 +4,123 @@
     include_once('TutoreController.php');
 
     class PresencaController{
-        function buscarSalaAluneJustifica($post){
-            $id = $post['sala'];
-            header('Location: ../alune/justificarAlunePresenca.php?sala='.$id);
-        }
 
         function buscarPresencaAlune($post){
-            $presenca = new Presenca();
-            $presenca->cod_alune = $post['alune'];
-            $presenca->cod_sala = $post['sala'];
-            $presenca->aula = $post['aula'];
-            $presenca->data = $post['data'];
-            $presente = $presenca->verificarPresenca();
-            header('Location: ../alune/justificarAlunePresenca.php?sala='.$post['sala'].'&alune='.$post['alune'].'&data='.$post['data'].'&aula='.$post['aula'].'&presente='.$presente[0]['presente']);
+            if (isset($post['alune'])
+                && $post['alune'] != ""
+                && isset($post['sala'])
+                && $post['sala'] != ""
+                && isset($post['data'])
+                && $post['data'] != ""
+                && isset($post['aula'])
+                && $post['aula'] != ""
+            ){
+                $presenca = new Presenca();
+                $presenca->cod_alune = $post['alune'];
+                $presenca->cod_sala = $post['sala'];
+                $presenca->data = $post['data'];
+                $presenca->aula = $post['aula'];
+                $presente = $presenca->verificarPresenca();
+                if (!empty($presente)) {
+                    return json_encode([
+                        "access" => true,
+                        "presente" => $presente[0]["presente"],
+                    ]);
+                } else {
+                    return json_encode([
+                        "access" => false,
+                        "message" => "Presença não encontrada"
+                    ]);
+                }
+            } else {
+                return json_encode([
+                    "access" => false,
+                    "message" => "Por favor, ensira todos os dados"
+                ]);
+            }
         }
 
         function justificarPresencaAlune($post){
-            $presenca = new Presenca();
-            $presenca->cod_alune = $post['alune'];
-            $presenca->cod_sala = $post['sala'];
-            $presenca->aula = $post['aula'];
-            $presenca->data =  $post['data'];
-            $presenca->presente =  $post['presente'];
-            $presenca->justificarPresenca();
-            header('Location: ../alune/justificarAlunePresenca.php');
+            if (isset($post['alune'])
+                && $post['alune'] != ""
+                && isset($post['sala'])
+                && $post['sala'] != ""
+                && isset($post['aula'])
+                && $post['aula'] != ""
+                && isset($post['data'])
+                && $post['data'] != ""
+                && isset($post['presente'])
+                && $post['presente'] != ""
+            ){
+                $presenca = new Presenca();
+                $presenca->cod_alune = $post['alune'];
+                $presenca->cod_sala = $post['sala'];
+                $presenca->aula = $post['aula'];
+                $presenca->data =  $post['data'];
+                $presenca->presente =  $post['presente'];
+                $presenca->justificarPresenca();
+                return json_encode([
+                    "access" => true,
+                    "message" => "Presença justificada com sucesso"
+                ]);
+            } else {
+                return json_encode([
+                    "access" => false,
+                    "message" => "Por favor, ensira todos os dados"
+                ]);
+            }
         }
 
         function buscarPresencaReuniao($post){
-            $presenca = new Presenca();
-            $presenca->cod_tutore = $post['tutore'];
-            $presenca->data = $post['data'];
-            $presente = $presenca->verificarPresenca();
-            header('Location: ../tutore/justificarPresencaReuniao.php?tutore='.$post['tutore'].'&data='.$post['data'].'&presente='.$presente[0]['presente']);
+            if (isset($post['tutore'])
+                && $post['tutore'] != ""
+                && isset($post['data'])
+                && $post['data'] != ""
+            ){
+                $presenca = new Presenca();
+                $presenca->cod_tutore = $post['tutore'];
+                $presenca->data = $post['data'];
+                $presente = $presenca->verificarPresenca();
+                if (!empty($presente)) {
+                    return json_encode([
+                        "access" => true,
+                        "presente" => $presente[0]["presente"],
+                    ]);
+                } else {
+                    return json_encode([
+                        "access" => false,
+                        "message" => "Presença não encontrada"
+                    ]);
+                }
+            } else {
+                return json_encode([
+                    "access" => false,
+                    "message" => "Por favor, ensira todos os dados"
+                ]);
+            }
         }
 
         function justificarPresencaReuniao($post){
-            $presenca = new Presenca();
-            $presenca->cod_tutore = $post['tutore'];
-            $presenca->data =  $post['data'];
-            $presenca->presente =  $post['presente'];
-            $presenca->justificarPresenca();
-            header('Location: ../tutore/justificarPresencaReuniao.php?sucess=true');
+            if (isset($post['tutore'])
+                && $post['tutore'] != ""
+                && isset($post['data'])
+                && $post['data'] != ""
+            ){
+                $presenca = new Presenca();
+                $presenca->cod_tutore = $post['tutore'];
+                $presenca->data =  $post['data'];
+                $presenca->presente =  $post['presente'];
+                $presenca->justificarPresenca();
+                return json_encode([
+                    "access" => true,
+                    "message" => "Presença justificada com sucesso"
+                ]);
+            } else {
+                return json_encode([
+                    "access" => false,
+                    "message" => "Por favor, ensira todos os dados"
+                ]);
+            }
         }
 
         function buscarPresencaMonitore($post){
@@ -108,24 +184,69 @@
         }
 
         function buscarPresencaTutore($post){
-            $presenca = new Presenca();
-            $presenca->cod_tutore = $post['tutore'];
-            $presenca->cod_sala = $post['sala'];
-            $presenca->aula = $post['aula'];
-            $presenca->data = $post['data'];
-            $presente = $presenca->verificarPresenca();
-            header('Location: ../tutore/editTutorePresenca.php?tutore='.$post['tutore'].'&sala='.$post['sala'].'&aula='.$post['aula'].'&data='.$post['data'].'&presente='.$presente[0]['presente']);
+            if (isset($post['tutore'])
+                && $post['tutore'] != ""
+                && isset($post['sala'])
+                && $post['sala'] != ""
+                && isset($post['aula'])
+                && $post['aula'] != ""
+                && isset($post['data'])
+                && $post['data'] != ""
+            ){
+                $presenca = new Presenca();
+                $presenca->cod_tutore = $post['tutore'];
+                $presenca->cod_sala = $post['sala'];
+                $presenca->aula = $post['aula'];
+                $presenca->data = $post['data'];
+                $presente = $presenca->verificarPresenca();
+                if (!empty($presente)) {
+                    return json_encode([
+                        "access" => true,
+                        "presente" => $presente[0]["presente"],
+                    ]);
+                } else {
+                    return json_encode([
+                        "access" => false,
+                        "message" => "Presença não encontrada"
+                    ]);
+                }
+            } else {
+                return json_encode([
+                    "access" => false,
+                    "message" => "Por favor, ensira todos os dados"
+                ]);
+            }
         }
 
         function editarPresencaTutore($post){
-            $presenca = new Presenca();
-            $presenca->cod_tutore = $post['tutore'];
-            $presenca->cod_sala = $post['sala'];
-            $presenca->data =  $post['data'];
-            $presenca->aula = $post['aula'];
-            $presenca->presente =  $post['presente'];
-            $presenca->justificarPresenca();
-            header('Location: ../tutore/editTutorePresenca.php?sucess=true');
+            if (isset($post['tutore'])
+                && $post['tutore'] != ""
+                && isset($post['sala'])
+                && $post['sala'] != ""
+                && isset($post['aula'])
+                && $post['aula'] != ""
+                && isset($post['data'])
+                && $post['data'] != ""
+                && isset($post['presente'])
+                && $post['presente'] != ""
+            ){
+                $presenca = new Presenca();
+                $presenca->cod_tutore = $post['tutore'];
+                $presenca->cod_sala = $post['sala'];
+                $presenca->aula = $post['aula'];
+                $presenca->data =  $post['data'];
+                $presenca->presente =  $post['presente'];
+                $presenca->justificarPresenca();
+                return json_encode([
+                    "access" => true,
+                    "message" => "Presença editada com sucesso"
+                ]);
+            } else {
+                return json_encode([
+                    "access" => false,
+                    "message" => "Por favor, ensira todos os dados"
+                ]);
+            }
         }
 
         function buscarSalaAlune($post){

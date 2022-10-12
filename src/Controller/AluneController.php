@@ -5,48 +5,106 @@
     class AluneController{
         function getAlunes(){
             $alunes = new Alune();
-            return $alunes->getAlunes();
+            return json_encode($alunes->getAlunes());
+
         }
 
-        function getAlune($id){
-            $alune = new Alune();
-            return $alune->getAlune($id);
+        function getAlune($post){
+            $id = $post['id'];
+            $alune = (new Alune())->getAlune($id);
+            if($alune["id"] > 0){
+                return json_encode([
+                    "access" => true,
+                    "alune" => $alune,
+                ]);
+            } else {
+                return json_encode([
+                    "access" => false,
+                    "message" => "Usuario não encontrado"
+                ]);
+            }
         }
 
-        function getAlunesSala($sala){
-            $alunes = new Alune();
-            $alunes->sala = $sala;
-            return $alunes->getAlunesSala();
+        function getAlunesSala($post){
+            if (isset($post['sala'])
+                && $post['sala'] != ""
+            ){
+                $alunes = new Alune();
+                $alunes->sala = $post['sala'];
+                $getAlunesSala = $alunes->getAlunesSala();
+                return json_encode([
+                    "access" => true,
+                    "alunes" => $getAlunesSala,
+                ]);
+            } else {
+                return json_encode([
+                    "access" => false,
+                    "message" => "Por favor ensira nome, usuario e senha"
+                ]);
+            }
         }
 
         function criarAlune($post){
-            $alune = new Alune();
-            $alune->nome = $post['nome'];
-            $alune->sala = $post['sala'];
-            $alune->criar();
-            header('Location: ../alune/cadAlune.php?sucess=true');
-        }
-
-        function buscarAlune($post){
-            $id = $post['alune'];
-            header('Location: ../alune/editAlune.php?alune='.$id);
+            if (isset($post['nome'])
+                && $post['nome'] != ""
+                && isset($post['sala'])
+                && $post['sala'] != ""
+            ){
+                $alune = new Alune();
+                $alune->nome = $post['nome'];
+                $alune->sala = $post['sala'];
+                $id = $alune->criar();
+                return json_encode([
+                    "access" => true,
+                    "message" => "Cadastrado com sucesso"
+                ]);
+            } else {
+                return json_encode([
+                    "access" => false,
+                    "message" => "Por favor ensira nome, usuario e senha"
+                ]);
+            }
         }
 
         function salvarAlune($post){
-            $alune = new Alune();
-            $alune->nome = $post['nome'];
-            $alune->sala = $post['sala'];
-            $alune->salvar($post['id']);
-            header('Location: ../alune/editAlune.php?sucess=true');
+            if (isset($post['nome'])
+                && $post['nome'] != ""
+                && isset($post['sala'])
+                && $post['sala'] != ""
+            ){
+                $alune = new Alune();
+                $alune->nome = $post['nome'];
+                $alune->sala = $post['sala'];
+                $alune->salvar($post['id']);
+                return json_encode([
+                    "access" => true,
+                    "message" => "Editado com sucesso"
+                ]);
+            } else {
+                return json_encode([
+                    "access" => false,
+                    "message" => "Por favor ensira nome, usuario e senha"
+                ]);
+            }
         }
 
         function excluirAlune($post){
-            $PresencaController = new PresencaController();
-            $PresencaController->deletaPresencaAlune($post['id']);
             $alune = new Alune();
             $alune->id = $post['id'];
-            $alune->excluir();
-            header('Location: ../alune/editAlune.php?delete=true');
+            $excluido = $alune->excluir();
+            if ($excluido){
+                $presenca = new PresencaController();
+                $presenca->deletaPresencaAlune($post['id']);
+                return json_encode([
+                    "access" => true,
+                    "message" => "Excluido com sucesso"
+                ]);
+            } else {
+                return json_encode([
+                    "access" => false,
+                    "message" => "Não excluido"
+                ]);
+            } 
         }
     }
 ?>

@@ -6,7 +6,7 @@
         public $usuario;
         public $senha;
 
-        function criarComissao(){
+        function criar(){
             $criar = $this->bd->prepare('INSERT INTO comissao (nome, usuario, senha) VALUES(:nome, :usuario, :senha)');
             $criar->execute([
                 ':nome' => $this->nome,
@@ -30,7 +30,7 @@
             return $getComissao->fetch(PDO::FETCH_ASSOC);
         }
 
-        function salvarComissao($id){
+        function salvar($id){
             $salvar = $this->bd->prepare('UPDATE comissao SET nome = :nome, usuario = :usuario, senha = :senha WHERE id = :id');
             $salvar->execute([
               ':id'   => $id,

@@ -35,7 +35,7 @@
                 $comissao->nome = $post['nome'];
                 $comissao->usuario = $post['usuario'];
                 $comissao->senha = $post['senha'];
-                $id = $comissao->criarComissao();
+                $id = $comissao->criar();
                 return json_encode([
                     "access" => true,
                     "message" => "Cadastrado com sucesso"
@@ -60,7 +60,7 @@
                 $comissao->nome = $post['nome'];
                 $comissao->usuario = $post['usuario'];
                 $comissao->senha = $post['senha'];
-                $comissao->salvarComissao($post['id']);
+                $comissao->salvar($post['id']);
                 return json_encode([
                     "access" => true,
                     "message" => "Editado com sucesso"

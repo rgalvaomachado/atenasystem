@@ -1,4 +1,4 @@
-<label class="title">Edição Comissão</label>
+<label class="title">Editar Comissão</label>
 <br>
 <label class="message_alert" id="messageAlert"></label>
 <br>

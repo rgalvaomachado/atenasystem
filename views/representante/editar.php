@@ -1,4 +1,4 @@
-<label class="title">Edição Representantes</label>
+<label class="title">Editar Representantes</label>
 <br>
 <label class="message_alert" id="messageAlert"></label>
 <br>

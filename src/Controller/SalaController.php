@@ -7,35 +7,75 @@
             return json_encode($salas->getSalas());
         }
 
-        function getSala($id){
-            $sala = new Sala();
-            return $sala->getSala($id);
+        function getSala($post){
+            $id = $post['id'];
+            $sala = (new Sala())->getSala($id);
+            if($sala["id"] > 0){
+                return json_encode([
+                    "access" => true,
+                    "sala" => $sala,
+                ]);
+            } else {
+                return json_encode([
+                    "access" => false,
+                    "message" => "Usuario não encontrado"
+                ]);
+            }
         }
 
         function criarSala($post){
-            $sala = new Sala();
-            $sala->nome = $post['nome'];
-            $sala->criar();
-            header('Location: ../sala/cadSala.php?sucess=true');
-        }
-
-        function buscarSala($post){
-            $id = $post['sala'];
-            header('Location: ../sala/editSala.php?sala='.$id);
+            if (isset($post['nome'])
+                && $post['nome'] != ""
+            ){
+                $sala = new Sala();
+                $sala->nome = $post['nome'];
+                $id = $sala->criar();
+                return json_encode([
+                    "access" => true,
+                    "message" => "Cadastrado com sucesso"
+                ]);
+            } else {
+                return json_encode([
+                    "access" => false,
+                    "message" => "Por favor ensira nome, usuario e senha"
+                ]);
+            }
         }
 
         function salvarSala($post){
-            $sala = new Sala();
-            $sala->nome = $post['nome'];
-            $sala->salvar($post['id']);
-            header('Location: ../sala/editSala.php?sucess=true');
+            if (isset($post['nome'])
+                && $post['nome'] != ""
+            ){
+                $sala = new Sala();
+                $sala->nome = $post['nome'];
+                $sala->salvar($post['id']);
+                return json_encode([
+                    "access" => true,
+                    "message" => "Editado com sucesso"
+                ]);
+            } else {
+                return json_encode([
+                    "access" => false,
+                    "message" => "Por favor ensira nome, usuario e senha"
+                ]);
+            }
         }
 
         function excluirSala($post){
             $sala = new Sala();
             $sala->id = $post['id'];
-            $sala->excluir();
-            header('Location: ../sala/editSala.php?delete=true');
+            $excluido = $sala->excluir();
+            if ($excluido){
+                return json_encode([
+                    "access" => true,
+                    "message" => "Excluido com sucesso"
+                ]);
+            } else {
+                return json_encode([
+                    "access" => false,
+                    "message" => "Não excluido"
+                ]);
+            }  
         }
     }
 ?>

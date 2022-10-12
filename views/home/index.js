@@ -56,6 +56,83 @@ function editPresencaMonitore(){
     menu();
 }
 
+function cadAlune(){
+    $(function(){
+        $("#content").load("views/alune/criar.php");
+    });
+    menu();
+}
+
+function editAlune(){
+    $(function(){
+        $("#content").load("views/alune/editar.php");
+    });
+    menu();
+}
+
+function justificarAlune(){
+    $(function(){
+        $("#content").load("views/alune/justificar.php");
+    });
+    menu();
+}
+
+function cadDisciplina(){
+    $(function(){
+        $("#content").load("views/disciplina/criar.php");
+    });
+    menu();
+}
+
+function editDisciplina(){
+    $(function(){
+        $("#content").load("views/disciplina/editar.php");
+    });
+    menu();
+}
+
+function cadSala(){
+    $(function(){
+        $("#content").load("views/sala/criar.php");
+    });
+    menu();
+}
+
+function editSala(){
+    $(function(){
+        $("#content").load("views/sala/editar.php");
+    });
+    menu();
+}
+
+function cadTutore(){
+    $(function(){
+        $("#content").load("views/tutore/criar.php");
+    });
+    menu();
+}
+
+function editTutore(){
+    $(function(){
+        $("#content").load("views/tutore/editar.php");
+    });
+    menu();
+}
+
+function editPresencaTutore(){
+    $(function(){
+        $("#content").load("views/tutore/presenca.php");
+    });
+    menu();
+}
+
+function justificarTutore(){
+    $(function(){
+        $("#content").load("views/tutore/justificar.php");
+    });
+    menu();
+}
+
 function logout(){
     $(function(){
         $.ajax({
