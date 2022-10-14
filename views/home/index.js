@@ -189,6 +189,20 @@ function relatorioReuniao(){
     menu();
 }
 
+function certificadoTutore(){
+    $(function(){
+        $("#content").load("views/certificado/tutore.php");
+    });
+    menu();
+}
+
+function certificadoMonitore(){
+    $(function(){
+        $("#content").load("views/certificado/monitore.php");
+    });
+    menu();
+}
+
 function logout(){
     $(function(){
         $.ajax({

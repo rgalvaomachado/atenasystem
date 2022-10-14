@@ -9,6 +9,7 @@
     include_once('SalaController.php');
     include_once('TutoreController.php');
     include_once('RelatorioController.php');
+    include_once('CertificadoController.php');
 
     $metodo = isset($_POST['metodo']) ? $_POST['metodo'] : ""; 
     switch($metodo){
@@ -181,8 +182,8 @@
             break; 
         ///////////////////////////////////////////////////////////////////////////////
         case 'certificadoTutore':
-            $PresencaController = new PresencaController();
-            $PresencaController->certificadoTutore($_POST);
+            $CertificadoController = new CertificadoController();
+            echo $CertificadoController->certificadoTutore($_POST);
             break; 
         ///////////////////////////////////////////////////////////////////////////////
         case 'getRepresentantes':

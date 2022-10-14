@@ -80,8 +80,8 @@
         </li>
         <li><a href="#"><em class="fa fa-file-pdf-o"></em>&nbsp;Certificado</a>
             <ul>
-                <li><a href="#" onclick="cadRepresentante()">Tutore</a></li>
-                <li><a href="#" onclick="editRepresentante()">Monitore</a></li>
+                <li><a href="#" onclick="certificadoTutore()">Tutore</a></li>
+                <li><a href="#" onclick="certificadoMonitore()">Monitore</a></li>
             </ul>
         </li>
         <li><a href="#" onclick="logout()"><em class="fa fa-power-off"></em>&nbsp;Logout</a></li>
