@@ -43,7 +43,9 @@
         }
 
         function salvarSala($post){
-            if (isset($post['nome'])
+            if (isset($post['id'])
+                && $post['id'] != ""
+                && isset($post['nome'])
                 && $post['nome'] != ""
             ){
                 $sala = new Sala();
@@ -62,20 +64,29 @@
         }
 
         function excluirSala($post){
-            $sala = new Sala();
-            $sala->id = $post['id'];
-            $excluido = $sala->excluir();
-            if ($excluido){
-                return json_encode([
-                    "access" => true,
-                    "message" => "Excluido com sucesso"
-                ]);
+            if (isset($post['id'])
+                && $post['id'] != ""
+            ){
+                $sala = new Sala();
+                $sala->id = $post['id'];
+                $excluido = $sala->excluir();
+                if ($excluido){
+                    return json_encode([
+                        "access" => true,
+                        "message" => "Excluido com sucesso"
+                    ]);
+                } else {
+                    return json_encode([
+                        "access" => false,
+                        "message" => "Não excluido"
+                    ]);
+                } 
             } else {
                 return json_encode([
                     "access" => false,
-                    "message" => "Não excluido"
+                    "message" => "Por favor, ensira todos os dados"
                 ]);
-            }  
+            } 
         }
     }
 ?>

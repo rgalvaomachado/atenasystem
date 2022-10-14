@@ -4,7 +4,9 @@
 <br>
 <label>Salas</label>
 <br>
-<select class='input' id="sala" name="sala" onchange="buscarAlunesSala()"></select>
+<select class='input' id="sala" name="sala" onchange="buscarAlunesSala()">
+	<option value="">Selecione a sala</option>
+</select>
 <br>
 <div id="detalhes0">
 	<label>Alune</label>

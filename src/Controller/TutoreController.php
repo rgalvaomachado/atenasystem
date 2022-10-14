@@ -46,7 +46,9 @@
         }
 
         function salvarTutore($post){
-            if (isset($post['nome'])
+            if (isset($post['id'])
+                && $post['id'] != ""
+                && isset($post['nome'])
                 && $post['nome'] != ""
                 && isset($post['disciplina'])
                 && $post['disciplina'] != ""
@@ -68,20 +70,29 @@
         }
 
         function excluirTutore($post){
-            $tutore = new Tutore();
-            $tutore->id = $post['id'];
-            $excluido = $tutore->excluir();
-            if ($excluido){
-                return json_encode([
-                    "access" => true,
-                    "message" => "Excluido com sucesso"
-                ]);
+            if (isset($post['id'])
+                && $post['id'] != ""
+            ){
+                $tutore = new Tutore();
+                $tutore->id = $post['id'];
+                $excluido = $tutore->excluir();
+                if ($excluido){
+                    return json_encode([
+                        "access" => true,
+                        "message" => "Excluido com sucesso"
+                    ]);
+                } else {
+                    return json_encode([
+                        "access" => false,
+                        "message" => "Não excluido"
+                    ]);
+                } 
             } else {
                 return json_encode([
                     "access" => false,
-                    "message" => "Não excluido"
+                    "message" => "Por favor, ensira todos os dados"
                 ]);
-            }  
+            } 
         }
     }
 ?>

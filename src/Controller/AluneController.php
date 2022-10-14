@@ -67,7 +67,9 @@
         }
 
         function salvarAlune($post){
-            if (isset($post['nome'])
+            if (isset($post['id'])
+                && $post['id'] != ""
+                && isset($post['nome'])
                 && $post['nome'] != ""
                 && isset($post['sala'])
                 && $post['sala'] != ""
@@ -89,22 +91,31 @@
         }
 
         function excluirAlune($post){
-            $alune = new Alune();
-            $alune->id = $post['id'];
-            $excluido = $alune->excluir();
-            if ($excluido){
-                $presenca = new PresencaController();
-                $presenca->deletaPresencaAlune($post['id']);
-                return json_encode([
-                    "access" => true,
-                    "message" => "Excluido com sucesso"
-                ]);
+            if (isset($post['id'])
+                && $post['id'] != ""
+            ){
+                $alune = new Alune();
+                $alune->id = $post['id'];
+                $excluido = $alune->excluir();
+                if ($excluido){
+                    $presenca = new PresencaController();
+                    $presenca->deletaPresencaAlune($post['id']);
+                    return json_encode([
+                        "access" => true,
+                        "message" => "Excluido com sucesso"
+                    ]);
+                } else {
+                    return json_encode([
+                        "access" => false,
+                        "message" => "Não excluido"
+                    ]);
+                } 
             } else {
                 return json_encode([
                     "access" => false,
-                    "message" => "Não excluido"
+                    "message" => "Por favor, ensira todos os dados"
                 ]);
-            } 
+            }
         }
     }
 ?>

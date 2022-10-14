@@ -43,7 +43,9 @@
         }
 
         function salvarDisciplina($post){
-            if (isset($post['nome'])
+            if (isset($post['id'])
+                && $post['id'] != ""
+                && isset($post['nome'])
                 && $post['nome'] != ""
             ){
                 $disciplina = new Disciplina();
@@ -62,20 +64,29 @@
         }
 
         function excluirDisciplina($post){
-            $disciplina = new Disciplina();
-            $disciplina->id = $post['id'];
-            $excluido = $disciplina->excluir();
-            if ($excluido){
-                return json_encode([
-                    "access" => true,
-                    "message" => "Excluido com sucesso"
-                ]);
+            if (isset($post['id'])
+                && $post['id'] != ""
+            ){
+                $disciplina = new Disciplina();
+                $disciplina->id = $post['id'];
+                $excluido = $disciplina->excluir();
+                if ($excluido){
+                    return json_encode([
+                        "access" => true,
+                        "message" => "Excluido com sucesso"
+                    ]);
+                } else {
+                    return json_encode([
+                        "access" => false,
+                        "message" => "Não excluido"
+                    ]);
+                }  
             } else {
                 return json_encode([
                     "access" => false,
-                    "message" => "Não excluido"
+                    "message" => "Por favor, ensira todos os dados"
                 ]);
-            }  
+            }
         }
     }
 ?>

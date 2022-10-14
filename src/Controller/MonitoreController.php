@@ -49,7 +49,9 @@
         }
 
         function salvarMonitore($post){
-            if (isset($post['nome'])
+            if (isset($post['id'])
+                && $post['id'] != ""
+                && isset($post['nome'])
                 && $post['nome'] != ""
                 && isset($post['usuario'])
                 && $post['usuario'] != ""
@@ -74,20 +76,29 @@
         }
 
         function excluirMonitore($post){
-            $monitore = new Monitore();
-            $monitore->id = $post['id'];
-            $excluido = $monitore->excluir();
-            if ($excluido){
-                return json_encode([
-                    "access" => true,
-                    "message" => "Excluido com sucesso"
-                ]);
+            if (isset($post['id'])
+                && $post['id'] != ""
+            ){
+                $monitore = new Monitore();
+                $monitore->id = $post['id'];
+                $excluido = $monitore->excluir();
+                if ($excluido){
+                    return json_encode([
+                        "access" => true,
+                        "message" => "Excluido com sucesso"
+                    ]);
+                } else {
+                    return json_encode([
+                        "access" => false,
+                        "message" => "Não excluido"
+                    ]);
+                } 
             } else {
                 return json_encode([
                     "access" => false,
-                    "message" => "Não excluido"
+                    "message" => "Por favor, ensira todos os dados"
                 ]);
-            }  
+            } 
         }
     }
 ?>

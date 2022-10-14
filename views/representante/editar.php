@@ -2,9 +2,9 @@
 <br>
 <label class="message_alert" id="messageAlert"></label>
 <br>
-<label>Selecione</label>
-</br>
-<select class='input' id="representante" name="representante" onchange="buscar()"></select>
+<select class='input' id="representante" name="representante" onchange="buscar()">
+	<option value="">Selecione o representante</option>
+</select>
 </br>
 <div id="detalhes">
 	<label>Nome</label>
