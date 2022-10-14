@@ -133,6 +133,34 @@ function justificarTutore(){
     menu();
 }
 
+function presencaAlune(){
+    $(function(){
+        $("#content").load("views/presenca/alune.php");
+    });
+    menu();
+}
+
+function presencaTutore(){
+    $(function(){
+        $("#content").load("views/presenca/tutore.php");
+    });
+    menu();
+}
+
+function presencaMonitore(){
+    $(function(){
+        $("#content").load("views/presenca/monitore.php");
+    });
+    menu();
+}
+
+function presencaReuniao(){
+    $(function(){
+        $("#content").load("views/presenca/reuniao.php");
+    });
+    menu();
+}
+
 function logout(){
     $(function(){
         $.ajax({

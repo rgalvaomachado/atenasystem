@@ -144,27 +144,24 @@
             $PresencaController = new PresencaController();
             echo $PresencaController->editarPresencaTutore($_POST);
             break;
-        case 'buscarSalaAlune':
-            $PresencaController = new PresencaController();
-            $PresencaController->buscarSalaAlune($_POST);
-            break;
+
         case 'criarPresencaAlune':
             $PresencaController = new PresencaController();
-            $PresencaController->criarPresencaAlune($_POST);
+            echo $PresencaController->criarPresencaAlune($_POST);
             break;
         case 'criarPresencaTutore':
             $PresencaController = new PresencaController();
-            $PresencaController->criarPresencaTutore($_POST);
+            echo $PresencaController->criarPresencaTutore($_POST);
             break;
         case 'criarPresencaMonitore':
             $PresencaController = new PresencaController();
-            $PresencaController->criarPresencaMonitore($_POST);
+            echo $PresencaController->criarPresencaMonitore($_POST);
             break;
-
         case 'criarPresencaReuniao':
             $PresencaController = new PresencaController();
-            $PresencaController->criarPresencaReuniao($_POST);
+            echo $PresencaController->criarPresencaReuniao($_POST);
             break;    
+        ///////////////////////////////////////////////////////////////////////////////
         case 'relatorioPresencaAlune':
             $PresencaController = new PresencaController();
             $PresencaController->relatorioPresencaAlune($_POST);

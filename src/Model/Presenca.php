@@ -142,40 +142,6 @@
             return $verificarPresencaAlune->fetchAll(PDO::FETCH_ASSOC);
         } 
 
-        function verificarPresencaMonitore(){
-            $verificarPresencaMonitore =  $this->bd->prepare('
-                SELECT * 
-                FROM presenca 
-                WHERE 
-                    cod_sala = :cod_sala
-                    AND data = :data
-                    AND cod_monitore > 0
-            ');
-            $verificarPresencaMonitore->execute([
-                ':cod_sala' => isset($this->cod_sala) ? $this->cod_sala : 0,
-                ':data' => $this->data,
-            ]);
-            return $verificarPresencaMonitore->fetchAll(PDO::FETCH_ASSOC);
-        } 
-
-        function verificarPresencaTutore(){
-            $verificarPresencaTutore =  $this->bd->prepare('
-                SELECT * 
-                FROM presenca 
-                WHERE 
-                    cod_sala = :cod_sala
-                    AND data = :data
-                    AND aula = :aula
-                    AND cod_tutore > 0
-            ');
-            $verificarPresencaTutore->execute([
-                ':cod_sala' => isset($this->cod_sala) ? $this->cod_sala : 0,
-                ':aula' => isset($this->aula) ? $this->aula : 0,
-                ':data' => $this->data,
-            ]);
-            return $verificarPresencaTutore->fetchAll(PDO::FETCH_ASSOC);
-        } 
-
         function deletaPresencaAlune(){
             $stmt = $this->bd->prepare('DELETE FROM presenca where cod_alune = :cod_alune');
             $stmt->execute([

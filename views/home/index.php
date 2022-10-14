@@ -64,16 +64,10 @@
         </li>
         <li><a href="#"><em class="fa fa-calendar"></em>&nbsp;Presença</a>
             <ul>
-                <li><a href="#" onclick="cadRepresentante()">Aula Alune</a></li>
-                <li><a href="#" onclick="editRepresentante()">Aula Tutore</a></li>
-                <li><a href="#" onclick="editRepresentante()">Monitore</a></li>
-                <li><a href="#" onclick="editRepresentante()">Reunião</a></li>
-            </ul>
-        </li>
-        <li><a href="#"><em class="fa fa-file-pdf-o"></em>&nbsp;Certificado</a>
-            <ul>
-                <li><a href="#" onclick="cadRepresentante()">Tutore</a></li>
-                <li><a href="#" onclick="editRepresentante()">Monitore</a></li>
+                <li><a href="#" onclick="presencaAlune()">Aula Alune</a></li>
+                <li><a href="#" onclick="presencaTutore()">Aula Tutore</a></li>
+                <li><a href="#" onclick="presencaMonitore()">Monitore</a></li>
+                <li><a href="#" onclick="presencaReuniao()">Reunião</a></li>
             </ul>
         </li>
         <li><a href="#"><em class="fa fa-bar-chart"></em>&nbsp;Relatorio</a>
@@ -82,6 +76,12 @@
                 <li><a href="#" onclick="editRepresentante()">Presença Reunião</a></li>
                 <li><a href="#" onclick="editRepresentante()">Presença Monitore</a></li>
                 <li><a href="#" onclick="editRepresentante()">Presença Tutore</a></li>
+            </ul>
+        </li>
+        <li><a href="#"><em class="fa fa-file-pdf-o"></em>&nbsp;Certificado</a>
+            <ul>
+                <li><a href="#" onclick="cadRepresentante()">Tutore</a></li>
+                <li><a href="#" onclick="editRepresentante()">Monitore</a></li>
             </ul>
         </li>
         <li><a href="#" onclick="logout()"><em class="fa fa-power-off"></em>&nbsp;Logout</a></li>
