@@ -8,6 +8,7 @@
     include_once('RepresentanteController.php');
     include_once('SalaController.php');
     include_once('TutoreController.php');
+    include_once('RelatorioController.php');
 
     $metodo = isset($_POST['metodo']) ? $_POST['metodo'] : ""; 
     switch($metodo){
@@ -163,20 +164,20 @@
             break;    
         ///////////////////////////////////////////////////////////////////////////////
         case 'relatorioPresencaAlune':
-            $PresencaController = new PresencaController();
-            $PresencaController->relatorioPresencaAlune($_POST);
+            $RelatorioController = new RelatorioController();
+            echo $RelatorioController->relatorioPresencaAlune($_POST);
             break; 
         case 'relatorioPresencaReuniao':
-            $PresencaController = new PresencaController();
-            $PresencaController->relatorioPresencaReuniao($_POST);
+            $RelatorioController = new RelatorioController();
+            echo $RelatorioController->relatorioPresencaReuniao($_POST);
             break; 
         case 'relatorioPresencaMonitore':
-            $PresencaController = new PresencaController();
-            $PresencaController->relatorioPresencaMonitore($_POST);
+            $RelatorioController = new RelatorioController();
+            echo $RelatorioController->relatorioPresencaMonitore($_POST);
             break; 
         case 'relatorioPresencaTutore':
-            $PresencaController = new PresencaController();
-            $PresencaController->relatorioPresencaTutore($_POST);
+            $RelatorioController = new RelatorioController();
+            echo $RelatorioController->relatorioPresencaTutore($_POST);
             break; 
         ///////////////////////////////////////////////////////////////////////////////
         case 'certificadoTutore':

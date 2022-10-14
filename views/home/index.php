@@ -72,10 +72,10 @@
         </li>
         <li><a href="#"><em class="fa fa-bar-chart"></em>&nbsp;Relatorio</a>
             <ul>
-                <li><a href="#" onclick="cadRepresentante()">Presença Alune</a></li>
-                <li><a href="#" onclick="editRepresentante()">Presença Reunião</a></li>
-                <li><a href="#" onclick="editRepresentante()">Presença Monitore</a></li>
-                <li><a href="#" onclick="editRepresentante()">Presença Tutore</a></li>
+                <li><a href="#" onclick="relatorioAlune()">Presença Alune</a></li>
+                <li><a href="#" onclick="relatorioReuniao()">Presença Reunião</a></li>
+                <li><a href="#" onclick="relatorioMonitore()">Presença Monitore</a></li>
+                <li><a href="#" onclick="relatorioTutore()">Presença Tutore</a></li>
             </ul>
         </li>
         <li><a href="#"><em class="fa fa-file-pdf-o"></em>&nbsp;Certificado</a>

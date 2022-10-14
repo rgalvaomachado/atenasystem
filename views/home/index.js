@@ -161,6 +161,34 @@ function presencaReuniao(){
     menu();
 }
 
+function relatorioAlune(){
+    $(function(){
+        $("#content").load("views/relatorio/alune.php");
+    });
+    menu();
+}
+
+function relatorioTutore(){
+    $(function(){
+        $("#content").load("views/relatorio/tutore.php");
+    });
+    menu();
+}
+
+function relatorioMonitore(){
+    $(function(){
+        $("#content").load("views/relatorio/monitore.php");
+    });
+    menu();
+}
+
+function relatorioReuniao(){
+    $(function(){
+        $("#content").load("views/relatorio/reuniao.php");
+    });
+    menu();
+}
+
 function logout(){
     $(function(){
         $.ajax({
