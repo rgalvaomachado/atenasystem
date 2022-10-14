@@ -43,7 +43,7 @@
             } else {
                 return json_encode([
                     "access" => false,
-                    "message" => "Por favor ensira nome, usuario e senha"
+                    "message" => "Por favor, ensira todos os dados"
                 ]);
             }
         }
@@ -68,7 +68,7 @@
             } else {
                 return json_encode([
                     "access" => false,
-                    "message" => "Por favor ensira nome, usuario e senha"
+                    "message" => "Por favor, ensira todos os dados"
                 ]);
             }
         }
