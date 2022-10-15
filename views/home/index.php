@@ -22,4 +22,7 @@
     <img id="logo-atena" src='public/img/atena.jpeg'>
 </div>
 <script src="views/home/index.js"></script>
-<script>verificaPermissao();</script>
+<script>
+    verificaPermissao();
+    setInterval(verificaSessão, 60000);
+</script>

@@ -1,3 +1,19 @@
+function verificaSessão(){
+    $.ajax({
+        method: "POST",
+        url: "src/Controller/Controller.php",
+        data: {
+            metodo: "verificaSessão",
+        },
+        complete: function(response) {
+            var response = JSON.parse(response.responseText);
+            if (!response.access) {
+                window.location.assign("")
+            }
+        }
+    });
+}
+
 function verificaPermissao(){
     $.ajax({
         method: "POST",

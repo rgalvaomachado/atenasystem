@@ -12,6 +12,11 @@
     include_once('CertificadoController.php');
 
     $metodo = isset($_POST['metodo']) ? $_POST['metodo'] : ""; 
+    if ($metodo != 'verificaSessão'){
+        session_start();
+        $_SESSION['CREATED'] = time();
+    }
+
     switch($metodo){
         case 'criarAlune':
             $AluneController = new AluneController();
@@ -83,6 +88,10 @@
         case 'verificaLogin':
             $LoginController = new LoginController();
             echo $LoginController->verificaLogin($_POST);
+            break;
+        case 'verificaSessão':
+            $LoginController = new LoginController();
+            echo $LoginController->verificaSessão($_POST);
             break;
         case 'login':
             $LoginController = new LoginController();
