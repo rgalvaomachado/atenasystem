@@ -66,6 +66,24 @@ function buscarMonitores(){
     });
 }
 
+function buscarMonitore(){
+    var id = $("#monitore").val();
+    $.ajax({
+        method: "POST",
+        url: "src/Controller/Controller.php",
+        data: {
+            metodo: "getMonitore",
+            id: id,
+        },
+        complete: function(response) {
+            var response = JSON.parse(response.responseText);
+            if(response.access){
+                $('.nomeMonitore').html(response.monitore.nome);
+            }
+        }
+    });
+}
+
 function gerarCertificadoTutore(){
     var tutore = $('#tutore').val();
     var dataInicial = $('#dataInicial').val();
@@ -76,6 +94,40 @@ function gerarCertificadoTutore(){
         data: {
             metodo: "certificadoTutore",
             tutore: tutore,
+            dataInicial: dataInicial,
+            dataFinal: dataFinal,
+        },
+        complete: function(response) {
+            var response = JSON.parse(response.responseText);
+            if(response.access){
+                $('#detalhes').show();
+                $('.anoFinal').html(response.anoFinal);
+                $('.mesFinal').html(response.mesFinal);
+                $('.mesInicial').html(response.mesInicial);
+                $('.presencaAulas').html(response.presencaAulas*2);
+                $('.presencaReuniao').html(response.presencaReuniao);
+            }else{
+                const alert = document.getElementById("messageAlert");
+                alert.innerHTML = response.message;
+                alert.style.color = "red";
+                setTimeout(function(){
+                    alert.innerHTML = "";
+                }, 2000);
+            }
+        }
+    });
+}
+
+function gerarCertificadoMonitore(){
+    var monitore = $('#monitore').val();
+    var dataInicial = $('#dataInicial').val();
+    var dataFinal = $('#dataFinal').val();
+    $.ajax({
+        method: "POST",
+        url: "src/Controller/Controller.php",
+        data: {
+            metodo: "certificadoMonitore",
+            monitore: monitore,
             dataInicial: dataInicial,
             dataFinal: dataFinal,
         },
@@ -146,7 +198,7 @@ function buscarDocente(){
     });
 }
 
-function downloadTutoreVerso(){
+function downloadVerso(){
     var id = $("#tutore").val();
     const alert = document.getElementById("messageAlert");
     if (id > 0){
@@ -172,7 +224,7 @@ function downloadTutoreVerso(){
     }
 }
 
-function downloadTutoreFrente(){
+function downloadFrente(){
     var id = $("#tutore").val();
     const alert = document.getElementById("messageAlert");
     if (id > 0){

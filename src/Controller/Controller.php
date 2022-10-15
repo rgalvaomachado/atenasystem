@@ -185,6 +185,10 @@
             $CertificadoController = new CertificadoController();
             echo $CertificadoController->certificadoTutore($_POST);
             break; 
+        case 'certificadoMonitore':
+            $CertificadoController = new CertificadoController();
+            echo $CertificadoController->certificadoMonitore($_POST);
+            break; 
         ///////////////////////////////////////////////////////////////////////////////
         case 'getRepresentantes':
             $RepresentanteController = new RepresentanteController();

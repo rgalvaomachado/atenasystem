@@ -63,7 +63,7 @@
             </div>
         </div>
     </div>
-    <input class='button' type="button" onclick="downloadTutoreFrente()" value="Download Frente">
+    <input class='button' type="button" onclick="downloadFrente()" value="Download Frente">
     <br>
     <div id="verso">
         <div id="conteudo">
@@ -87,7 +87,7 @@
             </div>
         </div>
     </div>
-    <input class='button' type="button" onclick="downloadTutoreVerso()" value="Download Verso">
+    <input class='button' type="button" onclick="downloadVerso()" value="Download Verso">
 </div>
 <script src="views/certificado/index.js"></script>
 <script>
