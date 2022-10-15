@@ -4,7 +4,9 @@
 <br>
 <label>Tutores</label>
 <br>
-<select class='input' id="tutore" name="tutore"></select>
+<select class='input' id="tutore" name="tutore" onchange="buscarTutore()">
+	<option>Selecione o tutore</option>
+</select>
 <br>
 <label>Data Inicial</label>
 <br>
@@ -16,13 +18,73 @@
 <br>
 <label>Coordenador Docente do Projeto</label>
 <br>
-<select class='input' id="docente" name="docente"></select>
+<select class='input' id="docente" name="docente" onchange="buscarDocente()"></select>
 <br>
 <label>Coordenador Discente do Projeto</label>
 <br>
-<select class='input' id="discente" name="discente"></select>
+<select class='input' id="discente" name="discente"  onchange="buscarDiscente()"></select>
 <br>
-<input class='button' type="button" onclick="certificadoTutore()" value="Gerar">
+<input class='button' type="button" onclick="gerarCertificadoTutore()" value="Gerar">
+<br>
+<div id="detalhes">
+    <div id="frente">
+        <div id="conteudo">
+            <h1 id="titulo">
+                CERTIFICADO
+            </h1>
+            <div id="corpo">
+                Certificamos que <b class="nomeTutore"></b> participou do Subprograma de Extensão Universitária Cursinho Pré Universitário Atena do Instituto de Biociencias da UNESP de Botucatu na condição de <b>Professor(a) de</b> <b class="nomeMateria"></b> no periodo de <label class="mesInicial"></label> a <label class="mesFinal"></label> de <label class="anoFinal"></label>.
+            </div>
+            <table id="assinaturas">
+                <tr>
+                    <td>
+                        <div id="assinatura-docente">
+                            <div id="assinaturaDocente"></div>
+                        </div>
+                    </td>
+                    <td>
+                        <div id="assinatura-discente">
+                            <div id="assinaturaDiscente"></div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Prof. Docente</td>
+                    <td>Discente</td>
+                </tr>
+                <tr>
+                    <td>Coordenador Docente do Projeto</td>
+                    <td>Coordenador Discente do Projeto</td>
+                </tr>
+            </table>
+            <img id="ibb" src="public/img/ibb.png" />
+            <img id="unesp" src="public/img/unesp.png" />
+        </div>
+    </div>
+    <input class='button' type="button" onclick="downloadTutoreFrente()" value="Download Frente">
+    <br>
+    <div id="verso">
+        <div id="conteudo">
+            <table id="carga-horaria">
+                <tr>
+                <th colspan="2">Atividades Desenvolvidas</th>
+                </tr>
+                <tr>
+                    <td>Professor(a) de <label class="nomeMateria"></label></td>
+                    <td><label class="presencaAulas"></label> aulas (50 min/aula)</td>
+                </tr>
+                <tr>
+                    <td>Reuniões Burocráticas/Pedagógicas</td>
+                    <td><label class="presencaReuniao"></label> horas</td>
+                </tr>
+            </table>
+            <img id="ibb" src="public/img/ibb.png" />
+            <img id="assinatura-cursinho" src="public/img/assinatura-cursinho.png" />
+            <img id="unesp" src="public/img/unesp.png" />
+        </div>
+    </div>
+    <input class='button' type="button" onclick="downloadTutoreVerso()" value="Download Verso">
+</div>
 <script src="views/certificado/index.js"></script>
 <script>
 	buscarTutores();

@@ -202,6 +202,10 @@
             $RepresentanteController = new RepresentanteController();
             echo $RepresentanteController->salvarRepresentante($_POST, $_FILES);
             break; 
+        case 'salvaAssinaturaRepresentante':
+            $RepresentanteController = new RepresentanteController();
+            echo $RepresentanteController->salvaAssinaturaRepresentante($_POST, $_FILES);
+            break; 
         case 'excluirRepresentante':
             $RepresentanteController = new RepresentanteController();
             echo $RepresentanteController->excluirRepresentante($_POST);

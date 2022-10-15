@@ -5,6 +5,7 @@
         public $nome;
         public $usuario;
         public $senha;
+        public $assinatura;
 
         function criarRepresentante(){
             $criarRepresentante = $this->bd->prepare('INSERT INTO representante (nome, usuario, senha) VALUES(:nome, :usuario, :senha)');
@@ -23,7 +24,7 @@
         }
 
         function getRepresentante($id){
-            $getRepresentante =  $this->bd->prepare('SELECT id, nome, usuario, senha FROM representante WHERE id = :id ORDER BY nome ASC');
+            $getRepresentante =  $this->bd->prepare('SELECT id, nome, usuario, senha, assinatura FROM representante WHERE id = :id ORDER BY nome ASC');
             $getRepresentante->execute([
                 ':id' => $id,
             ]);
@@ -47,6 +48,15 @@
                 ':id' => $this->id,
             ]);
             return $excluir->rowCount();
+        }
+
+        function salvarAssinatura($id){ 
+            $salvarAssinatura = $this->bd->prepare('UPDATE representante SET assinatura = :assinatura WHERE id = :id');
+            $salvarAssinatura->execute([
+            ':id'   => $id,
+            ':assinatura' => $this->assinatura,
+            ]);
+            return $salvarAssinatura->rowCount();
         }
     }
 ?>

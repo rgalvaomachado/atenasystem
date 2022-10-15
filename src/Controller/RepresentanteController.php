@@ -66,9 +66,9 @@
                 $representante->usuario = $post['usuario'];
                 $representante->senha = $post['senha'];
                 $representante->salvarRepresentante($post['id']);
-                if(isset($files)){
-                    move_uploaded_file($files['assinatura']['tmp_name'], '../assinatura/'.$post['id'].'.png');
-                };
+                // if(isset($files)){
+                //     move_uploaded_file($files['assinatura']['tmp_name'], '../assinatura/'.$post['id'].'.png');
+                // };
                 return json_encode([
                     "access" => true,
                     "message" => "Editado com sucesso"
@@ -105,6 +105,16 @@
                     "message" => "Por favor, ensira todos os dados"
                 ]);
             }
+        }
+
+        function salvaAssinaturaRepresentante($post){
+            $representante = new Representante();
+            $representante->assinatura = $post['assinatura'];
+            $representante->salvarAssinatura($post['id']);
+            return json_encode([
+                "access" => true,
+                "message" => "Assinatura salva com sucesso"
+            ]);
         }
     }
 ?>

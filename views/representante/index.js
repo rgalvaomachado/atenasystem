@@ -146,3 +146,36 @@ function buscarRepresentantes(){
         }
     });
 }
+
+function salvarAssinatura() {
+    var id = $("#representante").val();
+    var filesSelected = document.getElementById("assinatura").files;
+    if (filesSelected.length > 0) {
+      var fileToLoad = filesSelected[0];
+      var fileReader = new FileReader();
+      fileReader.onload = function(fileLoadedEvent) {
+        var assinatura = fileLoadedEvent.target.result
+        $.ajax({
+            method: "POST",
+            url: "src/Controller/Controller.php",
+            data: {
+                metodo: "salvaAssinaturaRepresentante",
+                assinatura: assinatura,
+                id: id,
+            },
+            complete: function(response) {
+                if(response.access){
+                    alert.style.color = "green";
+                    setTimeout(function(){
+                        alert.innerHTML = "";
+                        $(function(){
+                            $("#content").load("views/representante/editar.php");
+                        });
+                    }, 1000);
+                }
+            }
+        });
+      }
+      fileReader.readAsDataURL(fileToLoad);
+    }
+}

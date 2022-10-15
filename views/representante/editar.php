@@ -28,6 +28,7 @@
 	<!-- <img id="logo-atena" style="width:150px" src="<?="../assinatura/".$_GET['representante'].".png"?>"> -->
 
 	<input class='button' type="button" onclick="editar()" value="Editar">
+	<input class='button' type="button" onclick="salvarAssinatura()" value="Salvar Assinatura">
 	<input class='button' type="button" onclick="excluir()" value="Excluir">
 </div>
 <script src="views/representante/index.js"></script>
