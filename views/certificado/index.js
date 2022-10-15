@@ -115,6 +115,8 @@ function buscarDiscente(){
                 var srcData = response.representante.assinatura;
                 var newImage = document.createElement('img');
                 newImage.src = srcData;
+                newImage.style.maxWidth = "100%";
+                newImage.style.maxHeight = "100%";
                 document.getElementById("assinaturaDiscente").innerHTML = newImage.outerHTML;
             }
         }
@@ -136,6 +138,8 @@ function buscarDocente(){
                 var srcData = response.representante.assinatura;
                 var newImage = document.createElement('img');
                 newImage.src = srcData;
+                newImage.style.maxWidth = "100%";
+                newImage.style.maxHeight = "100%";
                 document.getElementById("assinaturaDocente").innerHTML = newImage.outerHTML;
             }
         }

@@ -18,11 +18,15 @@
 <br>
 <label>Coordenador Docente do Projeto</label>
 <br>
-<select class='input' id="docente" name="docente" onchange="buscarDocente()"></select>
+<select class='input' id="docente" name="docente" onchange="buscarDocente()">
+    <option>Selecione o docente</option>
+</select>
 <br>
 <label>Coordenador Discente do Projeto</label>
 <br>
-<select class='input' id="discente" name="discente"  onchange="buscarDiscente()"></select>
+<select class='input' id="discente" name="discente"  onchange="buscarDiscente()">
+    <option>Selecione o discente</option>
+</select>
 <br>
 <input class='button' type="button" onclick="gerarCertificadoTutore()" value="Gerar">
 <br>
@@ -37,28 +41,26 @@
             </div>
             <table id="assinaturas">
                 <tr>
-                    <td>
-                        <div id="assinatura-docente">
-                            <div id="assinaturaDocente"></div>
-                        </div>
+                    <td class="assinaturas">
+                        <div id="assinaturaDocente"></div>
                     </td>
-                    <td>
-                        <div id="assinatura-discente">
-                            <div id="assinaturaDiscente"></div>
-                        </div>
+                    <td class="assinaturas">
+                        <div id="assinaturaDiscente"></div>
                     </td>
                 </tr>
                 <tr>
-                    <td>Prof. Docente</td>
-                    <td>Discente</td>
+                    <td class="assinaturas">Prof. Docente</td>
+                    <td class="assinaturas">Discente</td>
                 </tr>
                 <tr>
-                    <td>Coordenador Docente do Projeto</td>
-                    <td>Coordenador Discente do Projeto</td>
+                    <td class="assinaturas">Coordenador Docente do Projeto</td>
+                    <td class="assinaturas">Coordenador Discente do Projeto</td>
                 </tr>
             </table>
-            <img id="ibb" src="public/img/ibb.png" />
-            <img id="unesp" src="public/img/unesp.png" />
+            <div>
+                <img id="ibbFrente" src="public/img/ibb.png" />
+                <img id="unespFrente" src="public/img/unesp.png" />
+            </div>
         </div>
     </div>
     <input class='button' type="button" onclick="downloadTutoreFrente()" value="Download Frente">
@@ -70,17 +72,19 @@
                 <th colspan="2">Atividades Desenvolvidas</th>
                 </tr>
                 <tr>
-                    <td>Professor(a) de <label class="nomeMateria"></label></td>
-                    <td><label class="presencaAulas"></label> aulas (50 min/aula)</td>
+                    <td class="assinaturas">Professor(a) de <label class="nomeMateria"></label></td>
+                    <td class="assinaturas"><label class="presencaAulas"></label> aulas (50 min/aula)</td>
                 </tr>
                 <tr>
-                    <td>Reuniões Burocráticas/Pedagógicas</td>
-                    <td><label class="presencaReuniao"></label> horas</td>
+                    <td class="assinaturas">Reuniões Burocráticas/Pedagógicas</td>
+                    <td class="assinaturas"><label class="presencaReuniao"></label> horas</td>
                 </tr>
             </table>
-            <img id="ibb" src="public/img/ibb.png" />
-            <img id="assinatura-cursinho" src="public/img/assinatura-cursinho.png" />
-            <img id="unesp" src="public/img/unesp.png" />
+            <div>
+                <img id="ibbVerso" src="public/img/ibb.png" />
+                <img id="assinatura-cursinho" src="public/img/assinatura-cursinho.png" />
+                <img id="unespVerso" src="public/img/unesp.png" />
+            </div>
         </div>
     </div>
     <input class='button' type="button" onclick="downloadTutoreVerso()" value="Download Verso">
