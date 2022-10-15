@@ -19,16 +19,7 @@
 	</br>
 	<input class='input' id="senha" type="password" name="senha">
 	</br>
-	<label>Assinatura</label>
-	</br>
-	<input class='input' id="assinatura" name="assinatura" type="file">
-	</br>
-	<label>Assinatura Atual</label>
-	</br>
-	<!-- <img id="logo-atena" style="width:150px" src="<?="../assinatura/".$_GET['representante'].".png"?>"> -->
-
 	<input class='button' type="button" onclick="editar()" value="Editar">
-	<input class='button' type="button" onclick="salvarAssinatura()" value="Salvar Assinatura">
 	<input class='button' type="button" onclick="excluir()" value="Excluir">
 </div>
 <script src="views/representante/index.js"></script>

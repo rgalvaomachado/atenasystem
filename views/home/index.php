@@ -20,6 +20,7 @@
             <ul>
                 <li><a href="#" onclick="cadRepresentante()">Cadastro</a></li>
                 <li><a href="#" onclick="editRepresentante()">Editar</a></li>
+                <li><a href="#" onclick="assinaturaRepresentante()">Assinatura</a></li>
             </ul>
         </li>
         <li><a href="#"><em class="fa fa-address-book" aria-hidden="true"></em>&nbsp;Comissão</a>

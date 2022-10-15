@@ -21,6 +21,13 @@ function editRepresentante(){
     menu();
 }
 
+function assinaturaRepresentante(){
+    $(function(){
+        $("#content").load("views/representante/assinatura.php");
+    });
+    menu();
+}
+
 function cadComissao(){
     $(function(){
         $("#content").load("views/comissao/criar.php");

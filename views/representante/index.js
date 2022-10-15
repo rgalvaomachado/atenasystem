@@ -147,6 +147,36 @@ function buscarRepresentantes(){
     });
 }
 
+function buscarAssinatura(){
+    var id = $("#representante").val();
+    $.ajax({
+        method: "POST",
+        url: "src/Controller/Controller.php",
+        data: {
+            metodo: "getRepresentante",
+            id: id,
+        },
+        complete: function(response) {
+            var response = JSON.parse(response.responseText);
+            if(response.access){
+                $('#detalhes').show();
+                if(response.representante.assinatura){
+                    var srcData = response.representante.assinatura;
+                    var newImage = document.createElement('img');
+                    newImage.src = srcData;
+                    newImage.id = "imgAssinaturaRepresentante";
+                    newImage.style.maxWidth = "100%";
+                    newImage.style.maxHeight = "100%";
+                    document.getElementById("assinaturaRepresentante").innerHTML = newImage.outerHTML;
+                }else{
+                    $('#assinaturaRepresentante').height(0);
+                    document.getElementById("assinaturaRepresentante").innerHTML = 'Não há assinatura';
+                }
+            }
+        }
+    });
+}
+
 function salvarAssinatura() {
     var id = $("#representante").val();
     var filesSelected = document.getElementById("assinatura").files;
@@ -164,12 +194,15 @@ function salvarAssinatura() {
                 id: id,
             },
             complete: function(response) {
+                var response = JSON.parse(response.responseText);
+                const alert = document.getElementById("messageAlert");
+                alert.innerHTML = response.message;
                 if(response.access){
                     alert.style.color = "green";
                     setTimeout(function(){
                         alert.innerHTML = "";
                         $(function(){
-                            $("#content").load("views/representante/editar.php");
+                            $("#content").load("views/representante/assinatura.php");
                         });
                     }, 1000);
                 }

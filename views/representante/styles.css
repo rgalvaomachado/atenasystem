@@ -1,24 +1,2 @@
-#detalhes{
-    display: none;
-}
 
-#content2{
-    padding: 20px;
-}
-
-#content2 .input{
-    margin: 5px;
-    border-radius: 5px;
-    width: 70%;
-    height: 50px;
-    border: #ccc;
-    font-size: 15px;
-    padding-left: 15px;
-    padding-right: 15px;
-}
-#content2 .input:hover {
-border: 2px solid rgb(0, 110, 255);
-}
-#content .button{
-    margin: 10px;
 }
