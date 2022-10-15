@@ -14,25 +14,25 @@ class LoginController{
         foreach($representantes as $representate){
             if($usuario == $representate->usuario && $senha == $representate->senha){
                 $usuarioValidado = $representate->usuario;
-                $modoValidado = 'representate';
+                $modoValidado = 'representante';
                 $validado = true;
             }
         }
         $ComissaoController = new ComissaoController();
-        $comissoes = $ComissaoController->getComissoes();
+        $comissoes = json_decode($ComissaoController->getComissoes());
         foreach($comissoes as $comissao){
-            if($usuario == $comissao['usuario'] && $senha == $comissao['senha']){
-                $usuarioValidado = $comissao['usuario'];
+            if($usuario == $comissao->usuario && $senha == $comissao->senha){
+                $usuarioValidado = $comissao->usuario;
                 $modoValidado = 'comissao';
                 $validado = true;
             }
         }
 
         $MonitoreController = new MonitoreController();
-        $monitores = $MonitoreController->getMonitores();
+        $monitores = json_decode($MonitoreController->getMonitores());
         foreach($monitores as $monitore){
-            if($usuario == $monitore['usuario'] && $senha == $monitore['senha']){
-                $usuarioValidado = $monitore['usuario'];
+            if($usuario == $monitore->usuario && $senha == $monitore->senha){
+                $usuarioValidado = $monitore->usuario;
                 $modoValidado = 'monitore';
                 $validado = true;
             }
@@ -43,7 +43,8 @@ class LoginController{
             $_SESSION['usuario'] =  $usuarioValidado;
             $_SESSION['modo'] = $modoValidado;
             return json_encode([
-                "access" => true
+                "access" => true,
+                "modo" => $modoValidado,
             ]);
         }else{
             return json_encode([
@@ -66,6 +67,7 @@ class LoginController{
 	    session_start();
         if ($_SESSION['modo'] != '') {
             return json_encode([
+                "modo" => $_SESSION['modo'],
                 "access" => true
             ]);
         } else {
