@@ -20,12 +20,19 @@
         }
 
         function getTutore($id){
-            $getTutore =  $this->bd->prepare('SELECT nome,cod_disciplina FROM tutore WHERE id = :id ORDER BY nome ASC');
+            $getTutore =  $this->bd->prepare('
+                SELECT tutore.id, tutore.nome, tutore.cod_disciplina, disciplina.nome as nome_disciplina
+                FROM tutore 
+                INNER JOIN disciplina 
+                ON tutore.cod_disciplina = disciplina.id
+                WHERE tutore.id = :id
+            ');
             $getTutore->execute([
                 ':id' => $id,
             ]);
             return $getTutore->fetch(PDO::FETCH_ASSOC);
         }
+
 
         function salvar($id){
             $stmt = $this->bd->prepare('UPDATE tutore SET nome = :nome, cod_disciplina = :cod_disciplina WHERE id = :id');

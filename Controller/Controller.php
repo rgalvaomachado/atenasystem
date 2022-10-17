@@ -8,6 +8,7 @@
     include_once('RepresentanteController.php');
     include_once('SalaController.php');
     include_once('TutoreController.php');
+    include_once('CertificadoController.php');
 
     $metodo = isset($_POST['metodo']) ? $_POST['metodo'] : ""; 
     switch($metodo){
@@ -136,11 +137,11 @@
             $PresencaController = new PresencaController();
             $PresencaController->criarPresencaMonitore($_POST);
             break;
-
         case 'criarPresencaReuniao':
             $PresencaController = new PresencaController();
             $PresencaController->criarPresencaReuniao($_POST);
             break;    
+        ///////////////////////////////////////////////////////////////////////////////
         case 'relatorioPresencaAlune':
             $PresencaController = new PresencaController();
             $PresencaController->relatorioPresencaAlune($_POST);
@@ -156,11 +157,6 @@
         case 'relatorioPresencaTutore':
             $PresencaController = new PresencaController();
             $PresencaController->relatorioPresencaTutore($_POST);
-            break; 
-        ///////////////////////////////////////////////////////////////////////////////
-        case 'certificadoTutore':
-            $PresencaController = new PresencaController();
-            $PresencaController->certificadoTutore($_POST);
             break; 
         ///////////////////////////////////////////////////////////////////////////////
         case 'criarRepresentante':
@@ -212,6 +208,43 @@
         case 'excluirTutore':
             $TutoreController = new TutoreController();
             $TutoreController->excluirTutore($_POST);
+            break;
+        ///////////////////////////////////////////////////////////////////////////////
+        case 'certificadoGetRepresentante':
+            $CertificadoController = new CertificadoController();
+            echo $CertificadoController->certificadoGetRepresentante($_POST);
+            break;
+        case 'certificadoGetRepresentantes':
+            $CertificadoController = new CertificadoController();
+            echo $CertificadoController->certificadoGetRepresentantes($_POST);
+            break;
+        case 'certificadoGetMonitore':
+            $CertificadoController = new CertificadoController();
+            echo $CertificadoController->certificadoGetMonitore($_POST);
+            break;
+        case 'certificadoGetMonitores':
+            $CertificadoController = new CertificadoController();
+            echo $CertificadoController->certificadoGetMonitores($_POST);
+            break;
+        case 'certificadoGetMonitore':
+            $CertificadoController = new CertificadoController();
+            echo $CertificadoController->certificadoGetMonitore($_POST);
+            break;
+        case 'certificadoGetTutores':
+            $CertificadoController = new CertificadoController();
+            echo $CertificadoController->certificadoGetTutores($_POST);
+            break;
+        case 'certificadoGetTutore':
+            $CertificadoController = new CertificadoController();
+            echo $CertificadoController->certificadoGetTutore($_POST);
+            break;
+        case 'certificadoTutore':
+            $CertificadoController = new CertificadoController();
+            echo $CertificadoController->certificadoTutore($_POST);
+            break;
+        case 'certificadoMonitore':
+            $CertificadoController = new CertificadoController();
+            echo $CertificadoController->certificadoMonitore($_POST);
             break;
         ///////////////////////////////////////////////////////////////////////////////
         default:

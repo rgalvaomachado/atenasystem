@@ -1,0 +1,82 @@
+#frente, #verso{
+    margin:auto;
+    border: 10px solid orange;
+    height: 480px;
+    width: 854px;
+    background-image: url('../img/certificado_atena.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 854px 480px;
+    background-color: white;
+}
+
+#conteudo{
+    border: 10px solid black;
+    height: 460px;
+    width: 834px;
+}
+
+#detalhes{
+    display: none;
+}
+
+.form{
+    width: 70%;
+}
+
+#corpo{
+    font-size: 20px;
+}
+
+#assinatura-cursinho{
+    width: 400px;
+    margin-top: 100px;
+}
+
+#carga-horaria td {
+    font-size: 20px;
+    border: 1px solid black;
+}
+#carga-horaria th {
+    font-size: 20px;
+    border: 1px solid black;
+}
+
+#unespFrente{
+    height: 100px;
+    float: right;
+}
+
+#ibbFrente{
+    height: 120px;
+    float: left;
+}
+
+#unespVerso{
+    height: 100px;
+    float: right;
+    margin-top: 230px;
+}
+
+#ibbVerso{
+    height: 100px;
+    float: left;
+    margin-top: 230px;
+}
+
+#assinaturaDocente {
+    height: 100px;
+    width: 300px;
+    border-bottom: solid 2px;
+    margin-right: 20px;
+}
+
+#assinaturaDiscente {
+    height: 100px;
+    width: 300px;
+    border-bottom: solid 2px;
+}
+
+.assinaturas{
+    border: none;
+}

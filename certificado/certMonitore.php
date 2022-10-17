@@ -8,8 +8,12 @@
 	<link href="../css/font-awesome.min.css" rel="stylesheet">
 	<link href="../css/datepicker3.css" rel="stylesheet">
 	<link href="../css/styles.css" rel="stylesheet">
+	<link href="styles.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 	<link rel="icon" href="../img/hubis-icon.png">
+	<script src="../js/jquery-1.11.1.min.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+	<script src="../js/html2canvas.js"></script>
 </head>
 <body style="background-color:white">
 	<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
@@ -28,106 +32,111 @@
     </div>
 </nav>
 	<?php include_once '../menu.php'?>
-	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main" style="background-color:white; margin-top:100px">
-		<center>
-			<h1>Certiticado Monitore</h1>
-			<form action="../Controller/Controller.php" method="post">
-				<input type="hidden" name="metodo" value="relatorioPresencaAlune">
-				<?php
-					require_once($_SERVER["DOCUMENT_ROOT"]."/Controller/Controller.php");
-					$SalaController = new SalaController();
-					$salas = $SalaController->getSalas();
-				?>
+	<center>
+		<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main" style="background-color:white; margin-top:100px">
+			<div class="form">	
+				<h1>Certificado Monitore</h1>
+				<label class="message_alert" id="messageAlert"></label>
 				<div class="form-group">
-					<label>Salas</label>
-					<?php $id = (isset($_GET['cod_sala']) ? $_GET['cod_sala'] : 1) ?>
-					<select name="cod_sala" class="form-control">
-						<?php foreach($salas as $sala){ ?>
-							<option value="<?= $sala['id'] ?>" <?= $sala['id'] == $id ? "selected" : ""?> > <?= $sala['nome'] ?></option>
-						<?php } ?>
+					<label>Monitore</label>
+					<select class="form-control" id="monitore" name="monitore" onchange="buscarMonitore()">
+						<option>Selecione o monitore</option>
 					</select>
 				</div>
-				<label>Data Inicial</label>
-				<?php $data_inicial = isset($_GET['data_inicial']) ? $_GET['data_inicial'] : ""?>
-				<input name="data_inicial" class="form-control" type="date" value="<?= $data_inicial ?>" required>
-				<br>
-				<label>Data Final</label>
-				<?php $data_final = isset($_GET['data_final']) ? $_GET['data_final'] : ""?>
-				<input name="data_final" class="form-control" type="date" value="<?= $data_final ?>" required>
-				<br>
-				<button type="submit" class="btn btn-md btn-warning">Gerar</button>
-			</form>
-            <?php if(isset($_GET['cod_sala'])){ ?>
-				<?php
-					require_once($_SERVER["DOCUMENT_ROOT"]."/Controller/AluneController.php");
-					$AluneController = new AluneController();
-					$alunes = $AluneController->getAlunesSala($_GET['cod_sala']);
-				?>
-				<table style="width:70%; text-align: center;">
-					<tr>
-						<td><b>Nome</b></td>
-						<td><b>Presença</b></td>
-						<td><b>Ausencia</b></td>
-						<td><b>Justificado</b></td>
-						<td><b>Frequência</b></td>
-					</tr>
-					<?php
-					foreach($alunes as $alune){
-						require_once($_SERVER["DOCUMENT_ROOT"]."/Controller/PresencaController.php");
-						$PresencaController = new PresencaController();
-						$presencas = $PresencaController->getPresencaPeriodo(
-							$_GET['cod_sala'],
-							$alune['id'],
-							0,
-							0,
-							$_GET['data_inicial'],
-							$_GET['data_final']
-						);
-						$ausencias = $PresencaController->getAusenciaPeriodo(
-							$_GET['cod_sala'],
-							$alune['id'],
-							0,
-							0,
-							$_GET['data_inicial'],
-							$_GET['data_final']
-						);
-						$justificado = $PresencaController->getJustificadoPeriodo(
-							$_GET['cod_sala'],
-							$alune['id'],
-							0,
-							0,
-							$_GET['data_inicial'],
-							$_GET['data_final']
-						);
-
-						$presencas = count($presencas);
-						$justificado = count($justificado);
-						$ausencias = count($ausencias);
-						$total = $presencas + $justificado + $ausencias ;
-						$total = $total > 0 ? $total : 1;
-						$porcentagem = ( ($presencas + $justificado) / $total ) * 100;
-						
-						$color = $porcentagem >= 70 ? "green" : "red";
-						?>		
-						<tr style= "color: <?= $color?>; border-bottom: 1px solid #555;">
-							<td><?= $alune['nome']?></td>
-							<td><?= $presencas?></td>
-							<td><?= $ausencias?></td>
-							<td><?= $justificado?></td>
-							<td><?= number_format($porcentagem, 2, '.', ',')?>%</td>
-						</tr>
-					<?php } ?>
-           		</table>
-				<br>
-			<?php } ?>
-		</center>
-		
-	</div>	<!--/.main-->
-	
-	<script src="../js/jquery-1.11.1.min.js"></script>
-	<script src="../js/bootstrap.min.js"></script>
-
-	<script src="../js/bootstrap-datepicker.js"></script>
-	<script src="../js/custom.js"></script>		
+				<div class="form-group">
+					<label>Data Inicial</label>
+					<input id="dataInicial" name="dataInicial" type="date" class="form-control">
+				</div>
+				<div class="form-group">
+					<label>Data Final</label>
+					<input id="dataFinal" name="dataFinal" type="date" class="form-control">
+				</div>
+				<div class="form-group">
+					<label>Coordenador Docente do Projeto</label>
+					<select class="form-control" id="docente" name="docente" onchange="buscarDocente()">
+						<option>Selecione o docente</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label>Coordenador Discente do Projeto</label>
+					<select class="form-control" id="discente" name="discente"  onchange="buscarDiscente()">
+						<option>Selecione o discente</option>
+					</select>
+				</div>
+				<input class="btn btn-md btn-warning" type="button" onclick="gerarCertificadoMonitore()" value="Gerar">
+			</div>
+			<br>
+			<br>
+			<div id="detalhes">
+				<div class="form-group">
+					<div id="frente">
+						<div id="conteudo">
+							<h1 id="titulo">
+								CERTIFICADO
+							</h1>
+							<div id="corpo">
+								Certificamos que <b class="nomeMonitore"></b> participou do Subprograma de Extensão Universitária Cursinho Pré Universitário Atena do Instituto de Biociencias da UNESP de Botucatu na condição de <b>Monitor(a)</b> no periodo de <label class="mesInicial"></label> a <label class="mesFinal"></label> de <label class="anoFinal"></label>.
+							</div>
+							<table id="assinaturas">
+								<tr>
+									<td class="assinaturas">
+										<div id="assinaturaDocente"></div>
+									</td>
+									<td class="assinaturas">
+										<div id="assinaturaDiscente"></div>
+									</td>
+								</tr>
+								<tr>
+									<td class="assinaturas" id="nomeDocente"></td>
+									<td class="assinaturas" id="nomeDiscente"></td>
+								</tr>
+								<tr>
+									<td class="assinaturas">Coordenador Docente do Projeto</td>
+									<td class="assinaturas">Coordenador Discente do Projeto</td>
+								</tr>
+							</table>
+							<div>
+								<img id="ibbFrente" src="../img/ibb.png" />
+								<img id="unespFrente" src="../img/unesp.png" />
+							</div>
+						</div>
+					</div>
+					<br>
+					<input class="btn btn-md btn-warning" type="button" onclick="downloadFrente()" value="Download Frente">
+				</div>
+				<div class="form-group">
+					<div id="verso">
+						<div id="conteudo">
+							<table id="carga-horaria">
+								<tr>
+								<th colspan="2">Atividades Desenvolvidas</th>
+								</tr>
+								<tr>
+									<td class="assinaturas">Professor(a) de <label class="nomeMateria"></label></td>
+									<td class="assinaturas"><label class="presencaAulas"></label> aulas (50 min/aula)</td>
+								</tr>
+								<tr>
+									<td class="assinaturas">Reuniões Burocráticas/Pedagógicas</td>
+									<td class="assinaturas"><label class="presencaReuniao"></label> horas</td>
+								</tr>
+							</table>
+							<div>
+								<img id="ibbVerso" src="../img/ibb.png" />
+								<img id="assinatura-cursinho" src="../img/assinatura-cursinho.png" />
+								<img id="unespVerso" src="../img/unesp.png" />
+							</div>
+						</div>
+					</div>
+					<br>
+					<input class="btn btn-md btn-warning" type="button" onclick="downloadVerso()" value="Download Verso">
+				</div>
+			</div>
+			<script src="../certificado/index.js"></script>
+			<script>
+				buscarMonitores();
+				buscarRepresentantes();
+			</script>
+		</div>
+	</center>
 </body>
 </html>
