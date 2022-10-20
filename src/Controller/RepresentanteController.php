@@ -36,11 +36,9 @@
                 $representante->usuario = $post['usuario'];
                 $representante->senha = $post['senha'];
                 $id = $representante->criarRepresentante();
-                if(isset($files)){
-                    move_uploaded_file($files['assinatura']['tmp_name'], '../assinatura/'.$id.'.png');
-                };
                 return json_encode([
                     "access" => true,
+                    "id" => $id,
                     "message" => "Cadastrado com sucesso"
                 ]);
             } else {
@@ -66,9 +64,6 @@
                 $representante->usuario = $post['usuario'];
                 $representante->senha = $post['senha'];
                 $representante->salvarRepresentante($post['id']);
-                // if(isset($files)){
-                //     move_uploaded_file($files['assinatura']['tmp_name'], '../assinatura/'.$post['id'].'.png');
-                // };
                 return json_encode([
                     "access" => true,
                     "message" => "Editado com sucesso"
@@ -113,7 +108,6 @@
             $representante->salvarAssinatura($post['id']);
             return json_encode([
                 "access" => true,
-                "message" => "Assinatura salva com sucesso"
             ]);
         }
     }

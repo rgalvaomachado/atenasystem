@@ -19,6 +19,14 @@
 	</br>
 	<input class='input' id="senha" type="password" name="senha">
 	</br>
+	<label>Assinatura Atual</label>
+	</br>
+	<div id="assinaturaRepresentante" style="width: 300px;height: 150px;margin: auto;"></div>
+	</br>
+	<label>Nova Assinatura</label>
+	</br>
+	<input class='input' id="assinatura" name="assinatura" type="file">
+	</br>
 	<input class='button' type="button" onclick="editar()" value="Editar">
 	<input class='button' type="button" onclick="excluir()" value="Excluir">
 </div>

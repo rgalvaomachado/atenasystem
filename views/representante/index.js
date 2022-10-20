@@ -9,6 +9,18 @@ function buscar(){
         },
         complete: function(response) {
             var response = JSON.parse(response.responseText);
+            if(response.representante.assinatura){
+                var srcData = response.representante.assinatura;
+                var newImage = document.createElement('img');
+                newImage.src = srcData;
+                newImage.id = "imgAssinaturaRepresentante";
+                newImage.style.maxWidth = "100%";
+                newImage.style.maxHeight = "100%";
+                document.getElementById("assinaturaRepresentante").innerHTML = newImage.outerHTML;
+            }else{
+                $('#assinaturaRepresentante').height(0);
+                document.getElementById("assinaturaRepresentante").innerHTML = 'Não há assinatura';
+            }
             if(response.access){
                 $('#detalhes').show();
                 $('#nome').val(response.representante.nome);
@@ -22,7 +34,7 @@ function criar(){
     var nome = $("#nome").val();
     var usuario = $("#usuario").val();
     var senha = $("#senha").val();
-    var assinatura = $("#assinatura").val();
+    var filesSelected = document.getElementById("assinatura").files;
     $.ajax({
         method: "POST",
         url: "src/Controller/Controller.php",
@@ -31,13 +43,29 @@ function criar(){
             nome: nome,
             usuario: usuario,
             senha: senha,
-            assinatura: assinatura,
         },
         complete: function(response) {
             var response = JSON.parse(response.responseText);
             const alert = document.getElementById("messageAlert");
             alert.innerHTML = response.message;
             if(response.access){
+                if (filesSelected.length > 0) {
+                    var fileToLoad = filesSelected[0];
+                    var fileReader = new FileReader();
+                    fileReader.onload = function(fileLoadedEvent) {
+                        var assinatura = fileLoadedEvent.target.result
+                        $.ajax({
+                            method: "POST",
+                            url: "src/Controller/Controller.php",
+                            data: {
+                                metodo: "salvaAssinaturaRepresentante",
+                                assinatura: assinatura,
+                                id: response.id,
+                            }
+                        });
+                    }
+                    fileReader.readAsDataURL(fileToLoad);
+                }
                 alert.style.color = "green";
                 setTimeout(function(){
                     alert.innerHTML = "";
@@ -60,7 +88,7 @@ function editar(){
     var nome = $("#nome").val();
     var usuario = $("#usuario").val();
     var senha = $("#senha").val();
-    var assinatura = $("#assinatura").val();
+    var filesSelected = document.getElementById("assinatura").files;
     $.ajax({
         method: "POST",
         url: "src/Controller/Controller.php",
@@ -70,27 +98,43 @@ function editar(){
             nome: nome,
             usuario: usuario,
             senha: senha,
-            assinatura: assinatura,
         },
         complete: function(response) {
             var response = JSON.parse(response.responseText);
             const alert = document.getElementById("messageAlert");
             alert.innerHTML = response.message;
-            if(response.access){
-                alert.style.color = "green";
-                setTimeout(function(){
-                    alert.innerHTML = "";
-                    $(function(){
-                        $("#content").load("views/representante/editar.php");
-                    });
-                }, 1000);
-            }else{
-                alert.style.color = "red";
-                setTimeout(function(){
-                    alert.innerHTML = "";
-                }, 2000);
+                if(response.access){
+                    if (filesSelected.length > 0) {
+                        var fileToLoad = filesSelected[0];
+                        var fileReader = new FileReader();
+                        fileReader.onload = function(fileLoadedEvent) {
+                            var assinatura = fileLoadedEvent.target.result
+                            $.ajax({
+                                method: "POST",
+                                url: "src/Controller/Controller.php",
+                                data: {
+                                    metodo: "salvaAssinaturaRepresentante",
+                                    assinatura: assinatura,
+                                    id: id,
+                                }
+                            });
+                        }
+                        fileReader.readAsDataURL(fileToLoad);
+                    }
+                    alert.style.color = "green";
+                    setTimeout(function(){
+                        alert.innerHTML = "";
+                        $(function(){
+                            $("#content").load("views/representante/editar.php");
+                        });
+                    }, 1000);
+                }else{
+                    alert.style.color = "red";
+                    setTimeout(function(){
+                        alert.innerHTML = "";
+                    }, 2000);
+                }
             }
-        }
     });
 }
 
@@ -145,70 +189,4 @@ function buscarRepresentantes(){
         
         }
     });
-}
-
-function buscarAssinatura(){
-    var id = $("#representante").val();
-    $.ajax({
-        method: "POST",
-        url: "src/Controller/Controller.php",
-        data: {
-            metodo: "getRepresentante",
-            id: id,
-        },
-        complete: function(response) {
-            var response = JSON.parse(response.responseText);
-            if(response.access){
-                $('#detalhes').show();
-                if(response.representante.assinatura){
-                    var srcData = response.representante.assinatura;
-                    var newImage = document.createElement('img');
-                    newImage.src = srcData;
-                    newImage.id = "imgAssinaturaRepresentante";
-                    newImage.style.maxWidth = "100%";
-                    newImage.style.maxHeight = "100%";
-                    document.getElementById("assinaturaRepresentante").innerHTML = newImage.outerHTML;
-                }else{
-                    $('#assinaturaRepresentante').height(0);
-                    document.getElementById("assinaturaRepresentante").innerHTML = 'Não há assinatura';
-                }
-            }
-        }
-    });
-}
-
-function salvarAssinatura() {
-    var id = $("#representante").val();
-    var filesSelected = document.getElementById("assinatura").files;
-    if (filesSelected.length > 0) {
-      var fileToLoad = filesSelected[0];
-      var fileReader = new FileReader();
-      fileReader.onload = function(fileLoadedEvent) {
-        var assinatura = fileLoadedEvent.target.result
-        $.ajax({
-            method: "POST",
-            url: "src/Controller/Controller.php",
-            data: {
-                metodo: "salvaAssinaturaRepresentante",
-                assinatura: assinatura,
-                id: id,
-            },
-            complete: function(response) {
-                var response = JSON.parse(response.responseText);
-                const alert = document.getElementById("messageAlert");
-                alert.innerHTML = response.message;
-                if(response.access){
-                    alert.style.color = "green";
-                    setTimeout(function(){
-                        alert.innerHTML = "";
-                        $(function(){
-                            $("#content").load("views/representante/assinatura.php");
-                        });
-                    }, 1000);
-                }
-            }
-        });
-      }
-      fileReader.readAsDataURL(fileToLoad);
-    }
 }

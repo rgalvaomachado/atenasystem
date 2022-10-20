@@ -18,7 +18,7 @@
         }
 
         function getRepresentantes(){
-            $getRepresentantes =  $this->bd->prepare('SELECT id, nome, usuario, senha FROM representante ORDER BY nome ASC');
+            $getRepresentantes =  $this->bd->prepare('SELECT id, nome, usuario, senha, assinatura FROM representante ORDER BY nome ASC');
             $getRepresentantes->execute();
             return $getRepresentantes->fetchAll(PDO::FETCH_ASSOC);
         }

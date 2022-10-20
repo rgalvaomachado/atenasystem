@@ -49,7 +49,6 @@ function menuRepresentante(){
             <ul>
                 <li><a href="#" onclick="cadRepresentante()"><em class="fa fa-arrow-right">&nbsp;</em>Cadastro</a></li>
                 <li><a href="#" onclick="editRepresentante()"><em class="fa fa-arrow-right">&nbsp;</em>Editar</a></li>
-                <li><a href="#" onclick="assinaturaRepresentante()"><em class="fa fa-arrow-right">&nbsp;</em>Assinatura</a></li>
             </ul>
         </li>
     `);
@@ -378,13 +377,6 @@ function cadRepresentante(){
 function editRepresentante(){
     $(function(){
         $("#content").load("views/representante/editar.php");
-    });
-    menu();
-}
-
-function assinaturaRepresentante(){
-    $(function(){
-        $("#content").load("views/representante/assinatura.php");
     });
     menu();
 }

@@ -14,5 +14,9 @@
 <br>
 <input class='input' id="senha" name="senha" type="password">
 <br>
+<label>Assinatura</label>
+</br>
+<input class='input' id="assinatura" name="assinatura" type="file">
+</br>
 <input class='button' type="button" onclick="criar()" value="Cadastrar">
 <script src="views/representante/index.js"></script>
