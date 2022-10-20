@@ -72,12 +72,8 @@
                 <th colspan="2">Atividades Desenvolvidas</th>
                 </tr>
                 <tr>
-                    <td class="assinaturas">Professor(a) de <label class="nomeMateria"></label></td>
-                    <td class="assinaturas"><label class="presencaAulas"></label> aulas (50 min/aula)</td>
-                </tr>
-                <tr>
-                    <td class="assinaturas">Reuniões Burocráticas/Pedagógicas</td>
-                    <td class="assinaturas"><label class="presencaReuniao"></label> horas</td>
+                    <td class="assinaturas">Monitoria</label></td>
+                    <td class="assinaturas"><label class="presencaMonitorias"></label> horas</td>
                 </tr>
             </table>
             <div>

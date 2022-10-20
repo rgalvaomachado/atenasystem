@@ -82,39 +82,28 @@ class CertificadoController{
             $mesFinal = $UtilsController->getMes($dataFinal);
             $anoFinal = $data2[0];
 
-            // $SalaController = new SalaController();
-            // $salas = json_decode($SalaController->getSalas());
-            // $PresencaController = new PresencaController();
-            // $presencaAulas  = 0;
-            // foreach($salas as $sala){  
-            //     $aulas = $PresencaController->getPresencaPeriodo(
-            //         $sala->id,
-            //         0,
-            //         0,
-            //         $post['tutore'],
-            //         $post['dataInicial'],
-            //         $post['dataFinal']
-            //     );
-            //     $presencaAulas  = count($aulas) + $presencaAulas;
-            // }
-
-            // $reuniao = $PresencaController->getPresencaPeriodo(
-            //     0,
-            //     0,
-            //     0,
-            //     $post['tutore'],
-            //     $post['dataInicial'],
-            //     $post['dataFinal']
-            // );
-            // $presencaReuniao = count($reuniao);
+            $SalaController = new SalaController();
+            $salas = json_decode($SalaController->getSalas());
+            $PresencaController = new PresencaController();
+            $presencaMonitorias  = 0;
+            foreach($salas as $sala){  
+                $monitorias = $PresencaController->getPresencaPeriodo(
+                    $sala->id,
+                    0,
+                    $post['monitore'],
+                    0,
+                    $post['dataInicial'],
+                    $post['dataFinal']
+                );
+                $presencaMonitorias  = count($monitorias) + $presencaMonitorias;
+            }
 
             return json_encode([
                 "access" => true,
                 "mesInicial" => $mesInicial,
                 "mesFinal" => $mesFinal,
                 "anoFinal" => $anoFinal,
-                // "presencaAulas" => $presencaAulas,
-                // "presencaReuniao" => $presencaReuniao,
+                "presencaMonitorias" => $presencaMonitorias,
             ]);
         } else {
             return json_encode([

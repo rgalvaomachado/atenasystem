@@ -138,8 +138,7 @@ function gerarCertificadoMonitore(){
                 $('.anoFinal').html(response.anoFinal);
                 $('.mesFinal').html(response.mesFinal);
                 $('.mesInicial').html(response.mesInicial);
-                $('.presencaAulas').html(response.presencaAulas*2);
-                $('.presencaReuniao').html(response.presencaReuniao);
+                $('.presencaMonitorias').html(response.presencaMonitorias*4);
             }else{
                 const alert = document.getElementById("messageAlert");
                 alert.innerHTML = response.message;
