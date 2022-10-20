@@ -12,7 +12,7 @@
         <input class='button' type="button" onclick="login()" value="Entrar">
     </div>
     <div class='form'>
-        <label class="message_alert" id="messageAlertLogin"></label>
+        <label class="message_alert" id="messageAlert"></label>
     </div>
 </div>
 <script src="views/login/index.js"></script>
