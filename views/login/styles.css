@@ -1,15 +1,20 @@
 #login{
-    text-align: center;
+  text-align: center;
+}
+
+.labelLogin{
+  color: rgb(83, 83, 83);
 }
 
 @media (min-width: 800px){
   #login{
     padding-top: 80px;
   }
+
   #labelLogin{
     font-size: 30px;
-    color: rgb(83, 83, 83);
   }
+
   .labelLogin{
     padding-bottom: 20px;
   }
@@ -18,10 +23,11 @@
   #login{
     padding-top: 20px;
   }
+
   #labelLogin{
     font-size: 20px;
-    color: rgb(83, 83, 83);
   }
+  
   .labelLogin{
     padding-bottom: 20px;
   }

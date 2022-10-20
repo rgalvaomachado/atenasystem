@@ -1,6 +1,6 @@
 <div id="login">
-    <div class='form' class="labelLogin">
-        <label class='input'id="labelLogin">Login</label>
+    <div class='form'>
+        <label class="title labelLogin">Login</label>
     </div>
     <div class='form'>
         <input class='input'placeholder="Usuario" id="usuarioLogin" name="usuarioLogin" type="text">
