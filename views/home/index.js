@@ -369,196 +369,196 @@ function menu(){
 
 function cadRepresentante(){
     $(function(){
-        $("#content").load("views/representante/criar.php");
+        $("#content").load("views/representante/criar.html");
     });
     menu();
 }
 
 function editRepresentante(){
     $(function(){
-        $("#content").load("views/representante/editar.php");
+        $("#content").load("views/representante/editar.html");
     });
     menu();
 }
 
 function cadComissao(){
     $(function(){
-        $("#content").load("views/comissao/criar.php");
+        $("#content").load("views/comissao/criar.html");
     });
     menu();
 }
 
 function editComissao(){
     $(function(){
-        $("#content").load("views/comissao/editar.php");
+        $("#content").load("views/comissao/editar.html");
     });
     menu();
 }
 
 function cadMonitore(){
     $(function(){
-        $("#content").load("views/monitore/criar.php");
+        $("#content").load("views/monitore/criar.html");
     });
     menu();
 }
 
 function editMonitore(){
     $(function(){
-        $("#content").load("views/monitore/editar.php");
+        $("#content").load("views/monitore/editar.html");
     });
     menu();
 }
 
 function editPresencaMonitore(){
     $(function(){
-        $("#content").load("views/monitore/presenca.php");
+        $("#content").load("views/monitore/presenca.html");
     });
     menu();
 }
 
 function cadAlune(){
     $(function(){
-        $("#content").load("views/alune/criar.php");
+        $("#content").load("views/alune/criar.html");
     });
     menu();
 }
 
 function editAlune(){
     $(function(){
-        $("#content").load("views/alune/editar.php");
+        $("#content").load("views/alune/editar.html");
     });
     menu();
 }
 
 function justificarAlune(){
     $(function(){
-        $("#content").load("views/alune/justificar.php");
+        $("#content").load("views/alune/justificar.html");
     });
     menu();
 }
 
 function cadDisciplina(){
     $(function(){
-        $("#content").load("views/disciplina/criar.php");
+        $("#content").load("views/disciplina/criar.html");
     });
     menu();
 }
 
 function editDisciplina(){
     $(function(){
-        $("#content").load("views/disciplina/editar.php");
+        $("#content").load("views/disciplina/editar.html");
     });
     menu();
 }
 
 function cadSala(){
     $(function(){
-        $("#content").load("views/sala/criar.php");
+        $("#content").load("views/sala/criar.html");
     });
     menu();
 }
 
 function editSala(){
     $(function(){
-        $("#content").load("views/sala/editar.php");
+        $("#content").load("views/sala/editar.html");
     });
     menu();
 }
 
 function cadTutore(){
     $(function(){
-        $("#content").load("views/tutore/criar.php");
+        $("#content").load("views/tutore/criar.html");
     });
     menu();
 }
 
 function editTutore(){
     $(function(){
-        $("#content").load("views/tutore/editar.php");
+        $("#content").load("views/tutore/editar.html");
     });
     menu();
 }
 
 function editPresencaTutore(){
     $(function(){
-        $("#content").load("views/tutore/presenca.php");
+        $("#content").load("views/tutore/presenca.html");
     });
     menu();
 }
 
 function justificarTutore(){
     $(function(){
-        $("#content").load("views/tutore/justificar.php");
+        $("#content").load("views/tutore/justificar.html");
     });
     menu();
 }
 
 function presencaAlune(){
     $(function(){
-        $("#content").load("views/presenca/alune.php");
+        $("#content").load("views/presenca/alune.html");
     });
     menu();
 }
 
 function presencaTutore(){
     $(function(){
-        $("#content").load("views/presenca/tutore.php");
+        $("#content").load("views/presenca/tutore.html");
     });
     menu();
 }
 
 function presencaMonitore(){
     $(function(){
-        $("#content").load("views/presenca/monitore.php");
+        $("#content").load("views/presenca/monitore.html");
     });
     menu();
 }
 
 function presencaReuniao(){
     $(function(){
-        $("#content").load("views/presenca/reuniao.php");
+        $("#content").load("views/presenca/reuniao.html");
     });
     menu();
 }
 
 function relatorioAlune(){
     $(function(){
-        $("#content").load("views/relatorio/alune.php");
+        $("#content").load("views/relatorio/alune.html");
     });
     menu();
 }
 
 function relatorioTutore(){
     $(function(){
-        $("#content").load("views/relatorio/tutore.php");
+        $("#content").load("views/relatorio/tutore.html");
     });
     menu();
 }
 
 function relatorioMonitore(){
     $(function(){
-        $("#content").load("views/relatorio/monitore.php");
+        $("#content").load("views/relatorio/monitore.html");
     });
     menu();
 }
 
 function relatorioReuniao(){
     $(function(){
-        $("#content").load("views/relatorio/reuniao.php");
+        $("#content").load("views/relatorio/reuniao.html");
     });
     menu();
 }
 
 function certificadoTutore(){
     $(function(){
-        $("#content").load("views/certificado/tutore.php");
+        $("#content").load("views/certificado/tutore.html");
     });
     menu();
 }
 
 function certificadoMonitore(){
     $(function(){
-        $("#content").load("views/certificado/monitore.php");
+        $("#content").load("views/certificado/monitore.html");
     });
     menu();
 }
