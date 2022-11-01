@@ -13,7 +13,9 @@
 
     $metodo = isset($_POST['metodo']) ? $_POST['metodo'] : ""; 
     if ($metodo != 'verificaSessão'){
-        session_start();
+        if(!isset($_SESSION)){
+            session_start();
+        }
         $_SESSION['CREATED'] = time();
     }
 

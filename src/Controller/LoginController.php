@@ -39,7 +39,9 @@ class LoginController{
         }
 
         if($validado){
-            session_start();
+            if(!isset($_SESSION)){
+                session_start();
+            }
             $_SESSION['usuario'] =  $usuarioValidado;
             $_SESSION['modo'] = $modoValidado;
             $_SESSION['CREATED'] = time();
@@ -56,7 +58,9 @@ class LoginController{
     }
 
     function logout(){
-	    session_start();
+	    if(!isset($_SESSION)){
+            session_start();
+        }
         $_SESSION['usuario'] =  "";
         $_SESSION['modo'] = "";
         session_destroy();
@@ -66,10 +70,13 @@ class LoginController{
     }
 
     function verificaLogin(){
-	    session_start();
-        if ($_SESSION['modo'] != '') {
+        if(!isset($_SESSION)){
+            session_start();
+        }
+        $modo = isset($_SESSION['modo']) ? $_SESSION['modo'] : "";
+        if ($modo != '') {
             return json_encode([
-                "modo" => $_SESSION['modo'],
+                "modo" => $modo,
                 "access" => true
             ]);
         } else {
@@ -80,7 +87,9 @@ class LoginController{
     }
 
     function verificaSessão(){
-        session_start();
+        if(!isset($_SESSION)){
+            session_start();
+        }
         if (time() - $_SESSION['CREATED'] > 1800) { // 30 minutos
             $_SESSION['usuario'] =  "";
             $_SESSION['modo'] = "";
