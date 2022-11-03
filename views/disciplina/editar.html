@@ -2,7 +2,7 @@
 <br>
 <label class="message_alert" id="messageAlert"></label>
 <br>
-<select class='input' id="disciplina" name="disciplina" onchange="buscar()">
+<select class='input' id="disciplina" name="disciplina" onchange="buscarDisciplina()">
 	<option value="">Selecione a disciplina</option>
 </select>
 </br>
@@ -11,8 +11,8 @@
 	</br>
 	<input class='input' name="nome" id="nome">
 	</br>
-	<input class='button' type="button" onclick="editar()" value="Editar">
-	<input class='button' type="button" onclick="excluir()" value="Excluir">
+	<input class='button' type="button" onclick="editarDisciplina()" value="Editar">
+	<input class='button' type="button" onclick="excluirDisciplina()" value="Excluir">
 </div>
 <script src="views/disciplina/index.js"></script>
 <script>buscarDisciplinas()</script>

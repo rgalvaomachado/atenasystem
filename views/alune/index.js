@@ -1,4 +1,4 @@
-function criar(){
+function criarAlune(){
     var nome = $("#nome").val();
     var sala = $("#sala").val();
     $.ajax({
@@ -18,7 +18,7 @@ function criar(){
                 setTimeout(function(){
                     alert.innerHTML = "";
                     $(function(){
-                        $("#content").load("views/alune/criar.php");
+                        $("#content").load("views/alune/criar.html");
                     });
                 }, 1000);
             }else{
@@ -31,7 +31,7 @@ function criar(){
     });
 }
 
-function buscar(){
+function buscarAlune(){
     var id = $("#alune").val();
     $.ajax({
         method: "POST",
@@ -51,7 +51,7 @@ function buscar(){
     });
 }
 
-function editar(){
+function editarAlune(){
     var id = $("#alune").val();
     var nome = $("#nome").val();
     var sala = $("#sala").val();
@@ -73,7 +73,7 @@ function editar(){
                 setTimeout(function(){
                     alert.innerHTML = "";
                     $(function(){
-                        $("#content").load("views/alune/editar.php");
+                        $("#content").load("views/alune/editar.html");
                     });
                 }, 1000);
             }else{
@@ -86,7 +86,7 @@ function editar(){
     });
 }
 
-function excluir(){
+function excluirAlune(){
     if (confirm("Voce realmente deseja excluir?")){
         var id = $("#alune").val();
         $.ajax({
@@ -105,7 +105,7 @@ function excluir(){
                     setTimeout(function(){
                         alert.innerHTML = "";
                         $(function(){
-                            $("#content").load("views/alune/editar.php");
+                            $("#content").load("views/alune/editar.html");
                         });
                     }, 1000);
                 }else{
@@ -156,23 +156,6 @@ function buscarAlunesSala(){
                     $('#alune').append(`<option value='${id}'>${nome}</option>`);
                 });
             }
-        }
-    });
-}
-
-function buscarSalas(){
-    $.ajax({
-        method: "POST",
-        url: "src/Controller/Controller.php",
-        data: {
-            metodo: "getSalas",
-        },
-        complete: function(response) {
-            var salas = JSON.parse(response.responseText);
-            salas.map(({id,nome}) => {
-                $('#sala').append(`<option value='${id}'>${nome}</option>`);
-            });
-           
         }
     });
 }

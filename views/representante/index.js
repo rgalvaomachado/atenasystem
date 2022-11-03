@@ -1,4 +1,4 @@
-function buscar(){
+function buscarRepresentante(){
     var id = $("#representante").val();
     $.ajax({
         method: "POST",
@@ -30,7 +30,7 @@ function buscar(){
     });
 }
 
-function criar(){
+function criarRepresentante(){
     var nome = $("#nome").val();
     var usuario = $("#usuario").val();
     var senha = $("#senha").val();
@@ -70,7 +70,7 @@ function criar(){
                 setTimeout(function(){
                     alert.innerHTML = "";
                     $(function(){
-                        $("#content").load("views/representante/criar.php");
+                        $("#content").load("views/representante/criar.html");
                     });
                 }, 1000);
             }else{
@@ -83,7 +83,7 @@ function criar(){
     });
 }
 
-function editar(){
+function editarRepresentante(){
     var id = $("#representante").val();
     var nome = $("#nome").val();
     var usuario = $("#usuario").val();
@@ -125,7 +125,7 @@ function editar(){
                     setTimeout(function(){
                         alert.innerHTML = "";
                         $(function(){
-                            $("#content").load("views/representante/editar.php");
+                            $("#content").load("views/representante/editar.html");
                         });
                     }, 1000);
                 }else{
@@ -138,7 +138,7 @@ function editar(){
     });
 }
 
-function excluir(){
+function excluirRepresentante(){
     if (confirm("Voce realmente deseja excluir?")){
         var id = $("#representante").val();
         $.ajax({
@@ -160,7 +160,7 @@ function excluir(){
                     setTimeout(function(){
                         alert.innerHTML = "";
                         $(function(){
-                            $("#content").load("views/representante/editar.php");
+                            $("#content").load("views/representante/editar.html");
                         });
                     }, 1000);
                 }else{

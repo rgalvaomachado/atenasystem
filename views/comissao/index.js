@@ -1,4 +1,4 @@
-function buscar(){
+function buscarComissao(){
     var id = $("#comissao").val();
     $.ajax({
         method: "POST",
@@ -18,7 +18,7 @@ function buscar(){
     });
 }
 
-function criar(){
+function criarComissao(){
     var nome = $("#nome").val();
     var usuario = $("#usuario").val();
     var senha = $("#senha").val();
@@ -40,7 +40,7 @@ function criar(){
                 setTimeout(function(){
                     alert.innerHTML = "";
                     $(function(){
-                        $("#content").load("views/comissao/criar.php");
+                        $("#content").load("views/comissao/criar.html");
                     });
                 }, 1000);
             }else{
@@ -53,7 +53,7 @@ function criar(){
     });
 }
 
-function editar(){
+function editarComissao(){
     var id = $("#comissao").val();
     var nome = $("#nome").val();
     var usuario = $("#usuario").val();
@@ -77,7 +77,7 @@ function editar(){
                 setTimeout(function(){
                     alert.innerHTML = "";
                     $(function(){
-                        $("#content").load("views/comissao/editar.php");
+                        $("#content").load("views/comissao/editar.html");
                     });
                 }, 1000);
             }else{
@@ -90,7 +90,7 @@ function editar(){
     });
 }
 
-function excluir(){
+function excluirComissao(){
     if (confirm("Voce realmente deseja excluir?")){
         var id = $("#comissao").val();
         $.ajax({
@@ -109,7 +109,7 @@ function excluir(){
                     setTimeout(function(){
                         alert.innerHTML = "";
                         $(function(){
-                            $("#content").load("views/comissao/editar.php");
+                            $("#content").load("views/comissao/editar.html");
                         });
                     }, 1000);
                 }else{

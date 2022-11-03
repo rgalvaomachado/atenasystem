@@ -1,20 +1,3 @@
-function buscarSalas(){
-    $.ajax({
-        method: "POST",
-        url: "src/Controller/Controller.php",
-        data: {
-            metodo: "getSalas",
-        },
-        complete: function(response) {
-            var salas = JSON.parse(response.responseText);
-            salas.map(({id,nome}) => {
-                $('#sala').append(`<option value='${id}'>${nome}</option>`);
-            });
-           
-        }
-    });
-}
-
 function buscarAlunesLista(){
     var sala = $("#sala").val();
     $.ajax({
@@ -43,23 +26,6 @@ function buscarAlunesLista(){
     });
 }
 
-function buscarMonitores(){
-    $.ajax({
-        method: "POST",
-        url: "src/Controller/Controller.php",
-        data: {
-            metodo: "getMonitores",
-        },
-        complete: function(response) {
-            var monitores = JSON.parse(response.responseText);
-            monitores.map(({id,nome}) => {
-                $('#monitore').append(`<option value='${id}'>${nome}</option>`);
-            });
-           
-        }
-    });
-}
-
 function buscarTutoresLista(){
     var sala = $("#sala").val();
     $.ajax({
@@ -80,23 +46,6 @@ function buscarTutoresLista(){
                     </tr>
                 `);
             });
-        }
-    });
-}
-
-function buscarTutoresSelect(){
-    $.ajax({
-        method: "POST",
-        url: "src/Controller/Controller.php",
-        data: {
-            metodo: "getTutores",
-        },
-        complete: function(response) {
-            var tutores = JSON.parse(response.responseText);
-            tutores.map(({id,nome}) => {
-                $('#tutore').append(`<option value='${id}'>${nome}</option>`);
-            });
-           
         }
     });
 }
@@ -130,7 +79,7 @@ function criarPresencaAlune(){
                 setTimeout(function(){
                     alert.innerHTML = "";
                     $(function(){
-                        $("#content").load("views/presenca/alune.php");
+                        $("#content").load("views/presenca/alune.html");
                     });
                 }, 2000);
                 
@@ -170,7 +119,7 @@ function criarPresencaReuniao(){
                 setTimeout(function(){
                     alert.innerHTML = "";
                     $(function(){
-                        $("#content").load("views/presenca/reuniao.php");
+                        $("#content").load("views/presenca/reuniao.html");
                     });
                 }, 2000);
                 
@@ -207,7 +156,7 @@ function criarPresencaMonitore(){
                 setTimeout(function(){
                     alert.innerHTML = "";
                     $(function(){
-                        $("#content").load("views/presenca/monitore.php");
+                        $("#content").load("views/presenca/monitore.html");
                     });
                 }, 2000);
             } else {
@@ -245,7 +194,7 @@ function criarPresencaTutore(){
                 setTimeout(function(){
                     alert.innerHTML = "";
                     $(function(){
-                        $("#content").load("views/presenca/tutore.php");
+                        $("#content").load("views/presenca/tutore.html");
                     });
                 }, 2000);
             } else {

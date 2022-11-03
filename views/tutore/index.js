@@ -1,4 +1,4 @@
-function criar(){
+function criarTutore(){
     var nome = $("#nome").val();
     var disciplina = $("#disciplina").val();
     $.ajax({
@@ -18,7 +18,7 @@ function criar(){
                 setTimeout(function(){
                     alert.innerHTML = "";
                     $(function(){
-                        $("#content").load("views/tutore/criar.php");
+                        $("#content").load("views/tutore/criar.html");
                     });
                 }, 1000);
             }else{
@@ -31,7 +31,7 @@ function criar(){
     });
 }
 
-function buscar(){
+function buscarTutore(){
     var id = $("#tutore").val();
     $.ajax({
         method: "POST",
@@ -51,7 +51,7 @@ function buscar(){
     });
 }
 
-function editar(){
+function editarTutore(){
     var id = $("#tutore").val();
     var nome = $("#nome").val();
     var disciplina = $("#disciplina").val();
@@ -73,7 +73,7 @@ function editar(){
                 setTimeout(function(){
                     alert.innerHTML = "";
                     $(function(){
-                        $("#content").load("views/tutore/editar.php");
+                        $("#content").load("views/tutore/editar.html");
                     });
                 }, 1000);
             }else{
@@ -86,7 +86,7 @@ function editar(){
     });
 }
 
-function excluir(){
+function excluirTutore(){
     if (confirm("Voce realmente deseja excluir?")){
         var id = $("#tutore").val();
         $.ajax({
@@ -105,7 +105,7 @@ function excluir(){
                     setTimeout(function(){
                         alert.innerHTML = "";
                         $(function(){
-                            $("#content").load("views/tutore/editar.php");
+                            $("#content").load("views/tutore/editar.html");
                         });
                     }, 1000);
                 }else{
@@ -130,40 +130,6 @@ function buscarTutores(){
             var tutores = JSON.parse(response.responseText);
             tutores.map(({id,nome}) => {
                 $('#tutore').append(`<option value='${id}'>${nome}</option>`);
-            });
-           
-        }
-    });
-}
-
-function buscarDisciplinas(){
-    $.ajax({
-        method: "POST",
-        url: "src/Controller/Controller.php",
-        data: {
-            metodo: "getDisciplinas",
-        },
-        complete: function(response) {
-            var disciplinas = JSON.parse(response.responseText);
-            disciplinas.map(({id,nome}) => {
-                $('#disciplina').append(`<option value='${id}'>${nome}</option>`);
-            });
-           
-        }
-    });
-}
-
-function buscarSalas(){
-    $.ajax({
-        method: "POST",
-        url: "src/Controller/Controller.php",
-        data: {
-            metodo: "getSalas",
-        },
-        complete: function(response) {
-            var salas = JSON.parse(response.responseText);
-            salas.map(({id,nome}) => {
-                $('#sala').append(`<option value='${id}'>${nome}</option>`);
             });
            
         }
@@ -229,7 +195,7 @@ function editarPresencaTutore(){
                 setTimeout(function(){
                     alert.innerHTML = "";
                     $(function(){
-                        $("#content").load("views/tutore/presenca.php");
+                        $("#content").load("views/tutore/presenca.html");
                     });
                 }, 2000);
             } else {
@@ -293,7 +259,7 @@ function justificarPresencaReuniao(){
                 setTimeout(function(){
                     alert.innerHTML = "";
                     $(function(){
-                        $("#content").load("views/tutore/justificar.php");
+                        $("#content").load("views/tutore/justificar.html");
                     });
                 }, 2000);
             } else {

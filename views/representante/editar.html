@@ -2,7 +2,7 @@
 <br>
 <label class="message_alert" id="messageAlert"></label>
 <br>
-<select class='input' id="representante" name="representante" onchange="buscar()">
+<select class='input' id="representante" name="representante" onchange="buscarRepresentante()">
 	<option value="">Selecione o representante</option>
 </select>
 </br>
@@ -27,8 +27,8 @@
 	</br>
 	<input class='input' id="assinatura" name="assinatura" type="file">
 	</br>
-	<input class='button' type="button" onclick="editar()" value="Editar">
-	<input class='button' type="button" onclick="excluir()" value="Excluir">
+	<input class='button' type="button" onclick="editarRepresentante()" value="Editar">
+	<input class='button' type="button" onclick="excluirRepresentante()" value="Excluir">
 </div>
 <script src="views/representante/index.js"></script>
 <script>buscarRepresentantes()</script>

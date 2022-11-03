@@ -1,4 +1,4 @@
-function buscarTutore(){
+function buscarTutoreCertificado(){
     var id = $("#tutore").val();
     $.ajax({
         method: "POST",
@@ -12,73 +12,6 @@ function buscarTutore(){
             if(response.access){
                 $('.nomeTutore').html(response.tutore.nome);
                 $('.nomeMateria').html(response.tutore.nome_disciplina);
-            }
-        }
-    });
-}
-
-function buscarTutores(){
-    $.ajax({
-        method: "POST",
-        url: "src/Controller/Controller.php",
-        data: {
-            metodo: "getTutores",
-        },
-        complete: function(response) {
-            var tutores = JSON.parse(response.responseText);
-            tutores.map(({id,nome}) => {
-                $('#tutore').append(`<option value='${id}'>${nome}</option>`);
-            });
-        }
-    });
-}
-
-function buscarRepresentantes(){
-    $.ajax({
-        method: "POST",
-        url: "src/Controller/Controller.php",
-        data: {
-            metodo: "getRepresentantes",
-        },
-        complete: function(response) {
-            var representantes = JSON.parse(response.responseText);
-            representantes.map(({id,nome}) => {
-                $('#discente').append(`<option value='${id}'>${nome}</option>`);
-                $('#docente').append(`<option value='${id}'>${nome}</option>`);
-            });
-        }
-    });
-}
-
-function buscarMonitores(){
-    $.ajax({
-        method: "POST",
-        url: "src/Controller/Controller.php",
-        data: {
-            metodo: "getMonitores",
-        },
-        complete: function(response) {
-            var monitores = JSON.parse(response.responseText);
-            monitores.map(({id,nome}) => {
-                $('#monitore').append(`<option value='${id}'>${nome}</option>`);
-            });
-        }
-    });
-}
-
-function buscarMonitore(){
-    var id = $("#monitore").val();
-    $.ajax({
-        method: "POST",
-        url: "src/Controller/Controller.php",
-        data: {
-            metodo: "getMonitore",
-            id: id,
-        },
-        complete: function(response) {
-            var response = JSON.parse(response.responseText);
-            if(response.access){
-                $('.nomeMonitore').html(response.monitore.nome);
             }
         }
     });
@@ -118,6 +51,24 @@ function gerarCertificadoTutore(){
     });
 }
 
+function buscarMonitoreCertificado(){
+    var id = $("#monitore").val();
+    $.ajax({
+        method: "POST",
+        url: "src/Controller/Controller.php",
+        data: {
+            metodo: "getMonitore",
+            id: id,
+        },
+        complete: function(response) {
+            var response = JSON.parse(response.responseText);
+            if(response.access){
+                $('.nomeMonitore').html(response.monitore.nome);
+            }
+        }
+    });
+}
+
 function gerarCertificadoMonitore(){
     var monitore = $('#monitore').val();
     var dataInicial = $('#dataInicial').val();
@@ -147,6 +98,23 @@ function gerarCertificadoMonitore(){
                     alert.innerHTML = "";
                 }, 2000);
             }
+        }
+    });
+}
+
+function buscarDocentesDiscentes(){
+    $.ajax({
+        method: "POST",
+        url: "src/Controller/Controller.php",
+        data: {
+            metodo: "getRepresentantes",
+        },
+        complete: function(response) {
+            var representantes = JSON.parse(response.responseText);
+            representantes.map(({id,nome}) => {
+                $('#discente').append(`<option value='${id}'>${nome}</option>`);
+                $('#docente').append(`<option value='${id}'>${nome}</option>`);
+            });
         }
     });
 }

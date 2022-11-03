@@ -1,4 +1,4 @@
-function criar(){
+function criarMonitore(){
     var nome = $("#nome").val();
     var usuario = $("#usuario").val();
     var senha = $("#senha").val();
@@ -20,7 +20,7 @@ function criar(){
                 setTimeout(function(){
                     alert.innerHTML = "";
                     $(function(){
-                        $("#content").load("views/monitore/criar.php");
+                        $("#content").load("views/monitore/criar.html");
                     });
                 }, 1000);
             }else{
@@ -33,7 +33,7 @@ function criar(){
     });
 }
 
-function buscar(){
+function buscarMonitore(){
     var id = $("#monitore").val();
     $.ajax({
         method: "POST",
@@ -53,7 +53,7 @@ function buscar(){
     });
 }
 
-function editar(){
+function editarMonitore(){
     var id = $("#monitore").val();
     var nome = $("#nome").val();
     var usuario = $("#usuario").val();
@@ -77,7 +77,7 @@ function editar(){
                 setTimeout(function(){
                     alert.innerHTML = "";
                     $(function(){
-                        $("#content").load("views/monitore/editar.php");
+                        $("#content").load("views/monitore/editar.html");
                     });
                 }, 1000);
             }else{
@@ -90,7 +90,7 @@ function editar(){
     });
 }
 
-function excluir(){
+function excluirMonitore(){
     if (confirm("Voce realmente deseja excluir?")){
         var id = $("#monitore").val();
         $.ajax({
@@ -109,7 +109,7 @@ function excluir(){
                     setTimeout(function(){
                         alert.innerHTML = "";
                         $(function(){
-                            $("#content").load("views/monitore/editar.php");
+                            $("#content").load("views/monitore/editar.html");
                         });
                     }, 1000);
                 }else{
@@ -204,23 +204,6 @@ function editarPresencaMonitore(){
                     alert.innerHTML = "";
                 }, 2000);
             }
-        }
-    });
-}
-
-function buscarSalas(){
-    $.ajax({
-        method: "POST",
-        url: "src/Controller/Controller.php",
-        data: {
-            metodo: "getSalas",
-        },
-        complete: function(response) {
-            var sala = JSON.parse(response.responseText);
-            sala.map(({id,nome}) => {
-                $('#sala').append(`<option value='${id}'>${nome}</option>`);
-            });
-           
         }
     });
 }

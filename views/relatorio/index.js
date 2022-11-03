@@ -1,20 +1,3 @@
-function buscarSalas(){
-    $.ajax({
-        method: "POST",
-        url: "src/Controller/Controller.php",
-        data: {
-            metodo: "getSalas",
-        },
-        complete: function(response) {
-            var salas = JSON.parse(response.responseText);
-            salas.map(({id,nome}) => {
-                $('#sala').append(`<option value='${id}'>${nome}</option>`);
-            });
-           
-        }
-    });
-}
-
 function relatorioPresencaAlune(){
     var sala = $("#sala").val();
     var dataInicial = $("#dataInicial").val();

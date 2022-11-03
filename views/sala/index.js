@@ -1,4 +1,4 @@
-function criar(){
+function criarSala(){
     var nome = $("#nome").val();
     $.ajax({
         method: "POST",
@@ -16,7 +16,7 @@ function criar(){
                 setTimeout(function(){
                     alert.innerHTML = "";
                     $(function(){
-                        $("#content").load("views/sala/criar.php");
+                        $("#content").load("views/sala/criar.html");
                     });
                 }, 1000);
             }else{
@@ -29,7 +29,7 @@ function criar(){
     });
 }
 
-function buscar(){
+function buscarSala(){
     var id = $("#sala").val();
     $.ajax({
         method: "POST",
@@ -48,7 +48,7 @@ function buscar(){
     });
 }
 
-function editar(){
+function editarSala(){
     var id = $("#sala").val();
     var nome = $("#nome").val();
     $.ajax({
@@ -68,7 +68,7 @@ function editar(){
                 setTimeout(function(){
                     alert.innerHTML = "";
                     $(function(){
-                        $("#content").load("views/sala/editar.php");
+                        $("#content").load("views/sala/editar.html");
                     });
                 }, 1000);
             }else{
@@ -81,7 +81,7 @@ function editar(){
     });
 }
 
-function excluir(){
+function excluirSala(){
     if (confirm("Voce realmente deseja excluir?")){
         var id = $("#sala").val();
         $.ajax({
@@ -100,7 +100,7 @@ function excluir(){
                     setTimeout(function(){
                         alert.innerHTML = "";
                         $(function(){
-                            $("#content").load("views/sala/editar.php");
+                            $("#content").load("views/sala/editar.html");
                         });
                     }, 1000);
                 }else{
