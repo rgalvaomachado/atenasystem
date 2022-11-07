@@ -47,8 +47,8 @@ function menuRepresentante(){
                 <em class="fa fa-plus"></em>
             </label>
             <ul>
-                <li><a href="#" onclick="cadRepresentante()"><em class="fa fa-arrow-right">&nbsp;</em>Cadastro</a></li>
-                <li><a href="#" onclick="editRepresentante()"><em class="fa fa-arrow-right">&nbsp;</em>Editar</a></li>
+                <li><a href="#" onclick='$(function(){$("#content").load("views/representante/criar.html");});menu();'><em class="fa fa-arrow-right">&nbsp;</em>Cadastro</a></li>
+                <li><a href="#" onclick='$(function(){$("#content").load("views/representante/editar.html");});menu();'><em class="fa fa-arrow-right">&nbsp;</em>Editar</a></li>
             </ul>
         </li>
     `);
@@ -61,8 +61,8 @@ function menuRepresentante(){
                 <em class="fa fa-plus"></em>
             </label>
             <ul>
-                <li><a href="#" onclick="cadComissao()"><em class="fa fa-arrow-right">&nbsp;</em>Cadastro</a></li>
-                <li><a href="#" onclick="editComissao()"><em class="fa fa-arrow-right">&nbsp;</em>Editar</a></li>
+                <li><a href="#" onclick='$(function(){$("#content").load("views/comissao/criar.html");});menu();'><em class="fa fa-arrow-right">&nbsp;</em>Cadastro</a></li>
+                <li><a href="#" onclick='$(function(){$("#content").load("views/comissao/editar.html");});menu();'><em class="fa fa-arrow-right">&nbsp;</em>Editar</a></li>
             </ul>
         </li>
     `);
@@ -75,9 +75,9 @@ function menuRepresentante(){
                 <em class="fa fa-plus"></em>
             </label>
             <ul>
-                <li><a href="#" onclick="cadMonitore()"><em class="fa fa-arrow-right">&nbsp;</em>Cadastro</a></li>
-                <li><a href="#" onclick="editMonitore()"><em class="fa fa-arrow-right">&nbsp;</em>Editar</a></li>
-                <li><a href="#" onclick="editPresencaMonitore()"><em class="fa fa-arrow-right">&nbsp;</em>Editar Presença</a></li>
+                <li><a href="#" onclick='$(function(){$("#content").load("views/monitore/criar.html");});menu();'><em class="fa fa-arrow-right">&nbsp;</em>Cadastro</a></li>
+                <li><a href="#" onclick='$(function(){$("#content").load("views/monitore/editar.html");});menu();'><em class="fa fa-arrow-right">&nbsp;</em>Editar</a></li>
+                <li><a href="#" onclick='$(function(){$("#content").load("views/monitore/presenca.html");});menu();'><em class="fa fa-arrow-right">&nbsp;</em>Editar Presença</a></li>
             </ul>
         </li>
     `);
@@ -90,10 +90,10 @@ function menuRepresentante(){
                 <em class="fa fa-plus"></em>
             </label>
             <ul>
-                <li><a href="#" onclick="cadTutore()"><em class="fa fa-arrow-right">&nbsp;</em>Cadastro</a></li>
-                <li><a href="#" onclick="editTutore()"><em class="fa fa-arrow-right">&nbsp;</em>Editar</a></li>
-                <li><a href="#" onclick="editPresencaTutore()"><em class="fa fa-arrow-right">&nbsp;</em>Editar Presença</a></li>
-                <li><a href="#" onclick="justificarTutore()"><em class="fa fa-arrow-right">&nbsp;</em>Justificar Presença</a></li>
+                <li><a href="#" onclick='$(function(){$("#content").load("views/tutore/criar.html");});menu();'><em class="fa fa-arrow-right">&nbsp;</em>Cadastro</a></li>
+                <li><a href="#" onclick='$(function(){$("#content").load("views/tutore/editar.html");});menu();'><em class="fa fa-arrow-right">&nbsp;</em>Editar</a></li>
+                <li><a href="#" onclick='$(function(){$("#content").load("views/tutore/presenca.html");});menu();'><em class="fa fa-arrow-right">&nbsp;</em>Editar Presença</a></li>
+                <li><a href="#" onclick=" $(function(){$("#content").load("views/tutore/justificar.html");});menu();'><em class="fa fa-arrow-right">&nbsp;</em>Justificar Presença</a></li>
             </ul>
         </li>
     `);
@@ -106,9 +106,9 @@ function menuRepresentante(){
                 <em class="fa fa-plus"></em>
             </label>
             <ul>
-                <li><a href="#" onclick="cadAlune()"><em class="fa fa-arrow-right">&nbsp;</em>Cadastro</a></li>
-                <li><a href="#" onclick="editAlune()"><em class="fa fa-arrow-right">&nbsp;</em>Editar</a></li>
-                <li><a href="#" onclick="justificarAlune()"><em class="fa fa-arrow-right">&nbsp;</em>Justificar Presença</a></li>
+                <li><a href="#" onclick='$(function(){$("#content").load("views/alune/criar.html");});menu();'><em class="fa fa-arrow-right">&nbsp;</em>Cadastro</a></li>
+                <li><a href="#" onclick='$(function(){$("#content").load("views/alune/editar.html");});menu();'><em class="fa fa-arrow-right">&nbsp;</em>Editar</a></li>
+                <li><a href="#" onclick='$(function(){$("#content").load("views/alune/justificar.html");});menu();'><em class="fa fa-arrow-right">&nbsp;</em>Justificar Presença</a></li>
             </ul>
         </li>
     `);
@@ -121,8 +121,8 @@ function menuRepresentante(){
                 <em class="fa fa-plus"></em>
             </label>
             <ul>
-                <li><a href="#" onclick="cadDisciplina()"><em class="fa fa-arrow-right">&nbsp;</em>Cadastro</a></li>
-                <li><a href="#" onclick="editDisciplina()"><em class="fa fa-arrow-right">&nbsp;</em>Editar</a></li>
+                <li><a href="#" onclick='$(function(){$("#content").load("views/disciplina/criar.html");});menu();'><em class="fa fa-arrow-right">&nbsp;</em>Cadastro</a></li>
+                <li><a href="#" onclick='$(function(){$("#content").load("views/disciplina/editar.html");});menu();'><em class="fa fa-arrow-right">&nbsp;</em>Editar</a></li>
             </ul>
         </li>
     `);
@@ -135,8 +135,8 @@ function menuRepresentante(){
                 <em class="fa fa-plus"></em>
             </label>
             <ul>
-                <li><a href="#" onclick="cadSala()"><em class="fa fa-arrow-right">&nbsp;</em>Cadastro</a></li>
-                <li><a href="#" onclick="editSala()"><em class="fa fa-arrow-right">&nbsp;</em>Editar</a></li>
+                <li><a href="#" onclick='$(function(){$("#content").load("views/sala/criar.html");});menu();'><em class="fa fa-arrow-right">&nbsp;</em>Cadastro</a></li>
+                <li><a href="#" onclick='$(function(){$("#content").load("views/sala/editar.html");});menu();'><em class="fa fa-arrow-right">&nbsp;</em>Editar</a></li>
             </ul>
         </li>
     `);
@@ -149,10 +149,10 @@ function menuRepresentante(){
                 <em class="fa fa-plus"></em>
             </label>
             <ul>
-                <li><a href="#" onclick="presencaAlune()"><em class="fa fa-arrow-right">&nbsp;</em>Aula Alune</a></li>
-                <li><a href="#" onclick="presencaTutore()"><em class="fa fa-arrow-right">&nbsp;</em>Aula Tutore</a></li>
-                <li><a href="#" onclick="presencaMonitore()"><em class="fa fa-arrow-right">&nbsp;</em>Monitore</a></li>
-                <li><a href="#" onclick="presencaReuniao()"><em class="fa fa-arrow-right">&nbsp;</em>Reunião</a></li>
+                <li><a href="#" onclick='$(function(){$("#content").load("views/presenca/alune.html");});menu();'><em class="fa fa-arrow-right">&nbsp;</em>Aula Alune</a></li>
+                <li><a href="#" onclick='$(function(){$("#content").load("views/presenca/tutore.html");});menu();'><em class="fa fa-arrow-right">&nbsp;</em>Aula Tutore</a></li>
+                <li><a href="#" onclick='$(function(){$("#content").load("views/presenca/monitore.html");});menu();'><em class="fa fa-arrow-right">&nbsp;</em>Monitore</a></li>
+                <li><a href="#" onclick='$(function(){$("#content").load("views/presenca/reuniao.html");});menu();'><em class="fa fa-arrow-right">&nbsp;</em>Reunião</a></li>
             </ul>
         </li>
     `);
@@ -165,10 +165,10 @@ function menuRepresentante(){
                 <em class="fa fa-plus"></em>
             </label>
             <ul>
-                <li><a href="#" onclick="relatorioAlune()"><em class="fa fa-arrow-right">&nbsp;</em>Presença Alune</a></li>
-                <li><a href="#" onclick="relatorioReuniao()"><em class="fa fa-arrow-right">&nbsp;</em>Presença Reunião</a></li>
-                <li><a href="#" onclick="relatorioMonitore()"><em class="fa fa-arrow-right">&nbsp;</em>Presença Monitore</a></li>
-                <li><a href="#" onclick="relatorioTutore()"><em class="fa fa-arrow-right">&nbsp;</em>Presença Tutore</a></li>
+                <li><a href="#" onclick='$(function(){$("#content").load("views/relatorio/alune.html");});menu();'><em class="fa fa-arrow-right">&nbsp;</em>Presença Alune</a></li>
+                <li><a href="#" onclick='$(function(){$("#content").load("views/relatorio/reuniao.html");});menu();'><em class="fa fa-arrow-right">&nbsp;</em>Presença Reunião</a></li>
+                <li><a href="#" onclick='$(function(){$("#content").load("views/relatorio/monitore.html");});menu();'><em class="fa fa-arrow-right">&nbsp;</em>Presença Monitore</a></li>
+                <li><a href="#" onclick='$(function(){$("#content").load("views/relatorio/tutore.html");});menu();'><em class="fa fa-arrow-right">&nbsp;</em>Presença Tutore</a></li>
             </ul>
         </li>
     `);
@@ -181,8 +181,8 @@ function menuRepresentante(){
                 <em class="fa fa-plus"></em>
             </label>
             <ul>
-                <li><a href="#" onclick="certificadoTutore()"><em class="fa fa-arrow-right">&nbsp;</em>Tutore</a></li>
-                <li><a href="#" onclick="certificadoMonitore()"><em class="fa fa-arrow-right">&nbsp;</em>Monitore</a></li>
+                <li><a href="#" onclick='$(function(){$("#content").load("views/certificado/tutore.html");});menu();'><em class="fa fa-arrow-right">&nbsp;</em>Tutore</a></li>
+                <li><a href="#" onclick='$(function(){$("#content").load("views/certificado/monitore.html");});menu();'><em class="fa fa-arrow-right">&nbsp;</em>Monitore</a></li>
             </ul>
         </li>
     `);
@@ -206,9 +206,9 @@ function menuMonitore(){
                 <em class="fa fa-plus"></em>
             </label>
             <ul>
-                <li><a href="#" onclick="cadTutore()"><em class="fa fa-arrow-right">&nbsp;</em>Cadastro</a></li>
-                <li><a href="#" onclick="editTutore()"><em class="fa fa-arrow-right">&nbsp;</em>Editar</a></li>
-                <li><a href="#" onclick="editPresencaTutore()"><em class="fa fa-arrow-right">&nbsp;</em>Editar Presença</a></li>
+                <li><a href="#" onclick='$(function(){$("#content").load("views/tutore/criar.html");});menu();'><em class="fa fa-arrow-right">&nbsp;</em>Cadastro</a></li>
+                <li><a href="#" onclick='$(function(){$("#content").load("views/tutore/editar.html");});menu();'><em class="fa fa-arrow-right">&nbsp;</em>Editar</a></li>
+                <li><a href="#" onclick='$(function(){$("#content").load("views/tutore/presenca.html");});menu();'><em class="fa fa-arrow-right">&nbsp;</em>Editar Presença</a></li>
             </ul>
         </li>
     `);
@@ -221,9 +221,9 @@ function menuMonitore(){
                 <em class="fa fa-plus"></em>
             </label>
             <ul>
-                <li><a href="#" onclick="cadAlune()"><em class="fa fa-arrow-right">&nbsp;</em>Cadastro</a></li>
-                <li><a href="#" onclick="editAlune()"><em class="fa fa-arrow-right">&nbsp;</em>Editar</a></li>
-                <li><a href="#" onclick="justificarAlune()"><em class="fa fa-arrow-right">&nbsp;</em>Justificar Presença</a></li>
+                <li><a href="#" onclick='$(function(){$("#content").load("views/alune/criar.html");});menu();'><em class="fa fa-arrow-right">&nbsp;</em>Cadastro</a></li>
+                <li><a href="#" onclick='$(function(){$("#content").load("views/alune/editar.html");});menu();'><em class="fa fa-arrow-right">&nbsp;</em>Editar</a></li>
+                <li><a href="#" onclick='$(function(){$("#content").load("views/alune/justificar.html");});menu();'><em class="fa fa-arrow-right">&nbsp;</em>Justificar Presença</a></li>
             </ul>
         </li>
     `);
@@ -236,8 +236,8 @@ function menuMonitore(){
                 <em class="fa fa-plus"></em>
             </label>
             <ul>
-                <li><a href="#" onclick="cadDisciplina()"><em class="fa fa-arrow-right">&nbsp;</em>Cadastro</a></li>
-                <li><a href="#" onclick="editDisciplina()"><em class="fa fa-arrow-right">&nbsp;</em>Editar</a></li>
+                <li><a href="#" onclick='$(function(){$("#content").load("views/disciplina/criar.html");});menu();'><em class="fa fa-arrow-right">&nbsp;</em>Cadastro</a></li>
+                <li><a href="#" onclick='$(function(){$("#content").load("views/disciplina/editar.html");});menu();'><em class="fa fa-arrow-right">&nbsp;</em>Editar</a></li>
             </ul>
         </li>
     `);
@@ -250,8 +250,8 @@ function menuMonitore(){
                 <em class="fa fa-plus"></em>
             </label>
             <ul>
-                <li><a href="#" onclick="cadSala()"><em class="fa fa-arrow-right">&nbsp;</em>Cadastro</a></li>
-                <li><a href="#" onclick="editSala()"><em class="fa fa-arrow-right">&nbsp;</em>Editar</a></li>
+                <li><a href="#" onclick='$(function(){$("#content").load("views/sala/criar.html");});menu();'><em class="fa fa-arrow-right">&nbsp;</em>Cadastro</a></li>
+                <li><a href="#" onclick='$(function(){$("#content").load("views/sala/editar.html");});menu();'><em class="fa fa-arrow-right">&nbsp;</em>Editar</a></li>
             </ul>
         </li>
     `);
@@ -264,8 +264,8 @@ function menuMonitore(){
                 <em class="fa fa-plus"></em>
             </label>
             <ul>
-                <li><a href="#" onclick="presencaAlune()"><em class="fa fa-arrow-right">&nbsp;</em>Aula Alune</a></li>
-                <li><a href="#" onclick="presencaTutore()"><em class="fa fa-arrow-right">&nbsp;</em>Aula Tutore</a></li>
+                <li><a href="#" onclick='$(function(){$("#content").load("views/presenca/alune.html");});menu();'><em class="fa fa-arrow-right">&nbsp;</em>Aula Alune</a></li>
+                <li><a href="#" onclick='$(function(){$("#content").load("views/presenca/tutore.html");});menu();'><em class="fa fa-arrow-right">&nbsp;</em>Aula Tutore</a></li>
             </ul>
         </li>
     `);
@@ -278,8 +278,8 @@ function menuMonitore(){
                 <em class="fa fa-plus"></em>
             </label>
             <ul>
-                <li><a href="#" onclick="relatorioAlune()"><em class="fa fa-arrow-right">&nbsp;</em>Presença Alune</a></li>
-                <li><a href="#" onclick="relatorioTutore()"><em class="fa fa-arrow-right">&nbsp;</em>Presença Tutore</a></li>
+                <li><a href="#" onclick='$(function(){$("#content").load("views/relatorio/alune.html");});menu();'><em class="fa fa-arrow-right">&nbsp;</em>Presença Alune</a></li>
+                <li><a href="#" onclick='$(function(){$("#content").load("views/relatorio/tutore.html");});menu();'><em class="fa fa-arrow-right">&nbsp;</em>Presença Tutore</a></li>
             </ul>
         </li>
     `);
@@ -292,8 +292,8 @@ function menuMonitore(){
                 <em class="fa fa-plus"></em>
             </label>
             <ul>
-                <li><a href="#" onclick="certificadoTutore()"><em class="fa fa-arrow-right">&nbsp;</em>Tutore</a></li>
-                <li><a href="#" onclick="certificadoMonitore()"><em class="fa fa-arrow-right">&nbsp;</em>Monitore</a></li>
+                <li><a href="#" onclick='$(function(){$("#content").load("views/certificado/tutore.html");});menu();'><em class="fa fa-arrow-right">&nbsp;</em>Tutore</a></li>
+                <li><a href="#" onclick='$(function(){$("#content").load("views/certificado/monitore.html");});menu();'><em class="fa fa-arrow-right">&nbsp;</em>Monitore</a></li>
             </ul>
         </li>
     `);
@@ -317,7 +317,7 @@ function menuComissao(){
                 <em class="fa fa-plus"></em>
             </label>
             <ul>
-                <li><a href="#" onclick="justificarTutore()"><em class="fa fa-arrow-right">&nbsp;</em>Justificar Presença</a></li>
+                <li><a href="#" onclick=" $(function(){$("#content").load("views/tutore/justificar.html");});menu();'><em class="fa fa-arrow-right">&nbsp;</em>Justificar Presença</a></li>
             </ul>
         </li>
     `);
@@ -330,7 +330,7 @@ function menuComissao(){
                 <em class="fa fa-plus"></em>
             </label>
             <ul>
-                <li><a href="#" onclick="presencaReuniao()"><em class="fa fa-arrow-right">&nbsp;</em>Reunião</a></li>
+                <li><a href="#" onclick='$(function(){$("#content").load("views/presenca/reuniao.html");});menu();'><em class="fa fa-arrow-right">&nbsp;</em>Reunião</a></li>
             </ul>
         </li>
     `);
@@ -343,7 +343,7 @@ function menuComissao(){
                 <em class="fa fa-plus"></em>
             </label>
             <ul>
-                <li><a href="#" onclick="relatorioReuniao()"><em class="fa fa-arrow-right">&nbsp;</em>Presença Reunião</a></li>
+                <li><a href="#" onclick='$(function(){$("#content").load("views/relatorio/reuniao.html");});menu();'><em class="fa fa-arrow-right">&nbsp;</em>Presença Reunião</a></li>
             </ul>
         </li>
     `);
@@ -365,202 +365,6 @@ function menu(){
     }else{
         $('#menu').show();
     }
-}
-
-function cadRepresentante(){
-    $(function(){
-        $("#content").load("views/representante/criar.html");
-    });
-    menu();
-}
-
-function editRepresentante(){
-    $(function(){
-        $("#content").load("views/representante/editar.html");
-    });
-    menu();
-}
-
-function cadComissao(){
-    $(function(){
-        $("#content").load("views/comissao/criar.html");
-    });
-    menu();
-}
-
-function editComissao(){
-    $(function(){
-        $("#content").load("views/comissao/editar.html");
-    });
-    menu();
-}
-
-function cadMonitore(){
-    $(function(){
-        $("#content").load("views/monitore/criar.html");
-    });
-    menu();
-}
-
-function editMonitore(){
-    $(function(){
-        $("#content").load("views/monitore/editar.html");
-    });
-    menu();
-}
-
-function editPresencaMonitore(){
-    $(function(){
-        $("#content").load("views/monitore/presenca.html");
-    });
-    menu();
-}
-
-function cadAlune(){
-    $(function(){
-        $("#content").load("views/alune/criar.html");
-    });
-    menu();
-}
-
-function editAlune(){
-    $(function(){
-        $("#content").load("views/alune/editar.html");
-    });
-    menu();
-}
-
-function justificarAlune(){
-    $(function(){
-        $("#content").load("views/alune/justificar.html");
-    });
-    menu();
-}
-
-function cadDisciplina(){
-    $(function(){
-        $("#content").load("views/disciplina/criar.html");
-    });
-    menu();
-}
-
-function editDisciplina(){
-    $(function(){
-        $("#content").load("views/disciplina/editar.html");
-    });
-    menu();
-}
-
-function cadSala(){
-    $(function(){
-        $("#content").load("views/sala/criar.html");
-    });
-    menu();
-}
-
-function editSala(){
-    $(function(){
-        $("#content").load("views/sala/editar.html");
-    });
-    menu();
-}
-
-function cadTutore(){
-    $(function(){
-        $("#content").load("views/tutore/criar.html");
-    });
-    menu();
-}
-
-function editTutore(){
-    $(function(){
-        $("#content").load("views/tutore/editar.html");
-    });
-    menu();
-}
-
-function editPresencaTutore(){
-    $(function(){
-        $("#content").load("views/tutore/presenca.html");
-    });
-    menu();
-}
-
-function justificarTutore(){
-    $(function(){
-        $("#content").load("views/tutore/justificar.html");
-    });
-    menu();
-}
-
-function presencaAlune(){
-    $(function(){
-        $("#content").load("views/presenca/alune.html");
-    });
-    menu();
-}
-
-function presencaTutore(){
-    $(function(){
-        $("#content").load("views/presenca/tutore.html");
-    });
-    menu();
-}
-
-function presencaMonitore(){
-    $(function(){
-        $("#content").load("views/presenca/monitore.html");
-    });
-    menu();
-}
-
-function presencaReuniao(){
-    $(function(){
-        $("#content").load("views/presenca/reuniao.html");
-    });
-    menu();
-}
-
-function relatorioAlune(){
-    $(function(){
-        $("#content").load("views/relatorio/alune.html");
-    });
-    menu();
-}
-
-function relatorioTutore(){
-    $(function(){
-        $("#content").load("views/relatorio/tutore.html");
-    });
-    menu();
-}
-
-function relatorioMonitore(){
-    $(function(){
-        $("#content").load("views/relatorio/monitore.html");
-    });
-    menu();
-}
-
-function relatorioReuniao(){
-    $(function(){
-        $("#content").load("views/relatorio/reuniao.html");
-    });
-    menu();
-}
-
-function certificadoTutore(){
-    $(function(){
-        $("#content").load("views/certificado/tutore.html");
-    });
-    menu();
-}
-
-function certificadoMonitore(){
-    $(function(){
-        $("#content").load("views/certificado/monitore.html");
-    });
-    menu();
 }
 
 function logout(){
