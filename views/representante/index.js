@@ -79,6 +79,7 @@ function criarRepresentante(){
                     alert.innerHTML = "";
                 }, 2000);
             }
+            verificaSessão();
         }
     });
 }
@@ -103,38 +104,39 @@ function editarRepresentante(){
             var response = JSON.parse(response.responseText);
             const alert = document.getElementById("messageAlert");
             alert.innerHTML = response.message;
-                if(response.access){
-                    if (filesSelected.length > 0) {
-                        var fileToLoad = filesSelected[0];
-                        var fileReader = new FileReader();
-                        fileReader.onload = function(fileLoadedEvent) {
-                            var assinatura = fileLoadedEvent.target.result
-                            $.ajax({
-                                method: "POST",
-                                url: "src/Controller/Controller.php",
-                                data: {
-                                    metodo: "salvaAssinaturaRepresentante",
-                                    assinatura: assinatura,
-                                    id: id,
-                                }
-                            });
-                        }
-                        fileReader.readAsDataURL(fileToLoad);
-                    }
-                    alert.style.color = "green";
-                    setTimeout(function(){
-                        alert.innerHTML = "";
-                        $(function(){
-                            $("#content").load("views/representante/editar.html");
+            if(response.access){
+                if (filesSelected.length > 0) {
+                    var fileToLoad = filesSelected[0];
+                    var fileReader = new FileReader();
+                    fileReader.onload = function(fileLoadedEvent) {
+                        var assinatura = fileLoadedEvent.target.result
+                        $.ajax({
+                            method: "POST",
+                            url: "src/Controller/Controller.php",
+                            data: {
+                                metodo: "salvaAssinaturaRepresentante",
+                                assinatura: assinatura,
+                                id: id,
+                            }
                         });
-                    }, 1000);
-                }else{
-                    alert.style.color = "red";
-                    setTimeout(function(){
-                        alert.innerHTML = "";
-                    }, 2000);
+                    }
+                    fileReader.readAsDataURL(fileToLoad);
                 }
+                alert.style.color = "green";
+                setTimeout(function(){
+                    alert.innerHTML = "";
+                    $(function(){
+                        $("#content").load("views/representante/editar.html");
+                    });
+                }, 1000);
+            }else{
+                alert.style.color = "red";
+                setTimeout(function(){
+                    alert.innerHTML = "";
+                }, 2000);
             }
+            verificaSessão();
+        }
     });
 }
 
@@ -169,6 +171,7 @@ function excluirRepresentante(){
                         alert.innerHTML = "";
                     }, 2000);
                 }
+                verificaSessão();
             }
         });
     }

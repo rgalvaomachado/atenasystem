@@ -49,6 +49,7 @@ function criarComissao(){
                     alert.innerHTML = "";
                 }, 2000);
             }
+            verificaSessão();
         }
     });
 }
@@ -86,6 +87,7 @@ function editarComissao(){
                     alert.innerHTML = "";
                 }, 2000);
             }
+            verificaSessão();
         }
     });
 }
@@ -118,6 +120,7 @@ function excluirComissao(){
                         alert.innerHTML = "";
                     }, 2000);
                 }
+                verificaSessão();
             }
         });
     }

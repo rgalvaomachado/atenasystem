@@ -29,6 +29,7 @@ function criarMonitore(){
                     alert.innerHTML = "";
                 }, 2000);
             }
+            verificaSessão();
         }
     });
 }
@@ -86,6 +87,7 @@ function editarMonitore(){
                     alert.innerHTML = "";
                 }, 2000);
             }
+            verificaSessão();
         }
     });
 }
@@ -118,6 +120,7 @@ function excluirMonitore(){
                         alert.innerHTML = "";
                     }, 2000);
                 }
+                verificaSessão();
             }
         });
     }
@@ -204,6 +207,7 @@ function editarPresencaMonitore(){
                     alert.innerHTML = "";
                 }, 2000);
             }
+            verificaSessão();
         }
     });
 }

@@ -90,7 +90,7 @@ class LoginController{
         if(!isset($_SESSION)){
             session_start();
         }
-        if (time() - $_SESSION['CREATED'] > 1800) { // 30 minutos
+        if (time() - $_SESSION['CREATED'] > 1800) { // 30 minutos 
             $_SESSION['usuario'] =  "";
             $_SESSION['modo'] = "";
             session_destroy();
@@ -98,9 +98,8 @@ class LoginController{
                 "access" => false
             ]);
         } else {
-            $tempoRestante = time() - $_SESSION['CREATED'];
+            $_SESSION['CREATED'] = time();
             return json_encode([
-                "tempo" => $tempoRestante.'s',
                 "access" => true
             ]);
         }

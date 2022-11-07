@@ -27,6 +27,7 @@ function criarAlune(){
                     alert.innerHTML = "";
                 }, 2000);
             }
+            verificaSessão();
         }
     });
 }
@@ -82,6 +83,7 @@ function editarAlune(){
                     alert.innerHTML = "";
                 }, 2000);
             }
+            verificaSessão();
         }
     });
 }
@@ -114,6 +116,7 @@ function excluirAlune(){
                         alert.innerHTML = "";
                     }, 2000);
                 }
+                verificaSessão();
             }
         });
     }
@@ -228,6 +231,7 @@ function justificarPresencaAlune(){
                     alert.innerHTML = "";
                 }, 2000);
             }
+            verificaSessão();
         }
     });
 }

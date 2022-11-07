@@ -12,263 +12,262 @@
     include_once('CertificadoController.php');
 
     $metodo = isset($_POST['metodo']) ? $_POST['metodo'] : ""; 
-    if ($metodo != 'verificaSessão'){
-        if(!isset($_SESSION)){
-            session_start();
-        }
-        $_SESSION['CREATED'] = time();
-    }
 
     switch($metodo){
         case 'criarAlune':
             $AluneController = new AluneController();
-            echo $AluneController->criarAlune($_POST);
+            $response = $AluneController->criarAlune($_POST);
             break;
         case 'getAlunes':
             $AluneController = new AluneController();
-            echo $AluneController->getAlunes($_POST);
+            $response = $AluneController->getAlunes($_POST);
             break;
         case 'getAlune':
             $AluneController = new AluneController();
-            echo $AluneController->getAlune($_POST);
+            $response = $AluneController->getAlune($_POST);
             break;
         case 'getAlunesSala':
             $AluneController = new AluneController();
-            echo $AluneController->getAlunesSala($_POST);
+            $response = $AluneController->getAlunesSala($_POST);
             break;
         case 'salvarAlune':
             $AluneController = new AluneController();
-            echo $AluneController->salvarAlune($_POST);
+            $response = $AluneController->salvarAlune($_POST);
             break;
         case 'excluirAlune':
             $AluneController = new AluneController();
-            echo $AluneController->excluirAlune($_POST);
+            $response = $AluneController->excluirAlune($_POST);
             break;
         ///////////////////////////////////////////////////////////////////////////////
         case 'getComissoes':
             $ComissaoController = new ComissaoController();
-            echo $ComissaoController->getComissoes($_POST);
+            $response = $ComissaoController->getComissoes($_POST);
             break; 
         case 'getComissao':
             $ComissaoController = new ComissaoController();
-            echo $ComissaoController->getComissao($_POST);
+            $response = $ComissaoController->getComissao($_POST);
             break;
         case 'criarComissao':
             $ComissaoController = new ComissaoController();
-            echo $ComissaoController->criarComissao($_POST);
+            $response = $ComissaoController->criarComissao($_POST);
             break;
         case 'salvarComissao':
             $ComissaoController = new ComissaoController();
-            echo $ComissaoController->salvarComissao($_POST);
+            $response = $ComissaoController->salvarComissao($_POST);
             break;
         case 'excluirComissao':
             $ComissaoController = new ComissaoController();
-            echo $ComissaoController->excluirComissao($_POST);
+            $response = $ComissaoController->excluirComissao($_POST);
             break;
         ///////////////////////////////////////////////////////////////////////////////
         case 'criarDisciplina':
             $DisciplinaController = new DisciplinaController();
-            echo $DisciplinaController->criarDisciplina($_POST);
+            $response = $DisciplinaController->criarDisciplina($_POST);
             break;
         case 'getDisciplina':
             $DisciplinaController = new DisciplinaController();
-            echo $DisciplinaController->getDisciplina($_POST);
+            $response = $DisciplinaController->getDisciplina($_POST);
             break;
         case 'getDisciplinas':
             $DisciplinaController = new DisciplinaController();
-            echo $DisciplinaController->getDisciplinas($_POST);
+            $response = $DisciplinaController->getDisciplinas($_POST);
             break;
         case 'salvarDisciplina':
             $DisciplinaController = new DisciplinaController();
-            echo $DisciplinaController->salvarDisciplina($_POST);
+            $response = $DisciplinaController->salvarDisciplina($_POST);
             break;
         case 'excluirDisciplina':
             $DisciplinaController = new DisciplinaController();
-            echo $DisciplinaController->excluirDisciplina($_POST);
+            $response = $DisciplinaController->excluirDisciplina($_POST);
             break;
         ///////////////////////////////////////////////////////////////////////////////
         case 'verificaLogin':
             $LoginController = new LoginController();
-            echo $LoginController->verificaLogin($_POST);
+            $response = $LoginController->verificaLogin($_POST);
             break;
         case 'verificaSessão':
             $LoginController = new LoginController();
-            echo $LoginController->verificaSessão($_POST);
+            $response = $LoginController->verificaSessão($_POST);
             break;
         case 'login':
             $LoginController = new LoginController();
-            echo $LoginController->login($_POST);
+            $response = $LoginController->login($_POST);
             break;
         case 'logout':
             $LoginController = new LoginController();
-            echo $LoginController->logout($_POST);
+            $response = $LoginController->logout($_POST);
             break;
         ///////////////////////////////////////////////////////////////////////////////
         case 'criarMonitore':
             $MonitoreController = new MonitoreController();
-            echo $MonitoreController->criarMonitore($_POST);
+            $response = $MonitoreController->criarMonitore($_POST);
             break;
         case 'getMonitores':
             $MonitoreController = new MonitoreController();
-            echo $MonitoreController->getMonitores($_POST);
+            $response = $MonitoreController->getMonitores($_POST);
             break; 
         case 'getMonitore':
             $MonitoreController = new MonitoreController();
-            echo $MonitoreController->getMonitore($_POST);
+            $response = $MonitoreController->getMonitore($_POST);
             break;
         case 'salvarMonitore':
             $MonitoreController = new MonitoreController();
-            echo $MonitoreController->salvarMonitore($_POST);
+            $response = $MonitoreController->salvarMonitore($_POST);
             break;
         case 'excluirMonitore':
             $MonitoreController = new MonitoreController();
-            echo $MonitoreController->excluirMonitore($_POST);
+            $response = $MonitoreController->excluirMonitore($_POST);
             break;
         ///////////////////////////////////////////////////////////////////////////////
         case 'buscarPresencaAlune':
             $PresencaController = new PresencaController();
-            echo $PresencaController->buscarPresencaAlune($_POST);
+            $response = $PresencaController->buscarPresencaAlune($_POST);
             break;
         case 'justificarPresencaAlune':
             $PresencaController = new PresencaController();
-            echo $PresencaController->justificarPresencaAlune($_POST);
+            $response = $PresencaController->justificarPresencaAlune($_POST);
             break;
         case 'buscarPresencaReuniao':
             $PresencaController = new PresencaController();
-            echo $PresencaController->buscarPresencaReuniao($_POST);
+            $response = $PresencaController->buscarPresencaReuniao($_POST);
             break;
         case 'justificarPresencaReuniao':
             $PresencaController = new PresencaController();
-            echo $PresencaController->justificarPresencaReuniao($_POST);
+            $response = $PresencaController->justificarPresencaReuniao($_POST);
             break;
         case 'buscarPresencaMonitore':
             $PresencaController = new PresencaController();
-            echo $PresencaController->buscarPresencaMonitore($_POST);
+            $response = $PresencaController->buscarPresencaMonitore($_POST);
             break;
         case 'editarPresencaMonitore':
             $PresencaController = new PresencaController();
-            echo $PresencaController->editarPresencaMonitore($_POST);
+            $response = $PresencaController->editarPresencaMonitore($_POST);
             break;
         case 'buscarPresencaTutore':
             $PresencaController = new PresencaController();
-            echo $PresencaController->buscarPresencaTutore($_POST);
+            $response = $PresencaController->buscarPresencaTutore($_POST);
             break;
         case 'editarPresencaTutore':
             $PresencaController = new PresencaController();
-            echo $PresencaController->editarPresencaTutore($_POST);
+            $response = $PresencaController->editarPresencaTutore($_POST);
             break;
 
         case 'criarPresencaAlune':
             $PresencaController = new PresencaController();
-            echo $PresencaController->criarPresencaAlune($_POST);
+            $response = $PresencaController->criarPresencaAlune($_POST);
             break;
         case 'criarPresencaTutore':
             $PresencaController = new PresencaController();
-            echo $PresencaController->criarPresencaTutore($_POST);
+            $response = $PresencaController->criarPresencaTutore($_POST);
             break;
         case 'criarPresencaMonitore':
             $PresencaController = new PresencaController();
-            echo $PresencaController->criarPresencaMonitore($_POST);
+            $response = $PresencaController->criarPresencaMonitore($_POST);
             break;
         case 'criarPresencaReuniao':
             $PresencaController = new PresencaController();
-            echo $PresencaController->criarPresencaReuniao($_POST);
+            $response = $PresencaController->criarPresencaReuniao($_POST);
             break;    
         ///////////////////////////////////////////////////////////////////////////////
         case 'relatorioPresencaAlune':
             $RelatorioController = new RelatorioController();
-            echo $RelatorioController->relatorioPresencaAlune($_POST);
+            $response = $RelatorioController->relatorioPresencaAlune($_POST);
             break; 
         case 'relatorioPresencaReuniao':
             $RelatorioController = new RelatorioController();
-            echo $RelatorioController->relatorioPresencaReuniao($_POST);
+            $response = $RelatorioController->relatorioPresencaReuniao($_POST);
             break; 
         case 'relatorioPresencaMonitore':
             $RelatorioController = new RelatorioController();
-            echo $RelatorioController->relatorioPresencaMonitore($_POST);
+            $response = $RelatorioController->relatorioPresencaMonitore($_POST);
             break; 
         case 'relatorioPresencaTutore':
             $RelatorioController = new RelatorioController();
-            echo $RelatorioController->relatorioPresencaTutore($_POST);
+            $response = $RelatorioController->relatorioPresencaTutore($_POST);
             break; 
         ///////////////////////////////////////////////////////////////////////////////
         case 'certificadoTutore':
             $CertificadoController = new CertificadoController();
-            echo $CertificadoController->certificadoTutore($_POST);
+            $response = $CertificadoController->certificadoTutore($_POST);
             break; 
         case 'certificadoMonitore':
             $CertificadoController = new CertificadoController();
-            echo $CertificadoController->certificadoMonitore($_POST);
+            $response = $CertificadoController->certificadoMonitore($_POST);
             break; 
         ///////////////////////////////////////////////////////////////////////////////
         case 'getRepresentantes':
             $RepresentanteController = new RepresentanteController();
-            echo $RepresentanteController->getRepresentantes($_POST);
+            $response = $RepresentanteController->getRepresentantes($_POST);
             break; 
         case 'criarRepresentante':
             $RepresentanteController = new RepresentanteController();
-            echo $RepresentanteController->criarRepresentante($_POST, $_FILES);
+            $response = $RepresentanteController->criarRepresentante($_POST, $_FILES);
             break; 
         case 'getRepresentante':
             $RepresentanteController = new RepresentanteController();
-            echo $RepresentanteController->getRepresentante($_POST);
+            $response = $RepresentanteController->getRepresentante($_POST);
             break; 
         case 'salvarRepresentante':
             $RepresentanteController = new RepresentanteController();
-            echo $RepresentanteController->salvarRepresentante($_POST, $_FILES);
+            $response = $RepresentanteController->salvarRepresentante($_POST, $_FILES);
             break; 
         case 'salvaAssinaturaRepresentante':
             $RepresentanteController = new RepresentanteController();
-            echo $RepresentanteController->salvaAssinaturaRepresentante($_POST, $_FILES);
+            $response = $RepresentanteController->salvaAssinaturaRepresentante($_POST, $_FILES);
             break; 
         case 'excluirRepresentante':
             $RepresentanteController = new RepresentanteController();
-            echo $RepresentanteController->excluirRepresentante($_POST);
+            $response = $RepresentanteController->excluirRepresentante($_POST);
             break; 
         ///////////////////////////////////////////////////////////////////////////////
         case 'criarSala':
             $SalaController = new SalaController();
-            echo $SalaController->criarSala($_POST);
+            $response = $SalaController->criarSala($_POST);
             break;
         case 'getSala':
             $SalaController = new SalaController();
-            echo $SalaController->getSala($_POST);
+            $response = $SalaController->getSala($_POST);
             break;
         case 'getSalas':
             $SalaController = new SalaController();
-            echo $SalaController->getSalas($_POST);
+            $response = $SalaController->getSalas($_POST);
             break;
         case 'salvarSala':
             $SalaController = new SalaController();
-            echo $SalaController->salvarSala($_POST);
+            $response = $SalaController->salvarSala($_POST);
             break;
         case 'excluirSala':
             $SalaController = new SalaController();
-            echo $SalaController->excluirSala($_POST);
+            $response = $SalaController->excluirSala($_POST);
             break;
         ///////////////////////////////////////////////////////////////////////////////
         case 'criarTutore':
             $TutoreController = new TutoreController();
-            echo $TutoreController->criarTutore($_POST);
+            $response = $TutoreController->criarTutore($_POST);
             break;
         case 'getTutore':
             $TutoreController = new TutoreController();
-            echo $TutoreController->getTutore($_POST);
+            $response = $TutoreController->getTutore($_POST);
             break;
         case 'getTutores':
             $TutoreController = new TutoreController();
-            echo $TutoreController->getTutores($_POST);
+            $response = $TutoreController->getTutores($_POST);
             break;
         case 'salvarTutore':
             $TutoreController = new TutoreController();
-            echo $TutoreController->salvarTutore($_POST);
+            $response = $TutoreController->salvarTutore($_POST);
             break;
         case 'excluirTutore':
             $TutoreController = new TutoreController();
-            echo$TutoreController->excluirTutore($_POST);
+            $response =$TutoreController->excluirTutore($_POST);
             break;
         ///////////////////////////////////////////////////////////////////////////////
         default:
-            echo "Método não encontrado";
+            $response = json_encode([
+                "access" => false,
+                "message" => "Método não encontrado"
+            ]);
     }
+
+    echo $response;
 ?>

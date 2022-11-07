@@ -47,6 +47,7 @@ function gerarCertificadoTutore(){
                     alert.innerHTML = "";
                 }, 2000);
             }
+            verificaSessão();
         }
     });
 }
@@ -98,6 +99,7 @@ function gerarCertificadoMonitore(){
                     alert.innerHTML = "";
                 }, 2000);
             }
+            verificaSessão();
         }
     });
 }

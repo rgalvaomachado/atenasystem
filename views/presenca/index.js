@@ -89,6 +89,7 @@ function criarPresencaAlune(){
                     alert.innerHTML = "";
                 }, 2000);
             }
+            verificaSessão();
         }
         
     });
@@ -129,6 +130,7 @@ function criarPresencaReuniao(){
                     alert.innerHTML = "";
                 }, 2000);
             }
+            verificaSessão();
         }
         
     });
@@ -165,6 +167,7 @@ function criarPresencaMonitore(){
                     alert.innerHTML = "";
                 }, 2000);
             }
+            verificaSessão();
         }
     });
 }
@@ -203,6 +206,7 @@ function criarPresencaTutore(){
                     alert.innerHTML = "";
                 }, 2000);
             }
+            verificaSessão();
         }
     });
 }

@@ -42,6 +42,7 @@ function relatorioPresencaAlune(){
                     alert.innerHTML = "";
                 }, 2000);
             } 
+            verificaSessão();
         }
     });
 }
@@ -87,6 +88,7 @@ function relatorioPresencaReuniao(){
                     alert.innerHTML = "";
                 }, 2000);
             } 
+            verificaSessão();
         }
     });
 }
@@ -133,6 +135,7 @@ function relatorioPresencaMonitore(){
                     alert.innerHTML = "";
                 }, 2000);
             } 
+            verificaSessão();
         }
     });
 }
@@ -179,6 +182,7 @@ function relatorioPresencaTutore(){
                     alert.innerHTML = "";
                 }, 2000);
             } 
+            verificaSessão();
         }
     });
 }

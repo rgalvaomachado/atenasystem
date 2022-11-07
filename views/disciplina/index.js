@@ -25,6 +25,7 @@ function criarDisciplina(){
                     alert.innerHTML = "";
                 }, 2000);
             }
+            verificaSessão();
         }
     });
 }
@@ -77,6 +78,7 @@ function editarDisciplina(){
                     alert.innerHTML = "";
                 }, 2000);
             }
+            verificaSessão();
         }
     });
 }
@@ -109,6 +111,7 @@ function excluirDisciplina(){
                         alert.innerHTML = "";
                     }, 2000);
                 }
+                verificaSessão();
             }
         });
     }

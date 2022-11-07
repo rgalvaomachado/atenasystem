@@ -27,6 +27,7 @@ function criarTutore(){
                     alert.innerHTML = "";
                 }, 2000);
             }
+            verificaSessão();
         }
     });
 }
@@ -82,6 +83,7 @@ function editarTutore(){
                     alert.innerHTML = "";
                 }, 2000);
             }
+            verificaSessão();
         }
     });
 }
@@ -114,6 +116,7 @@ function excluirTutore(){
                         alert.innerHTML = "";
                     }, 2000);
                 }
+                verificaSessão();
             }
         });
     }
@@ -204,6 +207,7 @@ function editarPresencaTutore(){
                     alert.innerHTML = "";
                 }, 2000);
             }
+            verificaSessão();
         }
     });
 }
@@ -268,6 +272,7 @@ function justificarPresencaReuniao(){
                     alert.innerHTML = "";
                 }, 2000);
             }
+            verificaSessão();
         }
     });
 }
