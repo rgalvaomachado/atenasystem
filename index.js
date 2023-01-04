@@ -9,11 +9,11 @@ function start(){
             var response = JSON.parse(response.responseText);
             if (response.access) {
                 $(function(){
-                    $("#content0").load("views/home/index.html"); 
+                    $("#content0").load("src/Views/home/index.html"); 
                 });
             } else {
                 $(function(){
-                    $("#content0").load("views/login/index.html"); 
+                    $("#content0").load("src/Views/login/index.html"); 
                 });
             }
         }
