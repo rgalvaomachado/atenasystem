@@ -19,7 +19,7 @@
             $representante->senha = $post['senha'];
             $id = $representante->criarRepresentante();
             if(isset($files)){
-                move_uploaded_file($files['assinatura']['tmp_name'], '../assinatura/'.$id.'.png');
+                move_uploaded_file($files['assinatura']['tmp_name'], '../Public/assinatura/'.$id.'.png');
             }
             header('Location: ../RepresentanteCadastro.php?sucess=true');
         }
@@ -36,7 +36,7 @@
             $representante->senha = $post['senha'];
             $representante->salvarRepresentante($post['id']);
             if(isset($files)){
-                move_uploaded_file($files['assinatura']['tmp_name'], '../assinatura/'.$post['id'].'.png');
+                move_uploaded_file($files['assinatura']['tmp_name'], '../Public/assinatura/'.$post['id'].'.png');
             }
             header('Location: ../RepresentanteEditar.php?sucess=true');
         }

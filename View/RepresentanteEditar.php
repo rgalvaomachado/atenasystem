@@ -80,7 +80,9 @@
 						<div class="form-group" style="border: 1px solid black;">
 							<label style="color:gray">Assinatura Atual</label>
 							<br>
-							<img id="logo-atena" style="width:150px" src="<?="../assinatura/".$_GET['representante'].".png"?>">
+							<?php if (file_exists(dirname(__FILE__)."/../Public/assinatura/".$_GET['representante'].".png")) { ?>
+								<img style="width:150px" src="<?php echo "Public/assinatura/".$_GET['representante'].".png" ?>">
+							<?php } ?>
 						</div>
 						<button type="submit" class="btn btn-md btn-warning">Editar</button>
 					</div>

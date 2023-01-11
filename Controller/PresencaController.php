@@ -205,7 +205,7 @@
             $cod_sala = $post['cod_sala'];
             $data_inicial = $post['data_inicial'];
             $data_final = $post['data_final'];
-            header('Location: ../RelatorioAlune.php?cod_sala='.$cod_sala.'&data_inicial='.$data_inicial.'&data_final='.$data_final);
+            header('Location: ../RelatorioA.php?cod_sala='.$cod_sala.'&data_inicial='.$data_inicial.'&data_final='.$data_final);
         }
 
         function relatorioPresencaReuniao($post){
@@ -218,14 +218,14 @@
             $cod_sala = $post['cod_sala'];
             $data_inicial = $post['data_inicial'];
             $data_final = $post['data_final'];
-            header('Location: ../RelatorioMonitore.php?cod_sala='.$cod_sala.'&data_inicial='.$data_inicial.'&data_final='.$data_final);
+            header('Location: ../RelatorioM.php?cod_sala='.$cod_sala.'&data_inicial='.$data_inicial.'&data_final='.$data_final);
         }
         
         function relatorioPresencaTutore($post){
             $cod_sala = $post['cod_sala'];
             $data_inicial = $post['data_inicial'];
             $data_final = $post['data_final'];
-            header('Location: ../RelatorioTutore.php?cod_sala='.$cod_sala.'&data_inicial='.$data_inicial.'&data_final='.$data_final);
+            header('Location: ../RelatorioT.php?cod_sala='.$cod_sala.'&data_inicial='.$data_inicial.'&data_final='.$data_final);
         }
         
         function getPresenca(){

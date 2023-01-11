@@ -172,10 +172,10 @@
             <em class="fa fa-file-pdf-o">&nbsp;</em> Certificado <span data-toggle="collapse" href="#sub-item-7" class="icon pull-right"><em class="fa fa-plus"></em></span>
             </a>
             <ul class="children collapse <?= str_contains($arquivo, "Certificado") ? "in" : "" ?>" id="sub-item-9">
-                <li><a style=<?= $arquivo == "certTutore.php" ? "background-color:orange;" : "" ?> class="" href="certTutore.php">
+                <li><a style=<?= $arquivo == "CertificadoT.php" ? "background-color:orange;" : "" ?> class="" href="CertificadoT.php">
                     <span class="fa fa-arrow-right">&nbsp;</span> Tutore
                 </a></li>
-                <li><a style=<?= $arquivo == "certMonitore.php" ? "background-color:orange;" : "" ?> class="" href="certMonitore.php">
+                <li><a style=<?= $arquivo == "CertificadoM.php" ? "background-color:orange;" : "" ?> class="" href="CertificadoM.php">
                     <span class="fa fa-arrow-right">&nbsp;</span> Monitore
                 </a></li>
             </ul>
@@ -186,7 +186,7 @@
             </a>
             <ul class="children collapse <?= str_contains($arquivo, "Relatorio") ? "in" : "" ?>" id="sub-item-10">
                 <?php if($_SESSION['modo'] == "representate" || $_SESSION['modo'] == "monitore") { ?>
-                <li><a style=<?= $arquivo == "RelatorioAlune.php" ? "background-color:orange;" : "" ?> class="" href="RelatorioAlune.php">
+                <li><a style=<?= $arquivo == "RelatorioA.php" ? "background-color:orange;" : "" ?> class="" href="RelatorioA.php">
                     <span class="fa fa-arrow-right">&nbsp;</span> Presença Alune
                 </a></li>
                 <?php } ?>
@@ -196,12 +196,12 @@
                     </a></li>
                 <?php } ?>
                 <?php if($_SESSION['modo'] == "representate") { ?>
-                    <li><a style=<?= $arquivo == "RelatorioMonitore.php" ? "background-color:orange;" : "" ?> class="" href="RelatorioMonitore.php">
+                    <li><a style=<?= $arquivo == "RelatorioM.php" ? "background-color:orange;" : "" ?> class="" href="RelatorioM.php">
                         <span class="fa fa-arrow-right">&nbsp;</span> Presença Monitore
                     </a></li>
                 <?php } ?>
                 <?php if($_SESSION['modo'] == "representate" || $_SESSION['modo'] == "monitore") { ?>
-                <li><a style=<?= $arquivo == "RelatorioTutore.php" ? "background-color:orange;" : "" ?> class="" href="RelatorioTutore.php">
+                <li><a style=<?= $arquivo == "RelatorioT.php" ? "background-color:orange;" : "" ?> class="" href="RelatorioT.php">
                     <span class="fa fa-arrow-right">&nbsp;</span> Presença Tutore
                 </a></li>
                 <?php } ?>
