@@ -161,7 +161,7 @@
                     </a></li>
                 <?php } ?>
                 <?php if($_SESSION['modo'] == "representate" || $_SESSION['modo'] == "comissao") { ?>
-                    <li><a style=<?= $arquivo == "PresencaCadastroR.php" ? "background-color:orange;" : "" ?> class="" href="PresencaCadastroR.php">
+                    <li><a style=<?= $arquivo == "PresencaCadastroReuniao.php" ? "background-color:orange;" : "" ?> class="" href="PresencaCadastroReuniao.php">
                         <span class="fa fa-arrow-right">&nbsp;</span> Reunião
                     </a></li>
                 <?php } ?>

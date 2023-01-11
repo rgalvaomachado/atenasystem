@@ -142,10 +142,10 @@
             $presenca->data = $post['data'];
             $verificarPresenca = $presenca->verificarPresencaTutore();
             if(count($verificarPresenca) > 0){
-                header('Location: ../PresencaTutore.php?sucess=false');
+                header('Location: ../PresencaCadastroT.php?sucess=false');
             }else{
                 $presenca->criarPresenca();
-                header('Location: ../PresencaTutore.php?sucess=true');
+                header('Location: ../PresencaCadastroT.php?sucess=true');
             }
         }
 
@@ -157,10 +157,10 @@
             $presenca->data = $post['data'];
             $verificarPresenca = $presenca->verificarPresencaMonitore();
             if(count($verificarPresenca) > 0){
-                header('Location: ../PresencaMonitore.php?sucess=false');
+                header('Location: ../PresencaCadastroM.php?sucess=false');
             }else{
                 $presenca->criarPresenca();
-                header('Location: ../PresencaMonitore.php?sucess=true');
+                header('Location: ../PresencaCadastroM.php?sucess=true');
             }
         }
 
@@ -195,9 +195,9 @@
                 }
             }
             if($erroTutore > 0){
-                header('Location: ../PresencaReuniao.php?sucess=false');
+                header('Location: ../PresencaCadastroReuniao.php?sucess=false');
             }else{
-                header('Location: ../PresencaReuniao.php?sucess=true');
+                header('Location: ../PresencaCadastroReuniao.php?sucess=true');
             }
         }
 
