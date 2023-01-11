@@ -16,7 +16,7 @@
             }
             $uri = $_SERVER["REQUEST_URI"];
             $parametros = explode('/',$uri);
-            if ($parametros[1] == 'atenasystem2') {
+            if ($parametros[1] == 'atenasystem') {
                 $menu = isset($parametros[2]) ? $parametros[2] : "" ;
             } else {
                 $menu = isset($parametros[1]) ? $parametros[1] : "" ;
