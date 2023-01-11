@@ -24,12 +24,12 @@
             $alune->nome = $post['nome'];
             $alune->sala = $post['sala'];
             $alune->criar();
-            header('Location: ../alune/cadAlune.php?sucess=true');
+            header('Location: ../AluneCadastro.php?sucess=true');
         }
 
         function buscarAlune($post){
             $id = $post['alune'];
-            header('Location: ../alune/editAlune.php?alune='.$id);
+            header('Location: ../AluneEditar.php?alune='.$id);
         }
 
         function salvarAlune($post){
@@ -37,7 +37,7 @@
             $alune->nome = $post['nome'];
             $alune->sala = $post['sala'];
             $alune->salvar($post['id']);
-            header('Location: ../alune/editAlune.php?sucess=true');
+            header('Location: ../AluneEditar.php?sucess=true');
         }
 
         function excluirAlune($post){
@@ -46,7 +46,7 @@
             $alune = new Alune();
             $alune->id = $post['id'];
             $alune->excluir();
-            header('Location: ../alune/editAlune.php?delete=true');
+            header('Location: ../AluneEditar.php?delete=true');
         }
     }
 ?>

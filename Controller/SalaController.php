@@ -16,26 +16,26 @@
             $sala = new Sala();
             $sala->nome = $post['nome'];
             $sala->criar();
-            header('Location: ../sala/cadSala.php?sucess=true');
+            header('Location: ../SalaCadastro.php?sucess=true');
         }
 
         function buscarSala($post){
             $id = $post['sala'];
-            header('Location: ../sala/editSala.php?sala='.$id);
+            header('Location: ../SalaEditar.php?sala='.$id);
         }
 
         function salvarSala($post){
             $sala = new Sala();
             $sala->nome = $post['nome'];
             $sala->salvar($post['id']);
-            header('Location: ../sala/editSala.php?sucess=true');
+            header('Location: ../SalaEditar.php?sucess=true');
         }
 
         function excluirSala($post){
             $sala = new Sala();
             $sala->id = $post['id'];
             $sala->excluir();
-            header('Location: ../sala/editSala.php?delete=true');
+            header('Location: ../SalaEditar.php?delete=true');
         }
     }
 ?>

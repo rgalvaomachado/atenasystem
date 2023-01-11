@@ -18,12 +18,12 @@
             $comissao->usuario = $post['usuario'];
             $comissao->senha = $post['senha'];
             $comissao->criarComissao();
-            header('Location: ../comissao/cadComissao.php?sucess=true');
+            header('Location: ../ComissaoCadastro.php?sucess=true');
         }
 
         function buscarComissao($post){
             $id = $post['comissao'];
-            header('Location: ../comissao/editComissao.php?comissao='.$id);
+            header('Location: ../ComissaoEditar.php?comissao='.$id);
         }
 
         function salvarComissao($post){
@@ -32,14 +32,14 @@
             $comissao->usuario = $post['usuario'];
             $comissao->senha = $post['senha'];
             $comissao->salvarComissao($post['id']);
-            header('Location: ../comissao/editComissao.php?sucess=true');
+            header('Location: ../ComissaoEditar.php?sucess=true');
         }
 
         function excluirComissao($post){
             $comissao = new Comissao();
             $comissao->id = $post['id'];
             $comissao->excluir();
-            header('Location: ../comissao/editComissao.php?delete=true');
+            header('Location: ../ComissaoEditar.php?delete=true');
         }
     }
 ?>

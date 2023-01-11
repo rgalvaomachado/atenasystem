@@ -43,16 +43,27 @@ class LoginController{
             session_start();
             $_SESSION['usuario'] =  $usuarioValidado;
             $_SESSION['modo'] = $modoValidado;
-            // header('location:../home.php');
+            // header('location:home.php');
             echo json_encode([
-                "redirect" => "../home.php"
+                "redirect" => "home.php"
             ]);
         }else{
             // header('location:../index.php?error=1');
             echo json_encode([
-                "redirect" => "../index.php?error=1"
+                "redirect" => "index.php?error=1"
             ]);
         }
+    }
+
+    function logout(){
+        session_start();
+        $_SESSION['usuario'] =  "";
+        $_SESSION['modo'] = "";
+        session_destroy();
+        // header('location:../index.php');
+        echo json_encode([
+            "redirect" => "index.php"
+        ]);
     }
 }
 ?>

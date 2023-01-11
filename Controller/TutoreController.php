@@ -17,12 +17,12 @@
             $tutore->nome = $post['nome'];
             $tutore->disciplina = $post['disciplina'];
             $tutore->criarTutore();
-            header('Location: ../tutore/cadTutore.php?sucess=true');
+            header('Location: ../TutoreCadastro.php?sucess=true');
         }
 
         function buscarTutore($post){
             $id = $post['tutore'];
-            header('Location: ../tutore/editTutore.php?tutore='.$id);
+            header('Location: ../TutoreEditar.php?tutore='.$id);
         }
 
         function salvarTutore($post){
@@ -30,14 +30,14 @@
             $tutore->nome = $post['nome'];
             $tutore->disciplina = $post['disciplina'];
             $tutore->salvar($post['id']);
-            header('Location: ../tutore/editTutore.php?sucess=true');
+            header('Location: ../TutoreEditar.php?sucess=true');
         }
 
         function excluirTutore($post){
             $tutore = new Tutore();
             $tutore->id = $post['id'];
             $tutore->excluir();
-            header('Location: ../tutore/editTutore.php?delete=true');
+            header('Location: ../TutoreEditar.php?delete=true');
         }
     }
 ?>

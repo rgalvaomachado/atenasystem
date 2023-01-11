@@ -67,6 +67,10 @@
             $LoginController = new LoginController();
             $LoginController->login($_POST);
             break;
+        case 'logout':
+            $LoginController = new LoginController();
+            $LoginController->logout($_POST);
+            break;
         ///////////////////////////////////////////////////////////////////////////////
         case 'criarMonitore':
             $MonitoreController = new MonitoreController();

@@ -21,12 +21,12 @@
             if(isset($files)){
                 move_uploaded_file($files['assinatura']['tmp_name'], '../assinatura/'.$id.'.png');
             }
-            header('Location: ../representante/cadRepresentante.php?sucess=true');
+            header('Location: ../RepresentanteCadastro.php?sucess=true');
         }
 
         function buscarRepresentante($post){
             $id = $post['representante'];
-            header('Location: ../representante/editRepresentante.php?representante='.$id);
+            header('Location: ../RepresentanteEditar.php?representante='.$id);
         }
 
         function salvarRepresentante($post, $files){
@@ -38,14 +38,14 @@
             if(isset($files)){
                 move_uploaded_file($files['assinatura']['tmp_name'], '../assinatura/'.$post['id'].'.png');
             }
-            header('Location: ../representante/editRepresentante.php?sucess=true');
+            header('Location: ../RepresentanteEditar.php?sucess=true');
         }
 
         function excluirRepresentante($post){
             $representante = new Representante();
             $representante->id = $post['id'];
             $representante->excluir();
-            header('Location: ../representante/editRepresentante.php?delete=true');
+            header('Location: ../RepresentanteEditar.php?delete=true');
         }
     }
 ?>
