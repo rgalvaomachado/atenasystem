@@ -50,6 +50,23 @@
             ]);
         }
 
+        function getPresencaMonitore(){
+            $getPresencaMonitore =  $this->bd->prepare('
+                SELECT *
+                FROM presenca
+                WHERE 
+                    cod_monitore = :cod_monitore
+                    AND data BETWEEN :data AND :data_final 
+                    AND presente = \'S\'
+            ');
+            $getPresencaMonitore->execute([
+                ':cod_monitore' => $this->cod_monitore,
+                ':data' => $this->data,
+                ':data_final' => $this->data_final,
+            ]);
+            return $getPresencaMonitore->fetchAll(PDO::FETCH_ASSOC);
+        } 
+
         function getPresencaPeriodo(){
             $getPresencaPeriodo =  $this->bd->prepare('
                 SELECT *

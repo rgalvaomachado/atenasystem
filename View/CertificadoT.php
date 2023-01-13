@@ -8,7 +8,7 @@
 	<link href="Public/css/font-awesome.min.css" rel="stylesheet">
 	<link href="Public/css/datepicker3.css" rel="stylesheet">
 	<link href="Public/css/styles.css" rel="stylesheet">
-    <link href="Public/css/certificado.css" rel="stylesheet">
+    <link href="Public/css/certificado_tutore.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 	<link rel="icon" href="	Public/img/hubis-icon.png">
 </head>
@@ -50,6 +50,10 @@
 					<input id="dataFinal" name="dataFinal" type="date" class="form-control">
 				</div>
 				<div class="form-group">
+					<label>Horas Comissão Administrativa</label>
+					<input id="horasAdministrativa" name="horasAdministrativa" type="number" class="form-control">
+				</div>
+				<div class="form-group">
 					<label>Coordenador Docente do Projeto</label>
 					<select class="form-control" id="docente" name="docente" onchange="buscarDocente()">
 						<option>Selecione o docente</option>
@@ -69,7 +73,7 @@
 				<div class="form-group">
 					<div id="frente">
 						<div id="conteudo">
-							<h1 id="titulo">
+							<h1 id="titulo" class="tituloCertificado">
 								CERTIFICADO
 							</h1>
 							<div id="corpo">
@@ -77,21 +81,18 @@
 							</div>
 							<table id="assinaturas">
 								<tr>
-									<td class="assinaturas">
+									<td class="assinaturas docente">
 										<div id="assinaturaDocente"></div>
+										<label class="assinaturas" id="nomeDocente"></label>
+										<br>
+										<label class="assinaturas">Coordenador Docente do Projeto</label>
 									</td>
-									<td class="assinaturas">
+									<td class="assinaturas discente">
 										<div id="assinaturaDiscente"></div>
+										<label class="assinaturas" id="nomeDiscente"></label>
+										<br>
+										<label class="assinaturas">Coordenador Discente do Projeto</label>
 									</td>
-								</tr>
-								<tr>
-									<td class="assinaturas" id="nomeDocente"></td>
-									<td class="assinaturas" id="nomeDiscente"></td>
-								</tr>
-								<tr>
-									<td class="assinaturas">Coordenador Docente do Projeto</td>
-									<td class="assinaturas">Coordenador Discente do Projeto</td>
-								</tr>
 							</table>
 							<div>
 								<img id="ibbFrente" src="Public/img/ibb.png" />
@@ -100,22 +101,30 @@
 						</div>
 					</div>
 					<br>
-					<input class="btn btn-md btn-warning" type="button" onclick="downloadFrente()" value="Download Frente">
+					<!-- <input class="btn btn-md btn-warning" type="button" onclick="downloadFrenteTutore()" value="Download Frente"> -->
 				</div>
 				<div class="form-group">
 					<div id="verso">
 						<div id="conteudo">
 							<table id="carga-horaria">
 								<tr>
-								<th colspan="2">Atividades Desenvolvidas</th>
+								<th colspan="2" id="AtividadesDesenvolvidas">Atividades Desenvolvidas</th>
 								</tr>
 								<tr>
-									<td class="assinaturas nomeMateria"></td>
-									<td class="assinaturas"><label class="presencaAulas"></label> aulas (50 min/aula)</td>
+									<td><div class="nomeMateria horas"></div></td>
+									<td><div class="presencaAulas horas"></div></td>
 								</tr>
 								<tr>
-									<td class="assinaturas">Reuniões Burocráticas/Pedagógicas&nbsp</td>
-									<td class="assinaturas"><label class="presencaReuniao"></label> horas</td>
+									<td><div class="horas">Reuniões Burocráticas/Pedagógicas</div></td>
+									<td><div class="presencaReuniao horas"></div></td>
+								</tr>
+								<tr>
+									<td><div class="horas">Comissões Administrativas</div></td>
+									<td><div class="presencaAdministrativa horas"></div></td>
+								</tr>
+								<tr>
+									<td><b><div class="horas">Total de Horas</div></b></td>
+									<td><b><div class="presencaTotal horas"></div></b></td>
 								</tr>
 							</table>
 							<div>
@@ -126,7 +135,7 @@
 						</div>
 					</div>
 					<br>
-					<input class="btn btn-md btn-warning" type="button" onclick="downloadVerso()" value="Download Verso">
+					<input class="btn btn-md btn-warning" type="button" onclick="downloadVersoTutore();downloadFrenteTutore();" value="Download">
 				</div>
 			</div>
             <script src="Public\js\certificado.js"></script>

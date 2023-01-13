@@ -8,7 +8,7 @@
 	<link href="Public/css/font-awesome.min.css" rel="stylesheet">
 	<link href="Public/css/datepicker3.css" rel="stylesheet">
 	<link href="Public/css/styles.css" rel="stylesheet">
-    <link href="Public/css/certificado.css" rel="stylesheet">
+    <link href="Public/css/certificado_monitore.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 	<link rel="icon" href="	Public/img/hubis-icon.png">
 </head>
@@ -68,29 +68,26 @@
 				<div class="form-group">
 					<div id="frente">
 						<div id="conteudo">
-							<h1 id="titulo">
+							<h1 id="titulo" class="tituloCertificado">
 								CERTIFICADO
 							</h1>
 							<div id="corpo">
-								Certificamos que <b class="nomeMonitore"></b> participou do Subprograma de Extensão Universitária Cursinho Pré Universitário Atena do Instituto de Biociencias da UNESP de Botucatu na condição de <b>Monitor(a)</b> no periodo de <label class="mesInicial"></label> a <label class="mesFinal"></label> de <label class="anoFinal"></label>.
+								Certificamos que <b class="nomeMonitore"></b> participou do Subprograma de Extensão Universitária Cursinho Pré Universitário Atena do Instituto de Biociencias da UNESP de Botucatu na condição de <b class="nomeMateria">Monitor(a)</b> no periodo de <label class="mesInicial"></label> a <label class="mesFinal"></label> de <label class="anoFinal"></label>.
 							</div>
 							<table id="assinaturas">
 								<tr>
-									<td class="assinaturas">
+									<td class="assinaturas docente">
 										<div id="assinaturaDocente"></div>
+										<label class="assinaturas" id="nomeDocente"></label>
+										<br>
+										<label class="assinaturas">Coordenador Docente do Projeto</label>
 									</td>
-									<td class="assinaturas">
+									<td class="assinaturas discente">
 										<div id="assinaturaDiscente"></div>
+										<label class="assinaturas" id="nomeDiscente"></label>
+										<br>
+										<label class="assinaturas">Coordenador Discente do Projeto</label>
 									</td>
-								</tr>
-								<tr>
-									<td class="assinaturas" id="nomeDocente"></td>
-									<td class="assinaturas" id="nomeDiscente"></td>
-								</tr>
-								<tr>
-									<td class="assinaturas">Coordenador Docente do Projeto</td>
-									<td class="assinaturas">Coordenador Discente do Projeto</td>
-								</tr>
 							</table>
 							<div>
 								<img id="ibbFrente" src="Public/img/ibb.png" />
@@ -99,22 +96,18 @@
 						</div>
 					</div>
 					<br>
-					<input class="btn btn-md btn-warning" type="button" onclick="downloadFrenteMonitore()" value="Download Frente">
+					<!-- <input class="btn btn-md btn-warning" type="button" onclick="downloadFrenteTutore()" value="Download Frente"> -->
 				</div>
 				<div class="form-group">
 					<div id="verso">
 						<div id="conteudo">
 							<table id="carga-horaria">
 								<tr>
-								<th colspan="2">Atividades Desenvolvidas</th>
+								<th colspan="2" id="AtividadesDesenvolvidas">Atividades Desenvolvidas</th>
 								</tr>
 								<tr>
-									<td class="assinaturas">Professor(a) de <label class="nomeMateria"></label></td>
-									<td class="assinaturas"><label class="presencaAulas"></label> aulas (50 min/aula)</td>
-								</tr>
-								<tr>
-									<td class="assinaturas">Reuniões Burocráticas/Pedagógicas</td>
-									<td class="assinaturas"><label class="presencaReuniao"></label> horas</td>
+									<td><div class="horas"></div>Monitorias</td>
+									<td><div class="presencaMonitorias horas"></div></td>
 								</tr>
 							</table>
 							<div>
@@ -125,7 +118,7 @@
 						</div>
 					</div>
 					<br>
-					<input class="btn btn-md btn-warning" type="button" onclick="downloadVersoMonitore()" value="Download Verso">
+					<input class="btn btn-md btn-warning" type="button" onclick="downloadVersoMonitore();downloadFrenteMonitore();" value="Download">
 				</div>
 			</div>
             <script src="Public\js\certificado.js"></script>

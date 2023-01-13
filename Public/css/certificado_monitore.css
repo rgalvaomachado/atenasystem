@@ -17,16 +17,20 @@
 }
 
 #corpo{
-    font-size: 20px;
+    font-size: 15px;
+    text-align: justify;
+    margin: 20px;
 }
 
 #assinatura-cursinho{
     width: 400px;
-    margin-top: 100px;
+    margin-top: 135px;
 }
 
 #carga-horaria {
     border-collapse: collapse;
+    width: 99%;
+    margin-top: 20px;
 }
 
 #carga-horaria td {
@@ -38,38 +42,68 @@
     border: 1px solid black;
 }
 
+#AtividadesDesenvolvidas{
+    text-align: center;
+}
+
 #unespFrente{
     height: 100px;
     float: right;
 }
 
 #ibbFrente{
-    height: 120px;
+    height: 100px;
     float: left;
 }
 
 #unespVerso{
     height: 100px;
     float: right;
-    margin-top: 230px;
+    margin-top: 250px;
 }
 
 #ibbVerso{
     height: 100px;
     float: left;
-    margin-top: 230px;
+    margin-top: 250px;
 }
 
-#assinaturaDocente, #assinaturaDiscente{
+#assinaturaDiscente{
     height: 100px;
-    width: 300px;
+    width: 250px;
+    border-bottom: solid 2px;
+}
+#assinaturaDocente{
+    height: 100px;
+    width: 250px;
     border-bottom: solid 2px;
 }
 
 .assinaturas{
     border: none;
+    text-align: center;
 }
 
 .form-control {
     width: 70%;
+}
+
+.horas{
+    margin-left: 5px;
+}
+
+.tituloCertificado{
+    font-family: 'FontAwesome';
+}
+
+.discente{
+    padding-left: 100px;
+}
+
+.docente{
+    padding-right: 100px;
+}
+
+#detalhes{
+    display: none;
 }

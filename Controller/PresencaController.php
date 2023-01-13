@@ -233,6 +233,14 @@
             return $presenca->getPresenca();
         }
 
+        function getPresencaMonitore($cod_monitore, $data_inicial, $data_final){
+            $presenca = new Presenca();
+            $presenca->cod_monitore = $cod_monitore;
+            $presenca->data = $data_inicial;
+            $presenca->data_final = $data_final;
+            return $presenca->getPresencaMonitore();
+        }
+
         function getPresencaPeriodo($cod_sala, $cod_alune, $cod_monitore, $cod_tutore, $data_inicial, $data_final){
             $presenca = new Presenca();
             $presenca->cod_sala = $cod_sala ;

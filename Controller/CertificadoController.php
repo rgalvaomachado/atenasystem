@@ -85,39 +85,19 @@ class CertificadoController{
             $mesFinal = $UtilsController->getMes($dataFinal);
             $anoFinal = $data2[0];
 
-            // $SalaController = new SalaController();
-            // $salas = json_decode($SalaController->getSalas());
-            // $PresencaController = new PresencaController();
-            // $presencaAulas  = 0;
-            // foreach($salas as $sala){  
-            //     $aulas = $PresencaController->getPresencaPeriodo(
-            //         $sala->id,
-            //         0,
-            //         0,
-            //         $post['tutore'],
-            //         $post['dataInicial'],
-            //         $post['dataFinal']
-            //     );
-            //     $presencaAulas  = count($aulas) + $presencaAulas;
-            // }
-
-            // $reuniao = $PresencaController->getPresencaPeriodo(
-            //     0,
-            //     0,
-            //     0,
-            //     $post['tutore'],
-            //     $post['dataInicial'],
-            //     $post['dataFinal']
-            // );
-            // $presencaReuniao = count($reuniao);
-
+            $PresencaController = new PresencaController();
+            $monitorias = $PresencaController->getPresencaMonitore(
+                $post['monitore'],
+                $post['dataInicial'],
+                $post['dataFinal']
+            );
+            
             return json_encode([
                 "access" => true,
                 "mesInicial" => $mesInicial,
                 "mesFinal" => $mesFinal,
                 "anoFinal" => $anoFinal,
-                // "presencaAulas" => $presencaAulas,
-                // "presencaReuniao" => $presencaReuniao,
+                "monitoria" => count($monitorias),
             ]);
         } else {
             return json_encode([

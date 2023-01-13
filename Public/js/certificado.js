@@ -100,12 +100,18 @@ function gerarCertificadoTutore(){
         complete: function(response) {
             var response = JSON.parse(response.responseText);
             if(response.access){
+                presencaAulas = response.presencaAulas*2;
+                presencaReuniao = response.presencaReuniao*1.5;
+                presencaAdminsitrativa = $('#horasAdministrativa').val();
+                presencaTotal = presencaAulas+presencaReuniao+parseInt(presencaAdminsitrativa);
                 $('#detalhes').show();
                 $('.anoFinal').html(response.anoFinal);
                 $('.mesFinal').html(response.mesFinal);
                 $('.mesInicial').html(response.mesInicial);
-                $('.presencaAulas').html(response.presencaAulas*2);
-                $('.presencaReuniao').html(response.presencaReuniao);
+                $('.presencaAulas').html(' '+presencaAulas +' horas');
+                $('.presencaReuniao').html(' '+presencaReuniao +' horas');
+                $('.presencaAdministrativa').html(' '+presencaAdminsitrativa +' horas');
+                $('.presencaTotal').html(' '+presencaTotal +' horas');
             }else{
                 const alert = document.getElementById("messageAlert");
                 alert.innerHTML = response.message;
@@ -134,12 +140,12 @@ function gerarCertificadoMonitore(){
         complete: function(response) {
             var response = JSON.parse(response.responseText);
             if(response.access){
+                presencaMonitoria = response.monitoria*4
                 $('#detalhes').show();
                 $('.anoFinal').html(response.anoFinal);
                 $('.mesFinal').html(response.mesFinal);
                 $('.mesInicial').html(response.mesInicial);
-                $('.presencaAulas').html(response.presencaAulas*2);
-                $('.presencaReuniao').html(response.presencaReuniao);
+                $('.presencaMonitorias').html(presencaMonitoria +' horas');
             }else{
                 const alert = document.getElementById("messageAlert");
                 alert.innerHTML = response.message;
@@ -304,3 +310,8 @@ function downloadFrenteMonitore(){
         }, 2000);
     }
 }
+
+// function horasAdministrativa(){
+//     horas = $('#horasAdministrativa').val();
+    
+// }
