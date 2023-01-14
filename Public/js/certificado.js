@@ -2,7 +2,7 @@ function buscarTutore(){
     var id = $("#tutore").val();
     $.ajax({
         method: "POST",
-        url: "Controller/Controller.php",
+        url: "controller/controller.php",
         data: {
             metodo: "certificadoGetTutore",
             id: id,
@@ -20,7 +20,7 @@ function buscarTutore(){
 function buscarTutores(){
     $.ajax({
         method: "POST",
-        url: "Controller/Controller.php",
+        url: "controller/controller.php",
         data: {
             metodo: "certificadoGetTutores",
         },
@@ -36,7 +36,7 @@ function buscarTutores(){
 function buscarRepresentantes(){
     $.ajax({
         method: "POST",
-        url: "Controller/Controller.php",
+        url: "controller/controller.php",
         data: {
             metodo: "certificadoGetRepresentantes",
         },
@@ -53,7 +53,7 @@ function buscarRepresentantes(){
 function buscarMonitores(){
     $.ajax({
         method: "POST",
-        url: "Controller/Controller.php",
+        url: "controller/controller.php",
         data: {
             metodo: "certificadoGetMonitores",
         },
@@ -70,7 +70,7 @@ function buscarMonitore(){
     var id = $("#monitore").val();
     $.ajax({
         method: "POST",
-        url: "Controller/Controller.php",
+        url: "controller/controller.php",
         data: {
             metodo: "certificadoGetMonitore",
             id: id,
@@ -90,7 +90,7 @@ function gerarCertificadoTutore(){
     var dataFinal = $('#dataFinal').val();
     $.ajax({
         method: "POST",
-        url: "Controller/Controller.php",
+        url: "controller/controller.php",
         data: {
             metodo: "certificadoTutore",
             tutore: tutore,
@@ -130,7 +130,7 @@ function gerarCertificadoMonitore(){
     var dataFinal = $('#dataFinal').val();
     $.ajax({
         method: "POST",
-        url: "Controller/Controller.php",
+        url: "controller/controller.php",
         data: {
             metodo: "certificadoMonitore",
             monitore: monitore,
@@ -162,7 +162,7 @@ function buscarDiscente(){
     var id = $("#discente").val();
     $.ajax({
         method: "POST",
-        url: "Controller/Controller.php",
+        url: "controller/controller.php",
         data: {
             metodo: "certificadoGetRepresentante",
             id: id
@@ -171,7 +171,7 @@ function buscarDiscente(){
             var response = JSON.parse(response.responseText);
             if(response.access){
                 var newImage = document.createElement('img');
-                newImage.src = "Public/assinatura/"+id+".png";
+                newImage.src = "public/assinatura/"+id+".png";
                 console.log(newImage.src);
                 newImage.style.maxWidth = "100%";
                 newImage.style.maxHeight = "100%";
@@ -187,7 +187,7 @@ function buscarDocente(){
     var id = $("#docente").val()
     $.ajax({
         method: "POST",
-        url: "Controller/Controller.php",
+        url: "controller/controller.php",
         data: {
             metodo: "certificadoGetRepresentante",
             id: id,
@@ -196,7 +196,7 @@ function buscarDocente(){
             var response = JSON.parse(response.responseText);
             if(response.access){
                 var newImage = document.createElement('img');
-                newImage.src = "Public/assinatura/"+id+".png";
+                newImage.src = "public/assinatura/"+id+".png";
                 console.log(newImage.src);
                 newImage.style.maxWidth = "100%";
                 newImage.style.maxHeight = "100%";

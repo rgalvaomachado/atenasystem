@@ -1,14 +1,14 @@
 <?php
-    include_once('AluneController.php');
-    include_once('ComissaoController.php');
-    include_once('DisciplinaController.php');
-    include_once('LoginController.php');
-    include_once('MonitoreController.php');
-    include_once('PresencaController.php');
-    include_once('RepresentanteController.php');
-    include_once('SalaController.php');
-    include_once('TutoreController.php');
-    include_once('CertificadoController.php');
+    include_once('alune.php');
+    include_once('comissao.php');
+    include_once('disciplina.php');
+    include_once('login.php');
+    include_once('monitore.php');
+    include_once('presenca.php');
+    include_once('representante.php');
+    include_once('sala.php');
+    include_once('tutore.php');
+    include_once('certificado.php');
 
     $metodo = isset($_POST['metodo']) ? $_POST['metodo'] : ""; 
     switch($metodo){

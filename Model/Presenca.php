@@ -1,5 +1,5 @@
 <?php
-    include_once('Database.php');
+    include_once('database.php');
 
     class Presenca extends BD{
         public $cod_alune;

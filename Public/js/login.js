@@ -3,7 +3,7 @@ function login(){
     var senha = $("#senha").val();
     $.ajax({
         method: "POST",
-        url: "Controller/Controller.php",
+        url: "controller/controller.php",
         data: {
             metodo: 'login',
             usuario: usuario,
@@ -19,7 +19,7 @@ function login(){
 function logout(){
     $.ajax({
         method: "POST",
-        url: "Controller/Controller.php",
+        url: "controller/controller.php",
         data: {
             metodo: 'logout',
         },

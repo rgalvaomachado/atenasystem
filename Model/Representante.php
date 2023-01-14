@@ -1,5 +1,5 @@
 <?php
-    include_once('Database.php');
+    include_once('database.php');
 
     class Representante extends BD{
         public $nome;
