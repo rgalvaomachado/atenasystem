@@ -230,10 +230,6 @@
             $CertificadoController = new CertificadoController();
             echo $CertificadoController->certificadoGetMonitores($_POST);
             break;
-        case 'certificadoGetMonitore':
-            $CertificadoController = new CertificadoController();
-            echo $CertificadoController->certificadoGetMonitore($_POST);
-            break;
         case 'certificadoGetTutores':
             $CertificadoController = new CertificadoController();
             echo $CertificadoController->certificadoGetTutores($_POST);

@@ -116,7 +116,7 @@ class CertificadoController{
     function certificadoGetTutore($post){
         $id = $post['id'];
         $tutore = (new Tutore())->getTutore($id);
-        if($tutore["nome"] > 0){
+        if($tutore["nome"] != ''){
             return json_encode([
                 "access" => true,
                 "tutore" => $tutore,
@@ -137,7 +137,7 @@ class CertificadoController{
     function certificadoGetMonitore($post){
         $id = $post['id'];
         $monitore = (new Monitore())->getMonitore($id);
-        if($monitore["nome"] > 0){
+        if($monitore["nome"] != ''){
             return json_encode([
                 "access" => true,
                 "monitore" => $monitore,
@@ -158,7 +158,7 @@ class CertificadoController{
     function certificadoGetRepresentante($post){
         $id = $post['id'];
         $representante = (new Representante())->getRepresentante($id);
-        if($representante["nome"] > 0){
+        if($representante["nome"] != ''){
             return json_encode([
                 "access" => true,
                 "representante" => $representante,

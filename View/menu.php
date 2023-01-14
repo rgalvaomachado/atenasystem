@@ -29,7 +29,7 @@
             <li class="parent"><a data-toggle="collapse" href="#sub-item-1">
                 <em class="fa fa-user-plus" aria-hidden="true"></em> Representante <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span>   
             </a>
-                <ul class="children collapse <?= str_contains($arquivo, 'Representante') ? "in" : "" ?> " id="sub-item-1">
+                <ul class="children collapse <?= $arquivo == 'RepresentanteCadastro.php' || $arquivo == 'RepresentanteEditar.php'? "in" : "" ?> " id="sub-item-1">
                     <li><a style=<?= $arquivo == "RepresentanteCadastro.php" ? "background-color:orange;" : "" ?> class="" href="RepresentanteCadastro.php">
                         <span class="fa fa-arrow-right">&nbsp;</span> Cadastro
                     </a></li>
@@ -43,7 +43,7 @@
             <li class="parent"><a data-toggle="collapse" href="#sub-item-2">
                 <em class="fa fa-address-book" aria-hidden="true"></em> Comissão de Faltas  <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span>
                 </a>
-                <ul class="children collapse <?= str_contains($arquivo, "Comissao") ? "in" : "" ?> " id="sub-item-2">
+                <ul class="children collapse <?= $arquivo == 'ComissaoCadastro.php' || $arquivo == 'ComissaoEditar.php'? "in" : "" ?> " id="sub-item-2">
                     <li><a style=<?= $arquivo == "ComissaoCadastro.php" ? "background-color:orange;" : "" ?> class="" href="ComissaoCadastro.php">
                         <span class="fa fa-arrow-right">&nbsp;</span> Cadastro
                     </a></li>
@@ -57,7 +57,7 @@
             <li class="parent"><a data-toggle="collapse" href="#sub-item-3">
                 <em class="fa fa-user-circle-o" aria-hidden="true"></em> Monitore <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span>
                 </a>
-                <ul class="children collapse <?= str_contains($arquivo, "Monitore") ? "in" : "" ?> " id="sub-item-3">
+                <ul class="children collapse <?= $arquivo == 'MonitoreCadastro.php' || $arquivo == 'MonitoreEditar.php' || $arquivo == 'MonitoreEditarPresenca.php' ? "in" : "" ?> " id="sub-item-3">
                     <li><a style=<?= $arquivo == "MonitoreCadastro.php" ? "background-color:orange;" : "" ?> class="" href="MonitoreCadastro.php">
                         <span class="fa fa-arrow-right">&nbsp;</span> Cadastro
                     </a></li>
@@ -73,7 +73,7 @@
         <li class="parent "><a data-toggle="collapse" href="#sub-item-4">
             <em class="fa fa-user-o" aria-hidden="true">&nbsp;</em> Tutore <span data-toggle="collapse" href="#sub-item-2" class="icon pull-right"><em class="fa fa-plus"></em></span>
             </a>
-            <ul class="children collapse<?= str_contains($arquivo, "Tutore") ? "in" : "" ?> " id="sub-item-4">
+            <ul class="children collapse <?= $arquivo == 'TutoreCadastro.php' || $arquivo == 'TutoreEditar.php' || $arquivo == 'TutoreJustificarPresenca.php' || $arquivo == 'TutoreEditarPresenca.php'? "in" : "" ?> " id="sub-item-4">
                 <?php if($_SESSION['modo'] == "representate" || $_SESSION['modo'] == "monitore") { ?>
                     <li><a style=<?= $arquivo == "TutoreCadastro.php" ? "background-color:orange;" : "" ?> class="" href="TutoreCadastro.php">
                         <span class="fa fa-arrow-right">&nbsp;</span> Cadastro
@@ -100,7 +100,7 @@
         <li class="parent "><a data-toggle="collapse" href="#sub-item-5">
             <em class="fa fa-graduation-cap" aria-hidden="true">&nbsp;</em> Alune <span data-toggle="collapse" href="#sub-item-3" class="icon pull-right"><em class="fa fa-plus"></em></span>
             </a>
-            <ul class="children collapse <?= str_contains($arquivo, "Alune") ? "in" : "" ?>" id="sub-item-5">
+            <ul class="children collapse <?= $arquivo == 'AluneCadastro.php' || $arquivo == 'AluneEditar.php' || $arquivo == 'AluneJustificarPresenca.php' ? "in" : "" ?>" id="sub-item-5">
                 <li><a style=<?= $arquivo == "AluneCadastro.php" ? "background-color:orange;" : "" ?> class="" href="AluneCadastro.php">
                     <span class="fa fa-arrow-right">&nbsp;</span> Cadastro
                 </a></li>
@@ -117,7 +117,7 @@
         <li class="parent "><a data-toggle="collapse" href="#sub-item-6">
             <em class="fa fa-newspaper-o" aria-hidden="true">&nbsp;</em> Disciplina <span data-toggle="collapse" href="#sub-item-4" class="icon pull-right"><em class="fa fa-plus"></em></span>
             </a>
-            <ul class="children collapse <?= str_contains($arquivo, "Disciplina") ? "in" : "" ?>" id="sub-item-6">
+            <ul class="children collapse <?= $arquivo == 'DisciplinaCadastro.php' || $arquivo == 'DisciplinaEditar.php'? "in" : "" ?>" id="sub-item-6">
                 <li><a style=<?= $arquivo == "DisciplinaCadastro.php" ? "background-color:orange;" : "" ?> class="" href="DisciplinaCadastro.php">
                     <span class="fa fa-arrow-right">&nbsp;</span> Cadastro
                 </a></li>
@@ -131,7 +131,7 @@
         <li class="parent "><a data-toggle="collapse" href="#sub-item-7">
             <em class="fa fa-university" aria-hidden="true">&nbsp;</em> Sala <span data-toggle="collapse" href="#sub-item-5" class="icon pull-right"><em class="fa fa-plus"></em></span>
             </a>
-            <ul class="children collapse <?= str_contains($arquivo, "Sala") ? "in" : "" ?>" id="sub-item-7">
+            <ul class="children collapse <?= $arquivo == 'SalaCadastro.php' || $arquivo == 'SalaEditar.php'? "in" : "" ?>" id="sub-item-7">
                 <li><a style=<?= $arquivo == "SalaCadastro.php" ? "background-color:orange;" : "" ?> class="" href="SalaCadastro.php">
                     <span class="fa fa-arrow-right">&nbsp;</span> Cadastro
                 </a></li>
@@ -144,7 +144,7 @@
         <li class="parent "><a data-toggle="collapse" href="#sub-item-8">
             <em class="fa fa-calendar">&nbsp;</em> Presença <span data-toggle="collapse" href="#sub-item-6" class="icon pull-right"><em class="fa fa-plus"></em></span>
             </a>
-            <ul class="children collapse <?= str_contains($arquivo, "PresencaCadastro") ? "in" : "" ?>" id="sub-item-8">
+            <ul class="children collapse <?= $arquivo == 'PresencaCadastroA.php' || $arquivo == 'PresencaCadastroT.php' || $arquivo == 'PresencaCadastroM.php' || $arquivo == 'PresencaCadastroReuniao.php' ? "in" : "" ?>" id="sub-item-8">
                 <?php if($_SESSION['modo'] == "representate" || $_SESSION['modo'] == "monitore") { ?>
                     <li><a style=<?= $arquivo == "PresencaCadastroA.php" ? "background-color:orange;" : "" ?> class="" href="PresencaCadastroA.php">
                         <span class="fa fa-arrow-right">&nbsp;</span> Aula Alune
@@ -171,7 +171,7 @@
         <li class="parent "><a data-toggle="collapse" href="#sub-item-9">
             <em class="fa fa-file-pdf-o">&nbsp;</em> Certificado <span data-toggle="collapse" href="#sub-item-7" class="icon pull-right"><em class="fa fa-plus"></em></span>
             </a>
-            <ul class="children collapse <?= str_contains($arquivo, "Certificado") ? "in" : "" ?>" id="sub-item-9">
+            <ul class="children collapse <?= $arquivo == 'CertificadoT.php' || $arquivo == 'CertificadoM.php'? "in" : "" ?>" id="sub-item-9">
                 <li><a style=<?= $arquivo == "CertificadoT.php" ? "background-color:orange;" : "" ?> class="" href="CertificadoT.php">
                     <span class="fa fa-arrow-right">&nbsp;</span> Tutore
                 </a></li>
@@ -184,7 +184,7 @@
         <li class="parent "><a data-toggle="collapse" href="#sub-item-10">
             <em class="fa fa-bar-chart">&nbsp;</em> Relatorio <span data-toggle="collapse" href="#sub-item-8" class="icon pull-right"><em class="fa fa-plus"></em></span>
             </a>
-            <ul class="children collapse <?= str_contains($arquivo, "Relatorio") ? "in" : "" ?>" id="sub-item-10">
+            <ul class="children collapse <?= $arquivo == 'RelatorioA.php' || $arquivo == 'RelatorioReuniao.php' || $arquivo == 'RelatorioM.php' || $arquivo == 'RelatorioT.php' ? "in" : "" ?>" id="sub-item-10">
                 <?php if($_SESSION['modo'] == "representate" || $_SESSION['modo'] == "monitore") { ?>
                 <li><a style=<?= $arquivo == "RelatorioA.php" ? "background-color:orange;" : "" ?> class="" href="RelatorioA.php">
                     <span class="fa fa-arrow-right">&nbsp;</span> Presença Alune
