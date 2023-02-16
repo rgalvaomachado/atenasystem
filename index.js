@@ -1,7 +1,7 @@
 function start(){
     $.ajax({
         method: "POST",
-        url: "src/Controller/Controller.php",
+        url: "controller/Controller.php",
         data: {
             metodo: "verificaLogin",
         },
@@ -9,11 +9,11 @@ function start(){
             var response = JSON.parse(response.responseText);
             if (response.access) {
                 $(function(){
-                    $("#content0").load("src/Views/home/index.html"); 
+                    $("#content0").load("view/home/index.html"); 
                 });
             } else {
                 $(function(){
-                    $("#content0").load("src/Views/login/index.html"); 
+                    $("#content0").load("view/login/index.html"); 
                 });
             }
         }
