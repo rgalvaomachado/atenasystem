@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>AtenaSystem - Editar Tutore</title>
+	<link href="/public/css/bootstrap.min.css" rel="stylesheet">
+	<link href="/public/css/font-awesome.min.css" rel="stylesheet">
+	<link href="/public/css/datepicker3.css" rel="stylesheet">
+	<link href="/public/css/styles.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+	<link rel="icon" href="/public/img/hubis-icon.png">
+</head>
+<body style="background-color:white">
+	<div id="menu-container"></div>
+	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main" style="background-color:white; margin-top:100px">
+		<center>
+			<h1>Editar Tutore</h1>
+			<h4 id="msg-sucesso" style="display:none; color: green;">Salvo !</h4>
+			<h4 id="msg-delete" style="display:none; color: green;">Excluído !</h4>
+
+			<div style="max-width: 500px;">
+				<div class="form-group text-left">
+					<label>Tutores</label>
+					<select id="selectTutore" class="form-control">
+						<option value="">Carregando tutores...</option>
+					</select>
+				</div>
+				<button type="button" id="btnBuscarTutore" class="btn btn-md btn-warning">Buscar</button>
+			</div>
+
+			<div id="blocoEditar" style="display:none; max-width: 500px; margin-top: 30px;">
+				<form id="formSalvarTutore" style="padding-bottom: 1%;">
+					<input type="hidden" id="tutoreId" name="id">
+					<div class="form-group text-left">
+						<label>Nome</label>
+						<input id="tutoreNome" name="nome" class="form-control" required>
+					</div>
+					<div class="form-group text-left">
+						<label>Disciplina</label>
+						<select id="selectDisciplinaEdicao" name="disciplina" class="form-control" required>
+							<option value="">Selecione a disciplina</option>
+						</select>
+					</div>
+					<button type="submit" class="btn btn-md btn-warning">Editar</button>
+				</form>
+				<form id="formExcluirTutore" style="margin-top: 10px;">
+					<input type="hidden" id="excluirId" name="id">
+					<button type="submit" class="btn btn-md btn-danger">Excluir</button>
+				</form>
+			</div>
+		</center>
+	</div>
+	<script src="/public/js/bootstrap.min.js"></script>
+	<script src="/public/js/menu.js"></script>
+	<script src="/public/view/tutore/index.js"></script>
+</body>
+</html>
+

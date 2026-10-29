@@ -1,0 +1,62 @@
+<?php
+
+$web = [
+        // [ENDPOINT, VIEW (public/view)]
+
+        // Raiz e Autenticação
+        ['/', '/login/index.html'],
+        ['/login', '/login/index.html'],
+
+        // Home
+        ['/home', '/home/index.html'],
+
+        // Alune
+        ['/alune', '/alune/index.html'],
+        ['/alune/editar', '/alune/editar.html'],
+        ['/alune/justificar', '/alune/justificar.html'],
+
+        // Comissao
+        ['/comissao', '/comissao/index.html'],
+        ['/comissao/editar', '/comissao/editar.html'],
+
+        // Disciplina
+        ['/disciplina', '/disciplina/index.html'],
+        ['/disciplina/editar', '/disciplina/editar.html'],
+
+        // Monitore
+        ['/monitore', '/monitore/index.html'],
+        ['/monitore/editar', '/monitore/editar.html'],
+        ['/monitore/presenca', '/monitore/editar_presenca.html'],
+
+        // Presença
+        ['/presenca', '/presenca/cadastro_alune.html'], 
+        ['/presenca/alune', '/presenca/cadastro_alune.html'], 
+        ['/presenca/monitore', '/presenca/cadastro_monitore.html'], 
+        ['/presenca/reuniao', '/presenca/cadastro_reuniao.html'], 
+        ['/presenca/tutore', '/presenca/cadastro_tutore.html'], 
+
+        // Relatórios
+        ['/relatorio', '/relatorio/alune.html'], 
+        ['/relatorio/alune', '/relatorio/alune.html'], 
+        ['/relatorio/monitore', '/relatorio/monitore.html'], 
+        ['/relatorio/reuniao', '/relatorio/reuniao.html'], 
+        ['/relatorio/tutore', '/relatorio/tutore.html'], 
+
+        // Representante
+        ['/representante', '/representante/index.html'],
+        ['/representante/editar', '/representante/editar.html'],
+
+        // Sala
+        ['/sala', '/sala/index.html'],
+        ['/sala/editar', '/sala/editar.html'],
+
+        // Tutore
+        ['/tutore', '/tutore/index.html'],
+        ['/tutore/editar', '/tutore/editar.html'],
+        ['/tutore/presenca', '/tutore/editar_presenca.html'],
+        ['/tutore/justificar', '/tutore/justificar.html'],
+
+        // Certificados
+        ['/certificado', '/certificado/index.html'], 
+        ['/certificado/tutore', '/certificado/tutore.html'],
+    ];

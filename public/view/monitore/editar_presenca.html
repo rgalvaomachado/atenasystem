@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>AtenaSystem - Editar Presença Monitore</title>
+	<link href="/public/css/bootstrap.min.css" rel="stylesheet">
+	<link href="/public/css/font-awesome.min.css" rel="stylesheet">
+	<link href="/public/css/datepicker3.css" rel="stylesheet">
+	<link href="/public/css/styles.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+	<link rel="icon" href="/public/img/hubis-icon.png">
+</head>
+<body style="background-color:white">
+	<div id="menu-container"></div>
+	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main" style="background-color:white; margin-top:100px">
+		<center>
+			<h1>Editar Presença Monitore</h1>
+			<h4 id="msg-sucesso" style="display:none; color: green;">Salvo !</h4>
+
+			<div style="max-width: 500px;">
+				<div class="form-group text-left">
+					<label>Monitores</label>
+					<select id="selectMonitorePresenca" class="form-control">
+						<option value="">Carregando monitores...</option>
+					</select>
+				</div>
+				<div class="form-group text-left">
+					<label>Salas</label>
+					<select id="selectSalaPresenca" class="form-control">
+						<option value="">Carregando salas...</option>
+					</select>
+				</div>
+				<div class="form-group text-left">
+					<label>Data</label>
+					<input type="date" id="dataPresencaMonitore" class="form-control" required>
+				</div>
+				<button type="button" id="btnBuscarPresencaMonitore" class="btn btn-md btn-warning">Buscar</button>
+
+				<div id="blocoResultadoMonitore" style="display:none; margin-top: 30px;">
+					<div id="msgPresencaMonitoreNaoEncontrada" style="display:none; margin-bottom: 15px; color: red;">
+						Presença não encontrada
+					</div>
+					<form id="formSalvarPresencaMonitore" style="display:none;">
+						<div class="form-group text-left">
+							<label>Status</label>
+							<select id="statusPresencaMonitore" class="form-control">
+								<option value="N">Ausência</option>
+								<option value="S">Presença</option>
+							</select>
+						</div>
+						<button type="submit" class="btn btn-md btn-warning">Editar</button>
+					</form>
+				</div>
+			</div>
+		</center>
+	</div>
+	<script src="/public/js/bootstrap.min.js"></script>
+	<script src="/public/js/menu.js"></script>
+	<script src="/public/view/monitore/index.js"></script>
+</body>
+</html>
+

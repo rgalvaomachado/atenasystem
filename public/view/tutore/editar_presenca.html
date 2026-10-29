@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>AtenaSystem - Editar Presença Tutore</title>
+	<link href="/public/css/bootstrap.min.css" rel="stylesheet">
+	<link href="/public/css/font-awesome.min.css" rel="stylesheet">
+	<link href="/public/css/datepicker3.css" rel="stylesheet">
+	<link href="/public/css/styles.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+	<link rel="icon" href="/public/img/hubis-icon.png">
+</head>
+<body style="background-color:white">
+	<div id="menu-container"></div>
+	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main" style="background-color:white; margin-top:100px">
+		<center>
+			<h1>Editar Presença Tutore</h1>
+			<h4 id="msg-sucesso" style="display:none; color: green;">Salvo !</h4>
+
+			<div style="max-width: 500px;">
+				<div class="form-group text-left">
+					<label>Tutores</label>
+					<select id="selectTutorePresenca" class="form-control">
+						<option value="">Carregando tutores...</option>
+					</select>
+				</div>
+				<div class="form-group text-left">
+					<label>Salas</label>
+					<select id="selectSalaPresenca" class="form-control">
+						<option value="">Carregando salas...</option>
+					</select>
+				</div>
+				<div class="form-group text-left">
+					<label>Aula</label>
+					<select id="selectAulaPresenca" class="form-control">
+						<option value="1">Primeira Aula</option>
+						<option value="2">Segunda Aula</option>
+					</select>
+				</div>
+				<div class="form-group text-left">
+					<label>Data</label>
+					<input type="date" id="dataPresencaTutore" class="form-control" required>
+				</div>
+				<button type="button" id="btnBuscarPresencaTutore" class="btn btn-md btn-warning">Buscar</button>
+
+				<div id="blocoResultadoTutore" style="display:none; margin-top: 30px;">
+					<div id="msgPresencaTutoreNaoEncontrada" style="display:none; margin-bottom: 15px; color: red;">
+						Presença não encontrada
+					</div>
+					<form id="formSalvarPresencaTutore" style="display:none;">
+						<div class="form-group text-left">
+							<label>Status</label>
+							<select id="statusPresencaTutore" class="form-control">
+								<option value="N">Ausência</option>
+								<option value="S">Presença</option>
+							</select>
+						</div>
+						<button type="submit" class="btn btn-md btn-warning">Editar</button>
+					</form>
+				</div>
+			</div>
+		</center>
+	</div>
+	<script src="/public/js/bootstrap.min.js"></script>
+	<script src="/public/js/menu.js"></script>
+	<script src="/public/view/tutore/index.js"></script>
+</body>
+</html>
+
