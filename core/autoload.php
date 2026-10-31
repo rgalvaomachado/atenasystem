@@ -3,8 +3,7 @@ spl_autoload_register(function ($className) {
     $projectRoot = dirname(__DIR__);
 
     $baseDirs = [
-        $projectRoot . '/core/router/',
-        $projectRoot . '/core/database/',
+        $projectRoot . '/core/lib/',
         $projectRoot . '/src/controller/',  
         $projectRoot . '/src/model/',      
     ];

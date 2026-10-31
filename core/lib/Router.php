@@ -48,7 +48,7 @@
 
         function pathApi(){
             $url = $this->url;
-            
+
             $apiPart = substr($url, strpos($url, '/api/') + 5);
             $apiPart = explode('?', $apiPart);
             $endpoint = $apiPart[0];
@@ -101,7 +101,7 @@
         function pathWeb($url, $routes){
             $url = explode('?',$url);
             unset($url[1]);
-            $url = implode('',$url); 
+            $url = implode('',$url);
 
             $file = $_SERVER['PROJECT_ROOT'] . '/' . $url;
 

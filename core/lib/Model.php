@@ -33,7 +33,6 @@ class Model
         }
 
         $sql = $this->connection->prepare($query);
-
         $sql->execute($conditions);
 
         return $sql->fetch(PDO::FETCH_ASSOC);
@@ -95,6 +94,7 @@ class Model
         $sql->execute($conditions);
         return $sql->rowCount();
     }
+
     public function __debugInfo(): array
     {
         return get_object_vars($this);

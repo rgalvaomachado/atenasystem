@@ -45,7 +45,7 @@
                 'nome' => 'Sábado',
                 'nome_ingles' => 'Saturday'
             ],
-        ];        
+        ];
 
         function getMes($cod_mes){
             return $this->meses[$cod_mes];
@@ -57,7 +57,7 @@
             foreach ($this->dias_semana as $cod => $dia) {
                 if ($dia['nome_ingles'] == $weekday) {
                     return $cod;
-                } 
+                }
             }
         }
 
