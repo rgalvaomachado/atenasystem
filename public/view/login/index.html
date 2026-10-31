@@ -1,36 +1,51 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>AtenaSystem</title>
-	<link href="/public/css/bootstrap.min.css" rel="stylesheet">
-	<link href="/public/css/font-awesome.min.css" rel="stylesheet">
-	<link href="/public/css/datepicker3.css" rel="stylesheet">
-	<link href="/public/css/styles.css" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-	<link rel="icon" href="/public/img/hubis-icon.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AtenaSystem - Login</title>
+    <link rel="stylesheet" href="/public/view/_layout/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        body { background: linear-gradient(135deg, #0f172a 0%, #92400e 50%, #ffb53e 100%); min-height: 100vh; display: flex; align-items: center; justify-content: center; font-family: 'Inter', sans-serif; }
+        .login-card { background: rgba(255,255,255,0.95); backdrop-filter: blur(20px); border-radius: 1.5rem; padding: 3rem 2.5rem; width: 100%; max-width: 420px; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25); border: 1px solid rgba(255,255,255,0.2); animation: fadeInUp 0.6s ease; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .login-brand { display: flex; align-items: center; justify-content: center; gap: 0.75rem; margin-bottom: 2rem; }
+        .login-brand i { font-size: 2.5rem; color: #ffb53e; }
+        .login-brand h2 { font-weight: 700; color: #ffb53e; margin: 0; font-size: 1.5rem; letter-spacing: -0.02em; }
+        .login-brand span { color: #1e293b; }
+        .form-group { margin-bottom: 1.25rem; }
+        .form-label { display: block; margin-bottom: 0.5rem; font-size: 0.875rem; font-weight: 600; color: #374151; }
+        .form-input { width: 100%; padding: 0.75rem 1rem; border: 1px solid #e5e7eb; border-radius: 0.75rem; font-size: 0.9375rem; font-family: 'Inter', sans-serif; transition: all 0.2s ease; background: #fafafa; }
+        .form-input:focus { outline: none; border-color: #ffb53e; box-shadow: 0 0 0 3px rgba(59,130,246,0.1); background: #fff; }
+        .btn-login { width: 100%; padding: 0.875rem; background: linear-gradient(135deg, #ffb53e, #92400e); color: white; border: none; border-radius: 0.75rem; font-weight: 600; font-size: 1rem; cursor: pointer; transition: all 0.2s ease; box-shadow: 0 4px 14px rgba(59,130,246,0.3); font-family: 'Inter', sans-serif; }
+        .btn-login:hover { transform: translateY(-1px); box-shadow: 0 8px 25px rgba(59,130,246,0.35); }
+        .error-msg { color: #dc2626; font-size: 0.875rem; text-align: center; margin-top: 1rem; display: none; }
+    </style>
 </head>
 <body>
-	<center>
-		<div class="panel-login">
-			<h3>Login</h3>
-			<form id="formLogin">
-				<div class="form-group">
-					<input class="form-control" placeholder="Usuario" id="usuario" name="usuario" type="text" autofocus required>
-				</div>
-				<div class="form-group">
-					<input class="form-control" placeholder="Senha" id="senha" name="senha" type="password" required>
-				</div>
-				<div class="form-group">
-					<button type="submit" class="btn btn-md btn-warning">Entrar</button>
-				</div>
-				<h5 id="msg-erro" style="display:none; color: red;">Login ou senha incorreto</h5>
-			</form>
-		</div>
-	</center>
-	<script src="/public/js/md5.js"></script>
-	<script src="/public/view/login/index.js"></script>
+    <div class="login-card">
+        <div class="login-brand">
+            <i class="fas fa-graduation-cap"></i>
+            <h2>Atena<span>System</span></h2>
+        </div>
+        <form id="formLogin" onsubmit="return false;">
+            <div class="form-group">
+                <label for="usuario" class="form-label">Usuário</label>
+                <input type="text" id="usuario" name="usuario" class="form-input" placeholder="Digite seu usuário" autofocus required>
+            </div>
+            <div class="form-group">
+                <label for="senha" class="form-label">Senha</label>
+                <input type="password" id="senha" name="senha" class="form-input" placeholder="Digite sua senha" required>
+            </div>
+            <button type="submit" class="btn-login">Entrar</button>
+            <div id="msg-erro" class="error-msg">Login ou senha incorreto</div>
+        </form>
+    </div>
+    <script src="/public/js/md5.js"></script>
+    <script src="/public/view/login/index.js"></script>
 </body>
 </html>
+
 

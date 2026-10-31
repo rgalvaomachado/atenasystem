@@ -12,11 +12,13 @@ $web = [
 
         // Alune
         ['/alune', '/alune/index.html'],
+        ['/alune/criar', '/alune/criar.html'],
         ['/alune/editar', '/alune/editar.html'],
         ['/alune/justificar', '/alune/justificar.html'],
 
         // Comissao
         ['/comissao', '/comissao/index.html'],
+        ['/comissao/criar', '/comissao/criar.html'],
         ['/comissao/editar', '/comissao/editar.html'],
 
         // Disciplina
@@ -25,6 +27,7 @@ $web = [
 
         // Monitore
         ['/monitore', '/monitore/index.html'],
+        ['/monitore/criar', '/monitore/criar.html'],
         ['/monitore/editar', '/monitore/editar.html'],
         ['/monitore/presenca', '/monitore/editar_presenca.html'],
 
@@ -45,6 +48,7 @@ $web = [
         // Representante
         ['/representante', '/representante/index.html'],
         ['/representante/editar', '/representante/editar.html'],
+        ['/representante/criar', '/representante/criar.html'],
 
         // Sala
         ['/sala', '/sala/index.html'],
@@ -52,6 +56,7 @@ $web = [
 
         // Tutore
         ['/tutore', '/tutore/index.html'],
+        ['/tutore/criar', '/tutore/criar.html'],
         ['/tutore/editar', '/tutore/editar.html'],
         ['/tutore/presenca', '/tutore/editar_presenca.html'],
         ['/tutore/justificar', '/tutore/justificar.html'],

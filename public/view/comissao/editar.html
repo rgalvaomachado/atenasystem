@@ -1,61 +1,59 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>AtenaSystem - Editar Comissão</title>
-	<link href="/public/css/bootstrap.min.css" rel="stylesheet">
-	<link href="/public/css/font-awesome.min.css" rel="stylesheet">
-	<link href="/public/css/datepicker3.css" rel="stylesheet">
-	<link href="/public/css/styles.css" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-	<link rel="icon" href="/public/img/hubis-icon.png">
+	<link rel="stylesheet" href="/public/view/_layout/styles.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
-<body style="background-color:white">
-	<div id="menu-container"></div>
-	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main" style="background-color:white; margin-top:100px">
-		<center>
-			<h1>Editar Comissão</h1>
-			<h4 id="msg-sucesso" style="display:none; color: green;">Salvo !</h4>
-			<h4 id="msg-delete" style="display:none; color: green;">Excluído !</h4>
+<body>
+	<script>
+		window.ATENA_PAGE_CONFIG = {
+			title: 'Editar Comissão',
+			css: '',
+			content: '',
+			js: '/public/view/comissao/index.js'
+		};
+	</script>
 
-			<div style="max-width: 500px;">
-				<div class="form-group text-left">
-					<label>Comissões</label>
-					<select id="selectComissao" class="form-control">
-						<option value="">Carregando comissões...</option>
-					</select>
+	<nav class="atn-navbar" id="atn-navbar" data-shared-navbar></nav>
+
+	<div class="atn-layout" style="display:flex; min-height:calc(100vh - 4rem); margin-top:4rem;">
+		<aside class="atn-sidebar" style="position:fixed; top:4rem; left:0; bottom:0; width:16rem; background:white; border-right:1px solid #e5e7eb; z-index:1020; padding:1rem 0; overflow-y:auto; font-family:'Inter',sans-serif;">
+			<nav class="atn-sidebar-nav" id="atn-sidebar-nav"></nav>
+		</aside>
+		<main class="atn-main" style="margin-left:16rem; padding:2.5rem; flex:1; background:#f9fafb; min-height:calc(100vh - 4rem);">
+			<div class="atn-card" style="max-width:600px; margin:0 auto; padding:2rem;">
+				<h2 style="margin-bottom:0.25rem; color:#111827; font-weight:700;">Editar Comissão</h2>
+				<p style="color:#6b7280; margin-bottom:1.5rem; font-size:0.875rem;">Edite os dados da comissão selecionada.</p>
+
+				<h4 id="msg-sucesso" style="display:none; color:#16a34a; font-weight:600; margin-bottom:1rem;">Salvo!</h4>
+				<div id="blocoEditar" style="display:block;">
+					<form id="formSalvarComissao" style="display:flex; flex-direction:column; gap:1.25rem;">
+						<input type="hidden" id="comissaoId" name="id">
+						<div>
+							<label for="comissaoNome" style="display:block; font-weight:500; color:#374151; font-size:0.875rem; margin-bottom:0.25rem;">Nome</label>
+							<input id="comissaoNome" name="nome" class="atn-input" required>
+						</div>
+						<div>
+							<label for="comissaoUsuario" style="display:block; font-weight:500; color:#374151; font-size:0.875rem; margin-bottom:0.25rem;">Usuário</label>
+							<input id="comissaoUsuario" name="usuario" class="atn-input" required>
+						</div>
+						<div>
+							<label for="comissaoSenha" style="display:block; font-weight:500; color:#374151; font-size:0.875rem; margin-bottom:0.25rem;">Nova Senha (deixe em branco se não desejar alterar)</label>
+							<input id="comissaoSenha" name="senha" type="password" class="atn-input">
+						</div>
+						<button type="submit" class="atn-btn atn-btn-primary">Salvar</button>
+					</form>
 				</div>
-				<button type="button" id="btnBuscarComissao" class="btn btn-md btn-warning">Buscar</button>
 			</div>
-
-			<div id="blocoEditar" style="display:none; max-width: 500px; margin-top: 30px;">
-				<form id="formSalvarComissao" style="padding-bottom: 1%;">
-					<input type="hidden" id="comissaoId" name="id">
-					<div class="form-group text-left">
-						<label>Nome</label>
-						<input id="comissaoNome" name="nome" class="form-control" required>
-					</div>
-					<div class="form-group text-left">
-						<label>Usuário</label>
-						<input id="comissaoUsuario" name="usuario" class="form-control" required>
-					</div>
-					<div class="form-group text-left">
-						<label>Nova Senha (deixe em branco se não desejar alterar)</label>
-						<input id="comissaoSenha" name="senha" type="password" class="form-control">
-					</div>
-					<button type="submit" class="btn btn-md btn-warning">Editar</button>
-				</form>
-				<form id="formExcluirComissao" style="margin-top: 10px;">
-					<input type="hidden" id="excluirId" name="id">
-					<button type="submit" class="btn btn-md btn-danger">Excluir</button>
-				</form>
-			</div>
-		</center>
+		</main>
 	</div>
-	<script src="/public/js/bootstrap.min.js"></script>
-	<script src="/public/js/menu.js"></script>
-	<script src="/public/view/comissao/index.js"></script>
+
+	<script type="module" src="/public/view/_shared/menu.js"></script>
+	<script type="module" src="/public/view/_shared/components.js"></script>
+	<script type="module" src="/public/view/comissao/index.js"></script>
 </body>
 </html>
 

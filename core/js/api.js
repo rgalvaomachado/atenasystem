@@ -1,3 +1,52 @@
+function getUrlParameters() {
+    const url = window.location.href;
+
+    const queryString = url.split('?')[1];
+    if (!queryString) {
+        return {};
+    }
+
+    const params = queryString.split('&');
+    const result = {};
+
+    params.forEach(param => {
+        const [key, value] = param.split('=');
+        result[decodeURIComponent(key)] = decodeURIComponent(value || '');
+    });
+
+    return result;
+}
+
+function getFormData(form) {
+    const formData = new FormData(form);
+    const jsonData = {};
+    const arrayFields = new Set();
+
+    for (let element of form.elements) {
+        if (element.name && element.name.endsWith('[]')) {
+            arrayFields.add(element.name);
+        }
+    }
+
+    arrayFields.forEach(name => {
+        jsonData[name] = [];
+    });
+
+    formData.forEach((value, key) => {
+        const trimmed = value.trim();
+
+        if (arrayFields.has(key)) {
+            if (trimmed !== '') {
+                jsonData[key].push(trimmed);
+            }
+        } else {
+            jsonData[key] = trimmed !== '' ? trimmed : null;
+        }
+    });
+
+    return jsonData;
+}
+
 function apiGet(url, data = null){
     var responseData = null;
     $.ajax({
@@ -21,13 +70,28 @@ function apiGet(url, data = null){
 }
 
 function apiPost(url, data = null){
+    var requestData;
+    var requestHeaders;
+    var processData = true;
+    var contentType;
+    if (data instanceof FormData) {
+        requestData = data;
+        requestHeaders = {};
+        processData = false;
+        contentType = false;
+    } else {
+        requestData = JSON.stringify(data);
+        requestHeaders = {
+            "Content-Type": "application/json",
+        }
+    }
     $.ajax({
         method: "POST",
         url: '/api' + url,
-        headers: {
-            "Content-Type": "application/json",
-        },
-        data: JSON.stringify(data),
+        data: requestData,
+        headers: requestHeaders,
+        processData: processData,
+        contentType: contentType,
         async: false,
         complete: function(response) {
             responseData = JSON.parse(response.responseText);
@@ -38,13 +102,28 @@ function apiPost(url, data = null){
 }
 
 function apiPut(url, data = null){
+    var requestData;
+    var requestHeaders;
+    var processData = true;
+    var contentType;
+    if (data instanceof FormData) {
+        requestData = data;
+        requestHeaders = {};
+        processData = false;
+        contentType = false;
+    } else {
+        requestData = JSON.stringify(data);
+        requestHeaders = {
+            "Content-Type": "application/json",
+        }
+    }
     $.ajax({
         method: "PUT",
         url: '/api' + url,
-        headers: {
-            "Content-Type": "application/json",
-        },
-        data: JSON.stringify(data),
+        data: requestData,
+        headers: requestHeaders,
+        processData: processData,
+        contentType: contentType,
         async: false,
         complete: function(response) {
             responseData = JSON.parse(response.responseText);
@@ -55,13 +134,28 @@ function apiPut(url, data = null){
 }
 
 function apiDelete(url, data = null){
+    var requestData;
+    var requestHeaders;
+    var processData = true;
+    var contentType;
+    if (data instanceof FormData) {
+        requestData = data;
+        requestHeaders = {};
+        processData = false;
+        contentType = false;
+    } else {
+        requestData = JSON.stringify(data);
+        requestHeaders = {
+            "Content-Type": "application/json",
+        }
+    }
     $.ajax({
         method: "DELETE",
         url: '/api' + url,
-        headers: {
-            "Content-Type": "application/json",
-        },
-        data: JSON.stringify(data),
+        data: requestData,
+        headers: requestHeaders,
+        processData: processData,
+        contentType: contentType,
         async: false,
         complete: function(response) {
             responseData = JSON.parse(response.responseText);

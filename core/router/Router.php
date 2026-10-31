@@ -30,10 +30,18 @@
         }
 
         function getData(){
-            $contents = file_get_contents('php://input');
+            $contentType = $_SERVER['CONTENT_TYPE'] ?? '';
             $input = [];
-            if (isset($contents)){
-                $input = (array) json_decode($contents);
+            if (strpos($contentType, 'multipart/form-data') !== false) {
+                $input = $_POST;
+                if (!empty($_FILES)) {
+                    $input['_files'] = $_FILES;
+                }
+            } else {
+                $contents = file_get_contents('php://input');
+                if (isset($contents)){
+                    $input = (array) json_decode($contents);
+                }
             }
             return $input;
         }
@@ -159,7 +167,6 @@
                     if(is_file($path)){
                         echo "<script>var basePath = '" . $this->baseUrl . "'</script>";
                         echo "<script src='" . $this->baseUrl . "/core/js/jquery-1.11.1.min.js'></script>";
-                        echo "<script src='" . $this->baseUrl . "/core/js/web.js'></script>";
                         echo "<script src='" . $this->baseUrl . "/core/js/api.js'></script>";
                         include_once $path;
                     }

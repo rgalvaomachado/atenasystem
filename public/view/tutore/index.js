@@ -1,6 +1,4 @@
 $(document).ready(function() {
-    loadMenu('tutore');
-
     var params = getUrlParameters();
     if (params.sucess) {
         $('#msg-sucesso').show().fadeOut(3000);
@@ -9,7 +7,32 @@ $(document).ready(function() {
         $('#msg-delete').show().fadeOut(3000);
     }
 
-    // 1. Tela de Cadastro de Tutore
+    if ($('#tabela-tutores').length) {
+        carregarTabelaTutores();
+        $('#buscaTutore').on('input', function() {
+            var termo = normalizarTexto($(this).val());
+            var linhas = $('#tabela-tutores tr[data-search]');
+            var linhasVisiveis = 0;
+
+            $('#nenhum-resultado-tutore').remove();
+            linhas.each(function() {
+                var corresponde = normalizarTexto($(this).attr('data-search')).includes(termo);
+                $(this).toggle(corresponde);
+                if (corresponde) {
+                    linhasVisiveis++;
+                }
+            });
+
+            if (linhas.length && !linhasVisiveis) {
+                $('#tabela-tutores').append('<tr id="nenhum-resultado-tutore"><td colspan="4" style="padding:2rem; text-align:center; color:#9ca3af;">Nenhum tutore encontrado para essa busca.</td></tr>');
+            }
+        });
+        $(document).on('click', '.btn-excluir-tutore', function() {
+            var row = $(this).closest('tr');
+            excluirTutore($(this).data('id'), row.children('td').first().text());
+        });
+    }
+
     if ($('#formCriarTutore').length) {
         carregarDisciplinasSelect('#selectDisciplinaCadastro');
 
@@ -19,24 +42,21 @@ $(document).ready(function() {
             var resp = apiPost('/tutore', formData);
             if (resp && resp.access !== false) {
                 alert("Tutore cadastrade com sucesso!");
-                window.location.assign('/tutore/editar');
+                window.location.assign('/tutore?sucess=true');
             } else {
                 alert(resp && resp.message ? resp.message : "Erro ao cadastrar tutore.");
             }
         });
     }
 
-    // 2. Tela de Edição de Tutore
-    if ($('#selectTutore').length) {
+    if ($('#formSalvarTutore').length) {
+        var tutoreId = params.tutore || params.id;
         carregarDisciplinasSelect('#selectDisciplinaEdicao');
-        loadTutores('#selectTutore', params.tutore);
-
-        $('#btnBuscarTutore').click(function() {
-            var selectedId = $('#selectTutore').val();
-            if (selectedId) {
-                carregarDetalhesTutore(selectedId);
-            }
-        });
+        if (tutoreId) {
+            carregarDetalhesTutore(tutoreId);
+        } else {
+            $('#blocoEditar').prepend('<h4 style="color:#92400e; font-weight:600; margin-bottom:1rem;">Acesse a edição pelo botão <strong>Editar</strong> na listagem.</h4>');
+        }
 
         $('#formSalvarTutore').submit(function(e) {
             e.preventDefault();
@@ -44,37 +64,26 @@ $(document).ready(function() {
             var resp = apiPost('/tutore/salvar', formData);
             if (resp && resp.access !== false) {
                 alert("Tutore atualizade com sucesso!");
-                window.location.assign('/tutore/editar?sucess=true&tutore=' + formData.id);
+                window.location.assign('/tutore?sucess=true');
             } else {
                 alert(resp && resp.message ? resp.message : "Erro ao atualizar tutore.");
             }
         });
-
-        $('#formExcluirTutore').submit(function(e) {
-            e.preventDefault();
-            if (!confirm('Tem certeza que deseja excluir?')) {
-                return false;
-            }
-            var formData = getFormData(this);
-            var resp = apiPost('/tutore/excluir', formData);
-            if (resp && resp.access !== false) {
-                alert("Tutore excluíde com sucesso!");
-                window.location.assign('/tutore/editar?delete=true');
-            } else {
-                alert(resp && resp.message ? resp.message : "Erro ao excluir tutore.");
-            }
-        });
     }
 
-    // 3. Justificar Presença em Reunião
-    if ($('#selectTutoreJustifica').length) {
-        loadTutores('#selectTutoreJustifica', params.tutore);
+    if ($('#btnBuscarPresencaReuniao').length) {
+        if (!params.tutore) {
+            window.location.replace('/tutore');
+            return;
+        }
+
+        carregarNomeTutore(params.tutore, '#nomeTutoreJustifica');
         if (params.data) {
             $('#dataJustificaReuniao').val(params.data);
         }
 
         $('#btnBuscarPresencaReuniao').click(function() {
-            var tutore = $('#selectTutoreJustifica').val();
+            var tutore = params.tutore;
             var data = $('#dataJustificaReuniao').val();
 
             if (!tutore || !data) {
@@ -100,7 +109,7 @@ $(document).ready(function() {
 
         $('#formSalvarJustificativaReuniao').submit(function(e) {
             e.preventDefault();
-            var tutore = $('#selectTutoreJustifica').val();
+            var tutore = params.tutore;
             var data = $('#dataJustificaReuniao').val();
             var presente = $('#statusPresenteReuniao').val();
 
@@ -119,9 +128,13 @@ $(document).ready(function() {
         });
     }
 
-    // 4. Editar Presença Tutore de Aula
-    if ($('#selectTutorePresenca').length) {
-        loadTutores('#selectTutorePresenca', params.tutore);
+    if ($('#btnBuscarPresencaTutore').length) {
+        if (!params.tutore) {
+            window.location.replace('/tutore');
+            return;
+        }
+
+        carregarNomeTutore(params.tutore, '#nomeTutorePresenca');
         carregarSalasSelect('#selectSalaPresenca', params.sala);
         if (params.data) {
             $('#dataPresencaTutore').val(params.data);
@@ -131,7 +144,7 @@ $(document).ready(function() {
         }
 
         $('#btnBuscarPresencaTutore').click(function() {
-            var tutore = $('#selectTutorePresenca').val();
+            var tutore = params.tutore;
             var sala = $('#selectSalaPresenca').val();
             var aula = $('#selectAulaPresenca').val();
             var data = $('#dataPresencaTutore').val();
@@ -161,7 +174,7 @@ $(document).ready(function() {
 
         $('#formSalvarPresencaTutore').submit(function(e) {
             e.preventDefault();
-            var tutore = $('#selectTutorePresenca').val();
+            var tutore = params.tutore;
             var sala = $('#selectSalaPresenca').val();
             var aula = $('#selectAulaPresenca').val();
             var data = $('#dataPresencaTutore').val();
@@ -184,6 +197,88 @@ $(document).ready(function() {
         });
     }
 });
+
+function carregarTabelaTutores() {
+    var tutores = apiGet('/tutores');
+    var disciplinas = apiGet('/disciplinas');
+    var disciplinasPorId = {};
+
+    if (Array.isArray(disciplinas)) {
+        disciplinas.forEach(function(disciplina) {
+            disciplinasPorId[String(disciplina.id)] = disciplina.nome;
+        });
+    }
+
+    if (Array.isArray(tutores) && tutores.length > 0) {
+        var html = '';
+        tutores.forEach(function(tutore) {
+            var disciplinaNome = disciplinasPorId[String(tutore.cod_disciplina)] || 'Disciplina ' + (tutore.cod_disciplina || '');
+            var searchText = escaparHtml([tutore.nome, disciplinaNome, tutore.id].join(' '));
+            html += `<tr data-search="${searchText}" style="border-bottom:1px solid #f3f4f6; transition:background 0.15s;">
+                <td style="padding:1rem; font-weight:500; color:#111827;">${escaparHtml(tutore.nome)}</td>
+                <td style="padding:1rem; color:#6b7280;">${escaparHtml(disciplinaNome)}</td>
+                <td style="padding:1rem; color:#9ca3af; font-size:0.75rem;">ID: ${escaparHtml(tutore.id)}</td>
+                <td style="padding:1rem; text-align:center;">
+                    <a href="/tutore/editar?tutore=${encodeURIComponent(tutore.id)}" style="display:inline-flex; align-items:center; gap:0.25rem; padding:0.35rem 0.75rem; border-radius:0.5rem; background:#fffbeb; color:#92400e; font-size:0.75rem; font-weight:600; text-decoration:none; border:1px solid #fde68a; transition:all 0.15s;" onmouseover="this.style.background='#fef3c7'" onmouseout="this.style.background='#fffbeb'">
+                        <i class="fas fa-edit" style="font-size:0.7rem;"></i> Editar
+                    </a>
+                    <a href="/tutore/presenca?tutore=${encodeURIComponent(tutore.id)}" style="display:inline-flex; align-items:center; gap:0.25rem; padding:0.35rem 0.75rem; border-radius:0.5rem; background:#fffbeb; color:#92400e; font-size:0.75rem; font-weight:600; text-decoration:none; border:1px solid #fde68a; transition:all 0.15s; margin-left:0.25rem;" onmouseover="this.style.background='#fef3c7'" onmouseout="this.style.background='#fffbeb'">
+                        <i class="fas fa-calendar-check" style="font-size:0.7rem;"></i> Presença
+                    </a>
+                    <a href="/tutore/justificar?tutore=${encodeURIComponent(tutore.id)}" style="display:inline-flex; align-items:center; gap:0.25rem; padding:0.35rem 0.75rem; border-radius:0.5rem; background:#fffbeb; color:#92400e; font-size:0.75rem; font-weight:600; text-decoration:none; border:1px solid #fde68a; transition:all 0.15s; margin-left:0.25rem;" onmouseover="this.style.background='#fef3c7'" onmouseout="this.style.background='#fffbeb'">
+                        <i class="fas fa-people-group" style="font-size:0.7rem;"></i> Reunião
+                    </a>
+                    <button type="button" class="btn-excluir-tutore" data-id="${escaparHtml(tutore.id)}" style="display:inline-flex; align-items:center; gap:0.25rem; padding:0.35rem 0.75rem; border-radius:0.5rem; background:#fee2e2; color:#991b1b; font-size:0.75rem; font-weight:600; text-decoration:none; border:1px solid #fecaca; transition:all 0.15s; margin-left:0.25rem;" onmouseover="this.style.background='#fecaca'" onmouseout="this.style.background='#fee2e2'">
+                        <i class="fas fa-trash" style="font-size:0.7rem;"></i> Excluir
+                    </button>
+                </td>
+            </tr>`;
+        });
+        $('#tabela-tutores').html(html);
+    } else {
+        $('#tabela-tutores').html('<tr><td colspan="4" style="padding:2rem; text-align:center; color:#9ca3af;">Nenhum tutore cadastrado.</td></tr>');
+    }
+}
+
+function excluirTutore(id, nome) {
+    if (!confirm('Tem certeza que deseja excluir o tutore "' + nome + '"?')) {
+        return false;
+    }
+
+    var resp = apiPost('/tutore/excluir', { id: id });
+    if (resp && resp.access !== false) {
+        alert("Tutore excluíde com sucesso!");
+        window.location.assign('/tutore?delete=true');
+    } else {
+        alert(resp && resp.message ? resp.message : "Erro ao excluir tutore.");
+    }
+}
+
+function escaparHtml(value) {
+    var entities = {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#39;'
+    };
+    return String(value == null ? '' : value).replace(/[&<>"']/g, function(character) {
+        return entities[character];
+    });
+}
+
+function normalizarTexto(value) {
+    return String(value == null ? '' : value)
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .toLowerCase()
+        .trim();
+}
+
+function carregarNomeTutore(id, selector) {
+    var tutore = apiGet('/tutore?id=' + encodeURIComponent(id));
+    $(selector).text(tutore ? tutore.nome : 'Tutore ' + id);
+}
 
 function carregarDisciplinasSelect(selector, selectedId) {
     var disciplinas = apiGet('/disciplinas');
@@ -209,27 +304,10 @@ function carregarSalasSelect(selector, selectedId) {
     }
 }
 
-function loadTutores(selector, selectedId) {
-    var tutores = apiGet('/tutores');
-    if (tutores && Array.isArray(tutores)) {
-        var options = '<option value="">Selecione um tutore</option>';
-        tutores.forEach(function(t) {
-            var isSel = (selectedId && String(t.id) === String(selectedId)) ? 'selected' : '';
-            options += `<option value="${t.id}" ${isSel}>${t.nome}</option>`;
-        });
-        $(selector).html(options);
-
-        if (selectedId && selector === '#selectTutore') {
-            carregarDetalhesTutore(selectedId);
-        }
-    }
-}
-
 function carregarDetalhesTutore(id) {
-    var tutore = apiGet('/tutore?id=' + id);
+    var tutore = apiGet('/tutore?id=' + encodeURIComponent(id));
     if (tutore) {
         $('#tutoreId').val(tutore.id || id);
-        $('#excluirId').val(tutore.id || id);
         $('#tutoreNome').val(tutore.nome || '');
         if (tutore.cod_disciplina) {
             $('#selectDisciplinaEdicao').val(tutore.cod_disciplina);

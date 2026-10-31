@@ -1,70 +1,78 @@
 <!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>AtenaSystem - Editar Presença Tutore</title>
-	<link href="/public/css/bootstrap.min.css" rel="stylesheet">
-	<link href="/public/css/font-awesome.min.css" rel="stylesheet">
-	<link href="/public/css/datepicker3.css" rel="stylesheet">
-	<link href="/public/css/styles.css" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-	<link rel="icon" href="/public/img/hubis-icon.png">
-</head>
-<body style="background-color:white">
-	<div id="menu-container"></div>
-	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main" style="background-color:white; margin-top:100px">
-		<center>
-			<h1>Editar Presença Tutore</h1>
-			<h4 id="msg-sucesso" style="display:none; color: green;">Salvo !</h4>
+		<html lang="pt-BR">
+		<head>
+			<meta charset="UTF-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1.0">
+			<title>AtenaSystem - Editar Presença Tutore</title>
+			<link rel="stylesheet" href="/public/view/_layout/styles.css">
+			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+		</head>
+		<body>
+			<script>
+				window.ATENA_PAGE_CONFIG = {
+					title: 'Editar Presença Tutore',
+					css: '',
+					content: '',
+					js: '/public/view/tutore/index.js'
+				};
+			</script>
 
-			<div style="max-width: 500px;">
-				<div class="form-group text-left">
-					<label>Tutores</label>
-					<select id="selectTutorePresenca" class="form-control">
-						<option value="">Carregando tutores...</option>
-					</select>
-				</div>
-				<div class="form-group text-left">
-					<label>Salas</label>
-					<select id="selectSalaPresenca" class="form-control">
-						<option value="">Carregando salas...</option>
-					</select>
-				</div>
-				<div class="form-group text-left">
-					<label>Aula</label>
-					<select id="selectAulaPresenca" class="form-control">
-						<option value="1">Primeira Aula</option>
-						<option value="2">Segunda Aula</option>
-					</select>
-				</div>
-				<div class="form-group text-left">
-					<label>Data</label>
-					<input type="date" id="dataPresencaTutore" class="form-control" required>
-				</div>
-				<button type="button" id="btnBuscarPresencaTutore" class="btn btn-md btn-warning">Buscar</button>
+			<nav class="atn-navbar" id="atn-navbar" data-shared-navbar></nav>
 
-				<div id="blocoResultadoTutore" style="display:none; margin-top: 30px;">
-					<div id="msgPresencaTutoreNaoEncontrada" style="display:none; margin-bottom: 15px; color: red;">
-						Presença não encontrada
-					</div>
-					<form id="formSalvarPresencaTutore" style="display:none;">
-						<div class="form-group text-left">
-							<label>Status</label>
-							<select id="statusPresencaTutore" class="form-control">
-								<option value="N">Ausência</option>
-								<option value="S">Presença</option>
-							</select>
+			<div class="atn-layout" style="display:flex; min-height:calc(100vh - 4rem); margin-top:4rem;">
+				<aside class="atn-sidebar" style="position:fixed; top:4rem; left:0; bottom:0; width:16rem; background:white; border-right:1px solid #e5e7eb; z-index:1020; padding:1rem 0; overflow-y:auto; font-family:'Inter',sans-serif;">
+					<nav class="atn-sidebar-nav" id="atn-sidebar-nav"></nav>
+				</aside>
+				<main class="atn-main" style="padding:2.5rem; flex:1; background:#f9fafb; min-height:calc(100vh - 4rem);">
+					<div class="atn-card" style="max-width:600px; margin:0 auto; padding:2rem;">
+						<h2 style="margin-bottom:0.25rem; color:#111827; font-weight:700;">Editar Presença</h2>
+						<p style="color:#6b7280; margin-bottom:1.5rem; font-size:0.875rem;">Localize o registro de presença do tutore.</p>
+						<p style="margin:0 0 1.5rem; color:#6b7280; font-size:0.875rem;">Tutore: <strong id="nomeTutorePresenca" style="color:#111827; font-weight:600;"></strong></p>
+
+						<h4 id="msg-sucesso" style="display:none; color:#16a34a; font-weight:600; margin-bottom:1rem;">Presença atualizada!</h4>
+						<div style="display:flex; flex-direction:column; gap:1.25rem;">
+							<div>
+								<label for="selectSalaPresenca" style="display:block; font-weight:500; color:#374151; font-size:0.875rem; margin-bottom:0.25rem;">Sala</label>
+								<select id="selectSalaPresenca" class="atn-input">
+									<option value="">Carregando salas...</option>
+								</select>
+							</div>
+							<div>
+								<label for="selectAulaPresenca" style="display:block; font-weight:500; color:#374151; font-size:0.875rem; margin-bottom:0.25rem;">Aula</label>
+								<select id="selectAulaPresenca" class="atn-input">
+									<option value="1">Primeira Aula</option>
+									<option value="2">Segunda Aula</option>
+								</select>
+							</div>
+							<div>
+								<label for="dataPresencaTutore" style="display:block; font-weight:500; color:#374151; font-size:0.875rem; margin-bottom:0.25rem;">Data</label>
+								<input type="date" id="dataPresencaTutore" class="atn-input" required>
+							</div>
+							<button type="button" id="btnBuscarPresencaTutore" class="atn-btn atn-btn-primary">
+								<i class="fas fa-magnifying-glass" aria-hidden="true"></i> Buscar presença
+							</button>
 						</div>
-						<button type="submit" class="btn btn-md btn-warning">Editar</button>
-					</form>
-				</div>
+
+						<div id="blocoResultadoTutore" class="atn-card" style="display:none; margin-top:1.5rem; padding:1.5rem;">
+							<div id="msgPresencaTutoreNaoEncontrada" role="status" style="display:none; margin-bottom:1rem; color:#dc2626; font-weight:600;">Presença não encontrada.</div>
+							<form id="formSalvarPresencaTutore" style="display:none; flex-direction:column; gap:1.25rem;">
+								<div>
+									<label for="statusPresencaTutore" style="display:block; font-weight:500; color:#374151; font-size:0.875rem; margin-bottom:0.25rem;">Status</label>
+									<select id="statusPresencaTutore" class="atn-input">
+										<option value="N">Ausência</option>
+										<option value="S">Presença</option>
+									</select>
+								</div>
+								<button type="submit" class="atn-btn atn-btn-primary">Salvar status</button>
+							</form>
+						</div>
+					</div>
+				</main>
 			</div>
-		</center>
-	</div>
-	<script src="/public/js/bootstrap.min.js"></script>
-	<script src="/public/js/menu.js"></script>
-	<script src="/public/view/tutore/index.js"></script>
-</body>
-</html>
+
+			<script type="module" src="/public/view/_shared/menu.js"></script>
+			<script type="module" src="/public/view/_shared/components.js"></script>
+			<script type="module" src="/public/view/tutore/index.js"></script>
+		</body>
+		</html>
 

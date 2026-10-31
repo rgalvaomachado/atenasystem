@@ -1,3 +1,1 @@
-$(document).ready(function() {
-    loadMenu('home');
-});
+// menu simples
